@@ -1,1 +1,0 @@
-<?php die("Access Denied"); ?>#x#a:2:{s:6:"result";s:242:"#sppb-addon-1643163136238 .sppb-empty-space{height:50px}@media (min-width:768px) and (max-width:991px){#sppb-addon-1643163136238 .sppb-empty-space{height:50px}}@media (max-width:767px){#sppb-addon-1643163136238 .sppb-empty-space{height:50px}}";s:6:"output";s:0:"";}

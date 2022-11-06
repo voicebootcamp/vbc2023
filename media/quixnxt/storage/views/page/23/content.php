@@ -470,12 +470,12 @@
 										<td class="eb-image-column d-none d-sm-block d-md-table-cell">
 						 					</td>
 									<td class="tdno0" data-content="Event">
-												<a href="/collab350-cisco-meeting-server-advanced/296-advanced-cisco-meeting-server-training" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
+												<a href="/index.php/collab350-cisco-meeting-server-advanced/296-advanced-cisco-meeting-server-training" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
 										</td>
 				<td class="tdno0" data-content="Event Date">
 					09-26-2022 9:30 am				</td>
 									<td class="tdno0" data-content="Location">
-																<a href="/collab350-cisco-meeting-server-advanced/toronto/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Toronto, Canada</a>
+																<a href="/index.php/collab350-cisco-meeting-server-advanced/toronto/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Toronto, Canada</a>
 														</td>
 											<td class="tdno0" data-content="Individual Price">
 							$3,995.00						</td>
@@ -486,12 +486,12 @@
 										<td class="eb-image-column d-none d-sm-block d-md-table-cell">
 						 					</td>
 									<td class="tdno1" data-content="Event">
-												<a href="/collab350-cisco-meeting-server-advanced/302-advanced-cisco-meeting-server-training-lasvegas" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
+												<a href="/index.php/collab350-cisco-meeting-server-advanced/302-advanced-cisco-meeting-server-training-lasvegas" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
 										</td>
 				<td class="tdno1" data-content="Event Date">
 					10-24-2022 9:30 am				</td>
 									<td class="tdno1" data-content="Location">
-																<a href="/collab350-cisco-meeting-server-advanced/las-vegas-usa/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Las Vegas, USA</a>
+																<a href="/index.php/collab350-cisco-meeting-server-advanced/las-vegas-usa/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Las Vegas, USA</a>
 														</td>
 											<td class="tdno1" data-content="Individual Price">
 							$3,995.00						</td>
@@ -502,12 +502,12 @@
 										<td class="eb-image-column d-none d-sm-block d-md-table-cell">
 						 					</td>
 									<td class="tdno2" data-content="Event">
-												<a href="/collab350-cisco-meeting-server-advanced/307-advanced-cisco-meeting-server-training-dubai" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
+												<a href="/index.php/collab350-cisco-meeting-server-advanced/307-advanced-cisco-meeting-server-training-dubai" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
 										</td>
 				<td class="tdno2" data-content="Event Date">
 					11-28-2022 9:30 am				</td>
 									<td class="tdno2" data-content="Location">
-																<a href="/collab350-cisco-meeting-server-advanced/dubai-uae/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Dubai, UAE</a>
+																<a href="/index.php/collab350-cisco-meeting-server-advanced/dubai-uae/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Dubai, UAE</a>
 														</td>
 											<td class="tdno2" data-content="Individual Price">
 							$3,995.00						</td>
@@ -515,7 +515,7 @@
 																<div class="eb-taskbar">
 										<ul>
 														<li>
-				<a class="btn btn-primary eb-register-button eb-individual-registration-button" href="https://dev.voicebootcamp.com/collab350-cisco-meeting-server-advanced/307-advanced-cisco-meeting-server-training-dubai/individual-registration">Register (<strong>Individual</strong>)</a>
+				<a class="btn btn-primary eb-register-button eb-individual-registration-button" href="https://34.235.164.214/index.php/collab350-cisco-meeting-server-advanced/307-advanced-cisco-meeting-server-training-dubai/individual-registration">Register (<strong>Individual</strong>)</a>
 			</li>
 												</ul>
 									</div>
@@ -525,12 +525,12 @@
 										<td class="eb-image-column d-none d-sm-block d-md-table-cell">
 						 					</td>
 									<td class="tdno3" data-content="Event">
-												<a href="/collab350-cisco-meeting-server-advanced/297-advanced-cisco-meeting-server-training-12-26-2022" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
+												<a href="/index.php/collab350-cisco-meeting-server-advanced/297-advanced-cisco-meeting-server-training-12-26-2022" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
 										</td>
 				<td class="tdno3" data-content="Event Date">
 					12-26-2022 9:30 am				</td>
 									<td class="tdno3" data-content="Location">
-																<a href="/collab350-cisco-meeting-server-advanced/toronto/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Toronto, Canada</a>
+																<a href="/index.php/collab350-cisco-meeting-server-advanced/toronto/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Toronto, Canada</a>
 														</td>
 											<td class="tdno3" data-content="Individual Price">
 							$3,995.00						</td>
@@ -538,7 +538,7 @@
 																<div class="eb-taskbar">
 										<ul>
 														<li>
-				<a class="btn btn-primary eb-register-button eb-individual-registration-button" href="https://dev.voicebootcamp.com/collab350-cisco-meeting-server-advanced/297-advanced-cisco-meeting-server-training-12-26-2022/individual-registration">Register (<strong>Individual</strong>)</a>
+				<a class="btn btn-primary eb-register-button eb-individual-registration-button" href="https://34.235.164.214/index.php/collab350-cisco-meeting-server-advanced/297-advanced-cisco-meeting-server-training-12-26-2022/individual-registration">Register (<strong>Individual</strong>)</a>
 			</li>
 												</ul>
 									</div>
@@ -548,12 +548,12 @@
 										<td class="eb-image-column d-none d-sm-block d-md-table-cell">
 						 					</td>
 									<td class="tdno4" data-content="Event">
-												<a href="/collab350-cisco-meeting-server-advanced/303-advanced-cisco-meeting-server-training-01-23-2023" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
+												<a href="/index.php/collab350-cisco-meeting-server-advanced/303-advanced-cisco-meeting-server-training-01-23-2023" class="eb-event-link">ADVANCED CISCO MEETING SERVER TRAINING</a>
 										</td>
 				<td class="tdno4" data-content="Event Date">
 					01-23-2023 9:30 am				</td>
 									<td class="tdno4" data-content="Location">
-																<a href="/collab350-cisco-meeting-server-advanced/las-vegas-usa/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Las Vegas, USA</a>
+																<a href="/index.php/collab350-cisco-meeting-server-advanced/las-vegas-usa/view-map?tmpl=component" class="eb-colorbox-map">Online Webex | Onsite - Las Vegas, USA</a>
 														</td>
 											<td class="tdno4" data-content="Individual Price">
 							$3,995.00						</td>
@@ -561,7 +561,7 @@
 																<div class="eb-taskbar">
 										<ul>
 														<li>
-				<a class="btn btn-primary eb-register-button eb-individual-registration-button" href="https://dev.voicebootcamp.com/collab350-cisco-meeting-server-advanced/303-advanced-cisco-meeting-server-training-01-23-2023/individual-registration">Register (<strong>Individual</strong>)</a>
+				<a class="btn btn-primary eb-register-button eb-individual-registration-button" href="https://34.235.164.214/index.php/collab350-cisco-meeting-server-advanced/303-advanced-cisco-meeting-server-training-01-23-2023/individual-registration">Register (<strong>Individual</strong>)</a>
 			</li>
 												</ul>
 									</div>
@@ -583,29 +583,29 @@
 		<span aria-current="true" aria-label="Page 1" class="page-link">1</span>
 	</li>
 </li>					<li class="page-item">	<li class="page-item">
-		<a aria-label="Go to page 2" href="/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=5" class="page-link">
+		<a aria-label="Go to page 2" href="/index.php/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=5" class="page-link">
 			2		</a>
 	</li>
 </li>					<li class="page-item">	<li class="page-item">
-		<a aria-label="Go to page 3" href="/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=10" class="page-link">
+		<a aria-label="Go to page 3" href="/index.php/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=10" class="page-link">
 			3		</a>
 	</li>
 </li>					<li class="page-item">	<li class="page-item">
-		<a aria-label="Go to page 4" href="/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=15" class="page-link">
+		<a aria-label="Go to page 4" href="/index.php/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=15" class="page-link">
 			4		</a>
 	</li>
 </li>		<li class="pagination-next page-item">	<li class="page-item">
-		<a aria-label="Go to next page" href="/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=5" class="page-link">
+		<a aria-label="Go to next page" href="/index.php/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=5" class="page-link">
 			<span class="fas fa-angle-right" aria-hidden="true"></span>		</a>
 	</li>
 </li>
 	<li class="pagination-end page-item">	<li class="page-item">
-		<a aria-label="Go to end page" href="/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=15" class="page-link">
+		<a aria-label="Go to end page" href="/index.php/training/cisco-video-training/collab350-cisco-meeting-server-advanced?start=15" class="page-link">
 			<span class="fas fa-angle-double-right" aria-hidden="true"></span>		</a>
 	</li>
 </li>
 </ul>		</div>
-		<form method="post" name="adminForm" id="adminForm" action="/collab350-cisco-meeting-server-advanced">
+		<form method="post" name="adminForm" id="adminForm" action="/index.php/collab350-cisco-meeting-server-advanced">
 		<input type="hidden" name="id" value="0" />
 		<input type="hidden" name="task" value="" />
 	</form>

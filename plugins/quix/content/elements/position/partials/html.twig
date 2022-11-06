@@ -1,0 +1,30 @@
+{% set id = field('id') %}
+{% set class = field('class') %}
+
+{% set tagname = field('html_tag') %}
+
+{% set classes = classNames('qx-position', visibilityClass(node.visibility), class) %}
+{% set animation = field("animation") %}
+{% set animationRepeat = field("animation_repeat") %}
+{% set animationDelay = field('animation_delay').value %}
+{% set background = field('background') %}
+
+{% set position = field('position') %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background,
+    "tagname" : tagname
+} %}
+    {% block element %}
+        {% if renderer %}
+            <jdoc:include type="modules" name="{{ position }}" style="none"/>
+        {% else %}
+            <div class="qx-alert">Position {{ position }}</div>
+        {% endif %}
+    {% endblock %}
+{% endembed %}

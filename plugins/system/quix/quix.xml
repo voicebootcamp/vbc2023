@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="system" method="upgrade">
+
+	<name>System - Quix System Plugin</name>
+	<author>ThemeXpert</author>
+	<creationDate>09-10-2022</creationDate>
+	<copyright>Copyright (C) 2013 themexpert.com. All rights reserved.</copyright>
+	<license>GNU/GPL</license>
+	<authorEmail>info@themexpert.com</authorEmail>
+	<authorUrl>www.themexpert.com</authorUrl>
+	<version>4.3.1</version>
+	<description>Thank you for installing Quix System Plugin.</description>
+	<scriptfile>installer.php</scriptfile>
+
+	<files>
+		<filename plugin="quix">quix.php</filename>
+		<folder>postinstall</folder>
+		<folder>includes</folder>
+		<folder>language</folder>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_quix.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_quix.sys.ini</language>
+	</languages>
+
+	<config>
+
+		<fields name="params">
+
+			<fieldset name="basic">
+				<field name="preload" type="radio" default="1"
+					label="preload Assets" class="btn-group"
+					description="HTTP2 Preload assets."
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+				<field name="load_global" type="radio" default="0"
+					label="Load Assets globally" class="btn-group"
+					description="Load quix assets globally?"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+				<field name="init_wow" type="radio" default="0"
+					label="Init WoW Js" class="btn-group"
+					description="Would you like to Initialize Wowjs?"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="gantry_fix_offcanvas" type="radio" default="0"
+					label="Fix Gantry Offcanvas" class="btn-group"
+					description="If you have auto-close issue on gantry offcanvas menu for mobile device, please enable this option."
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="fix_bootstrap_dropdown" type="radio" default="0"
+					label="Fix bootstrap dropdown" class="btn-group"
+					description="If you have auto-close issue on bootstrap dropdown menu, please enable this option."
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="fix_rocketLoader" type="radio" default="0"
+					label="Fix Rocket Loader" class="btn-group"
+					description="When you have cloudflare and found that your page is not loading properly, you can enable this option"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="fix_internetExplorer" type="radio" default="0"
+					label="Fix Internet Explorer" class="btn-group"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+				<field name="fix_admintoolsfirewall" type="radio" default="1"
+					label="Fix AdminTools Firewall" class="btn-group"
+					description=""
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<!-- <field name="load_compiled_library" type="radio" default="0"
+					label="Load compiled assets" class="btn-group"
+					description="Better for SEO as it reduces http request."
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field> -->
+
+
+			</fieldset>
+
+		</fields>
+
+	</config>
+
+</extension>

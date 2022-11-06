@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="eventbooking" method="upgrade">
+    <name>Events Booking - Auto Subscribe Membership Plan</name>
+    <author>Tuan Pham Ngoc</author>
+    <creationDate>August 2022</creationDate>
+    <copyright>Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <version>4.2.0</version>
+    <description>This plugin is used to subscribe registrants in Events Booking to Membership Pro subscription plan if the event they register for is associated with certain plan.</description>
+    <files>
+        <filename plugin="autosubscribe">autosubscribe.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="ignore_if_user_has_existing_subscription"
+                        type="radio"
+                        label="Ignore If User Has Existing Subscription"
+                        description="If set to Yes, in case users already subscribed for the plan, they won't be auto subscribed for the plan again when register for the event"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

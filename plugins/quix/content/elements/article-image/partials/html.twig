@@ -1,0 +1,44 @@
+{% set id = field("id") %}
+{% set class = field('class') %}
+{% set imagetype = field('imagetype') %}
+
+{% set itemData = ElementApiCall('article-title', {}) %}
+{% set src = '' %}
+{% if itemData %}
+  {% set images = itemData.images %}
+  {% if imagetype == 'intro' %}
+      {% set src = images.image_intro %}
+    {% else %}
+      {% set src = images.image_fulltext %}
+    {% endif %}
+{% endif %}
+{% set alt_text = itemData.title %}
+
+{% set responsiveClass = '' %}
+{% if field('img_responsive') %}
+  {% set responsiveClass = 'qx-img-fluid' %}
+{% endif %}
+
+{% set classes = classNames('qx-element qx-element-article-image', visibilityClass(node.visibility), class) %}
+{% set animation = field("animation") %}
+{% set animationRepeat = field("animation_repeat") %}
+{% set animationDelay = field('animation_delay').value %}
+{% set background = field('background') %}
+  
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+      
+      {{ image( src, alt_text, responsiveClass) }}
+      
+      {% if caption %}
+      <figcaption class="qx-figure-caption">{{ caption }}</figcaption>
+      {% endif %}
+  {% endblock %}
+{% endembed %}

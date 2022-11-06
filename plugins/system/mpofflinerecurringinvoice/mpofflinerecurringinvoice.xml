@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Pro Offline Recurring Invoice</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2022 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>3.1.2</version>
+    <description>This plugin renew subscription and send invoice to subscribers of offline recurring subscription X days
+        (configure in Number Days parameter) before their subscription expired so that they can make payment to continue
+        having active subscriptions on your site.
+    </description>
+    <files>
+        <filename plugin="mpofflinerecurringinvoice">mpofflinerecurringinvoice.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="cache_time" label="Cache Time (Hours)" type="number" min="0" max="100" step="1"
+                       default="1"/>
+                <field name="last_run" label="Last Run Time" type="text" readonly="true" size="30"
+                       description="Store Last Run Time of the plugin"/>
+                <field name="number_subscribers" label="Number Subscribers" type="text" size="30" default="10"
+                       description="Number of subscribers which we will send invoice each time the plugin runs"/>
+                <field name="number_days" label="Number Days" type="text" size="30" default="10"
+                       description="Set to 10 for example and the system will send invoice to subscribers 10 days before their subscription expired"/>
+                <field name="published" type="list" label="Renewal Subscription Status" default="0">
+                    <option value="0">Pending</option>
+                    <option value="1">Active</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

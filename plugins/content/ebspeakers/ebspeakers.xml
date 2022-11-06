@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="content" method="upgrade">
+    <name>Content - Events Booking Speakers</name>
+    <author>Tuan Pham Ngoc</author>
+    <creationDate>Jul 2021</creationDate>
+    <copyright>Copyright 2010 - 2022 Ossolution Team</copyright>
+    <license>https://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <version>4.3.0</version>
+    <description>This plugin is used to speakers of an event in Joomla article or any content which trigger content plugins.</description>
+    <files>
+        <filename plugin="ebspeakers">ebspeakers.php</filename>
+    </files>
+</extension>

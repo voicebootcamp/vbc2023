@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="plugin" group="payment">
+	<name>os_stripe</name>
+	<title>Stripe</title>
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>07-01-2016</creationDate>
+	<copyright>Copyright 2010 - 2022 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>joomdonation.com</authorUrl>
+	<version>4.1.2</version>
+	<description>Stripe Payment Plugin For Events Booking Extension</description>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_eventbooking/elements">
+				<field name="mode" type="list" label="Payment Mode" default="1">
+					<option value="0">Sandbox</option>
+					<option value="1">Live</option>
+				</field>
+				<field name="stripe_public_key" type="text" size="60" label="Public API Key" default="" showon="mode:1" />
+				<field name="stripe_api_key" type="text" size="60" label="Secret API Key" default="" showon="mode:1" />
+				<field name="sandbox_stripe_public_key" type="text" size="60" label="Sandbox Public API Key" showon="mode:0" />
+				<field name="sandbox_stripe_api_key" type="text" size="60" label="Sandbox Secret API Key" showon="mode:0" />
+				<field name="icon" type="imagelist" directory="media/com_eventbooking/assets/images/paymentmethods" label="Icon" description="If you want to show icon instead of payment method title on registration form, upload it to media/com_eventbooking/assets/images/paymentmethods folder and enter select the icon here. For example os_stripe.png" />
+				<field name="payment_fee_amount" type="text" label="Payment Processing Fee ($)" />
+				<field name="payment_fee_percent" type="text" label="Payment Processing Fee (%)" />
+				<field
+						name="use_stripe_card_element"
+						type="radio"
+						label="Use Stripe Card Element"
+						description="Set to Yes to use Stripe Card Element (https://stripe.com/docs/stripe-js/elements/quickstart) to render credit card input form. Only works with Events Booking 3.5.3+"
+						class="btn-group btn-group-yesno"
+						default="0"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename>os_stripe.php</filename>
+		<folder>stripe</folder>
+	</files>
+</install>

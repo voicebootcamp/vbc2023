@@ -1,0 +1,279 @@
+name: Tab
+slug: tab
+groups: pro
+helpId: 5d1feb4d04286369ad8d5ed9
+form:
+  general:
+    - name : tab_fg_element_mode
+      label: Tab
+      type: group-repeater
+      schema:
+        - name: title
+          label: Title
+          type: text
+          value: Tab 1
+
+        - name: description
+          label: Description
+          type: editor
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: image
+          type: media
+          showstyle: true
+          value: 'media/quixnxt/images/placeholder.png'
+
+        - name: img_divider
+          label : Image options
+          type: divider
+
+        - name: alt_text
+          label : Image Alt Text
+          type: text
+          help : Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            "image.type": image
+
+        - name: caption
+          label: Image Caption
+          type: text
+          depends:
+            "image.type": image
+
+        - name : img_width
+          label : Width
+          type: slider
+          max : 2000
+          defaultUnit: px
+          responsive: false
+          value: 120
+          depends:
+            "image.type": image          
+      value:
+        - title: Tab 1
+          image: 'media/quixnxt/images/placeholder.png'
+
+        - title: Tab 2
+          image: 'media/quixnxt/images/placeholder.png'
+
+        - title: Tab 3
+          image: 'media/quixnxt/images/placeholder.png'
+
+
+    - name : tag_fg_icon
+      label: Icon
+      type: fields-group
+      schema:
+        - name: global_icon
+          label: Icon
+          type: media
+          filters: icon
+          showstyle: true
+          value: 'media/quixnxt/images/placeholder.png'
+
+    - name: tab_fg_Aditional
+      label: Additional
+      type: fields-group
+      schema:
+        - name : tab_alignment
+          label: Tab Alignment
+          type : choose
+          responsive: false
+          value: horizontal
+          options:
+            horizontal :
+              label: Horizontal
+            vertical :
+              label : Vertical
+        - name: title_html_tag
+          label: Title HTML Tag
+          type: select
+          value: h4
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+
+        - name : title_alignment
+          type : choose
+          label: Title Alignment
+          responsive : false
+          value: left
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: media_position
+          label: Content Image Top
+          type: switch              
+              
+        - name : content_alignment
+          type : choose
+          label: Content Alignment
+          responsive : false
+          depends:
+            media_position: false
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+        - name : image_alignment
+          label: Image Position
+          type : choose
+          responsive: false
+          value: center
+          depends:
+            media_position : true
+          options:
+            left :
+              label: Left
+            center :
+              label : Center
+            right :
+              label : Right             
+
+  styles:
+    - name: tab_fg_style
+      label: Tab
+      status: open
+      type: fields-group
+      schema:
+        - name  : item_border_width
+          label : Spacing
+          type: slider
+          max : 10
+          units: px
+          defaultUnit: px
+          value:
+            desktop : 1
+            tablet : 1
+            phone : 1
+
+        - name: tab_border_color
+          label: Border Color
+          type: color
+          value: rgba(238, 238, 238, 1)
+
+        - name: tab_bg_color
+          label: Background Color
+          type: color
+          value: rgba(238, 238, 238, 1)
+
+    - name : tab_fg_icon_style
+      label: Tab Icon
+      type: fields-group
+      schema:
+        - name: icon_active_color
+          label: Active Color
+          type: color
+
+        - name  : icon_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 10
+
+    - name : tab_fg_title_style
+      label: Title
+      type: fields-group
+      schema:
+        - name: title_color
+          label: Color
+          type: color
+
+        - name: title_active_color
+          label: Active Color
+          type: color
+
+        - name: title_bg_color
+          label: Background Color
+          type: color
+          popover: true
+
+        - name: title_active_bg_color
+          label: Active Background Color
+          type: color
+          value: rgba(238, 238, 238, 1)
+
+        - name: title_padding
+          label : Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 10
+              bottom: 10
+              left: 20
+              right: 20
+            tablet:
+              top: 10
+              bottom: 10
+              left: 15
+              right: 15
+            phone:
+              top: 10
+              bottom: 10
+              left: 15
+              right: 15
+
+        - name: title_font
+          label: Typography
+          type: typography
+          popover: true
+
+
+    - name : tab_fg_content_style
+      label : Content
+      type: fields-group
+      schema:
+        - name: content_color
+          label: Color
+          type: color
+
+        - name: content_padding
+          label : Content Body Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 20
+              bottom: 20
+              left: 20
+              right: 20
+            tablet:
+              top: 20
+              bottom: 20
+              left: 20
+              right: 20
+            phone:
+              top: 20
+              bottom: 20
+              left: 20
+              right: 20
+
+        - name: content_font
+          label: Typography
+          type: typography
+          popover: true

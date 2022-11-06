@@ -1,0 +1,836 @@
+.qx.quix .qx-container {
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+.qx.quix *, .qx.quix .qx-container, .qx.quix :after, .qx.quix :before {
+    box-sizing: border-box
+}
+
+.qx.quix figure {
+    margin: 0;
+    display: initial
+}
+
+.qx.quix img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box
+}
+
+.qx.quix .blur-up {
+    -webkit-filter: blur(10px);
+    filter: blur(10px)
+}
+
+.qx.quix img.lazyload {
+    opacity: 0
+}
+
+.qx.quix .blur-up.lazyload:not([src]) {
+    visibility: hidden
+}
+
+.qx-container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+    max-width: 100%
+}
+
+.qx-background-overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.qx-row {
+    display: flex;
+    flex-wrap: wrap
+}
+
+@media (min-width: 768px) {
+    .qx-row {
+        flex-direction: row !important
+    }
+}
+
+.qx-col-wrap, .qx-column {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.qx-col-wrap, .qx-element-wrap, .qx-elements-wrap, .qx-row-wrap {
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+}
+
+.qx-column, .qx-row, .qx-section {
+    position: relative
+}
+
+.qx-inner.frontend .qx-row .qx-column {
+    padding: 0
+}
+
+.qx-inner.frontend .qx-row .qx-column .qx-col-wrap {
+    padding: 15px;
+    min-width: 1px
+}
+
+.qx-slider-pro-v2 .slider-pro-item {
+    padding: 0 !important
+}
+
+.qx-slider-pro-v2 .slider-pro-item img {
+    width: 100%
+}
+
+.qx-slider-pro-v2 .slider-pro-item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.qx-slider-pro-v2 .slide-content h2 {
+    font-size: 35px
+}
+
+.qx-slider-pro-v2 .slide-content p {
+    font-size: 18px;
+    line-height: 1.5
+}
+
+.qx-slider-pro-v2 .slide-content a.qx-btn {
+    font-size: 18px;
+    border: 1px solid #fff
+}
+
+.qx-element-blurb-v2 .qx-element-blurb__title * {
+    margin: 0
+}
+
+@media (max-width: 767px) {
+    .qx-element-blurb-v2 .qx-element-blurb__media {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px
+    }
+}
+
+.qx-element-call-to-action-v2 .qx-element-call-to-action_subtitle > * {
+    line-height: 1
+}
+
+.com_quix [class*=qx-align], .qx.quix [class*=qx-align] {
+    margin-bottom: 0;
+    margin-top: 0
+}
+
+.qx-btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem
+}
+
+.qx-btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff
+}
+
+@media (min-width: 768px) {
+    .qx-d-md-flex {
+        display: flex !important
+    }
+
+    .qx-flex-md-row {
+        flex-direction: row !important
+    }
+}
+
+.qx-flex-column {
+    flex-direction: column !important
+}
+
+.qx-justify-content-center {
+    justify-content: center !important
+}
+
+.qx-align-items-center {
+    align-items: center !important
+}
+
+@media (min-width: 768px) {
+    .qx-flex-md-row {
+        flex-direction: row !important
+    }
+}
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    background: #fff;
+    color: #666
+}
+
+body {
+    margin: 0
+}
+
+a {
+    color: #1e87f0;
+    text-decoration: none
+}
+
+img, svg {
+    vertical-align: middle
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box
+}
+
+@supports (display:block) {
+    svg {
+        max-width: 100%;
+        height: auto;
+        box-sizing: border-box
+    }
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+img:not([src]) {
+    min-width: 1px;
+    visibility: hidden
+}
+
+figure, p, ul {
+    margin: 0 0 20px
+}
+
+* + p, * + ul {
+    margin-top: 20px
+}
+
+h2, h3, h4 {
+    margin: 0 0 20px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-weight: 400;
+    color: #333;
+    text-transform: none
+}
+
+h2 {
+    font-size: 1.7rem;
+    line-height: 1.3
+}
+
+h3 {
+    font-size: 1.5rem;
+    line-height: 1.4
+}
+
+h4 {
+    font-size: 1.25rem;
+    line-height: 1.4
+}
+
+@media (min-width: 960px) {
+    h2 {
+        font-size: 2rem
+    }
+}
+
+ul {
+    padding-left: 30px
+}
+
+ul > li > ul {
+    margin: 0
+}
+
+main {
+    display: block
+}
+
+:root {
+    --qx-breakpoint-s: 640px;
+    --qx-breakpoint-m: 960px;
+    --qx-breakpoint-l: 1200px;
+    --qx-breakpoint-xl: 1600px
+}
+
+.qx-section {
+    display: flow-root;
+    box-sizing: border-box;
+    padding-top: 40px;
+    padding-bottom: 40px
+}
+
+@media (min-width: 960px) {
+    .qx-section {
+        padding-top: 70px;
+        padding-bottom: 70px
+    }
+}
+
+.qx-section > :last-child {
+    margin-bottom: 0
+}
+
+.qx-section-default {
+    background: #fff
+}
+
+.qx-container {
+    display: flow-root;
+    box-sizing: content-box;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+@media (min-width: 640px) {
+    .qx-container {
+        padding-left: 30px;
+        padding-right: 30px
+    }
+}
+
+@media (min-width: 960px) {
+    .qx-container {
+        padding-left: 40px;
+        padding-right: 40px
+    }
+}
+
+.qx-container > :last-child {
+    margin-bottom: 0
+}
+
+.qx-overlay-primary {
+    background: rgba(34, 34, 34, .8)
+}
+
+.qx-slideshow-items {
+    position: relative;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    -webkit-touch-callout: none
+}
+
+.qx-slideshow-items > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    will-change: transform, opacity;
+    touch-action: pan-y
+}
+
+.qx-slideshow-items > :not(.qx-active) {
+    display: none
+}
+
+.qx-offcanvas-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -270px;
+    box-sizing: border-box;
+    width: 270px;
+    padding: 20px;
+    background: #222;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch
+}
+
+@media (min-width: 960px) {
+    .qx-offcanvas-bar {
+        left: -350px;
+        width: 350px;
+        padding: 40px
+    }
+}
+
+.qx-offcanvas-close {
+    position: absolute;
+    z-index: 1000;
+    top: 20px;
+    right: 20px;
+    padding: 5px
+}
+
+.qx-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.qx-grid > * {
+    margin: 0
+}
+
+.qx-grid > * > :last-child {
+    margin-bottom: 0
+}
+
+.qx-grid {
+    margin-left: -30px
+}
+
+.qx-grid > * {
+    padding-left: 30px
+}
+
+@media (min-width: 1200px) {
+    .qx-grid {
+        margin-left: -40px
+    }
+
+    .qx-grid > * {
+        padding-left: 40px
+    }
+}
+
+.qx-grid-medium {
+    margin-left: -30px
+}
+
+.qx-grid-medium > * {
+    padding-left: 30px
+}
+
+.qx-nav, .qx-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.qx-nav li > a {
+    display: block;
+    text-decoration: none
+}
+
+.qx-nav > li > a {
+    padding: 5px 0
+}
+
+ul.qx-nav-sub {
+    padding: 5px 0 5px 15px
+}
+
+.qx-nav-sub a {
+    padding: 2px 0
+}
+
+.qx-nav-default {
+    font-size: .875rem
+}
+
+.qx-nav-default > li > a {
+    color: #999
+}
+
+.qx-nav-default > li.qx-active > a {
+    color: #333
+}
+
+.qx-nav-default .qx-nav-sub a {
+    color: #999
+}
+
+.qx-navbar {
+    display: flex;
+    position: relative
+}
+
+.qx-navbar-container:not(.qx-navbar-transparent) {
+    background: #f8f8f8
+}
+
+.qx-navbar-left, .qx-navbar-right {
+    display: flex;
+    align-items: center
+}
+
+.qx-navbar-right {
+    margin-left: auto
+}
+
+.qx-navbar-nav {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.qx-navbar-left, .qx-navbar-right {
+    flex-wrap: wrap
+}
+
+.qx-navbar-item, .qx-navbar-nav > li > a, .qx-navbar-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 80px;
+    padding: 0 15px;
+    font-size: .875rem;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    text-decoration: none
+}
+
+.qx-navbar-nav > li > a {
+    color: #999;
+    text-transform: uppercase
+}
+
+.qx-navbar-nav > li.qx-active > a {
+    color: #333
+}
+
+.qx-navbar-item {
+    color: #666
+}
+
+.qx-navbar-toggle {
+    color: #999
+}
+
+.qx-navbar-dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1020;
+    box-sizing: border-box;
+    width: 200px;
+    padding: 25px;
+    background: #fff;
+    color: #666;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, .15)
+}
+
+.qx-navbar-dropdown-nav {
+    font-size: .875rem
+}
+
+.qx-navbar-dropdown-nav > li > a {
+    color: #999
+}
+
+.qx-navbar-container > .qx-container .qx-navbar-left {
+    margin-left: -15px;
+    margin-right: -15px
+}
+
+.qx-navbar-container > .qx-container .qx-navbar-right {
+    margin-right: -15px
+}
+
+.qx-dotnav, .qx-slidenav-container {
+    display: flex
+}
+
+.qx-dotnav {
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+    margin: 0 0 0 -12px
+}
+
+.qx-dotnav > * {
+    flex: none;
+    padding-left: 12px
+}
+
+.qx-dotnav > * > * {
+    display: block;
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: 0 0;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 1px solid hsla(0, 0%, 40%, .4)
+}
+
+[class*=qx-animation-] {
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both
+}
+
+[class*=qx-child-width] > * {
+    box-sizing: border-box;
+    width: 100%
+}
+
+@media (min-width: 640px) {
+    .qx-child-width-1-2\@s > * {
+        width: 50%
+    }
+}
+
+@media (min-width: 960px) {
+    .qx-child-width-1-4\@m > * {
+        width: 25%
+    }
+}
+
+[class*=qx-width] {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%
+}
+
+.qx-width-3-5 {
+    width: 60%
+}
+
+@media (min-width: 960px) {
+    .qx-width-1-5\@m {
+        width: 20%
+    }
+}
+
+.qx-text-center {
+    text-align: center !important
+}
+
+[class*=qx-column-] {
+    column-gap: 30px
+}
+
+@media (min-width: 1200px) {
+    [class*=qx-column-] {
+        column-gap: 40px
+    }
+}
+
+[class*=qx-align] {
+    display: block;
+    margin-bottom: 30px
+}
+
+.qx-display-inline-block {
+    display: inline-block !important
+}
+
+[class*=qx-inline] {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    vertical-align: middle;
+    -webkit-backface-visibility: hidden
+}
+
+.qx-logo {
+    font-size: 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    color: #666;
+    text-decoration: none
+}
+
+.qx-flex {
+    display: flex
+}
+
+.qx-flex-inline {
+    display: inline-flex
+}
+
+.qx-flex-inline:after, .qx-flex-inline:before, .qx-flex:after, .qx-flex:before {
+    display: none
+}
+
+.qx-flex-center {
+    justify-content: center
+}
+
+.qx-flex-middle {
+    align-items: center
+}
+
+.qx-flex-column {
+    flex-direction: column
+}
+
+.qx-padding-remove-vertical {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important
+}
+
+[class*=qx-position-bottom], [class*=qx-position-center] {
+    position: absolute !important;
+    max-width: 100%
+}
+
+.qx-position-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    max-width: 100%;
+    box-sizing: border-box
+}
+
+[class*=qx-position-center-left], [class*=qx-position-center-right] {
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.qx-position-center-left {
+    left: 0
+}
+
+.qx-position-center-right {
+    right: 0
+}
+
+.qx-position-bottom-center {
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 100%;
+    box-sizing: border-box
+}
+
+.qx-position-bottom-center {
+    bottom: 0
+}
+
+.qx-position-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0
+}
+
+.qx-position-relative {
+    position: relative !important
+}
+
+.qx-position-small {
+    max-width: calc(100% - 30px);
+    margin: 15px
+}
+
+.qx-position-small[class*=qx-position-center-left], .qx-position-small[class*=qx-position-center-right] {
+    transform: translateY(-50%) translateY(-15px)
+}
+
+.qx-position-medium {
+    max-width: calc(100% - 60px);
+    margin: 30px
+}
+
+.qx-position-medium.qx-position-bottom-center {
+    transform: translateX(-50%) translateX(-30px)
+}
+
+@media (min-width: 960px) {
+    .qx-hidden\@m {
+        display: none !important
+    }
+}
+
+@media (max-width: 639px) {
+    .qx-visible\@s {
+        display: none !important
+    }
+}
+
+@media (max-width: 959px) {
+    .qx-visible\@m {
+        display: none !important
+    }
+}
+
+.qx-visible-toggle:not(:hover):not(:focus) .qx-hidden-hover:not(:focus-within) {
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important
+}
+
+.qx-offcanvas-bar, .qx-overlay-primary {
+    color: hsla(0, 0%, 100%, .7)
+}
+
+.qx-offcanvas-bar a {
+    color: #fff
+}
+
+.qx-offcanvas-bar .qx-nav-default > li > a {
+    color: hsla(0, 0%, 100%, .5)
+}
+
+.qx-offcanvas-bar .qx-nav-default > li.qx-active > a {
+    color: #fff
+}
+
+.qx-offcanvas-bar .qx-nav-default .qx-nav-sub a {
+    color: hsla(0, 0%, 100%, .5)
+}
+
+.qx-margin-auto {
+    margin-left: auto !important;
+    margin-right: auto !important
+}
+
+.qx-tab {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    padding: 0;
+    list-style: none;
+    position: relative
+}
+
+.qx-switcher > :not(.qx-active) {
+    display: none
+}
+[class*=qx-position-bottom], [class*=qx-position-center], [class*=qx-position-left], [class*=qx-position-right], [class*=qx-position-top] {
+    position: absolute!important;
+    max-width: 100%;
+}
+.qx-position-top-right {
+    top: 0;
+    right: 0;
+}

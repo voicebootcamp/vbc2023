@@ -1,0 +1,212 @@
+name: Smart Tab
+slug: smart-tab
+groups: pro
+helpId: 5ddb877c2c7d3a7e9ae45c47
+form:
+  general:
+    - name : items
+      label: Tab
+      type: group-repeater
+      schema:
+        - name: title
+          label: Title
+          type: text
+          value: Tab 1
+        
+        - name: subtitle
+          label: Sub Title
+          type: text
+          value: MyTab
+
+        - name: triggerid
+          label: Trigger id
+          type: text
+          help: Any section,row,column or element ID. Copy ID from Advanced Settings.
+
+        - name: icon_div
+          label: Icon
+          type: divider
+
+        - name: icon
+          label: Icon
+          type: media
+          filters: icon
+          value: media/quixnxt/images/placeholder.png
+        
+    - name : options
+      label: Options
+      type: fields-group
+      schema:
+        - name : tab_layout
+          label: Dispaly Vertical Tab
+          type : switch
+          value: false
+            
+        - name: tab_alignment
+          type: choose 
+          label: Tab Alignement
+          responsive: false
+          value: qx-flex-center
+          options:
+            qx-flex-left: 
+              label: Left 
+            qx-flex-center : 
+              label: Center 
+            qx-flex-right : 
+              label: Right
+          depends:
+            tab_layout: false
+            
+        - name : text_alignment
+          type : choose
+          label: Text Alignment
+          responsive: false
+          value: qx-text-center
+          options:
+            qx-text-left :
+              label: Left
+              icon : qxuicon-align-left
+            qx-text-center :
+              label : Center
+              icon : qxuicon-align-center
+            qx-text-right : 
+              label : Right
+              icon : qxuicon-align-right
+              
+        - name : icon_alignment
+          label: Icon Alignment
+          type : choose
+          responsive: false
+          value: top
+          options:
+            left :
+              label: Left
+              icon : qxuicon-arrow-to-left
+            top :
+              label : Top
+              icon : qxuicon-arrow-to-top
+            right : 
+              label : Right
+              icon : qxuicon-arrow-to-right
+              
+        - name : content_v_align
+          label: Icon Position
+          type : choose
+          help:  Use it after selecting icon alignment left or right
+          responsive: false
+          value: qx-align-items-center
+          options:
+            qx-align-items-start :
+              label: Top
+              icon : qxuicon-arrow-to-top
+            qx-align-items-center :
+              label : Middle
+              icon : qxuicon-minus
+            qx-align-items-end : 
+              label : Bottom
+              icon : qxuicon-arrow-to-bottom               
+
+  styles:
+    - name: tab_fg_style
+      label: Tab
+      type: fields-group
+      schema:              
+        - name: tab_margin
+          label : Margin
+          type: dimensions
+          defaultUnit: px
+
+        - name: tab_padding
+          label : Padding
+          type: dimensions
+          defaultUnit: px 
+
+        - name: tab_item_background
+          label: Background
+          type: background
+          popover: true
+
+        - name: tab_item_border
+          label: Border
+          type: border
+          popover: true
+        
+        - name: active_state
+          label: Active/Selected Tab Style
+          type: divider
+
+        - name: tab_active_bg
+          label: Active Background
+          type: color             
+  
+        - name: tab_active_br
+          label: Active Border
+          type: color          
+          
+    - name: tab_fg_icon_style
+      label: Icon
+      type: fields-group     
+      schema:         
+        - name  : icon_spacing
+          label : Spacing
+          responsive: false
+          type: slider
+          max : 100
+          value: 5
+
+        - name: icon_hover_color
+          label: Hover Color
+          type: color
+
+        - name: icon_active_color
+          label: Active Color
+          type: color
+
+    - name : tab_fg_title_style
+      label: Title
+      type: fields-group
+      schema:
+        - name  : title_spacing
+          label : Spacing
+          responsive: false
+          type: slider
+          max : 100
+          value: 5
+
+        - name: title_color
+          label: Color
+          type: color
+
+        - name: title_hover_color
+          label: Hover Color
+          type: color
+
+        - name: title_active_color
+          label: Active Color
+          type: color
+        
+        - name: title_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name : tab_fg_subTitle_style
+      label : Sub Title
+      type: fields-group
+      schema:
+        - name: subTitle_color
+          label: Color
+          type: color
+
+        - name: subTitle_hover_color
+          label: Hover Color
+          type: color
+
+        - name: subTitle_active_color
+          label: Active Color
+          type: color
+
+        - name: subTitle_font
+          label: Typography
+          type: typography
+          popover: true

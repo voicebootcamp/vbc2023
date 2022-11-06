@@ -1,0 +1,53 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set titleWrapper = id ~ ' .qx-element-smart-tab-item' %}
+{% set tabWrapper = id ~ ' .qx-tab-left .qx-element-smart-tab-item' %}
+{% set icon_alignment = styles.tab_fg_icon_style.icon_alignment %}
+{% set iconSpacing = styles.tab_fg_icon_style.icon_spacing %}
+{% set iconTopSelector = id ~ ' .iconAlign-top .qx-element-smart-tab-media' %}
+{% set iconLeftSelector = id ~ ' .iconAlign-left .qx-element-smart-tab-media' %}
+{% set iconRightSelector = id ~ ' .iconAlign-Right .qx-element-smart-tab-media' %}
+{% set titleTextWrapper = id ~ ' .qx-element-smart-tab-item a' %}
+{% set titleSpacing = styles.tab_fg_title_style.title_spacing %}
+{% set titleContentWrapper = id ~ ' .qx-element-smart-tab-item a .qx-element-smart-tab-content' %}
+{% set titleTextWrapperActive = id ~ ' .qx-element-smart-tab-item a.qx-active' %}
+
+
+{# Color #}
+{{ style.css(titleTextWrapper ~ ' .qx-smart-tab-title', 'color', styles.tab_fg_title_style.title_color) }}
+{{ style.css(titleTextWrapper ~ ':hover .qx-smart-tab-title', 'color', styles.tab_fg_title_style.title_hover_color) }}
+{{ style.css(titleTextWrapperActive ~ ' .qx-smart-tab-title', 'color', styles.tab_fg_title_style.title_active_color) }}
+{{ style.css(titleTextWrapper ~ ' .qx-smart-tab-subtitle', 'color', styles.tab_fg_subTitle_style.subTitle_color) }}
+{{ style.css(titleTextWrapper ~ ':hover .qx-smart-tab-subtitle', 'color', styles.tab_fg_subTitle_style.subTitle_hover_color) }}
+{{ style.css(titleTextWrapperActive ~ ' .qx-smart-tab-subtitle', 'color', styles.tab_fg_subTitle_style.subTitle_active_color) }}
+{{ style.background(titleTextWrapper, styles.tab_fg_style.tab_item_background) }}
+{{ style.css(titleTextWrapperActive, 'background-color', styles.tab_fg_style.tab_active_bg) }}
+{{ style.css(titleTextWrapperActive, 'border-color', styles.tab_fg_style.tab_active_br) }}
+
+{# Typography #}
+{{ style.typography(titleTextWrapper ~ ' .qx-smart-tab-title', styles.tab_fg_title_style.title_font) }}
+{{ style.typography(titleTextWrapper ~ ' .qx-smart-tab-subtitle', styles.tab_fg_subTitle_style.subTitle_font) }}
+{{ style.css(titleTextWrapper ~ ' .qx-smart-tab-title,' ~ titleTextWrapper ~ ' .qx-smart-tab-subtitle', 'line-height', 'normal') }}
+{{ style.css(titleTextWrapper ~ ' .qx-smart-tab-title', 'margin', 'auto') }}
+{{ style.css(titleTextWrapper ~ ' .qx-smart-tab-title', 'margin-bottom', titleSpacing ~ 'px') }}
+
+{# Border #}
+{{ style.border(titleTextWrapper, styles.tab_fg_style.tab_item_border) }}
+
+{# Padding and Margin #}
+{{ style.margin(titleTextWrapper, styles.tab_fg_style.tab_margin) }}
+{{ style.padding(titleTextWrapper, styles.tab_fg_style.tab_padding) }}
+
+{# Icon #}
+{% if iconSpacing.value %}
+    {% set iconSpacing = iconSpacing.value %}
+{% endif %}
+{{ style.css(iconLeftSelector, 'margin-right', iconSpacing ~ 'px') }}
+{{ style.css(iconRightSelector, 'margin-left', iconSpacing ~ 'px') }}
+{{ style.css(iconTopSelector, 'margin-bottom', iconSpacing ~ 'px') }}
+
+{{ style.css(titleTextWrapper ~ ':hover i', 'color', styles.tab_fg_icon_style.icon_hover_color) }}
+{{ style.css(titleTextWrapperActive ~ ' i', 'color', styles.tab_fg_icon_style.icon_active_color) }}
+
+{{ style.load(id) }}

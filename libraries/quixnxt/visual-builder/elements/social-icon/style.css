@@ -1,0 +1,129 @@
+
+@media (max-width: 767px) {
+    .horizontalPhoneLayout li {
+        padding-left: 0;
+    }
+    .verticalPhoneLayout li:last-child {
+        margin-bottom: 0 !important;
+    } 
+    .verticalPhoneLayout {
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .horizontalPhoneLayout {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+		flex-wrap: wrap;
+    }
+    .verticalPhoneLayout li,
+    .horizontalPhoneLayout li {
+        display: flex;
+        align-items: center;
+    }    
+    .verticalAlignPhoneSileft {
+        align-items: flex-start;
+    }
+    .verticalAlignPhoneSicenter {
+        align-items: center;
+    }
+    .verticalAlignPhoneSiright {
+        align-items: flex-end;
+    }
+    .horizontalAlignPhoneSileft {
+        justify-content: flex-start;
+    }
+    .horizontalAlignPhoneSicenter {
+        justify-content: center;
+    }
+    .horizontalAlignPhoneSiright {
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 640px) {
+    .horizontalTabletLayout li {
+        padding-left: 0;
+    }
+    .verticalDesktopLayout li:last-child {
+        margin-bottom: 0 !important;
+    } 
+    .verticalTabletLayout {
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .horizontalTabletLayout {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+		flex-wrap: wrap;
+    }
+    .verticalTabletLayout li,
+    .horizontalTabletLayout li {
+        display: flex;
+        align-items: center;
+    }    
+    .verticalAlignTabletSileft {
+        align-items: flex-start;
+    }
+    .verticalAlignTabletSicenter {
+        align-items: center;
+    }
+    .verticalAlignTabletSiright {
+        align-items: flex-end;
+    }
+    .horizontalAlignTabletSileft {
+        justify-content: flex-start;
+    }
+    .horizontalAlignTabletSicenter {
+        justify-content: center;
+    }
+    .horizontalAlignTabletSiright {
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 960px) {
+    .horizontalDesktopLayout li {
+        padding-left: 0;
+    }
+    .verticalDesktopLayout li:last-child {
+        margin-bottom: 0 !important;
+    }  
+    .verticalDesktopLayout {
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .horizontalDesktopLayout {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+		flex-wrap: wrap;
+    }
+    .verticalDesktopLayout li,
+    .horizontalDesktopLayout li {
+        display: flex;
+        align-items: center;
+    }    
+    .verticalAlignDesktopSileft {
+        align-items: flex-start;
+    }
+    .verticalAlignDesktopSicenter {
+        align-items: center;
+    }
+    .verticalAlignDesktopSiright {
+        align-items: flex-end;
+    }
+    .horizontalAlignDesktopSileft {
+        justify-content: flex-start;
+    }
+    .horizontalAlignDesktopSicenter {
+        justify-content: center;
+    }
+    .horizontalAlignDesktopSiright {
+        justify-content: flex-end;
+    }
+}

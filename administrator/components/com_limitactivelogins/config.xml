@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<!-- =============================================
+	MAIN SETTINGS
+	================================================== -->
+	<fieldset name="main" label="COM_LIMITACTIVELOGINS" addfieldpath="/plugins/system/web357framework/elements">
+
+		<!-- ENABLE LOGS -->
+		<field type="header" label="COM_LIMITACTIVELOGINS_SETTINGS" />
+		
+		<!-- Maximum Active Logins -->
+		<field name="max_active_logins" type="number" default="1" label="COM_LIMITACTIVELOGINS_MAX_ACTIVE_LOGINS" description="" min="1" max="2500" step="1" />
+		<field name="max_active_logins_note" type="note" description="COM_LIMITACTIVELOGINS_MAX_ACTIVE_LOGINS_NOTE_DESC" />
+
+		<!-- Login Logic -->
+		<field name="login_logic" type="radio" class="btn-group btn-group-yesno" default="0" label="COM_LIMITACTIVELOGINS_LOGIN_LOGIC" description="">
+			<option value="0">COM_LIMITACTIVELOGINS_LOGIN_LOGIC_BLOCK_OPTION</option>
+			<option value="1">COM_LIMITACTIVELOGINS_LOGIN_LOGIC_ALLOW_OPTION</option>
+		</field>
+		<field name="login_logic_note" type="note" description="COM_LIMITACTIVELOGINS_LOGIN_LOGIC_NOTE" />
+
+		<field name="custom_error_message" type="textarea" default="&lt;p&gt;You have reached the maximum number of active logins for this account.&lt;br&gt;The limit of logins are &lt;strong&gt;%s&lt;/strong&gt; per device. Please, logout from another device to continue.&lt;/p&gt;&lt;p&gt;You have already logged in to the below devices.&lt;/p&gt;" class="lal-customErrorMessage" label="COM_LIMITACTIVELOGINS_CUSTOM_ERROR_MESSAGE_LBL" description="COM_LIMITACTIVELOGINS_CUSTOM_ERROR_MESSAGE_DESC" rows="8" cols="80" filter="raw" showon="login_logic:0" />
+
+		<!-- Show Logged in Devices with logout button -->
+		<field name="show_logged_in_devices" type="radio" class="btn-group btn-group-yesno lal-showLoggedInDevices" default="1" label="COM_LIMITACTIVELOGINS_SHOW_LOGGED_IN_DEVICES_LBL" description="COM_LIMITACTIVELOGINS_SHOW_LOGGED_IN_DEVICES_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="show_logged_in_devices_note" type="note" description="COM_LIMITACTIVELOGINS_SHOW_LOGGED_IN_DEVICES_NOTE" />
+
+		<field name="forceLogout" type="radio" label="COM_LIMITACTIVELOGINS_FORCELOGOUT_LABEL" description="COM_LIMITACTIVELOGINS_FORCELOGOUT_DESC" class="btn-group btn-group-yesno" default="0">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field name="enableGeoIP2Webservice" type="radio" class="btn-group btn-group-yesno" default="1" label="COM_LIMITACTIVELOGINS_ENABLE_GEOIP2WEBSERVICE_LBL" description="COM_LIMITACTIVELOGINS_ENABLE_GEOIP2WEBSERVICE_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field name="showGravatar" type="radio" class="btn-group btn-group-yesno lal-showGravatar" default="1" label="COM_LIMITACTIVELOGINS_SHOW_GRAVATAR_LBL" description="COM_LIMITACTIVELOGINS_SHOW_GRAVATAR_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		
+		<!-- BEGIN: JED Review -->
+		<field type="header" class="w357_large_header" label="W357FRM_HEADER_JED_REVIEW_AND_RATING" />
+		<field name="jedreview" id="jedreview" type="jedreview" extension_type="module" extension_name="limitactivelogins" real_name="COM_LIMITACTIVELOGINS" plugin_type="user" label="" addfieldpath="/plugins/system/web357framework/elements" jed_url="https://extensions.joomla.org/?the-limit-active-logins-joomla-extension-will-be-available-soon-in-JED" />
+		<!-- END: JED Review -->
+
+		<!-- BEGIN: Version Check -->
+		<field type="header" label="W357FRM_HEADER_VERSION_CHECK" />
+		<field name="info" id="info" type="info" extension_type="plugin" extension_name="limitactivelogins" real_name="COM_LIMITACTIVELOGINS" plugin_type="user" label="" addfieldpath="/plugins/system/web357framework/elements" url_slug="limit-active-logins-extension-for-joomla" />
+		<!-- END: Version Check -->
+
+		<!-- BEGIN: Check if Web357 Framework plugin exists -->
+		<field name="w357frmrk" id="w357frmrk" type="w357frmrk" addfieldpath="/plugins/user/limitactivelogins/elements" />
+		<!-- END: Check if Web357 Framework plugin exists -->
+
+		<!-- BEGIN: Load the Modal Behavior for the Screenshots -->
+		<field name="loadmodalbehavior" type="loadmodalbehavior" addfieldpath="/plugins/system/web357framework/elements" />
+		<!-- END: Load the Modal Behavior for the Screenshots -->
+
+    </fieldset>
+
+	<!-- =============================================
+	CUSTOM LIMITATIONS
+	================================================== -->
+	<fieldset name="custom_limits" label="COM_LIMITACTIVELOGINS_FIELDSET_TITLE_CUSTOM_LIMITS" addfieldpath="/plugins/system/web357framework/elements">
+		<field type="header" class="w357_large_header" label="COM_LIMITACTIVELOGINS_MAX_ACTIVE_LOGINS_NOTE_HEADER" />
+
+		<field name="custom_limits_note" type="note" default="" label="COM_LIMITACTIVELOGINS_MAX_ACTIVE_LOGINS_NOTE_LBL" description="COM_LIMITACTIVELOGINS_MAX_ACTIVE_LOGINS_NOTE_DESC" min="1" max="2500" step="1" />
+
+		<field name="custom_limits_group"
+		label="COM_LIMITACTIVELOGINS_CUSTOM_LIMITS_LBL"
+		description="COM_LIMITACTIVELOGINS_CUSTOM_LIMITS_DESC"
+		type="subform"
+		min="0"
+		max="100"
+		required="false"        
+		formsource="administrator/components/com_limitactivelogins/models/forms/custom_limits.xml"
+		multiple="true"
+		buttons="add,remove,move" 
+		layout="joomla.form.field.subform.repeatable-table"
+		groupByFieldset="false"
+		default='{
+		"custom_limits_group0": {
+			"cstmlim_max_active_logins": "15",
+			"cstmlim_user_id": "",
+			"cstmlim_usergroup": ["6","7","8"],
+			"cstmlim_continents": "",		
+			"cstmlim_notes": "The Managers, Admins and the Super Users can login from fifteen different devices at the same time.",
+			"cstmlim_status": "0"
+		},
+		"custom_limits_group1": {
+			"cstmlim_max_active_logins": "2",
+			"cstmlim_user_id": "",
+			"cstmlim_usergroup": ["2"],
+			"cstmlim_continents": ["AF","AS"],		
+			"cstmlim_notes": "The Registered Users from Asia and Africa can login only from two different devices at the same time.",
+			"cstmlim_status": "0"
+		},
+		"custom_limits_group2": {
+			"cstmlim_max_active_logins": "6",
+			"cstmlim_user_id": "",
+			"cstmlim_usergroup": ["2"],
+			"cstmlim_continents": ["NA","OC","AN","EU","SA"],		
+			"cstmlim_notes": "The Registered Users from the entire world, except Asia and Africa, can log in from six different devices at the same time.",
+			"cstmlim_status": "0"
+		}
+		}' />
+		<!-- END: BLOCK COOKIES GROUP -->
+	</fieldset>
+
+	<!-- =============================================
+	ABOUT EXTENSION
+	================================================== -->
+	<fieldset name="description" label="COM_LIMITACTIVELOGINS_FIELDSET_TITLE_ABOUT_LIMITACTIVELOGINS">
+
+		<!-- ====== VERSION CHECK ======  -->
+		<field type="header" label="W357FRM_HEADER_VERSION_CHECK" />
+		<field name="info" id="info" type="info" extension_type="component" extension_name="com_limitactivelogins" real_name="Limit Active Logins" plugin_type="" label="" addfieldpath="/plugins/system/web357framework/elements" position="bottom" url_slug="limit-active-logins-extension-for-joomla" />
+		
+		<!-- ====== DESCRIPTION ======  -->
+		<field type="header" label="W357FRM_HEADER_DESCRIPTION" />
+		<field name="description" id="description" type="description" extension_type="component" extension_name="limitactivelogins" real_name="Limit Active Logins" plugin_type="" label="" addfieldpath="/plugins/system/web357framework/elements" />
+	
+	</fieldset>
+
+	<!-- =============================================
+	ABOUT WEB357
+	================================================== -->
+	<fieldset name="about" label="COM_LIMITACTIVELOGINS_FIELDSET_TITLE_ABOUT_WEB357">
+		
+		<!-- ====== ABOUT WEB357 ======  -->
+		<field type="header" label="W357FRM_HEADER_ABOUT_WEB357" />
+		<field name="about" id="about" type="about" label="" addfieldpath="/plugins/system/web357framework/elements" />
+		
+	</fieldset>
+
+	<!-- =============================================
+	PERMISSIONS
+	================================================== -->
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+
+		<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" filter="rules" validate="rules" component="com_limitactivelogins" section="component" />
+
+	</fieldset>
+
+</config>

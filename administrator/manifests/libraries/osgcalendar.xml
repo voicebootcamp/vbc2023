@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="library" version="3.0" method="upgrade">
+	<name>Osgcalendar</name>
+	<libraryname>osgcalendar</libraryname>
+	<description>The Google API Client Library enables you to work with Google APIs such as Google+, Drive, or YouTube on your server </description>
+	<creationDate>01-01-2016</creationDate>
+	<author>Tuan Pham Ngoc</author>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>(C) 2016 Ossolution Team</copyright>
+	<license>GNU GPLv2 or later</license>
+	<version>1.1.0</version>
+	<files>
+		<folder>src</folder>
+		<filename>autoload.php</filename>
+	</files>
+	<files target="administrator/manifests/libraries">
+		<file>osgcalendar.xml</file>
+	</files>
+</extension>

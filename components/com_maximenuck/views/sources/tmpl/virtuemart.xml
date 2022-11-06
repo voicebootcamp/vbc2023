@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="MAXIMENUCK_VIRTUEMART_LISTING">
+		<message>
+			<![CDATA[MAXIMENUCK_VIRTUEMART_LISTING_DESC]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+		<fieldset name="request" addfieldpath="plugins/maximenuck/virtuemart/elements">
+			<field 
+				name="maximenuck_plugin_type" 
+				type="hidden" 
+				default="virtuemart"
+				value="virtuemart"
+				/>
+			<field
+				name="usevirtuemartimages"
+				type="radio"
+				class="btn-group"
+				default="0"
+				label="MOD_MAXIMENUCK_USEVIRTUEMARTIMAGES_LABEL"
+				description="MOD_MAXIMENUCK_USEVIRTUEMARTIMAGES_DESC"
+				
+				icon="images.png">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="usevirtuemartsuffix"
+				type="radio"
+				class="btn-group"
+				default="0"
+				label="MOD_MAXIMENUCK_USEVIRTUEMARTSUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_USEVIRTUEMARTSUFFIX_DESC"
+				
+				>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="virtuemartimagesuffix"
+				type="text"
+				default="_mini"
+				label="MOD_MAXIMENUCK_VIRTUEMARTIMAGESUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_VIRTUEMARTIMAGESUFFIX_DESC"
+				
+				icon="image.png" />
+			<field
+				name="virtuemartcategoryroot"
+				type="ckvmcategory"
+				label="MOD_MAXIMENUCK_VIRTUEMARTCATEGORYROOT_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_VIRTUEMARTCATEGORYROOT_DESC"
+				
+			/>
+			<field
+				name="virtuemartcategorydepth"
+				type="list"
+				label="MOD_MAXIMENUCK_VIRTUEMARTCATEGORYDEPTH_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_VIRTUEMARTCATEGORYDEPTH_DESC"
+				
+			>
+				<option value="0">JALL</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</field>
+		</fieldset>
+	</fields>
+
+	<!-- Add fields to the parameters object for the layout. -->
+<fields name="params">
+
+</fields>
+</metadata>

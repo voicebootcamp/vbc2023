@@ -1,0 +1,78 @@
+name: Article Info
+slug: article-meta
+groups: layout
+type: article
+form:
+  general:
+    - name    : general
+      label   : General
+      type    : fields-group
+      status  : open
+      schema  :
+        - name : show_category
+          label : Show Category Name
+          type: switch
+          value: true
+       
+        - name : show_tag
+          label : Show Tag Name
+          type: switch
+          value: true
+
+        - name : show_date
+          label : Show Date
+          type: switch
+          value: true
+        
+        - name : show_date_format
+          type: text
+          value: 'd M Y'
+          depends:
+            show_date: true
+
+        - name : show_author
+          label : Show Author
+          type: switch
+          value: true
+        
+        - name : show_meta_icon
+          type: switch
+          value: true
+
+        
+  styles:
+    - name    : text_fields_group
+      label   : Text Style
+      type    : fields-group
+      status  : open
+      schema  :
+        - name : alignment
+          type : choose
+          responsive : true
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+            justify : 
+              label : Right
+              icon : qxuicon-align-justify
+        
+        - name  : text_color
+          label : Text Color
+          type  : color
+
+    - name : typo_fields_group
+      label: Typography
+      type: fields-group
+      schema :
+        - name: font
+          type: typography
+
+      
+    

@@ -1,0 +1,50 @@
+{% set id = '#' ~ advanced.identifier.id %}
+{% set css = '' %}
+
+{# margin #}
+{{ style.margin(id, advanced.spacing_fields_group.margin) }}
+
+{# padding #}
+{{ style.padding(id, advanced.spacing_fields_group.padding) }}
+
+{# Z-Index #}
+{{ style.css(id, 'z-index', advanced.spacing_fields_group.zindex) }}
+
+{# background #}
+{{ style.background(id, advanced.background_fields_group.background) }}
+
+{# border + box shadow #}
+{{ style.border(id, advanced.border_fields_group.border) }}
+
+{# position #}
+{% if advanced.positioning_fields_group.global_position_width == "full-width" %}
+  {{ style.css(id, 'width', '100%') }}
+  {{ style.css(id, 'max-width', '100%') }}
+
+{% elseif advanced.positioning_fields_group.global_position_width == "inline" %}
+  {{ style.css(id, 'width', 'auto') }}
+  {{ style.css(id, 'max-width', '100%') }}
+{% elseif advanced.positioning_fields_group.global_position_width == "custom" %}
+  {{ style.responsiveCss(id, advanced.positioning_fields_group.custom_width, 'width', advanced.positioning_fields_group.custom_width.unit) }}
+  {{ style.responsiveCss(id, advanced.positioning_fields_group.custom_width, 'max-width', advanced.positioning_fields_group.custom_width.unit) }}
+{% endif %}
+
+{% if advanced.positioning_fields_group.global_position != "default" %}
+  {{ style.css(id, 'position', advanced.positioning_fields_group.global_position) }}
+  {% if advanced.positioning_fields_group.horizontal == "left" %}
+    {{ style.responsiveCss(id, advanced.positioning_fields_group.horizontal_offset, 'left', advanced.positioning_fields_group.horizontal_offset.unit) }}
+  {% elseif advanced.positioning_fields_group.horizontal == "right" %}
+    {{ style.responsiveCss(id, advanced.positioning_fields_group.horizontal_offset, 'right', advanced.positioning_fields_group.horizontal_offset.unit) }}
+  {% endif %}
+  {% if advanced.positioning_fields_group.vertical == "top" %}
+    {{ style.responsiveCss(id, advanced.positioning_fields_group.vertical_offset, 'top', advanced.positioning_fields_group.vertical_offset.unit) }}
+  {% elseif advanced.positioning_fields_group.vertical == "bottom" %}
+    {{ style.responsiveCss(id, advanced.positioning_fields_group.vertical_offset, 'bottom', advanced.positioning_fields_group.vertical_offset.unit) }}
+  {% endif %}
+{% endif %}
+
+
+{% set rawCss = advanced.custom_css_group.custom_css.code | default('') | removeLines %}
+
+{# custom css #}
+{{ style.raw(rawCss) }}

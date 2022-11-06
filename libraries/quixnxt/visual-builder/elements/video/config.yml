@@ -1,0 +1,63 @@
+name: Video
+slug: video
+groups: general
+helpId: 5d1ff0e72c7d3a5cd38ec1dc
+form:
+  general:
+    - name : video_fg_text
+      label: Video
+      type: fields-group
+      status: open
+      schema:
+        - name: link_type
+          label: Video Type
+          type: select
+          value: youtube
+          options:
+            youtube: Youtube
+            vimeo: Vimeo
+            custom: Custom
+
+        - name: youtube_link
+          label: Youtube ID
+          type: text
+          value: QKG9AmiJEeo
+          help: You should see a combination of numbers and letters after an equal sign (=). See more https://goo.gl/u6xCLw
+          depends:
+            link_type: youtube
+
+        - name: vimeo_link
+          label: Vimeo ID
+          type: text
+          value: 37157187
+          help: Once it is loaded, look at the URL and look for the numbers that come after the slash (/). See more https://goo.gl/dn7iy6
+          depends:
+            link_type: vimeo
+
+        - name: custom_video
+          label : Select Video
+          type: media
+          filters: video
+          showstyle: true
+          depends:
+            link_type: custom
+
+        - name: video_poster
+          type: media
+          showstyle: true
+          filters: image, unsplash
+          depends:
+            link_type: custom
+
+  styles:
+    - name    : custom_options
+      label   : Width & Height
+      type    : fields-group
+      schema  :
+        - name : height
+          type : slider
+          max: 1000
+
+        - name : width
+          type : slider
+          max: 1000

@@ -1,0 +1,196 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set classes = classNames('qx-element qx-element-joomla-articles-v2', visibilityClass(visibility), class ) %}
+{% set animation = "" %}
+
+{# General #}
+{% set layout = general.articles_layout.layout %}
+{% set layoutGrid = general.articles_layout.layout_grid %}
+{% set gridClass = layoutGrid.desktop ~ '@m ' ~ layoutGrid.tablet ~ '@s ' ~ layoutGrid.phone %}
+
+{% set layoutGridGap = '' %}
+{% if layout == 'deck' %}
+    {% set layoutGridGap = general.articles_layout.grid_gap %}
+{% elseif layout == 'group' %}
+    {% set layoutGridGap = 'qx-grid-collapse' %}
+{% endif %}
+
+{% set category = general.articles_option.category %}
+{% set showChildCategoryArticles = general.articles_option.show_child_category_articles %}
+{% set count = general.articles_option.count %}
+{% set showFeatured = general.articles_option.show_featured %}
+{% set articleOrdering = general.articles_option.article_ordering %}
+{% set articleOrderingDirection = general.articles_option.article_ordering_direction %}
+
+{# Options #}
+{% set linkTitles = options.articles_options.link_titles %}
+{% set showImage = options.articles_options.show_image|default(false) %}
+{% set showDate = options.articles_options.show_date %}
+{% set introtextLimit = options.articles_options.introtext_limit %}
+{% set showDateFormat = options.articles_options.date_format %}
+{% set showMetaIcon = options.articles_options.show_meta_icon %}
+{% set showAuthor = options.articles_options.show_author %}
+{% set showCategory = options.articles_options.show_category %}
+{% set showIntrotext = options.articles_options.show_introtext %}
+{% set showReadmore = options.articles_options.show_readmore %}
+{% set readmoreStyle = options.articles_options.readmore_style %}
+{% set readmoreSize = options.articles_options.readmore_size %}
+
+{% set data = {
+    'category' : category,
+    'show_child_category_articles' : showChildCategoryArticles,
+    'count' : count,
+    'show_featured' : showFeatured,
+    'introtext_limit' : introtextLimit,
+    'article_ordering' : articleOrdering,
+    'article_ordering_direction' : articleOrderingDirection,
+    'show_date_format' : showDateFormat
+} %}
+
+{# Icon #}
+{% set buttonText = options.articles_options.readmore_text %}
+{% set enable_Bicon = options.articles_options.enable_Bicon %}
+{% set sIcon = options.articles_options.show_icon %}
+{% set icon = '' %}
+{% set iconAlignment = options.articles_options.icon_alignment | default({'value' : 'left'}) %}
+{% if sIcon.source %}
+    {% if sIcon.type == "svg" %}
+        {% set icon = icon(sIcon.source)|raw %}
+    {% endif %}
+{% endif %}
+
+
+{% set mediaClass = '' %}
+{% set bodyClass = 'qx-media-body' %}   
+{% set titleClass = 'qx-media-heading' %}
+{% set infoClass = 'qx-post-meta' %}
+{% set textClass = 'qx-element-jarticle-introtext' %}
+{% set grid = false %}
+{% if layout != 'list' %}
+    {% set grid = true %}
+    {% set mediaClass = 'qx-card-img-top' %}
+    {% set bodyClass = 'qx-card-body' %}
+    {% set titleClass = 'qx-card-title qx-media-heading' %}
+    {% set infoClass = 'qx-post-meta' %}
+    {% set textClass = 'qx-card-text qx-element-jarticle-introtext' %}
+{% endif %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {% set items = ElementApiCall('joomla-articles', data) %}
+        {% if items %}
+
+            {% if layout == 'list' %}<ul class="qx-list-unstyled">{% else %}<div class="qx-grid-{{ layout }} {{layoutGridGap}} {{gridClass}}" qx-grid>{% endif %}
+
+                {% for index, item in items %}
+                    {% set images = item.images %}
+                    {% set link = {'url': item.link, target: false, nofollow: false} %}
+                    {% if grid %}<div><div class="qx-card">{% else %}<li class="qx-media qx-mb-4">{% endif %}
+					{% if layout != 'list' %}
+						{% if showImage and images.image_intro %}
+							<figure class="{{ mediaClass }}">
+								{{ image(images.image_intro, images.image_intro_alt, 'qx-media-object qx-img-responsive', '', images) }}
+							</figure> <!-- end of media -->
+						{% endif %}
+					{% else %}
+						{{ image(images.image_intro, images.image_intro_alt, 'qx-media-object qx-img-responsive', '', images) }}
+					{% endif %}
+
+                    <div class="{{ bodyClass }}">
+                        <h3 class="{{ titleClass }}">
+                            {% if linkTitles %}
+                                {{ item.title | link(link) }}
+                            {% else %}
+                                {{ item.title }}
+                            {% endif %}
+                        </h3>
+                        <div class="{{ infoClass }}">
+                            {% if showDate %}
+                            <span class="qx-element-jarticle-date">
+                                {% if showMetaIcon %}
+                                    <i class="qxif-calendar-alt"></i>
+                                {% endif %}
+
+                                {{ item.displayDate }}
+                            </span>
+                            {% endif %}
+
+                            {% if showAuthor %}
+                            <span class="qx-element-jarticle-writtenby">
+                                {% if showMetaIcon %}
+                                    <i class="qxif-user"></i>
+                                {% endif %}
+
+                                {{ item.displayAuthorName }}
+                            </span>
+                            {% endif %}
+
+                            {% if showCategory %}
+                            <span class="qx-element-jarticle-category">
+                                {% if showMetaIcon %}
+                                    <i class="qxif-folder-open"></i>
+                                {% endif %}
+
+                                {{ item.displayCategoryTitle|raw }}
+                            </span>
+                            {% endif %}
+                        </div><!--/.post-meta-->
+
+                        {% if showIntrotext and item.displayIntrotext != '' %}
+                        <p class="{{ textClass }}">
+                            {{ item.displayIntrotext|raw }}
+                        </p>
+                        {% endif %}
+
+                        {# Read More #}
+                        {% if showReadmore %}
+                            {% set btnClass = 'qx-btn qx-flex qx-flex-middle qx-flex-inline ' ~ readmoreStyle ~ ' ' ~ readmoreSize ~ ' iconAlign' ~ iconAlignment %}
+
+                            {% if enable_Bicon == true %}
+                                {% if iconAlignment == 'left' %}
+                                    {{ ( '' ~ icon ~ ' ' ~ '<span>' ~ buttonText ~ '</span>') | link(link, btnClass, 'itemprop="url"') }}
+                                {% else %}
+                                    {{ ('' ~ '<span>' ~ buttonText ~ '</span>' ~ ' ' ~ icon ~ '') | link(link, btnClass, 'itemprop="url"') }}
+                                {% endif %}
+                            {% else %}
+                                {{ buttonText | link(link, btnClass, 'itemprop="url"') }}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    {% if sIcon.type == "svg" %}
+                    <style>
+                    {{ '#' ~ id }} .qx-btn i{
+                        color: {{ sIcon.properties.color }};
+                        font-size: {{ sIcon.properties.size ~ 'px' }};
+                    }
+                    {{ '#' ~ id }} .qx-btn path{
+                        fill: {{ sIcon.properties.color }};
+                    }
+                    {{ '#' ~ id }} .qx-btn svg{
+                        width: {{ sIcon.properties.size ~ 'px' }};
+                        height: {{ sIcon.properties.size ~ 'px' }};
+                    }
+                    </style>
+                    {% endif %}
+
+                    {% if grid %}</div></div>{% else %}</li>{% endif %}
+                {% endfor %}
+            {% if grid %}</div>{% else %}</ul>{% endif %}
+        {% else %}
+            <p class="qx-alert qx-alert-warning qx-m-0">No Matching Results!</p>
+        {% endif %}
+    {% endblock %}
+{% endembed %}

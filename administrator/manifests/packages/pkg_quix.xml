@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" version="3.0" method="upgrade">
+
+    <name>pkg_quix</name>
+    <packagename>quix</packagename>
+    <creationDate>09-10-2022</creationDate>
+    <packager>ThemeXpert</packager>
+    <copyright>(C) 2010 - 2016 ThemeXpert. All rights reserved.</copyright>
+    <packageremail>info@themexpert.com</packageremail>
+    <packagerurl>www.themexpert.com</packagerurl>
+    <author>ThemeXpert</author>
+    <authorEmail>info@themexpert.com</authorEmail>
+    <authorUrl>www.themexpert.com</authorUrl>
+    <version>4.3.1</version>
+    <license>GNU General Public License version 3 or later;</license>
+    <description>PKG_QUIX_XML_DESCRIPTION</description>
+    <scriptfile>pkg.script.php</scriptfile>
+
+    <files>
+        <!-- The id for each extension is the element stored in the DB -->
+        <!-- Administration component -->
+        <file type="component" id="com_quix">com_quix.zip</file>
+        <!-- Module - Admin menu -->
+        <file type="module" id="mod_quix_menu" client="admin">mod_quix_menu.zip</file>
+        <!-- Module - Admin info -->
+        <file type="module" id="mod_quix_info" client="admin">mod_quix_info.zip</file>
+        <!-- Module - quix -->
+        <file type="module" id="mod_quix" client="site">mod_quix.zip</file>
+        <!-- Administration Lib -->
+        <file type="library" id="quix">lib_quixnxt.zip</file>
+        <!-- Administration content plugin -->
+        <file type="plugin" folder="content" id="quix" client="site">plg_content_quix.zip</file>
+        <!-- Administration system plugin -->
+        <file type="plugin" folder="system" id="quix" client="site">plg_system_quix.zip</file>
+        <!-- Administration finder plugin -->
+        <file type="plugin" folder="finder" id="quix" client="site">plg_finder_quix.zip</file>
+        <!-- Administration editor button -->
+        <!-- Administration editor button -->
+        <file type="plugin" folder="editors-xtd" id="quix">plg_editors_xtd_quix.zip</file>
+        <!-- quickicon -->
+        <file type="plugin" folder="plg_quickicon_quix" id="quix">plg_quickicon_quix.zip</file>
+        <!-- System plugin SEO-->
+        <file type="plugin" folder="system" id="seositeattributes" client="site">plg_system_seositeattributes.zip</file>
+        <!-- Quix Builder Elements-->
+        <file type="plugin" folder="quix" id="content" client="site">plg_quix_content.zip</file>
+        <!-- Quix Template-->
+         <file type="template" folder="site" id="tpl_atom" client="site">tpl_atom.zip</file>
+        <!-- JMedia -->
+        <file type="package" id="jmedia">pkg_jmedia.zip</file>
+    </files>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.pkg_quix.sys.ini</language>
+    </languages>
+
+    <updateservers>
+         <!-- Note: No spaces or linebreaks allowed between the server tags -->
+        <server type="extension" priority="1" name="Quix Update Site"><![CDATA[https://www.themexpert.com/index.php?option=com_digicom&task=responses&source=release&format=xml&provider=joomla&pid=116]]></server>
+    </updateservers>
+
+</extension>

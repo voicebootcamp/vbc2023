@@ -1,0 +1,21 @@
+{
+    "name": "JoomInsights/client",
+    "description": "JoomInsights Client",
+    "keywords": ["analytics", "joomla", "extension", "plugin", "template", "component"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abu Huraira",
+            "email": "shams.bd71@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "JoomInsights\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.6"
+    }
+}

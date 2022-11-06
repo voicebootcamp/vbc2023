@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="User's Documents">
+		<message>
+			Display list of documents which the current logged in subscriber can login to download
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="basic">
+			<field type="editor" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of page." />
+		</fieldset>
+	</fields>
+</metadata>

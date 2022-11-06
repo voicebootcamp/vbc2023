@@ -1,0 +1,473 @@
+name: Media Carousel
+slug: media-carousel
+groups: pro
+helpId: 5d1feb2004286369ad8d5ed6
+form:
+  general:
+    - name : media-carousel-fg_element
+      label: Images
+      type: group-repeater
+      schema:
+        - name: title
+          value: Sample Image
+
+        - name: image
+          type: media
+          filters: image
+          showstyle: true
+          value: 'media/quixnxt/images/placeholder.png'
+
+        - name: alt_text
+          label : Alt Text
+          type: text
+          help : Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            image: '*'
+
+        - name: caption
+          type: text
+          depends:
+            image: '*'
+
+        - name: link
+          label: Link Url
+          type: link
+      value:
+        - title: Title 1
+          image: 'media/quixnxt/images/placeholder.png'
+          caption: This is a caption
+        - title: Title 2
+          image: 'media/quixnxt/images/placeholder.png'
+          caption: This is a caption
+        - title: Title 3
+          image: 'media/quixnxt/images/placeholder.png'
+          caption: This is a caption
+        - title: Title 4
+          image: 'media/quixnxt/images/placeholder.png'
+          caption: This is a caption
+        - title: Title 5
+          image: 'media/quixnxt/images/placeholder.png'
+          caption: This is a caption
+
+    - name    : media-carousel-fg_options
+      label   : Layout
+      type    : fields-group
+      schema  :
+        - name : column
+          label: Column
+          type : select
+          value: 3
+          options:
+            1 : 1
+            2 : 2
+            3 : 3
+            4 : 4
+            5 : 5
+            6 : 6
+
+        - name : overlay
+          label: Overlay
+          type : select
+          value: 'none'
+          options:
+            'none' : 'None'
+            'text' : 'Text'
+
+        - name : overlay_animation
+          label: Overlay Animation
+          type : select
+          value: fade
+          depends:
+            overlay: 'text'
+          options:
+            'fade' : 'Fade'
+            'slide-top' : 'Slide Top'
+            'slide-right' : 'Slide Right'
+            'slide-bottom' : 'Slide Bottom'
+            'slide-left' : 'Slide Left'
+
+        - name : show_title
+          label: Title
+          type : switch
+          value: false
+
+        - name : show_caption
+          label: Caption
+          type : switch
+          value: false
+
+    - name    : media-carousel-navigation_style
+      label   : Navigation
+      type    : fields-group
+      schema  :
+        - name : show_arrow_navigation
+          label: Show Arrow Navigation
+          type : switch
+          value: true
+
+        - name : arrow
+          label: Arrow
+          type : select
+          value: in
+          depends:
+            show_arrow_navigation: true
+          options:
+            in : Inside
+            out : Outside
+
+        - name : show_dot_navigation
+          label: Show Dot Navigation
+          type : switch
+          value: true
+
+        - name: bar_navigation
+          label: Enable Bar Nav
+          type: switch
+          value: false
+
+        - name: bar_vertical
+          label: For Vertical
+          type: switch
+          value: false
+          depends:
+            bar_navigation: true
+
+        - name : barNav_position
+          label: Position
+          type : select
+          value: 'bottom-center'
+          options:
+            'top-left' : 'Top Left'
+            'top-right' : 'Top Right'
+            'center-left' : 'Center Left'
+            'center-right' : 'Center Right'
+            'bottom-left' : 'Bottom Left'
+            'bottom-center' : 'Bottom Center'
+            'bottom-right' : 'Bottom Right'
+          depends:
+            bar_navigation: true
+
+        - name : barNav_margin
+          label: Margin
+          type : select
+          value: 'medium'
+          options:
+            'none' : 'None'
+            'small' : 'Small'
+            'medium' : 'Medium'
+            'large' : 'Large'
+          depends:
+            bar_navigation: true
+
+    - name    : height-fg_behaviour
+      label   : Behaviour
+      type    : fields-group
+      schema  :
+        - name: pause_on_hover
+          label: Pause on Hover
+          type: switch
+          value: true
+
+        - name : auto_play
+          label: Auto Play
+          type : switch
+          value: true
+
+        - name: autoplay_speed
+          label: Autoplay Speed ( MS )
+          type: text
+          value: 5000
+          depends:
+            auto_play: true
+
+        - name: infinite_loop
+          label: Infinite Loop
+          type: switch
+          value: false
+
+        - name : set
+          label: Slide as a Set
+          type : switch
+          value: false
+
+  styles:
+    - name    : image_alignment_style
+      label   : Alignment
+      type    : fields-group
+      depends:
+        overlay: 'none'
+      schema  :
+        - name : img_alignment
+          label: Image Alignment
+          type : choose
+          value:
+            desktop: center
+            tablet: center
+            phone: center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+        - name  : img_width
+          label : Image Width
+          type: slider
+          max : 1500
+          units: px, %
+          defaultUnit: px
+
+        - name  : img_height
+          label : Image Height
+          type: slider
+          max : 1500
+          units: px, %
+          defaultUnit: px
+
+        - name: img_border
+          label: Border
+          type: border
+          popover: true
+
+    - name    : media-img_mood_style
+      label   : Image Mood
+      type    : fields-group
+      schema  :
+        - name : image_mood
+          label: Image Mode
+          type : select
+          value: 'cover'
+          options:
+            'contain' : 'Contain'
+            'cover' : 'Cover'
+            'fill' : 'Fill'
+            'scale-down' : 'Scale Down'
+            'unset' : 'Unset'
+            'none' : 'None'
+
+        - name  : image_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 10
+
+    - name    : media-carousel-fg_style
+      label   : Overlay
+      type    : fields-group
+      depends:
+        overlay: 'text'
+      schema  :
+        - name: overlay_color
+          label: Overlay Color
+          type: color
+          value: rgba(0, 0, 0, 0.4)
+
+    - name    : content_fg_style
+      label   : Content Style
+      type    : fields-group
+      depends:
+        overlay: 'none'
+      schema  :
+        - name : content_alignment
+          label: Content Alignment
+          type : choose
+          value:
+            desktop: center
+            tablet: center
+            phone: center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: content_bg
+          lable: Background Color
+          type: background
+          popover: true
+
+        - name: content_padding
+          label: Padding
+          type: dimensions
+          units: px, %
+          defaultUnit: px
+
+        - name: content_margin
+          label: Margin
+          type: dimensions
+          units: px, %
+          defaultUnit: px
+
+        - name: content_border
+          label: Border
+          type: border
+          popover: true
+
+    - name    : image-title-fg_style
+      label   : Title
+      type    : fields-group
+      schema  :
+        - name: title_color
+          label: Color
+          type: color
+          value: rgba(0, 0, 0, 1)
+
+        - name: title_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name    : image-caption-fg_style
+      label   : Caption
+      type    : fields-group
+      schema  :
+        - name: caption_color
+          label: Color
+          type: color
+          value: rgba(0, 0, 0, 1)
+
+        - name: caption_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name    : navigation-fg_style
+      label   : Navigation
+      type    : fields-group
+      schema  :
+        - name: arrow_color
+          label: Arrow Color
+          type: color
+          value: rgba(102, 102, 102, 0.6)
+
+        - name  : arrow_size
+          label : Arrow Size
+          type: slider
+          max : 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop : 25
+            tablet : 25
+            phone : 20
+
+        - name: dot_divider
+          type: divider
+          label: Dot
+
+        - name: dot_color
+          label: Dot Color
+          type: color
+          value: rgba(238, 238, 238, 1)
+
+        - name: dot_active_color
+          label: Dot Active Color
+          type: color
+          value: rgba(102, 102, 102, 0.6)
+
+        - name  : dot_width
+          label : Dot Width
+          type: slider
+          max : 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 15
+
+        - name  : dot_spacing
+          label : Dot Spacing
+          type: slider
+          max : 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop : 12
+            tablet : 12
+            phone : 10
+
+        - name  : dot_margin
+          label : Dot Margin
+          type: slider
+          max : 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop : 25
+            tablet : 25
+            phone : 20
+
+    - name    : media_carousel_fg_bar-style
+      label   : Bar Nav
+      type    : fields-group
+      status  : close
+      schema  :
+        - name: bar_divider
+          type: divider
+          label: Bar
+
+        - name: bar_color
+          label: Bar Color
+          type: color
+          value: rgba(238, 238, 238, 1)
+
+        - name: bar_active_color
+          label: Bar Active Color
+          type: color
+          value: rgba(102, 102, 102, 0.6)
+
+        - name  : bar_width
+          label : Bar Width
+          type: slider
+          max : 100
+          units: px
+          help: Height for Vartical bar
+          defaultUnit: px
+          value:
+            desktop : 25
+            tablet : 25
+            phone : 25
+
+        - name  : barActive_width
+          label : Bar Active Width
+          type: slider
+          max : 100
+          units: px
+          help: Width (Active) for Vartical bar
+          defaultUnit: px
+
+        - name  : bar_height
+          label : Bar Height
+          type: slider
+          max : 100
+          units: px
+          help: Width for Vartical bar
+          defaultUnit: px
+          value:
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+        - name  : barActive_height
+          label : Bar Active Height
+          type: slider
+          max : 100
+          units: px
+          help: Height (Active) for Vartical bar
+          defaultUnit: px

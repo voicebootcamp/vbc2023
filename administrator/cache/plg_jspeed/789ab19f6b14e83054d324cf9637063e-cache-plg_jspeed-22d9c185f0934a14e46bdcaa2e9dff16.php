@@ -1,0 +1,1 @@
+<?php die("Access Denied"); ?>#x#a:1:{s:6:"result";a:1:{i:0;s:34:"/templates/lingoall/css/custom.css";}}

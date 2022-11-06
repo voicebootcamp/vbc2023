@@ -1,0 +1,14 @@
+{% set id = advanced.identifier.id %}
+{% set pauseOnHover = general['testimonial-carousel_fg_behaviour'].pause_on_hover|default('false') %}
+{% set autoplay = general['testimonial-carousel_fg_behaviour'].auto_play|default('false') %}
+{% set autoplaySpeed = general['testimonial-carousel_fg_behaviour'].autoplay_speed|default('300') %}
+
+setTimeout(function() {
+  var option = {
+    autoplay: {{ autoplay }},
+    pauseOnHover: {{ pauseOnHover }},
+    autoplayInterval: {{ autoplaySpeed }},
+    finite: {{ general['testimonial-carousel_fg_behaviour'].infinite_loop|default('false') ? 'false' : 'true' }}
+  };
+  qxUIkit.slider("#testimonial-carousel-{{ id }}", option);
+}, 700);

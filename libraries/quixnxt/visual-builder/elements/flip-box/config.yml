@@ -1,0 +1,502 @@
+name: Flip Box
+slug: flip-box
+groups: pro
+helpId: 5d1feacc2c7d3a5cd38ec1b4
+form:
+  general:
+    - name : flipbox_front_settings
+      label: Front
+      type: fields-group
+      status: open
+      schema:
+        - name: flipbox_front_title
+          type: text
+          label: Title
+          value: Flip Box
+
+        - name: flipbox_front_content
+          type: editor
+          label: Content
+          value: Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+        - name: flipbox_front_htmltag
+          label: Title HTML Tag
+          type: select
+          value: h3
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+            div: div
+            span: span
+            p: p
+
+        - name: flipbox_frontmedia_enable
+          type: switch
+          label: Content Image
+          value: false
+
+        - name : flipbox_front_vertical_align
+          label: Content Position
+          type : choose
+          responsive: false
+          value: qx-align-items-center
+          options:
+            qx-align-items-start :
+              label: Top
+              icon : qxuicon-arrow-to-top
+            qx-align-items-center :
+              label : Middle
+              icon : qxuicon-minus
+            qx-align-items-end :
+              label : Bottom
+              icon : qxuicon-arrow-to-bottom
+          depends:
+            flipbox_frontmedia_enable: true
+
+        - name: flipbox_front_media
+          type: media
+          label: Add Image/Icon
+          showstyle: false
+          value: 'media/quixnxt/images/placeholder.png'
+          depends:
+            flipbox_frontmedia_enable: true
+
+    - name : flipbox_back_settings
+      label: Back
+      type: fields-group
+      schema:
+        - name: flipbox_back_title
+          type: text
+          label: Title
+          value: This is The Hidden Text
+
+        - name: flipbox_back_content
+          type: editor
+          label: Content
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: flipbox_back_htmltag
+          label: Title HTML Tag
+          type: select
+          value: h3
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+            div: div
+            span: span
+            p: p
+
+        - name: flipbox_backmedia_enable
+          type: switch
+          label: Content Image
+          value: false
+
+        - name: flipbox_back_vertical_align
+          label: Content Position
+          type: choose
+          responsive: false
+          value: qx-align-items-center
+          options:
+            qx-align-items-start:
+              label: Top
+              icon: qxuicon-arrow-to-top
+            qx-align-items-center:
+              label: Middle
+              icon: qxuicon-minus
+            qx-align-items-end:
+              label: Bottom
+              icon: qxuicon-arrow-to-bottom
+          depends:
+            flipbox_backmedia_enable: true
+
+        - name: flipbox_back_media
+          type: media
+          showstyle: false
+          label: Add Image/Icon
+          value: 'media/quixnxt/images/placeholder.png'
+          depends:
+            flipbox_backmedia_enable: true
+
+        - name: flipbox_back_enable_button
+          type: switch
+          label: Enable Button
+          value: false
+
+        - name: flipbox_back_button_text
+          type: text
+          value: Click Me
+          depends:
+            flipbox_back_enable_button: true
+
+        - name: flipbox_back_button_link
+          type: link
+          value:
+            url : '#'
+            target: ''
+            nofollow: ''
+          depends:
+            flipbox_back_enable_button: true
+
+        - name: flipbox_back_button_type
+          type: select
+          value: primary
+          options:
+            primary: Primary
+            secondary: Secondary
+            success : Success
+            danger : Danger
+            warning : Warning
+            info : Info
+            light : Light
+            dark: Dark
+            link : Link
+          depends:
+            flipbox_back_enable_button: true
+
+        - name: flipbox_back_button_outline
+          label : Outline Style
+          type: switch
+          help: Outline remove all background images and colors from button.
+          depends:
+            flipbox_back_enable_button: true
+
+        - name: flipbox_back_button_full_width
+          label: Full Width Button
+          type: switch
+          help: Take full width of parent element space.
+          depends:
+            flipbox_back_enable_button: true
+
+    - name : flipbox_system_settings
+      label: Additional Settings
+      type: fields-group
+      schema:
+        - name: flipbox_effect
+          type: select
+          label: Flip Box Effect
+          value: qx-flipbox-effect-flip
+          options:
+            qx-flipbox-effect-flip: Flip
+            qx-flipbox-effect-slide: Slide
+            qx-flipbox-effect-push: Push
+            qx-flipbox-effect-zoom-in: Zoom In
+            qx-flipbox-effect-zoom-out: Zoom Out
+            qx-flipbox-effect-fade: Fade
+
+        - name: flipbox_direction
+          type: select
+          label: Flip Box Direction
+          value: qx-flipbox-direction-up
+          options:
+            qx-flipbox-direction-left: Left
+            qx-flipbox-direction-right: Right
+            qx-flipbox-direction-up: Up
+            qx-flipbox-direction-down: Down
+          depends:
+            flipbox_effect: [qx-flipbox-effect-flip, qx-flipbox-effect-slide, qx-flipbox-effect-push]
+
+        - name: flip_3d_depth
+          type: switch
+          label: 3D Depth
+          depends:
+            flipbox_effect: [qx-flipbox-effect-flip]
+
+  styles:
+    - name: flipbox_common_style_settings
+      label: Common Style
+      type: fields-group
+      status: open
+      schema:
+        - name: common_enable_height
+          type: switch
+          label: Enable Height
+          value: false
+
+        - name: commom_flipbox_height
+          type: slider
+          label: Height
+          units: px, em, rem, vh
+          defaultUnit: px
+          max: 1000
+          min: 0
+          depends:
+            common_enable_height: true
+
+        - name: flipbox_border
+          type: border
+          label: Border
+          popover: true
+
+    - name : flipbox_front_style_settings
+      label: Front
+      type: fields-group
+      schema:
+        - name: flipbox_front_common_style_settings
+          label: Common
+          type: divider
+
+        - name: flipbox_fontmedia_width
+          type: slider
+          label: Image Size
+          units: %
+          defaultUnit: %
+          max: 100
+          min: 0
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 15
+
+        - name: flipbox_frontimage_spacing
+          label: Media Spacing
+          type: slider
+          max: 100
+          value:
+            desktop : 20
+            tablet : 20
+            phone : 20
+
+        - name : flipbox_front_alignment
+          label: Alignment
+          type : choose
+          value: center
+          responsive: false
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+            justify :
+              label : Justify
+              icon : qxuicon-align-justify
+
+        - name: flipbox_front_bg_image
+          type: background
+          label: Background
+          popover: true
+          tab: normal
+
+        - name: flipbox_front_bgPadding
+          type: dimensions
+          label: Padding
+          units: %, px, em, rem, vh
+          defaultUnit: px
+          help: Padding apply on content area
+          value:
+            desktop:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+            tablet:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+            phone:
+              top: 10
+              bottom: 10
+              left: 10
+              right: 10
+
+        - name: flipbox_frontTitle_typography_settings
+          label: Title
+          type: divider
+
+        - name: flipbox_frontTitle_typographyColor
+          type: color
+          label: Title Color
+          value: rgba(255 ,  255,  255, 1)
+
+        - name: flipbox_fronttitle_spacing
+          type: slider
+          label: Spacing
+          responsive: false
+          max: 100
+          value: 20
+
+        - name: flipbox_frontTitle_typography
+          type: typography
+          label: Typography
+          popover: true
+
+        - name: flipbox_frontContent_typography_settings
+          label: Content
+          type: divider
+
+        - name: flipbox_frontContent_typographyColor
+          type: color
+          label: Content Color
+
+        - name: flipbox_frontcontent_spacing
+          type: slider
+          responsive: false
+          max: 100
+          value: 20
+          label: Spacing
+
+        - name: flipbox_frontContent_typography
+          type: typography
+          label: Typograpy
+          popover: true
+
+
+    - name : flipbox_back_style_settings
+      label: Back
+      type: fields-group
+      schema:
+        - name: flipbox_back_common_style_settings
+          label: Common
+          type: divider
+
+        - name: flipbox_backmedia_width
+          type: slider
+          label: Image Size
+          units: %
+          defaultUnit: %
+          max: 100
+          min: 0
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 15
+
+        - name: flipbox_backimage_spacing
+          type: slider
+          label: Media Spacing
+          responsive: false
+          max: 100
+          value: 20
+
+        - name : flipbox_back_alignment
+          label: Alignment
+          type : choose
+          value: center
+          responsive: false
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+            justify :
+              label : Justify
+              icon : qxuicon-align-justify
+
+        - name: flipbox_back_bg_image
+          type: background
+          label: Background
+          popover: true
+          tab: normal
+
+        - name: flipbox_back_bgPadding
+          type: dimensions
+          label: Padding
+          units: %, px, em, rem, vh
+          defaultUnit: px
+          help: Padding apply on content area
+          value:
+            desktop:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+            tablet:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+            phone:
+              top: 10
+              bottom: 10
+              left: 10
+              right: 10
+
+        - name: flipbox_backTitle_typography_settings
+          label: Title
+          type: divider
+
+        - name: flipbox_backTitle_typographyColor
+          type: color
+          label: Title Color
+          value: rgba(255 ,  255,  255, 1)
+
+        - name: flipbox_backtitle_spacing
+          type: slider
+          responsive: false
+          max: 100
+          value: 20
+          label: Spacing
+
+        - name: flipbox_backTitle_typography
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: flipbox_backContent_typography_settings
+          label: Content
+          type: divider
+
+        - name: flipbox_backContent_typographyColor
+          type: color
+          label: Content Color
+
+        - name: flipbox_backcontent_spacing
+          type: slider
+          responsive: false
+          max: 100
+          value: 20
+          label: Spacing
+
+        - name: flipbox_backContent_typography
+          type: typography
+          label: Typography
+          popover: true
+
+        - name: flipbox_backTitle_button_settings
+          label: Button
+          type: divider
+
+        - name: flipbox_backtitle_button_color
+          type: color
+          label: Color
+        - name: flipbox_backtitle_button_color_hover
+          type: color
+          label: Hover Color
+
+        - name: flipbox_backtitle_button_padding
+          type: dimensions
+          label: Padding
+          responsive: false
+
+        - name: flipbox_backTitle_button_typography
+          type: typography
+          label: Typography
+          popover: true
+
+        - name: flipbox_backTitle_button_background
+          type: background
+          label: Background
+          popover: true
+
+        - name: flipbox_backTitle_button_border
+          type: border
+          label: Border
+          popover: true

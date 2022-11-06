@@ -1,0 +1,81 @@
+{% set requiredrecaptcha = general.form_basic['required-recaptcha'] %}
+{% set rechaptchaType = general.form_basic.recaptcha_type %}
+{% set id = advanced.identifier.id %}
+
+jQuery(function($){
+
+	{% if requiredrecaptcha and mode == 'preview' %}
+		{% if rechaptchaType == "math" %}
+			var c = document.getElementById('{{id}}-first');
+			var d = document.getElementById('{{id}}-second');
+			var ctx = c.getContext("2d");
+			ctx.font = "50px Arial";
+			var message = (c.dataset.id-5) + " + " + (d.dataset.id-11);
+			ctx.fillText(message, (c.width / 2)-50, (c.height / 2)+20);
+		{% endif %}
+	{% endif %}
+
+	{% if requiredrecaptcha %}
+		{% if mode == 'preview' %}
+			{% if rechaptchaType != "math" %}
+				window["recaptchaCallback{{ advanced.identifier.id }}"] = function (token) {
+    				jQuery('button[type="submit"]').removeAttr('disabled').removeClass('qx-disabled');
+    			};
+			{% else %}
+
+				var c = document.getElementById('{{id}}-first');
+				var d = document.getElementById('{{id}}-second');
+				var ctx = c.getContext("2d");
+				ctx.font = "50px Arial";
+				var message = (c.dataset.id-5) + " + " + (d.dataset.id-11);
+				ctx.fillText(message, (c.width / 2)-50, (c.height / 2)+20);
+			{% endif %}
+		{% endif %}
+	{% endif %}
+
+	jQuery("[required='false']").removeAttr("required");
+
+	$("#{{ advanced.identifier.id }} form").on('submit',function(event){
+		event.preventDefault();
+		var $self=$(this);
+		var value=$(this).serializeArray();
+		$.ajax({
+			url: "{{ rootUrl() }}",
+			type:'post',
+			data:value,
+			beforeSend:function(){
+				$self.find('input, textarea, select, .form-submit button').attr('disabled','disabled');
+				$self.find('#form-element-msg').html('');
+			},
+			success:function(response){
+
+				{#// Render the message#}
+				if($.parseJSON(response).success)
+				{
+					$self.find("#captcha-expire").removeClass('qx-d-none');
+					$self.find("input, textarea, select").val("");
+					$self.find('input, textarea, select, .form-submit button').removeAttr('disabled');
+					$self.find('#form-element-msg').html($.parseJSON(response).data).fadeIn();
+				}
+				else
+				{
+					$self.find('#form-element-msg').html($.parseJSON(response).message).fadeIn();
+					$self.find('input, textarea, select, .form-submit button').removeAttr('disabled');
+				}
+
+                if(typeof grecaptcha !== 'undefined'){
+                    grecaptcha.reset();
+                }
+			},
+			error:function(jqXHR, response)
+			{
+				$self.find('#qx-element-contact-form-msg').html($.parseJSON(response).message).fadeIn();
+				$self.find('input, textarea, select, .form-submit button').removeAttr('disabled');
+
+                if(typeof grecaptcha !== 'undefined'){
+                    grecaptcha.reset();
+                }
+			}
+		});
+	});
+});

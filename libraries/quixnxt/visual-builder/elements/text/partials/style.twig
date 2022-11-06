@@ -1,0 +1,14 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Typography #}
+{{ style.typography(id, styles.typo_fields_group.font) }}
+
+{# Alignment #}
+{{ style.alignment(id, styles.text_fields_group.alignment) }}
+
+{# Text Color #}
+{{ style.css( id, 'color', styles.text_fields_group.text_color) }}
+
+{{ style.load(id) }}

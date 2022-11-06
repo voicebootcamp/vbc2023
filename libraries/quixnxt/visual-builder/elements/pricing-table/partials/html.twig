@@ -1,0 +1,148 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{# image and icon #}
+{% set imgSrc = general.pricing_header.image %}
+
+{# header #}
+{% set title = general.pricing_header.header_title %}
+{% set price = general.pricing_header.price %}
+{% set oldprice = general.pricing_header.oldprice %}
+{% set currency = general.pricing_header.currency %}
+{% set duration = general.pricing_header.duration %}
+{% set durationNewline = general.pricing_header.duration_newline | default(false) %}
+
+{# features #}
+{% set fieldsGroup = general.features %}
+{% set tooltipAlign = general.pricing_badge.tooltip_alignment %}
+
+{# button #}
+{% set button = general.pricing_footer.button %}
+{% set link = general.pricing_footer.link %}
+{% set btnClass = 'qx-btn qx-btn-' ~ general.pricing_footer.button_type %}
+
+{# badge #}
+{% set badge = general.pricing_badge.pricing_badge_title %}
+{% set enableBadge = general.pricing_badge.enable_badge | default(false) %}
+
+{# title #}
+{% set badgeAlignment = general.pricing_badge.badge_alignment %}
+
+{# Wrapper Class #}
+{% set wrapperClasses = classNames('qx-element-pricing-table__wrapper qx-animation-toggle') %}
+{% set wrapperContent = classNames('qx-element-pricing-table__content qx-position-relative') %}
+
+{% set classes = classNames('qx-element qx-element-pricing-table-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+  {% block element %}
+      {# pricing markup start #}
+      <div class="{{ wrapperClasses ~ ( enableBadge == true ? ' ' ~ badgeAlignment : '' ) }}">
+        <div class="{{ wrapperContent }}">
+           {# badge #}
+          {% if enableBadge == true %}
+            <div class="badge-wrap {{ badgeAlignment }}">
+              <span class="badge">{{badge}}</span>
+            </div>
+          {% endif %}
+
+          <div class="pricing-header">
+            {# image and icon #}
+            {% if imgSrc.source %}
+              <div class="pricing-media">
+                {% if imgSrc.type == "svg" %}
+                  {{ icon(imgSrc.source) | raw }}
+                {% else %}
+                  {{ image( imgSrc.source, title, '', '', imgSrc) }}
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if imgSrc.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' .pricing-media', imgSrc) }}
+              {% endif %}
+
+            {# title #}
+            {% if title %}
+              <div class="title">
+                <h4>{{title}}</h4>
+              </div>
+            {% endif %}
+
+            {# price #}
+            {% if price %}
+              <div class="price">
+                <h2>
+                {% if currency %}<span class="price-currency">{{currency}}</span>{% endif %}<span class="price-amount">{{price}}</span>
+                {% if oldprice %}
+                <span class="old-price-amount"><del>{{oldprice}}</del></span>
+                {% endif %}
+                {% if durationNewline == true %}
+                <br/>
+                {% endif %}
+                {% if duration %}
+                <span class="price-duration">{{duration}}</span>
+                {% endif %}
+                </h2>
+              </div>
+            {% endif %}
+          </div>
+
+          {# features #}
+          {% if fieldsGroup %}
+          <ul class="qx-list-unstyled qx-list feature">
+              {% for index, fields in fieldsGroup %}
+              {% set data = fieldsGroup(fieldsGroup, index ) %}
+              {% set tooltip = general.features.tooltip %}
+              {% set html = "" %}
+              {% set tooltipTag = "" %}
+
+              <li class="item-{{index}} inline-item">
+              {% set media = data.enable_icon %}
+              {% set src = data.icon %}
+
+              {% if src.source %}
+                {% if src.type == "svg" %}
+                  {% set html = html ~ icon(src.source) | raw %}
+                {% endif %}
+              {% endif %}
+
+              {% if data.tooltip != "" %}
+                {% set tooltipTag = ' qx-tooltip="' ~ data.tooltip ~ '"' %}
+                {% set html = html ~ '<span class="qx-icon-text" qx-tooltip="title: ' ~ data.tooltip ~ ';pos:' ~ tooltipAlign ~ '">' ~  data.title ~ '</span>' %}
+              {% else %}
+                {% set html = html ~ '<span class="qx-icon-text">' ~ data.title ~ '</span>' %}
+              {% endif %}
+
+              {{ html | raw }}
+
+              {% if src.type == "svg" %}
+                  {{ addIconStyle('#' ~ id ~ ' .qx-list li.item-' ~ index, src) }}
+                {% endif %}
+              </li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+
+          {# button #}
+          {% if button %}
+            <div class="pTable-button">
+              {{ general.pricing_footer.button | link( link, btnClass ) }}
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+  {% endblock %}
+{% endembed %}

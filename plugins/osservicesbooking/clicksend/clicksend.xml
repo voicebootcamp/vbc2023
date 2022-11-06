@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.16.0" type="plugin" group="osservicesbooking" method="upgrade">
+    <name>OS Services Booking Booking SMS - ClickSend</name>
+    <author>Ossolution</author>
+    <creationDate>2022-05-09</creationDate>
+    <copyright>Copyright 2010 - 2022 Ossolution Team</copyright>
+    <license>https://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <version>2.16.0</version>
+    <description>This plugin is used to send SMS in OS Services Booking through ClickSend service.</description>
+    <files>
+        <filename plugin="clicksend">clicksend.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="username" type="text" size="60" default="" label="Username" />
+				<field name="api_key" type="text" size="60" default="" label="API Key" />
+                <field name="sender" type="text" size="60" default="" label="Sender" />
+            </fieldset>
+        </fields>
+    </config>            
+</extension>

@@ -1,0 +1,49 @@
+{% set id = advanced.identifier.id %}
+
+{% set class = advanced.identifier.class %}
+{% set classes = classNames('qx-column', visibilityClassNode(visibility), grid, class ) %}
+{% set bg_overlay = styles.background_overlay_fields_group.background_overlay %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% if animation != 'none' %}
+
+    {% if animation is not empty %}
+        {% set animation = "cls:" ~ animation ~ ";" %}
+    {% endif %}
+
+    {# repeat #}
+    {% if animationRepeat %}
+        {% set animation = animation ~ "repeat:ture;" %}
+    {% endif %}
+
+    {# delay #}
+    {% if animationDelay %}
+        {% set animation = animation ~ "delay:" ~ animationDelay.value ~ animationDelay.unit %}
+    {% endif %}
+{% endif %}
+
+<{{ tagName|default('div') }}
+  {% if id is defined and id %} id="{{ id }}" {% endif %}
+  {% if classes is defined and classes %} class="{{ classes }}" {% endif %}
+  {% if animation is not empty and animation != "none" %} qx-scrollspy="{{ animation }}" {% endif %}
+>
+
+{% block element %}
+    {% if renderer %}
+        <div class="qx-col-wrap lazyload" {{ lazyBackground(background) }}>
+            {% if (bg_overlay and ( getOpacity(bg_overlay, 'normal') or getOpacity(bg_overlay, 'hover') ) ) %}
+                {% set overlayClass = "qx-background-overlay " ~ id ~ "-background-overlay" %}
+                <div class="{{ overlayClass }}"></div>
+            {% endif %}
+            <div class="qx-elements-wrap">
+                {{ renderer.render( node['children'], null, 'frontend' ) | raw }}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+</{{ tagName|default('div') }}>

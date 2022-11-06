@@ -1,0 +1,94 @@
+name: Alert
+slug: alert
+groups: general
+helpId: 5d1fef3904286369ad8d5ef7
+form:
+  general:
+    - name : alert_fg_text
+      label: Alert
+      type: fields-group
+      status: open
+      schema:
+        - name: heading
+          label : Heading
+          type: text
+          value: This is an Alert
+
+        - name: content
+          label: Content
+          type: editor
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: type
+          label: Type
+          type: select
+          value: qx-alert-primary
+          options:
+            qx-alert-primary: Primary
+            qx-alert-secondary: Secondary
+            qx-alert-success: Success
+            qx-alert-danger: Danger
+            qx-alert-warning: Warning
+            qx-alert-info: Info
+            qx-alert-light: Light
+            qx-alert-dark: Dark
+          
+        - name : close_option
+          label: Closable
+          help: Show close option for alert message
+          type: switch
+          value: false
+
+  styles:
+    - name : alert_fg_alignment_style
+      label: Alignment
+      type: fields-group
+      status  : open
+      schema :
+        - name : nalignment
+          label: Alignment
+          type : choose
+          value:
+            desktop: left
+            tablet: left
+            phone: left
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+            justify :
+              label : Justify
+              icon : qxuicon-align-justify
+
+    - name : alert_fg_heading_style
+      label: Heading
+      type: fields-group
+      schema :
+        - name: heading_color
+          label: Color
+          type : color
+
+        - name: heading_font
+          label : Typography
+          type: typography
+          popover: true
+
+    - name    : alert_fg_content_style
+      label   : Content
+      type    : fields-group
+      schema  :
+        - name: content_color
+          label: Color
+          type : color
+
+        - name: content_font
+          label : Typography
+          type: typography
+          popover: true
+

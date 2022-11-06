@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="User Profile">
+        <message>
+            Display page allow users to see and change his profile data
+        </message>
+    </layout>
+    <fields name="params">
+        <fieldset name="basic">
+            <field
+                    name="show_my_subscriptions"
+                    type="radio"
+                    label="Show My Subscriptions Tab"
+                    description="If you want to hide my subscriptions tab, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="show_subscriptions_history"
+                    type="radio"
+                    label="Show Subscriptions History"
+                    description="If you want to hide subscription history tab on profile page, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="show_edit_profile"
+                    type="radio"
+                    label="Show Edit Profile"
+                    description="If you want to hide edit profile option on profile page, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="show_renew_options"
+                    type="radio"
+                    label="Show Renew Membership Options"
+                    description="If you want to hide renew membership options on profile page, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="show_upgrade_options"
+                    type="radio"
+                    label="Show Upgrade Membership Options"
+                    description="If you want to hide upgrade membership options on profile page, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="no_subscription_behavior"
+                    type="list"
+                    label="No subscription behavior"
+                    description="Choose the behavior which happens when user without any subscription access to user profile"
+                    default="0"
+            >
+                <option value="0">Redirect to Joomla! core user profile</option>
+                <option value="1">Display no profile message</option>
+            </field>
+            <field type="editor" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of user profile page." />
+        </fieldset>
+    </fields>
+</metadata>

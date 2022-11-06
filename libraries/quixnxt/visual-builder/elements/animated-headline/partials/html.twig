@@ -1,0 +1,59 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set animatedType = general.animated_fg_content.animated_type|default('highlighted') %}
+{% set beforeText = general.animated_fg_content.before_text %}
+{% set highlightedText = general.animated_fg_content.highlighted_text %}
+{% set rotatingText = general.animated_fg_content.rotating_text %}
+{% set afterText = general.animated_fg_content.after_text %}
+
+{% set rotatingStyle = general.animated_fg_content.rotate_style %}
+{% set typingStyle = general.animated_fg_content.rotate_typing_style %}
+{% if rotatingStyle != 'letters' %}
+	{% set typingStyle = '' %}
+{% endif %}
+{% set classes = classNames('qx-element qx-element-animated-headline-v2', visibilityClass(visibility), class) %}
+{% set shape = general.animated_fg_content.animated_shape %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+		{# {{ startTag | raw }} #}
+			<h4 class="qx-element-headline">
+				<div class="qx-element-headline--style-highlight qx-flex qx-flex-inline qx-flex-bottom {{ animatedType }} {{ typingStyle }} {{ rotatingStyle }}">
+					<span class="qx-element__before-text qx-element-headline-text-wrapper">{{ beforeText }}</span>
+
+		  			{# Highlight #}
+					{% if animatedType == 'highlighted' %}
+					<span class="qx-element-headline-dynamic-wrapper svg-styles">
+						<span>{{ highlightedText }}</span>
+		      			{% set shapeFile = "/visual-builder/elements/animated-headline/shapes/" ~ shape  %}
+				        {{ getFileContent( 'animated-headline', shapeFile , 'svg')|raw  }}
+					</span>
+					{# {% endif %} #}
+					{# Rotating #}
+					{% elseif animatedType == 'rotating' %}
+					{% set array = rotatingText | split(',') %}
+				    <span class="qx-element-headline-dynamic-wrapper css-styles {{ typingStyle == 'type' ? 'waiting' : '' }}">
+						{% for index, singleText in array %}
+						  <b class="{{ index == '0' ? 'is-visible' : '' }}">{{ singleText }}</b>
+						{% endfor %}
+				    </span>
+					{% endif %}
+
+					<span class="qx-element__after-text">{{ afterText }}</span>
+				</div>
+			</h4>
+		  {# {{ endTag | raw }} #}
+	{% endblock %}
+{% endembed %}

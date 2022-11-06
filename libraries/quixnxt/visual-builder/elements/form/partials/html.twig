@@ -1,0 +1,149 @@
+{% if not renderer %}
+    {% import _self as forms %}
+{% endif %}
+
+{% set dataAll = allfield() %}
+{% set key = captchaPublicKey() %}
+
+{% set id = advanced.identifier.id %}
+{% set name = general.form_basic.formname %}
+{% set class = advanced.identifier.class %}
+{% set fieldsGroup = general.form_fields %}
+{% set classes = classNames('qx-element qx-element-form-v2', visibilityClass(visibility), class) %}
+
+{% set requiredmark = general.form_basic['required-mark'] %}
+{% set requiredrecaptcha = general.form_basic['required-recaptcha'] %}
+{% set rechaptchaTitle = general.form_basic.rechaptcha_title %}
+{% set rechaptchaPlaceholder = general.form_basic.rechaptcha_placeholder %}
+{% set rechaptchaType = general.form_basic.recaptcha_type %}
+{% set rechaptchaId = "recaptchaCallback" ~ advanced.identifier.id %}
+{% set label = general.form_basic.label %}
+{% set size = styles.form_field_level.label_typography.size %}
+
+{% set submitText = general.form_submit.submit_text|default('Send') %}
+{% set submitSize = general.form_submit.submit_size|default('md') %}
+{% set submitBlock = general.form_submit.submit_block|default(false) %}
+{% set submitColumn = general.form_submit.submit_column %}
+{% set submitAlignment = general.form_submit.submit_alignment %}
+{% set icon = general.form_submit.icon %}
+
+{# dont change serial, only you can add after #}
+{% set submitInfo = [submitText, submitSize, submitColumn, submitAlignment, icon, submitBlock, requiredrecaptcha] %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {% if renderer %}
+            {% import "form/partials/macro.twig" as forms %}
+        {% endif %}
+
+        <div class="{{ id }}-wrapper form-wrapper qx-clearfix">
+            {% if fieldsGroup %}
+                {{ wrapper('formTag', 'form', false, false) }}
+                <div class="form-fields-wrapper">
+                    {% for index, data in fieldsGroup %}
+
+                        {% set attributes = [label, size, requiredmark] %}
+
+                        {{ forms.getInput(index, id, attributes, data) }}
+
+                    {% endfor %}
+
+                    {% if requiredrecaptcha %}
+                        <div id="qx-form-captcha" class="qx-form-group qx-form-group-captcha">
+                            {% if renderer %}
+                                {% if rechaptchaTitle %}
+                                    <label for="qx-form-captcha-field">{{ rechaptchaTitle|default('Captcha') }}</label>
+                                {% endif %}
+
+                                {% if rechaptchaType != "math" %}
+                                    <div id="{{ id }}-captcha"
+                                         class="g-recaptcha qx-d-block"
+                                         data-callback="{{ rechaptchaId }}"
+                                         data-sitekey="{{ key }}"
+                                         data-theme="light"
+                                         data-badge="inline"
+                                    ></div>
+                                    {# data-size="invisible" we will update options later #}
+                                    {% set captchaNotice = validateJoomlaCaptcha(rechaptchaType, rechaptchaId) %}
+                                    
+                                    {# Here, captchaNotice return 0/1 #}
+                                    {% if captchaNotice == 0 %}
+                                        <div class="qx-alert qx-alert-danger">
+                                            Joomla! recaptcha_invisible is not setup properly or disabled. Please Follow
+                                            <a href='https://www.themexpert.com/docs/quix-builder/captcha-recaptcha-guide'
+                                               target='_blank'>the link</a> for details to fix it.
+                                        </div>
+                                    {% endif %}
+                                    <style>.qx-element-form-v2 .g-recaptcha iframe, .qx-element-form-v2 .g-recaptcha > div {
+                                            box-shadow: none !important;
+                                            min-height: 100px;
+                                        }</style>
+                                {% else %}
+
+                                    <div class="qx-text-center qx-inline qx-dark">
+                                        {% if isDynamic %}
+                                            {{ '<?php $formCaptcha = $_SESSION[\'quix_form_captcha\']; ?>'|raw }}
+                                            <canvas id="{{ id }}-first" data-id="{{ '<?php echo $formCaptcha[\'first_number\'] + 5; ?>' | raw }}"></canvas>
+                                        {% endif %}
+
+                                        <div id="captcha-expire" class="qx-d-none qx-overlay-default qx-position-cover">
+                                            <div class="qx-position-center">
+                                                <span class="qx-margin-small-right qx-icon">
+                                                    <svg width="100" height="100" viewBox="0 0 20 20"
+                                                         xmlns="http://www.w3.org/2000/svg" data-svg="close"><path
+                                                                fill="none" stroke="gray" stroke-width="0.5"
+                                                                d="M16,16 L4,4"></path><path fill="none" stroke="gray"
+                                                                                             stroke-width="0.5"
+                                                                                             d="M16,4 L4,16"></path></svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {% if isDynamic %}
+                                        {{ '<?php $formCaptcha = $_SESSION[\'quix_form_captcha\']; ?>'|raw }}
+                                        <canvas id="{{ id }}-second" class="qx-d-none" data-id="{{ '<?php echo $formCaptcha[\'second_number\'] + 11; ?>' | raw }}"></canvas>
+                                    {% endif %}
+
+                                    <input type="text" name="jform[recaptcha_value]"
+                                           class="qx-form-control qx-form-control-md" id="qx-form-captcha-input"
+                                           aria-describedby="captcha"
+                                           placeholder="{{ rechaptchaPlaceholder|default('Write the result') }}"
+                                           required="true" />
+
+                                {% endif %}
+                            {% else %}
+                                <div class="g-chaptcha-placeholder">Captcha will show on preview page</div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    {{ forms.getSubmit( id, submitInfo, rechaptchaType != "math" ) }}
+
+                    <div class="qx-form-group">
+                        <div id="form-element-msg"></div>
+                    </div>
+
+                    {% if isDynamic %}
+                        {{ '<?php echo JHtml::_(\'form.token\') ?>'|raw }}
+                    {% endif %}
+
+                    {{ formFooter('form', dataAll) }}
+                </div>
+                {{ wrapper('formTag', 'form', false, true) }}
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endembed %}

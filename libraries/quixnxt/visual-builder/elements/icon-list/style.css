@@ -1,0 +1,152 @@
+.qx-element-icon-list ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+.qx-element-icon-list ul li a:hover {
+    text-decoration: none;
+}
+.qx-element-icon-list ul li {
+    cursor: pointer;
+}
+.qx-element-icon-list ul li span.qx-icon-text {flex: 1;}
+.desktop-horizontal-layout,
+.tablet-horizontal-layout,
+.phone-horizontal-layout {
+    margin-left: 0;
+    margin-right: 8px;
+    margin-bottom: 0;
+}
+.desktop-vertical-layout,
+.tablet-vertical-layout,
+.phone-vertical-layout {
+    margin-left: 0;
+    margin-bottom: 0;
+}
+.desktop-horizontal-layout li:last-child,
+.tablet-horizontal-layout li:last-child,
+.phone-horizontal-layout li:last-child {
+    margin-right: 0;
+}
+.desktop-vertical-layout li:last-child,
+.tablet-vertical-layout li:last-child,
+.phone-vertical-layout li:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+    .phone-vertical-layout {
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .phone-horizontal-layout {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+		flex-wrap: wrap;
+    }
+    .phone-vertical-layout li,
+    .phone-horizontal-layout li,
+    .phone-vertical-layout li a,
+    .phone-horizontal-layout li a {
+        display: flex;
+        align-items: center;
+    }    
+    .vertical-alignPhone-left {
+        align-items: flex-start;
+    }
+    .vertical-alignPhone-center {
+        align-items: center;
+    }
+    .vertical-alignPhone-right {
+        align-items: flex-end;
+    }
+    .horizontal-alignPhone-left {
+        justify-content: flex-start;
+    }
+    .horizontal-alignPhone-center {
+        justify-content: center;
+    }
+    .horizontal-alignPhone-right {
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 640px) {
+    .tablet-vertical-layout {
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .tablet-horizontal-layout {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+		flex-wrap: wrap;
+    }
+    .tablet-vertical-layout li,
+    .tablet-horizontal-layout li,
+    .tablet-vertical-layout li a,
+    .tablet-horizontal-layout li a {
+        display: flex;
+        align-items: center;
+    }    
+    .vertical-alignTablet-left {
+        align-items: flex-start;
+    }
+    .vertical-alignTablet-center {
+        align-items: center;
+    }
+    .vertical-alignTablet-right {
+        align-items: flex-end;
+    }
+    .horizontal-alignTablet-left {
+        justify-content: flex-start;
+    }
+    .horizontal-alignTablet-center {
+        justify-content: center;
+    }
+    .horizontal-alignTablet-right {
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 960px) {
+    .desktop-vertical-layout {
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .desktop-horizontal-layout {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+		flex-wrap: wrap;
+    }
+    .desktop-vertical-layout li,
+    .desktop-horizontal-layout li,
+    .desktop-vertical-layout li a,
+    .desktop-horizontal-layout li a {
+        display: flex;
+        align-items: center;
+    }    
+    .vertical-alignDesktop-left {
+        align-items: flex-start;
+    }
+    .vertical-alignDesktop-center {
+        align-items: center;
+    }
+    .vertical-alignDesktop-right {
+        align-items: flex-end;
+    }
+    .horizontal-alignDesktop-left {
+        justify-content: flex-start;
+    }
+    .horizontal-alignDesktop-center {
+        justify-content: center;
+    }
+    .horizontal-alignDesktop-right {
+        justify-content: flex-end;
+    }
+}

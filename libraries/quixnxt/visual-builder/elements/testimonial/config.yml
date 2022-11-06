@@ -1,0 +1,167 @@
+name: Testimonial
+slug: testimonial
+groups: general
+helpId: 5d1ff0ad04286369ad8d5f0d
+form:
+  general:
+    - name : testimonial_fg_text
+      label: Text
+      type: fields-group
+      status: open
+      schema:
+        - name: content
+          label: Testimonial
+          type: textarea
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: tname
+          label: Name
+          type: text
+          value: John Doe
+
+        - name: position
+          label: Position
+          type: text
+          value: Developer
+
+    - name : testimonial_fg_media
+      label: Image
+      type: fields-group
+      schema:
+        - name: image
+          type: media
+          showstyle: true
+          value: 'media/quixnxt/images/placeholder.png'
+
+        - name: alt_text
+          label : Alt Text
+          type: text
+          help : Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            "image.type": "image"
+
+        - name: caption
+          type: text
+          depends:
+            "image.type": "image"
+
+        - name : image_alignment
+          label: Position
+          type : choose
+          value: bottom
+          responsive: false
+          options:
+            left :
+              label : Left
+              icon : qxuicon-arrow-to-left
+            right :
+              label : Right
+              icon : qxuicon-arrow-to-right
+            top :
+              label: Top
+              icon : qxuicon-arrow-to-top
+            bottom :
+              label: Bottom
+              icon : qxuicon-arrow-to-bottom                       
+
+  styles:
+    - name : testimonial_fg_testimonial
+      label: Testimonial
+      type: fields-group
+      schema :
+        - name : content_alignment
+          type : choose
+          value:
+            desktop: center
+            tablet : center
+            phone : center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+        - name  : content_spacing
+          label : Spacing
+          type: slider
+          max : 80
+          value:
+            desktop : 20
+            tablet : 20
+            phone : 20
+
+        - name  : content_color
+          label : Testimonial Color
+          type  : color
+
+        - name: content_font
+          label : Typography
+          type: typography
+          popover: true
+
+    - name : testimonial_fg_name
+      label: Name
+      type: fields-group
+      schema :
+        - name  : name_spacing
+          label : Spacing
+          type: slider
+          max : 50
+          value:
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+        - name  : name_color
+          label : Color
+          type  : color
+
+        - name: name_font
+          label : Typography
+          type: typography
+          popover: true
+
+    - name : testimonial_fg_position
+      label: Position
+      type: fields-group
+      schema :
+        - name  : position_color
+          label : Color
+          type  : color
+
+        - name: position_font
+          label : Typography
+          type: typography
+          popover: true
+
+    - name    : image_fields_group
+      label   : Image
+      type    : fields-group
+      schema  :
+        - name : width
+          label : Width
+          type: slider
+          value: 100
+          max : 300
+          min : 20
+          units : px, %
+          defaultUnit: px
+
+        - name  : image_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 15
+
+        - name: image_border
+          label: Border
+          type: border
+          popover: true

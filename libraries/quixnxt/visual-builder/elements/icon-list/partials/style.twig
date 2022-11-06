@@ -1,0 +1,69 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Typography #}
+{% set textFont = styles.spacing_setting.typo_for_text %}
+
+{# Color #}
+{% set iconHoverColor = styles.color_setting.icon_hover %}
+{% set textColor = styles.color_setting.text_color %}
+{% set textHoverColor = styles.color_setting.text_hover %}
+
+{# Spacing #}
+{% set itemSpacing = styles.spacing_setting.item_spacing %}
+{% set textIndent = styles.spacing_setting.text_indent %}
+{% set itemPadding = styles.spacing_setting.item_padding %}
+{% set iconBorder = styles.spacing_setting.border_for_icon %}
+
+{# Selectors #}
+{% set layoutItem = id ~ ' ul li ' %}
+{% set nameSelector = id ~ ' ul li' %}
+
+{% set deskInlineLayout = id ~ ' ul.desktop-horizontal-layout ' %}
+{% set deskInlineSpace = id ~ ' ul.desktop-horizontal-layout li ' %}
+{% set deskListLayout = id ~ ' ul.desktop-vertical-layout ' %}
+{% set deskListSpace = id ~ ' ul.desktop-vertical-layout li ' %}
+
+{% set tabInlineLayout = id ~ ' ul.tablet-horizontal-layout ' %}
+{% set tabInlineSpace = id ~ ' ul.tablet-horizontal-layout li ' %}
+{% set tabListLayout = id ~ ' ul.tablet-vertical-layout ' %}
+{% set tabListSpace = id ~ ' ul.tablet-vertical-layout li ' %}
+
+{% set phnInlineLayout = id ~ ' ul.phone-horizontal-layout ' %}
+{% set phnInlineSpace = id ~ ' ul.phone-horizontal-layout li ' %}
+{% set phnListLayout = id ~ ' ul.phone-vertical-layout ' %}
+{% set phnListSpace = id ~ ' ul.phone-vertical-layout li ' %}
+
+{% set iconSelector = id ~ ' ul li ' %}
+{% set iconColor = id ~ ' ul li i svg path ' %}
+
+{#{{ style.desktop('.qx-element-icon-list svg', 'height: 30px;') }}#}
+{{ style.desktop('.qx-element-icon-list svg', 'width: 30px;')}}
+
+{# Typography #}
+{{ style.typography(nameSelector ~ ' span.qx-icon-text', textFont) }}
+
+{# Color #}
+{{ style.css(iconSelector ~ ':hover i' ~ ',' ~ iconSelector ~ 'a:hover i' ~ ',' ~ iconSelector ~ 'a:hover i svg path', 'color', iconHoverColor) }}
+{{ style.css(nameSelector ~ ' span.qx-icon-text', 'color', textColor) }}
+{{ style.css(nameSelector ~ ':hover span.qx-icon-text' ~ ',' ~ nameSelector ~ 'a:hover span', 'color', textHoverColor)}}
+
+{# Spacing #}
+{{ style.desktop(deskListSpace, 'margin-bottom:' ~ itemSpacing.desktop ~ itemSpacing.unit) }}
+{{ style.tablet(tabListSpace, 'margin-bottom:' ~ itemSpacing.tablet ~ itemSpacing.unit) }}
+{{ style.phone(phnListSpace, 'margin-bottom:' ~ itemSpacing.phone ~ itemSpacing.unit) }}
+
+{{ style.desktop(deskInlineSpace, 'margin-right:' ~ itemSpacing.desktop ~ itemSpacing.unit) }}
+{{ style.tablet(tabInlineSpace, 'margin-right:' ~ itemSpacing.tablet ~ itemSpacing.unit) }}
+{{ style.phone(phnInlineSpace, 'margin-right:' ~ itemSpacing.phone ~ itemSpacing.unit) }}
+
+{{ style.responsiveCss(iconSelector ~ ' .qx-icon-text', textIndent, 'margin-left', textIndent.unit) }}
+{{ style.padding( layoutItem, itemPadding) }}
+{{ style.css(iconSelector ~ ' i', 'display', 'block') }}
+
+{# Border #}
+{{ style.border(layoutItem, iconBorder) }}
+
+
+{{ style.load(id) }}

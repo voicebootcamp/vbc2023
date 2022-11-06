@@ -1,0 +1,50 @@
+.qx-element-advanced-heading-v2 .bg-text {
+    font-size: 150px;
+    font-weight: 700;
+    color: #e4dfdf;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 0;
+    line-height: 1.2;
+}
+.qx-element-advanced-heading-v2 .bg-text.left {
+    left: 0;
+    right: auto;
+}
+.qx-element-advanced-heading-v2 .bg-text.right {
+    left: auto;
+    right: 0;
+}
+.qx-element-advanced-heading__wrapper {
+    text-align: center;
+}
+.adv-heading-cont {
+    position: relative;
+    overflow: hidden;
+}
+.qx-element-advanced-heading-v2 .before-text {
+    font-size: 63px;
+    font-weight: 500;
+    color: #070707;
+}
+.qx-element-advanced-heading-v2 .after-text {
+    font-size: 62px;
+    font-weight: 700;
+    color: #070707;
+}
+.qx-element-advanced-heading-v2 .center-text {
+    font-size: 62px;
+    font-weight: 700;
+    color: #070707;
+}
+
+.qx-element-advanced-heading-v2 h1,
+.qx-element-advanced-heading-v2 h2,
+.qx-element-advanced-heading-v2 h3,
+.qx-element-advanced-heading-v2 h4,
+.qx-element-advanced-heading-v2 h5,
+.qx-element-advanced-heading-v2 h6{
+    line-height: 1.5;
+}

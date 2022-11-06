@@ -1,0 +1,17 @@
+@media (min-width: 768px) {
+
+    #osm-plans-list-columns .osm-plan-short-description:last-of-type {
+        margin-bottom:25px;
+    }
+    #osm-plans-list-columns .osm-pricing-table .osm-plan{
+        min-height: 700px;
+        position: relative;
+        
+         }
+         #osm-plans-list-columns .osm-signup-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }   
+ }

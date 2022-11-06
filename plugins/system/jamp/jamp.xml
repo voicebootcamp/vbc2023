@@ -1,0 +1,1533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="4.0" type="plugin" group="system" method="upgrade">
+	<name>System - JAmp</name>
+	<author>Joomla! Extensions Store</author>
+	<creationDate>2022-08-16</creationDate>
+	<copyright>Copyright (C) 2021 - Joomla! Extensions Store. All Rights Reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@storejextensions.org</authorEmail>
+	<authorUrl>http://storejextensions.org</authorUrl>
+	<version>2.1.1</version>
+	<description>PLG_JAMP_DESCRIPTION</description>
+	
+	<scriptfile>installscript.php</scriptfile> 
+	
+	<files>
+		<filename plugin="jamp">jamp.php</filename>
+		<filename>installscript.php</filename>
+		<filename>index.html</filename>
+		<folder>core</folder>
+		<folder>fields</folder>
+		<folder>css</folder>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/plg_system_jamp.ini</language>
+		<language tag="en-GB">en-GB/plg_system_jamp.sys.ini</language>
+		
+		<language tag="it-IT">it-IT/plg_system_jamp.ini</language>
+		<language tag="it-IT">it-IT/plg_system_jamp.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_BASIC_SETTINGS"/>
+				<field name="registration_email" type="text" default="" size="30" label="PLG_JAMP_EMAIL_REGISTRATION" description="PLG_JAMP_EMAIL_REGISTRATION_DESC" />
+				
+				<field name="amp_suffix" type="text" default="amp" label="PLG_JAMP_AMP_ROUTE_SUFFIX" description="PLG_JAMP_AMP_ROUTE_SUFFIX_DESC"/>
+				<field name="amp_components_views" type="componentviews" default="com_content.article" size="15" multiple="multiple" label="PLG_JAMP_CHOOSE_COMPONENTS" description="PLG_JAMP_CHOOSE_COMPONENTS_DESC"/>
+				<field name="exclusions_filters" type="textarea" default="" rows="20" label="PLG_JAMP_EXCLUSIONS_FILTERS" description="PLG_JAMP_EXCLUSIONS_FILTERS_DESC"/>
+				<field name="inclusions_filters" type="textarea" default="" rows="20" label="PLG_JAMP_INCLUSIONS_FILTERS" description="PLG_JAMP_INCLUSIONS_FILTERS_DESC"/>
+				<field name="custom_components_view" type="textarea" default="" rows="20" label="PLG_JAMP_CUSTOM_COMPONENT_VIEWS" description="PLG_JAMP_CUSTOM_COMPONENT_VIEWS_DESC"/>
+				<field name="amp_routing_mode" type="list" default="after_initialise" label="PLG_JAMP_AMP_ROUTING_MODE" description="PLG_JAMP_AMP_ROUTING_MODE_DESC">
+					<option value="after_initialise">PLG_JAMP_AMP_ROUTING_MODE_AFTER_INITIALISE</option>
+					<option value="before_initialise">PLG_JAMP_AMP_ROUTING_MODE_BEFORE_INITIALISE</option>
+				</field>
+				<field name="joomla_template_source" type="loadtemplates" default="" label="PLG_JAMP_JOOMLA_TEMPLATE_SOURCE" description="PLG_JAMP_JOOMLA_TEMPLATE_SOURCE_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AUTOCONFIG"/>
+				<field name="redirect_mobile_devices_toamp_page" type="list" default="0" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_TOAMP_PAGE" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_TOAMP_PAGE_DESC">
+					<option value="0">PLG_JAMP_REDIRECT_MOBILE_DEVICES_TOAMP_PAGE_NONE</option>
+					<option value="3">PLG_JAMP_REDIRECT_MOBILE_DEVICES_TOAMP_PAGE_DEVICE_WIDTH</option>
+					<option value="2">PLG_JAMP_REDIRECT_MOBILE_DEVICES_TOAMP_PAGE_SMARTPHONES_TABLETS</option>
+					<option value="1">PLG_JAMP_REDIRECT_MOBILE_DEVICES_TOAMP_PAGE_SMARTPHONES_ONLY</option>
+				</field>
+				<field name="redirect_mobile_devices_devicewidth" type="text" default="1024" class="redirect_mobile" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_DESC" />
+				<field name="redirect_mobile_devices_devicewidth_width_value" type="list" default="outerWidth" class="redirect_mobile" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_WIDTH_VALUE" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_WIDTH_VALUE_DESC">
+					<option value="outerWidth">PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_WIDTH_VALUE_OUTERWIDTH</option>
+					<option value="innerWidth">PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_WIDTH_VALUE_INNERWIDTH</option>
+					<option value="jQueryWidth">PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_WIDTH_VALUE_JQUERYWIDTH</option>
+				</field>
+				<field name="redirect_mobile_devices_devicewidth_hide_website" type="radio" layout="joomla.form.field.radio.switcher" class="redirect_mobile" default="1" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_HIDE_WEBSITE" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_HIDE_WEBSITE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="redirect_mobile_devices_devicewidth_loader_effect" type="radio" layout="joomla.form.field.radio.switcher" class="redirect_mobile" default="1" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_LOADER_EFFECT" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_LOADER_EFFECT_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="redirect_mobile_devices_devicewidth_loader_effect_color" type="color" default="#0067A2" class="redirect_mobile" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_LOADER_EFFECT_COLOR" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_LOADER_EFFECT_COLOR_DESC" />
+				<field name="redirect_mobile_devices_devicewidth_session_delay" type="list" default="200" class="redirect_mobile" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_SESSION_DELAY" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_SESSION_DELAY_DESC">
+					<option value="1">1ms</option>
+					<option value="25">25ms</option>
+					<option value="50">50ms</option>
+					<option value="100">100ms</option>
+					<option value="200">200ms</option>
+					<option value="300">300ms</option>
+					<option value="400">400ms</option>
+					<option value="500">500ms</option>
+					<option value="600">600ms</option>
+					<option value="700">700ms</option>
+					<option value="800">800ms</option>
+					<option value="900">900ms</option>
+					<option value="1000">1000ms</option>
+				</field>
+				<field name="redirect_mobile_devices_devicewidth_load_jquery" type="radio" layout="joomla.form.field.radio.switcher" class="redirect_mobile" default="1" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_LOAD_JQUERY" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_LOAD_JQUERY_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="redirect_mobile_devices_devicewidth_jquery_noconflict" type="radio" layout="joomla.form.field.radio.switcher" class="redirect_mobile" default="1" label="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_JQUERY_NOCONFLICT" description="PLG_JAMP_REDIRECT_MOBILE_DEVICES_DEVICEWIDTH_JQUERY_NOCONFLICT_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AUTOCONFIG"/>
+				<field name="auto_config" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_AUTOCONFIG_MANIFEST_LOAD" description="PLG_JAMP_AUTOCONFIG_MANIFEST_LOAD_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="cropping_images" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_CROPPING_IMAGES" description="PLG_JAMP_CROPPING_IMAGES_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="resized_images_cache_lifetime" type="text" default="60" label="PLG_JAMP_RESIZED_IMAGES_CACHE_LIFETIME" description="PLG_JAMP_RESIZED_IMAGES_CACHE_LIFETIME_DESC"/>
+				<field name="add_trailing_slash_canonicals" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ADD_TRAILING_SLASH_CANONICALS" description="PLG_JAMP_ADD_TRAILING_SLASH_CANONICALS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SOCIAL_DEBUG_SETTINGS"/>
+				<field name="debug_mode" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_DEBUG_MODE" description="PLG_JAMP_DEBUG_MODE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="debug_mode_width" type="text" default="320" label="PLG_JAMP_DEBUG_MODE_WIDTH" description="PLG_JAMP_DEBUG_MODE_WIDTH_DESC"/>
+				<field name="debug_mode_height" type="text" default="480" label="PLG_JAMP_DEBUG_MODE_HEIGHT" description="PLG_JAMP_DEBUG_MODE_HEIGHT_DESC"/>
+				<field name="debug_firm" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_DEBUG_FIRM" description="PLG_JAMP_DEBUG_FIRM_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="enable_device_debug" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_DEVICE_DEBUG" description="PLG_JAMP_ENABLE_DEVICE_DEBUG_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+			
+			<fieldset name="aspect" label="PLG_JAMP_ASPECT" addfieldpath="/plugins/system/jamp/fields">	
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_HEADER"/>
+				<field name="amp_bg_color" type="color" default="#FF9800" label="PLG_JAMP_AMP_BG_COLOR" description="PLG_JAMP_AMP_BG_COLOR_DESC"/>
+				<field name="amp_text_color" type="color" default="#FFF" label="PLG_JAMP_TEXT_COLOR" description="PLG_JAMP_TEXT_COLOR_DESC"/>
+				<field name="amp_header_h1" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_AMP_HEADER_H1" description="PLG_JAMP_AMP_HEADER_H1_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_header_h1_titletype" type="list" default="page" label="PLG_JAMP_AMP_HEADER_H1_TITLETYPE" description="PLG_JAMP_AMP_HEADER_H1_TITLETYPE_DESC">
+					<option value="page">PLG_JAMP_AMP_HEADER_H1_TITLETYPE_PAGE</option>
+					<option value="menu">PLG_JAMP_AMP_HEADER_H1_TITLETYPE_MENU</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_MAINBODY"/>
+				<field name="amp_body_bg_color" type="color" default="#FFF" label="PLG_JAMP_BODY_BG_COLOR" description="PLG_JAMP_BODY_BG_COLOR_DESC"/>
+				<field name="amp_body_text_color" type="color" default="#666" label="PLG_JAMP_BODY_TEXT_COLOR" description="PLG_JAMP_BODY_TEXT_COLOR_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_FOOTER"/>
+				<field name="amp_footer_bg_color" type="color" default="#EAEAEA" label="PLG_JAMP_FOOTER_BG_COLOR" description="PLG_JAMP_FOOTER_BG_COLOR_DESC"/>
+				<field name="amp_footer_text_color" type="color" default="#333" label="PLG_JAMP_FOOTER_TEXT_COLOR" description="PLG_JAMP_FOOTER_TEXT_COLOR_DESC"/>
+				<field name="amp_footer_copyright" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_FOOTER_COPYRIGHT" description="PLG_JAMP_FOOTER_COPYRIGHT_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_footer_mainlink" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_FOOTER_MAINLINK" description="PLG_JAMP_FOOTER_MAINLINK_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_footer_mainlink_nofollow" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_FOOTER_MAINLINK_NOFOLLOW" description="PLG_JAMP_FOOTER_MAINLINK_NOFOLLOW_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SIZE_AND_FONT"/>
+				<field name="amp_max_width" type="text" default="479" label="PLG_JAMP_AMP_MAX_WIDTH" description="PLG_JAMP_AMP_MAX_WIDTH_DESC"/>
+				<field name="amp_title_header_sitename_fontsize" type="text" default="24" label="PLG_JAMP_AMP_TITLE_HEADER_SITENAME_FONTSIZE" description="PLG_JAMP_AMP_TITLE_HEADER_SITENAME_FONTSIZE_DESC"/>
+				<field name="amp_page_title_fontsize" type="text" default="20" label="PLG_JAMP_AMP_PAGE_TITLE_FONTSIZE" description="PLG_JAMP_AMP_PAGE_TITLE_FONTSIZE_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_RESPONSIVE_IMAGES"/>
+				<field name="images_responsive" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_IMAGES_RESPONSIVE" description="PLG_JAMP_IMAGES_RESPONSIVE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="images_responsive_selectors" type="text" default="" class="css-selectors" hint="PLG_JAMP_CSS_SELECTORS" label="PLG_JAMP_IMAGES_RESPONSIVE_SELECTORS" description="PLG_JAMP_IMAGES_RESPONSIVE_SELECTORS_DESC"/>
+				<field name="images_not_responsive_selectors" type="text" default="" class="css-selectors" hint="PLG_JAMP_CSS_SELECTORS" label="PLG_JAMP_IMAGES_NOT_RESPONSIVE_SELECTORS" description="PLG_JAMP_IMAGES_NOT_RESPONSIVE_SELECTORS_DESC"/>
+				<field name="images_override_attributes" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_IMAGES_OVERRIDE_ATTRIBUTES" description="PLG_JAMP_IMAGES_OVERRIDE_ATTRIBUTES_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="minwidth_responsive_images" type="text" default="250" class="css-selectors" hint="PLG_JAMP_MINWIDTH_RESPONSIVE_IMAGES_HINT" label="PLG_JAMP_MINWIDTH_RESPONSIVE_IMAGES" description="PLG_JAMP_MINWIDTH_RESPONSIVE_IMAGES_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_RESPONSIVE_ELEMENTS"/>
+				<field name="videos_responsive" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_VIDEOS_RESPONSIVE" description="PLG_JAMP_VIDEOS_RESPONSIVE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="iframes_responsive" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_IFRAMES_RESPONSIVE" description="PLG_JAMP_IFRAMES_RESPONSIVE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_ADVANCED"/>
+				<field name="custom_css_styles" type="textarea" default="" rows="10" label="PLG_JAMP_CUSTOM_CSS_STYLES" description="PLG_JAMP_CUSTOM_CSS_STYLES_DESC"/>
+				<field name="remove_inline_css" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_REMOVE_INLINE_CSS" description="PLG_JAMP_REMOVE_INLINE_CSS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="enable_scroll_to_top" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_ENABLE_SCROLL_TO_TOP" description="PLG_JAMP_ENABLE_SCROLL_TO_TOP_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="text_scroll_to_top" type="text" default="Back to top" label="PLG_JAMP_SCROLL_TO_TOP" description="PLG_JAMP_SCROLL_TO_TOP_DESC"/>
+				<field name="custom_google_font" type="text" default="" label="PLG_JAMP_CUSTOM_GOOGLE_FONT_FAMILY" description="PLG_JAMP_CUSTOM_GOOGLE_FONT_FAMILY_DESC"/>
+				<field name="include_font_awesome" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_INCLUDE_FONT_AWESOME" description="PLG_JAMP_INCLUDE_FONT_AWESOME_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="list_item_nostyle" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_LIST_ITEM_NOSTYLE" description="PLG_JAMP_LIST_ITEM_NOSTYLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="article_headers_center_alignment" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_ARTICLE_HEADERS_CENTER_ALIGNMENT" description="PLG_JAMP_ARTICLE_HEADERS_CENTER_ALIGNMENT_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="fallback_images_width" type="text" default="300" label="PLG_JAMP_FALLBACK_IMAGES_WIDTH" description="PLG_JAMP_FALLBACK_IMAGES_WIDTH_DESC"/>
+				<field name="fallback_images_height" type="text" default="150" label="PLG_JAMP_FALLBACK_IMAGES_HEIGHT" description="PLG_JAMP_FALLBACK_IMAGES_HEIGHT_DESC"/>
+				<field name="fallback_iframes_width" type="text" default="600" label="PLG_JAMP_FALLBACK_IFRAMES_WIDTH" description="PLG_JAMP_FALLBACK_IFRAMES_WIDTH_DESC"/>
+				<field name="fallback_iframes_height" type="text" default="400" label="PLG_JAMP_FALLBACK_IFRAMES_HEIGHT" description="PLG_JAMP_FALLBACK_IFRAMES_HEIGHT_DESC"/>
+				<field name="fully_qualified_images" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_FULLY_QUALIFIED_IMAGES" description="PLG_JAMP_FULLY_QUALIFIED_IMAGES_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="remove_images_query_string" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_REMOVE_IMAGES_QUERY_STRING" description="PLG_JAMP_REMOVE_IMAGES_QUERY_STRING_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="override_image_data_src" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_OVERRIDE_IMAGE_DATA_SRC" description="PLG_JAMP_OVERRIDE_IMAGE_DATA_SRC_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_template_override" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_AMP_TEMPLATE_OVERRIDE" description="PLG_JAMP_AMP_TEMPLATE_OVERRIDE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="allowsameorigin_iframes" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_ALLOWSAMEORIGIN_IFRAMES" description="PLG_JAMP_ALLOWSAMEORIGIN_IFRAMES_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="menu_exclusions" type="menumultiselect" default="0" size="20" multiple="multiple" label="PLG_JAMP_MENU_EXCLUSIONS" description="PLG_JAMP_MENU_EXCLUSIONS_DESC" />
+				<field name="remove_language_default_prefix" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_REMOVE_LANGUAGE_DEFAULT_PREFIX" description="PLG_JAMP_REMOVE_LANGUAGE_DEFAULT_PREFIX_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="remove_modules_title" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_REMOVE_MODULES_TITLE" description="PLG_JAMP_REMOVE_MODULES_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="force_component_output" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_FORCE_COMPONENT_OUTPUT" description="PLG_JAMP_FORCE_COMPONENT_OUTPUT_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="force_component_output_title" layout="joomla.form.field.radio.switcher" type="radio" default="1" label="PLG_JAMP_FORCE_COMPONENT_OUTPUT_TITLE" description="PLG_JAMP_FORCE_COMPONENT_OUTPUT_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="force_component_output_fulltext" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_FORCE_COMPONENT_OUTPUT_FULLTEXT" description="PLG_JAMP_FORCE_COMPONENT_OUTPUT_FULLTEXT_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="images_cdn_rewriting" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_IMAGES_CDN_REWRITING" description="PLG_JAMP_IMAGES_CDN_REWRITING_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="images_cdn_rewriting_domain" type="text" default="" label="PLG_JAMP_IMAGES_CDN_REWRITING_DOMAIN" description="PLG_JAMP_IMAGES_CDN_REWRITING_DOMAIN_DESC"/>
+			</fieldset>
+			
+			<fieldset name="siteinfo" label="PLG_JAMP_SITEINFO" addfieldpath="/plugins/system/jamp/fields">
+				<field name="amp_title_header_sitename" type="text" default="" label="PLG_JAMP_AMP_TITLE_HEADER_SITENAME" description="PLG_JAMP_AMP_TITLE_HEADER_SITENAME_DESC"/>
+				<field name="amp_title_header_imagelogo" type="media" label="PLG_JAMP_AMP_TITLE_HEADER_IMAGELOGO" description="PLG_JAMP_AMP_TITLE_HEADER_IMAGELOGO_DESC"/>
+				<field name="logo_responsive" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_LOGO_RESPONSIVE" description="PLG_JAMP_LOGO_RESPONSIVE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_favicon" type="media" label="PLG_JAMP_AMP_FAVICON" description="PLG_JAMP_AMP_FAVICON_DESC"/>
+			</fieldset>
+			
+			<fieldset name="metadata" label="PLG_JAMP_METADATA" addfieldpath="/plugins/system/jamp/fields">	
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AMP_METADATA"/>
+				<field name="author_name" type="text" label="PLG_JAMP_AUTHOR_NAME" description="PLG_JAMP_AUTHOR_NAME_DESC"/>
+				<field name="publisher_name" type="text" label="PLG_JAMP_PUBLISHER_NAME" description="PLG_JAMP_PUBLISHER_NAME_DESC"/>
+				<field name="publisher_logo" type="media" label="PLG_JAMP_PUBLISHER_LOGO" description="PLG_JAMP_PUBLISHER_LOGO_DESC"/>
+				<field name="page_image" type="media" label="PLG_JAMP_PAGE_IMAGE" description="PLG_JAMP_PAGE_IMAGE_DESC"/>
+				<field name="page_image_css_selector" type="text" default="img.ampmetaimage" label="PLG_JAMP_PAGE_IMAGE_CSS_SELECTOR" description="PLG_JAMP_PAGE_IMAGE_CSS_SELECTOR_DESC"/>
+				<field name="excerpt_limit" type="text" default="300" label="PLG_JAMP_EXCERPT_LIMIT" description="PLG_JAMP_EXCERPT_LIMIT_DESC"/>
+				<field name="excerpt_source" type="list" default="content" label="PLG_JAMP_EXCERPT_SOURCE" description="PLG_JAMP_EXCERPT_SOURCE_DESC">
+					<option value="content">PLG_JAMP_EXCERPT_SOURCE_CONTENTS</option>
+					<option value="metadescription">PLG_JAMP_EXCERPT_SOURCE_METADESCRIPTION</option>
+				</field>
+				<field name="amp_schema_type" type="list" default="NewsArticle" label="PLG_JAMP_AMP_SCHEMA_TYPE" description="PLG_JAMP_AMP_SCHEMA_TYPE_DESC">
+					<option value="NewsArticle">NewsArticle</option>
+					<option value="BlogPosting">BlogPosting</option>
+				</field>
+				<field name="autodetect_author" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_AUTODETECT_AUTHOR" description="PLG_JAMP_AUTODETECT_AUTHOR_DESC" >
+				   <option value="0">JNO</option>
+				   <option value="1">JYES</option>
+				</field>
+				<field name="author_url" type="text" label="PLG_JAMP_AUTHOR_URL" description="PLG_JAMP_AUTHOR_URL_DESC"/>
+				<field name="include_language_attribute" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_INCLUDE_LANGUAGE_ATTRIBUTE" description="PLG_JAMP_INCLUDE_LANGUAGE_ATTRIBUTE_DESC" >
+				   <option value="0">JNO</option>
+				   <option value="1">JYES</option>
+				</field>
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SCHEMA_METADATA"/>
+				<field name="schemaorg_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_SCHEMAORG" description="PLG_JAMP_SCHEMAORG_DESC" >
+				   <option value="0">JNO</option>
+				   <option value="1">JYES</option>
+				</field>
+				<field name="opengraph_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_OPENGRAPH" description="PLG_JAMP_OPENGRAPH_DESC" >
+				   <option value="0">JNO</option>
+				   <option value="1">JYES</option>
+				</field>
+				<field name="twitter_card_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_TWITTERCARD" description="PLG_JAMP_TWITTERCARD_DESC" >
+				   <option value="0">JNO</option>
+				   <option value="1">JYES</option>
+				</field>
+				<field name="twitter_card_site" default="" type="text" label="PLG_JAMP_TWITTERCARD_SITE" description="PLG_JAMP_TWITTERCARD_SITE_DESC" />
+				<field name="twitter_card_creator" default="" type="text" label="PLG_JAMP_TWITTERCARD_CREATOR" description="PLG_JAMP_TWITTERCARD_CREATOR_DESC" />
+			</fieldset>
+				
+			<fieldset name="features" label="PLG_JAMP_FEATURES" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_LIGHTBOX"/>
+				<field name="enable_images_lightbox" type="list" default="0" label="PLG_JAMP_ENABLE_IMAGES_LIGHTBOX" description="PLG_JAMP_ENABLE_IMAGES_LIGHTBOX_DESC">
+					<option value="0">JNO</option>
+					<option value="1">PLG_JAMP_NO_LINKED_IMAGES</option>
+					<option value="2">PLG_JAMP_ALL_LINKED_IMAGES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_GOOGLE_ANALYTICS"/>
+				<field name="amp_ga4_measurement_id" type="text" default="" hint="G-J0XXXXXXXX" label="PLG_JAMP_GA4_MEASUREMENT_ID" description="PLG_JAMP_GA4_MEASUREMENT_ID_DESC"/>
+				<field name="amp_gaid" type="text" default="" hint="UA-XXXXX-X" label="PLG_JAMP_GAID" description="PLG_JAMP_GAID_DESC"/>
+				<field name="amp_gtmid" type="text" default="" hint="GTM-XXXXX" label="PLG_JAMP_GAGTM" description="PLG_JAMP_GAGTM_DESC"/>
+				<field name="amp_pixel" type="text" default="" size="50" hint="https://foo.com/tracker/foo" label="PLG_JAMP_AMPPIXEL" description="PLG_JAMP_AMPPIXEL_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SOCIAL_BUTTONS_SETTINGS"/>
+				<field name="social_buttons" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_SOCIAL_BUTTONS" description="PLG_JAMP_SOCIAL_BUTTONS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="social_buttons_position" type="list" default="bottom" label="PLG_JAMP_SOCIAL_BUTTONS_POSITION" description="PLG_JAMP_SOCIAL_BUTTONS_POSITION_DESC">
+					<option value="bottom">PLG_JAMP_BOTTOM</option>
+					<option value="top">PLG_JAMP_TOP</option>
+					<option value="both">PLG_JAMP_BOTH</option>
+				</field>
+				<field name="social_buttons_enabled" type="list" multiple="multiple" default="" size="10" label="PLG_JAMP_SOCIAL_BUTTONS_ENABLED" description="PLG_JAMP_SOCIAL_BUTTONS_ENABLED_DESC">
+					<option value="facebook">Facebook</option>
+					<option value="twitter">Twitter</option>
+					<option value="linkedin">Linkedin</option>
+					<option value="whatsapp">Whatsapp</option>
+					<option value="pinterest">Pinterest</option>
+					<option value="tumblr">Tumblr</option>
+					<option value="email">Email</option>
+					<option value="system">Device Share</option>
+				</field>
+				<field name="social_button_facebook_appid" type="text" default="975598565983651" label="PLG_JAMP_SOCIAL_BUTTON_FACEBOOK_APPID" description="PLG_JAMP_SOCIAL_BUTTON_FACEBOOK_APPID_DESC"/>
+				<field name="social_buttons_width" type="text" default="60" label="PLG_JAMP_SOCIAL_BUTTONS_WIDTH" description="PLG_JAMP_SOCIAL_BUTTONS_WIDTH_DESC"/>
+				<field name="social_buttons_height" type="text" default="44" label="PLG_JAMP_SOCIAL_BUTTONS_HEIGHT" description="PLG_JAMP_SOCIAL_BUTTONS_HEIGHT_DESC"/>
+				<field name="social_buttons_url_to_share" type="list" default="canonical" label="PLG_JAMP_SOCIAL_BUTTONS_URL_TO_SHARE" description="PLG_JAMP_SOCIAL_BUTTONS_URL_TO_SHARE_DESC">
+					<option value="canonical">PLG_JAMP_CANONICAL</option>
+					<option value="amp">PLG_JAMP_AMP</option>
+				</field>
+				<field name="social_buttons_addthis" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_SOCIAL_BUTTONS_ADDTHIS" description="PLG_JAMP_SOCIAL_BUTTONS_ADDTHIS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="social_buttons_addthis_pubid" type="text" default="ra-5c191331410932ff" hint="ra-5c191331410932ff" label="PLG_JAMP_SOCIAL_BUTTONS_ADDTHIS_PUBID" description="PLG_JAMP_SOCIAL_BUTTONS_ADDTHIS_PUBID_DESC"/>
+				<field name="social_buttons_addthis_widgetid" type="text" default="957l" hint="957l" label="PLG_JAMP_SOCIAL_BUTTONS_ADDTHIS_WIDGETID" description="PLG_JAMP_SOCIAL_BUTTONS_ADDTHIS_WIDGETID_DESC"/>
+				<field name="social_buttons_addthis_fixed" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_SOCIAL_BUTTONS_ADDTHIS_FIXED" description="PLG_JAMP_SOCIAL_BUTTONS_ADDTHIS_FIXED_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_YOUTUBE_VIDEOS"/>
+				<field name="youtube_videos_activation" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_YOUTUBE_VIDEOS_ACTIVATION" description="PLG_JAMP_YOUTUBE_VIDEOS_ACTIVATION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_LOCAL_CACHE"/>
+				<field name="activate_local_cache" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ACTIVATE_LOCAL_CACHE" description="PLG_JAMP_ACTIVATE_LOCAL_CACHE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="local_cache_lifetime" type="text" default="60" label="PLG_JAMP_LOCAL_CACHE_LIFETIME" description="PLG_JAMP_LOCAL_CACHE_LIFETIME_DESC"/>
+				<field name="preload_amp_script" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_PRELOAD_AMP_SCRIPT" description="PLG_JAMP_PRELOAD_AMP_SCRIPT_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="preload_amp_images" type="text" default="" class="css-selectors" label="PLG_JAMP_PRELOAD_AMP_IMAGES" description="PLG_JAMP_PRELOAD_AMP_IMAGES_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_FACEBOOK_FEATURES"/>
+				<field name="amp_facebook_comments" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_FACEBOOK_COMMENTS" description="PLG_JAMP_FACEBOOK_COMMENTS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_facebook_like" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_FACEBOOK_LIKE" description="PLG_JAMP_FACEBOOK_LIKE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_facebook_like_button" type="list" default="button_count" label="PLG_JAMP_FACEBOOK_LIKE_BUTTON" description="PLG_JAMP_FACEBOOK_LIKE_BUTTON_DESC">
+					<option value="button_count">PLG_JAMP_FACEBOOK_LIKE_BUTTON_COUNT</option>
+					<option value="box_count">PLG_JAMP_FACEBOOK_LIKE_BOX_COUNT</option>
+				</field>
+				<field name="amp_facebook_like_button_position" type="list" default="bottom" label="PLG_JAMP_FACEBOOK_LIKE_BUTTON_POSITION" description="PLG_JAMP_FACEBOOK_LIKE_BUTTON_POSITION_DESC">
+					<option value="bottom">PLG_JAMP_BOTTOM</option>
+					<option value="top">PLG_JAMP_TOP</option>
+					<option value="both">PLG_JAMP_BOTH</option>
+				</field>
+				<field name="amp_facebook_page" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_FACEBOOK_PAGE" description="PLG_JAMP_FACEBOOK_PAGE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_facebook_page_url" type="text" default="" class="css-selectors" label="PLG_JAMP_FACEBOOK_PAGE_URL" description="PLG_JAMP_FACEBOOK_PAGE_URL_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AD"/>
+				<field name="amp_ad_activation" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_AD_ACTIVATION" description="PLG_JAMP_AD_ACTIVATION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_ad_code" type="textarea" default="" filter="raw" rows="4" hint="PLG_JAMP_AD_CODE_HINT" label="PLG_JAMP_AD_CODE" description="PLG_JAMP_AD_CODE_DESC"/>
+				<field name="amp_ad_code_position" type="list" multiple="multiple" default="header" label="PLG_JAMP_AD_CODE_POSITION" description="PLG_JAMP_AD_CODE_POSITION_DESC">
+					<option value="header">PLG_JAMP_AD_HEADER</option>
+					<option value="beforemenu">PLG_JAMP_AD_BEFOREMENU</option>
+					<option value="aftermenu">PLG_JAMP_AD_AFTERMENU</option>
+					<option value="beforecomponent">PLG_JAMP_AD_BEFORECOMPONENT</option>
+					<option value="aftercomponent">PLG_JAMP_AD_AFTERCOMPONENT</option>
+					<option value="footer">PLG_JAMP_AD_FOOTER</option>
+				</field>
+				<field name="amp_auto_ad_activation" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_AUTO_AD_ACTIVATION" description="PLG_JAMP_AUTO_AD_ACTIVATION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_auto_ad_id" type="text" default="" filter="integer" class="css-selectors" hint="PLG_JAMP_AUTO_AD_CLIENTID_HINT" label="PLG_JAMP_AUTO_AD_CLIENTID" description="PLG_JAMP_AUTO_AD_CLIENTID_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_FORM"/>
+				<field name="enable_form" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_FORM_ENABLED" description="PLG_JAMP_FORM_ENABLED_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="enable_form_bycss_selectors" type="text" default="form" class="css-selectors" hint="PLG_JAMP_FORM_ENABLED_BYCSS_SELECTORS_HINT" label="PLG_JAMP_FORM_ENABLED_BYCSS_SELECTORS" description="PLG_JAMP_FORM_ENABLED_BYCSS_SELECTORS_DESC"/>
+				<field name="set_form_action" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_FORM_SET_ACTION" description="PLG_JAMP_FORM_SET_ACTION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_DISALLOWED_TAGS_ATTRIBUTES"/>
+				<field name="disallowed_tags" type="text" default="" class="css-selectors" hint="PLG_JAMP_DISALLOWED_TAGS_HINT" label="PLG_JAMP_DISALLOWED_TAGS" description="PLG_JAMP_DISALLOWED_TAGS_DESC"/>
+				<field name="disallowed_attributes" type="text" default="" class="css-selectors" hint="PLG_JAMP_DISALLOWED_ATTRIBUTES_HINT" label="PLG_JAMP_DISALLOWED_ATTRIBUTES" description="PLG_JAMP_DISALLOWED_ATTRIBUTES_DESC"/>
+				<field name="fix_relative_links" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_FIX_RELATIVE_LINKS" description="PLG_JAMP_FIX_RELATIVE_LINKS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field name="exclude_ampify_paths" type="text" default="" class="css-selectors" hint="PLG_JAMP_EXCLUDE_AMPIFY_HINT" label="PLG_JAMP_EXCLUDE_AMPIFY_PATHS" description="PLG_JAMP_EXCLUDE_AMPIFY_PATHS_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_EXCLUDED_ELEMENTS"/>
+				<field name="removed_elements_bycss_selectors" type="text" default="" class="css-selectors" hint="PLG_JAMP_REMOVED_SELECTORS_HINT" label="PLG_JAMP_REMOVED_ELEMENTS_BYCSS_SELECTORS" description="PLG_JAMP_REMOVED_ELEMENTS_BYCSS_SELECTORS_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_REPLACE_BUTTONS"/>
+				<field name="replace_buttons_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_REPLACE_BUTTONS_ENABLE" description="PLG_JAMP_REPLACE_BUTTONS_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="replace_buttons_selector" type="text" default="" class="css-selectors" hint="PLG_JAMP_REPLACE_BUTTONS_SELECTOR_HINT" label="PLG_JAMP_REPLACE_BUTTONS_SELECTOR" description="PLG_JAMP_REPLACE_BUTTONS_SELECTOR_DESC"/>
+				<field name="replace_buttons_text" type="text" default="" label="PLG_JAMP_REPLACE_BUTTONS_TEXT" description="PLG_JAMP_REPLACE_BUTTONS_TEXT_DESC"/>
+				<field name="replace_buttons_text_usetitle" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_REPLACE_BUTTONS_TEXT_USETITLE" description="PLG_JAMP_REPLACE_BUTTONS_TEXT_USETITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_REMOVE_STRINGS"/>
+				<field name="remove_strings_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_REMOVE_STRINGS_ENABLE" description="PLG_JAMP_REMOVE_STRINGS_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="remove_strings_regexs" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_REMOVE_STRINGS_REGEXS" description="PLG_JAMP_REMOVE_STRINGS_REGEXS_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_PLUGINS_EXCLUSIONS"/>
+				<field name="enable_plugins_exclusions" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_PLUGIN_EXCLUSIONS_ENABLED" description="PLG_JAMP_PLUGIN_EXCLUSIONS_ENABLED_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="plugins_excluded" type="pluginexclusion" multiple="multiple" default="0" label="PLG_JAMP_PLUGINS_EXCLUDED" description="PLG_JAMP_PLUGINS_EXCLUDED_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_CUSTOM_CODE"/>
+				<field name="custom_code_before_head" type="textarea" default="" filter="raw" rows="10" label="PLG_JAMP_CUSTOM_CODE_BEFORE_HEAD" description="PLG_JAMP_CUSTOM_CODE_BEFORE_HEAD_DESC"/>
+				<field name="custom_code_after_body" type="textarea" default="" filter="raw" rows="10" label="PLG_JAMP_CUSTOM_CODE_AFTER_BODY" description="PLG_JAMP_CUSTOM_CODE_AFTER_BODY_DESC"/>
+				<field name="custom_code_transform_contents" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_CUSTOM_CODE_TRANSFORM_CONTENTS" description="PLG_JAMP_CUSTOM_CODE_TRANSFORM_CONTENTS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+			
+			<fieldset name="menumanagement" label="PLG_JAMP_MENU_MANAGEMENT" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_MENU_MODULE"/>
+				<field name="enable_menu_module" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_MENU_MODULE" description="PLG_JAMP_ENABLE_MENU_MODULE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="menu_module_name" type="loadmodulespositions" positions="1" default="" hint="PLG_JAMP_SET_MENU_MODULE_NAME" label="PLG_JAMP_MENU_MODULE_NAME" description="PLG_JAMP_MENU_MODULE_NAME_DESC"/>
+				<field name="menu_module_title" type="loadmodulestitles" positions="1" default="" hint="PLG_JAMP_SET_MENU_MODULE_TITLE" label="PLG_JAMP_MENU_MODULE_TITLE" description="PLG_JAMP_MENU_MODULE_TITLE_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_MENU_HEADER_ASPECT"/>
+				<field name="menu_module_header_bg_color" type="color" default="#FF9800" label="PLG_JAMP_MENU_MODULE_HEADER_BG_COLOR" description="PLG_JAMP_MENU_MODULE_HEADER_BG_COLOR_DESC"/>
+				<field name="menu_module_header_text_color" type="color" default="#333" label="PLG_JAMP_MENU_MODULE_HEADER_TEXT_COLOR" description="PLG_JAMP_MENU_MODULE_HEADER_TEXT_COLOR_DESC"/>
+				<field name="enable_menu_header_title" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_ENABLE_MENU_HEADER_TITLE" description="PLG_JAMP_ENABLE_MENU_HEADER_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="menu_module_header_icon" type="list" default="mobile_menu_black" label="PLG_JAMP_MENU_MODULE_HEADER_ICON" description="PLG_JAMP_MENU_MODULE_HEADER_ICON_DESC">
+					<option value="mobile_menu_noimage">JNO</option>
+					<option value="mobile_menu_black">PLG_JAMP_BLACK</option>
+					<option value="mobile_menu_white">PLG_JAMP_WHITE</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_MENU_BODY_ASPECT"/>
+				<field name="menu_module_accordion_expanded" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_MENU_MODULE_ACCORDION_EXPANDED" description="PLG_JAMP_MENU_MODULE_ACCORDION_EXPANDED_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="menu_module_body_bg_color" type="color" default="" label="PLG_JAMP_MENU_MODULE_BODY_BG_COLOR" description="PLG_JAMP_MENU_MODULE_BODY_BG_COLOR_DESC"/>
+				<field name="menu_module_body_text_color" type="color" default="" label="PLG_JAMP_MENU_MODULE_BODY_TEXT_COLOR" description="PLG_JAMP_MENU_MODULE_BODY_TEXT_COLOR_DESC"/>
+				<field name="menu_module_nested_accordion" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_MENU_MODULE_NESTED_ACCORDION" description="PLG_JAMP_MENU_MODULE_NESTED_ACCORDION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="menu_module_innerbody_bg_color" type="color" default="" label="PLG_JAMP_MENU_MODULE_INNERBODY_BG_COLOR" description="PLG_JAMP_MENU_MODULE_INNERBODY_BG_COLOR_DESC"/>
+				<field name="menu_module_innerbody_text_color" type="color" default="" label="PLG_JAMP_MENU_MODULE_INNERBODY_TEXT_COLOR" description="PLG_JAMP_MENU_MODULE_INNERBODY_TEXT_COLOR_DESC"/>
+				<field name="menu_module_innerbody_elements_bg_color" type="color" default="" label="PLG_JAMP_MENU_MODULE_INNERBODY_ELEMENTS_TEXT_COLOR" description="PLG_JAMP_MENU_MODULE_INNERBODY_ELEMENTS_TEXT_COLOR_DESC"/>
+				<field name="menu_module_innerbody_icon" type="list" default="accordion_black" label="PLG_JAMP_MENU_MODULE_INNERBODY_ICON" description="PLG_JAMP_MENU_MODULE_INNERBODY_ICON_DESC">
+					<option value="accordion_noicon">JNO</option>
+					<option value="accordion_black">PLG_JAMP_BLACK</option>
+					<option value="accordion_white">PLG_JAMP_WHITE</option>
+				</field>
+				<field name="menu_module_nested_accordion_selector" type="text" default="li.parent" class="css-selectors" label="PLG_JAMP_MENU_MODULE_NESTED_ACCORDION_SELECTOR" description="PLG_JAMP_MENU_MODULE_NESTED_ACCORDION_SELECTOR_DESC"/>
+				<field name="menu_module_animate" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_MENU_MODULE_ANIMATE" description="PLG_JAMP_MENU_MODULE_ANIMATE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="menu_module_separator" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_MENU_MODULE_SEPARATOR" description="PLG_JAMP_MENU_MODULE_SEPARATOR_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_MENU_POSITION"/>
+				<field name="menu_module_position" type="list" default="top" label="PLG_JAMP_MENU_MODULE_POSITION" description="PLG_JAMP_MENU_MODULE_POSITION_DESC">
+					<option value="bottom">PLG_JAMP_BOTTOM</option>
+					<option value="top">PLG_JAMP_TOP</option>
+					<option value="both">PLG_JAMP_BOTH</option>
+				</field>
+			</fieldset>
+			
+			<fieldset name="sidebarmanagement" label="PLG_JAMP_SIDEBAR_MANAGEMENT" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SIDEBAR_MODULE"/>
+				<field name="enable_sidebar_module" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_SIDEBAR_MODULE" description="PLG_JAMP_ENABLE_SIDEBAR_MODULE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="sidebar_module_name" type="loadmodulespositions" positions="1" default="" hint="PLG_JAMP_SET_SIDEBAR_MODULE_NAME" label="PLG_JAMP_SIDEBAR_MODULE_NAME" description="PLG_JAMP_SIDEBAR_MODULE_NAME_DESC"/>
+				<field name="sidebar_module_title" type="loadmodulestitles" positions="1" default="" hint="PLG_JAMP_SET_SIDEBAR_MODULE_TITLE" label="PLG_JAMP_SIDEBAR_MODULE_TITLE" description="PLG_JAMP_SIDEBAR_MODULE_TITLE_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SIDEBAR_ICONS"/>
+				<field name="sidebar_open_icon" type="list" default="sidebar_open_white" label="PLG_JAMP_SIDEBAR_OPEN_ICON" description="PLG_JAMP_SIDEBAR_OPEN_ICON_DESC">
+					<option value="sidebar_open_black">PLG_JAMP_BLACK</option>
+					<option value="sidebar_open_white">PLG_JAMP_WHITE</option>
+				</field>
+				<field name="sidebar_close_icon" type="list" default="sidebar_close_black" label="PLG_JAMP_SIDEBAR_CLOSE_ICON" description="PLG_JAMP_SIDEBAR_CLOSE_ICON_DESC">
+					<option value="sidebar_close_black">PLG_JAMP_BLACK</option>
+					<option value="sidebar_close_white">PLG_JAMP_WHITE</option>
+				</field>
+				<field name="show_sidebar_title" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_SHOW_SIDEBAR_TITLE" description="PLG_JAMP_SHOW_SIDEBAR_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SIDEBAR_ASPECT"/>
+				<field name="sidebar_side" type="list" default="left" label="PLG_JAMP_SIDEBAR_SIDE" description="PLG_JAMP_SIDEBAR_SIDE_DESC">
+					<option value="left">PLG_JAMP_SIDEBAR_LEFT</option>
+					<option value="right">PLG_JAMP_SIDEBAR_RIGHT</option>
+				</field>
+				<field name="sidebar_header_bg_color" type="color" default="#FFFFFF" label="PLG_JAMP_SIDEBAR_HEADER_BG_COLOR" description="PLG_JAMP_SIDEBAR_HEADER_BG_COLOR_DESC"/>
+				<field name="sidebar_header_text_color" type="color" default="#333" label="PLG_JAMP_SIDEBAR_HEADER_TEXT_COLOR" description="PLG_JAMP_SIDEBAR_HEADER_TEXT_COLOR_DESC"/>
+				
+				<field name="sidebar_body_bg_color" type="color" default="#FFFFFF" label="PLG_JAMP_SIDEBAR_BODY_BG_COLOR" description="PLG_JAMP_SIDEBAR_BODY_BG_COLOR_DESC"/>
+				<field name="sidebar_body_text_color" type="color" default="#333" label="PLG_JAMP_SIDEBAR_BODY_TEXT_COLOR" description="PLG_JAMP_SIDEBAR_BODY_TEXT_COLOR_DESC"/>
+			</fieldset>
+			
+			
+			<fieldset name="modulesmanagement" label="PLG_JAMP_MODULES_MANAGEMENT" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_HEADER_MODULE"/>
+				<field name="enable_header_module" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_HEADER_MODULE" description="PLG_JAMP_ENABLE_HEADER_MODULE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="header_module_name" type="loadmodulespositions" positions="1" default="" hint="PLG_JAMP_SET_HEADER_MODULE_NAME" label="PLG_JAMP_HEADER_MODULE_NAME" description="PLG_JAMP_HEADER_MODULE_NAME_DESC"/>
+				<field name="header_module_title" type="loadmodulestitles" positions="1" default="" hint="PLG_JAMP_SET_HEADER_MODULE_TITLE" label="PLG_JAMP_HEADER_MODULE_TITLE" description="PLG_JAMP_HEADER_MODULE_TITLE_DESC"/>
+				<field name="enable_header_module_title" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_ENABLE_HEADER_MODULE_TITLE" description="PLG_JAMP_ENABLE_HEADER_MODULE_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_TOP_MODULE"/>
+				<field name="enable_top_module" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_TOP_MODULE" description="PLG_JAMP_ENABLE_TOP_MODULE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="top_module_name" type="loadmodulespositions" positions="1" default="" hint="PLG_JAMP_SET_TOP_MODULE_NAME" label="PLG_JAMP_TOP_MODULE_NAME" description="PLG_JAMP_TOP_MODULE_NAME_DESC"/>
+				<field name="top_module_title" type="loadmodulestitles" positions="1" default="" hint="PLG_JAMP_SET_TOP_MODULE_TITLE" label="PLG_JAMP_TOP_MODULE_TITLE" description="PLG_JAMP_TOP_MODULE_TITLE_DESC"/>
+				<field name="enable_top_module_title" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_ENABLE_TOP_MODULE_TITLE" description="PLG_JAMP_ENABLE_TOP_MODULE_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_MAIN_MODULE"/>
+				<field name="enable_main_module" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_MAIN_MODULE" description="PLG_JAMP_ENABLE_MAIN_MODULE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="main_module_name" type="loadmodulespositions" positions="1" default="" hint="PLG_JAMP_SET_MAIN_MODULE_NAME" label="PLG_JAMP_MAIN_MODULE_NAME" description="PLG_JAMP_MAIN_MODULE_NAME_DESC"/>
+				<field name="main_module_title" type="loadmodulestitles" positions="1" default="" hint="PLG_JAMP_SET_MAIN_MODULE_TITLE" label="PLG_JAMP_MAIN_MODULE_TITLE" description="PLG_JAMP_MAIN_MODULE_TITLE_DESC"/>
+				<field name="enable_main_module_title" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_ENABLE_MAIN_MODULE_TITLE" description="PLG_JAMP_ENABLE_MAIN_MODULE_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_CENTER_MODULE"/>
+				<field name="enable_center_module" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_CENTER_MODULE" description="PLG_JAMP_ENABLE_CENTER_MODULE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="center_module_name" type="loadmodulespositions" positions="1" default="" hint="PLG_JAMP_SET_CENTER_MODULE_NAME" label="PLG_JAMP_CENTER_MODULE_NAME" description="PLG_JAMP_CENTER_MODULE_NAME_DESC"/>
+				<field name="center_module_title" type="loadmodulestitles" positions="1" default="" hint="PLG_JAMP_SET_CENTER_MODULE_TITLE" label="PLG_JAMP_CENTER_MODULE_TITLE" description="PLG_JAMP_CENTER_MODULE_TITLE_DESC"/>
+				<field name="enable_center_module_title" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_ENABLE_CENTER_MODULE_TITLE" description="PLG_JAMP_ENABLE_CENTER_MODULE_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_BOTTOM_MODULE"/>
+				<field name="enable_bottom_module" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_BOTTOM_MODULE" description="PLG_JAMP_ENABLE_BOTTOM_MODULE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="bottom_module_name" type="loadmodulespositions" positions="1" default="" hint="PLG_JAMP_SET_BOTTOM_MODULE_NAME" label="PLG_JAMP_BOTTOM_MODULE_NAME" description="PLG_JAMP_BOTTOM_MODULE_NAME_DESC"/>
+				<field name="bottom_module_title" type="loadmodulestitles" positions="1" default="" hint="PLG_JAMP_SET_BOTTOM_MODULE_TITLE" label="PLG_JAMP_BOTTOM_MODULE_TITLE" description="PLG_JAMP_BOTTOM_MODULE_TITLE_DESC"/>
+				<field name="enable_bottom_module_title" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_ENABLE_BOTTOM_MODULE_TITLE" description="PLG_JAMP_ENABLE_BOTTOM_MODULE_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_FOOTER_MODULE"/>
+				<field name="enable_footer_module" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_FOOTER_MODULE" description="PLG_JAMP_ENABLE_FOOTER_MODULE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="footer_module_name" type="loadmodulespositions" positions="1" default="" hint="PLG_JAMP_SET_FOOTER_MODULE_NAME" label="PLG_JAMP_FOOTER_MODULE_NAME" description="PLG_JAMP_FOOTER_MODULE_NAME_DESC"/>
+				<field name="footer_module_title" type="loadmodulestitles" positions="1" default="" hint="PLG_JAMP_SET_FOOTER_MODULE_TITLE" label="PLG_JAMP_FOOTER_MODULE_TITLE" description="PLG_JAMP_FOOTER_MODULE_TITLE_DESC"/>
+				<field name="enable_footer_module_title" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_ENABLE_FOOTER_MODULE_TITLE" description="PLG_JAMP_ENABLE_FOOTER_MODULE_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+			
+			<fieldset name="slideshow" label="PLG_JAMP_SLIDESHOW" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SLIDESHOW_PATH"/>
+				<field name="enable_slideshow" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_SLIDESHOW" description="PLG_JAMP_ENABLE_SLIDESHOW_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="pathfolder" type="folderlist" directory="images" hide_none="1" label="PLG_JAMP_IMAGES_FOLDER" description="PLG_JAMP_IMAGES_FOLDER_DESC" />
+				<field name="recursive" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_IMAGES_FOLDER_INCLUDE_SUBFOLDERS" description="PLG_JAMP_IMAGES_FOLDER_INCLUDE_SUBFOLDERS_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_SLIDESHOW_SETTINGS"/>
+				<field name="slideshow_position" type="list" default="top" label="PLG_JAMP_SLIDESHOW_POSITION" description="PLG_JAMP_SLIDESHOW_POSITION_DESC">
+					<option value="top">PLG_JAMP_IN_TOP_HEADER</option>
+					<option value="middle">PLG_JAMP_AFTER_TOP</option>
+				</field>
+				<field name="always_visible_navigation" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_IMAGES_ALWAYS_VISIBLE_NAVIGATION" description="PLG_JAMP_IMAGES_ALWAYS_VISIBLE_NAVIGATION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="navigation_buttons_opacity" type="list" default="0.5" label="PLG_JAMP_NAVIGATION_BUTTONS_OPACITY" description="PLG_JAMP_NAVIGATION_BUTTONS_OPACITY_DESC">
+					<option value="0.1">10%</option>
+					<option value="0.2">20%</option>
+					<option value="0.3">30%</option>
+					<option value="0.4">40%</option>
+					<option value="0.5">50%</option>
+					<option value="0.6">60%</option>
+					<option value="0.7">70%</option>
+					<option value="0.8">80%</option>
+					<option value="0.9">90%</option>
+					<option value="1">100%</option>
+				</field>
+				<field name="slideshow_autoplay" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_SLIDESHOW_AUTOPLAY" description="PLG_JAMP_SLIDESHOW_AUTOPLAY_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="slideshow_delay" type="text" default="2000" label="PLG_JAMP_SLIDESHOW_DELAY" description="PLG_JAMP_SLIDESHOW_DELAY_DESC"/>
+				<field name="enable_slideshow_only_home" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_SLIDESHOW_ONLY_HOME" description="PLG_JAMP_ENABLE_SLIDESHOW_ONLY_HOME_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="enable_slideshow_by_pages" type="menumultiselect" default="0" size="20" multiple="multiple" label="PLG_JAMP_ENABLE_SLIDESHOW_BY_PAGES" description="PLG_JAMP_ENABLE_SLIDESHOW_BY_PAGES_DESC" />
+				<field name="enable_slideshow_byselector" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_SLIDESHOW_BYSELECTOR" description="PLG_JAMP_ENABLE_SLIDESHOW_BYSELECTOR_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="slideshow_byselector" type="text" default="" class="css-selectors" hint="PLG_JAMP_SLIDESHOW_BYSELECTOR_HINT" label="PLG_JAMP_SLIDESHOW_BYSELECTOR" description="PLG_JAMP_SLIDESHOW_BYSELECTOR_DESC"/>
+			</fieldset>
+			
+			<fieldset name="usernotification" label="PLG_JAMP_USERNOTIFICATION" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_STANDARD_COOKIE_CONSENT_SETTINGS"/>
+				<field name="enable_user_notification" type="list" default="0" label="PLG_JAMP_ENABLE_USER_NOTIFICATION" description="PLG_JAMP_ENABLE_USER_NOTIFICATION_DESC">
+					<option value="0">PLG_JAMP_ENABLE_USER_NOTIFICATION_DISABLED</option>
+					<option value="1">PLG_JAMP_ENABLE_USER_NOTIFICATION_INFORMATIVE</option>
+					<option value="2">PLG_JAMP_ENABLE_USER_NOTIFICATION_STANDARD_CONSENT</option>
+					<option value="3">PLG_JAMP_ENABLE_USER_NOTIFICATION_IUBENDA_CONSENT</option>
+				</field>
+				<field name="iubenda_blocked_elements" type="list" multiple="multiple" size="15" showon="enable_user_notification:2,3" default="header" label="PLG_JAMP_IUB_BLOCKED_ELEMENTS" description="PLG_JAMP_IUB_BLOCKED_ELEMENTS_DESC">
+					<option value="0">PLG_JAMP_IUB_BLOCKED_ELEMENT_NONE</option>
+					<option value="amp-analytics">PLG_JAMP_IUB_BLOCKED_ELEMENT_ANALYTICS</option>
+					<option value="amp-pixel">PLG_JAMP_IUB_BLOCKED_ELEMENT_PIXEL</option>
+					<option value="amp-ad">PLG_JAMP_IUB_BLOCKED_ELEMENT_AD</option>
+					<option value="amp-auto-ads">PLG_JAMP_IUB_BLOCKED_ELEMENT_AUTOADS</option>
+					<option value="amp-form">PLG_JAMP_IUB_BLOCKED_ELEMENT_FORM</option>
+					<option value="amp-video">PLG_JAMP_IUB_BLOCKED_ELEMENT_VIDEO</option>
+					<option value="amp-audio">PLG_JAMP_IUB_BLOCKED_ELEMENT_AUDIO</option>
+					<option value="amp-img">PLG_JAMP_IUB_BLOCKED_ELEMENT_IMAGE</option>
+					<option value="amp-social-share">PLG_JAMP_IUB_BLOCKED_ELEMENT_SOCIALSHARE</option>
+					<option value="amp-youtube">PLG_JAMP_IUB_BLOCKED_ELEMENT_YOUTUBE</option>
+					<option value="amp-facebook-comments">PLG_JAMP_IUB_BLOCKED_ELEMENT_FACEBOOKCOMMENTS</option>
+					<option value="amp-facebook-like">PLG_JAMP_IUB_BLOCKED_ELEMENT_FACEBOOKLIKE</option>
+					<option value="amp-instagram">PLG_JAMP_IUB_BLOCKED_ELEMENT_INSTAGRAM</option>
+					<option value="amp-twitter">PLG_JAMP_IUB_BLOCKED_ELEMENT_TWITTER</option>
+				</field>
+				<field name="iubenda_button_position" type="list" default="bottom-right" showon="enable_user_notification:2,3" label="PLG_JAMP_IUB_BUTTON_POSITION" description="PLG_JAMP_IUB_BUTTON_POSITION_DESC">
+					<option value="top-left">PLG_JAMP_IUB_BUTTON_POSITION_TOPLEFT</option>
+					<option value="top-right">PLG_JAMP_IUB_BUTTON_POSITION_TOPRIGHT</option>
+					<option value="bottom-left">PLG_JAMP_IUB_BUTTON_POSITION_BOTTOMLEFT</option>
+					<option value="bottom-right">PLG_JAMP_IUB_BUTTON_POSITION_BOTTOMRIGHT</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" showon="enable_user_notification:3" label="PLG_JAMP_IUBENDA_COOKIE_CONSENT_SETTINGS"/>
+				<field name="iub_site_id" type="text" default="" showon="enable_user_notification:3" label="PLG_JAMP_IUB_SITE_ID" description="PLG_JAMP_IUB_SITE_ID_DESC"/>
+				<field name="iub_cookie_policy_id" type="text" default="" showon="enable_user_notification:3" label="PLG_JAMP_IUB_COOKIE_POLICY_ID" description="PLG_JAMP_IUB_COOKIE_POLICY_ID_DESC"/>
+				<field name="enable_iubenda_tcf" type="radio" layout="joomla.form.field.radio.switcher" default="1" showon="enable_user_notification:3" label="PLG_JAMP_ENABLE_IUBENDA_TCF" description="PLG_JAMP_ENABLE_IUBENDA_TCF_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="iubenda_custom_domain" type="text" default="" showon="enable_user_notification:3" class="css-selectors" label="PLG_JAMP_IUBENDA_CUSTOM_DOMAIN" description="PLG_JAMP_IUBENDA_CUSTOM_DOMAIN_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" showon="enable_user_notification:1,2" label="PLG_JAMP_USER_NOTIFICATION_SETTINGS"/>
+				<field name="user_notification_bg_color" type="color" showon="enable_user_notification:1,2" default="#000000" label="PLG_JAMP_USER_NOTIFICATION_BG_COLOR" description="PLG_JAMP_USER_NOTIFICATION_BG_COLOR_DESC"/>
+				<field name="user_notification_text_color" type="color" showon="enable_user_notification:1,2" default="#FFFFFF" label="PLG_JAMP_USER_NOTIFICATION_TEXT_COLOR" description="PLG_JAMP_USER_NOTIFICATION_TEXT_COLOR_DESC"/>
+				<field name="user_notification_text" type="textarea" showon="enable_user_notification:1,2" default="" rows="10" filter="raw" label="PLG_JAMP_USER_NOTIFICATION_TEXT" description="PLG_JAMP_USER_NOTIFICATION_TEXT_DESC"/>
+				
+				<field name="user_notification_button_text_accept_enable" type="radio" layout="joomla.form.field.radio.switcher" showon="enable_user_notification:1,2" default="1" label="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_ACCEPT_ENABLE" description="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_ACCEPT_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="user_notification_button_text_accept" type="text" showon="enable_user_notification:1,2" default="Accept" label="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_ACCEPT" description="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_ACCEPT_DESC"/>
+				<field name="user_notification_button_text_reject_enable" type="radio" layout="joomla.form.field.radio.switcher" showon="enable_user_notification:1,2" default="1" label="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_REJECT_ENABLE" description="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_REJECT_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="user_notification_button_text_reject" type="text" showon="enable_user_notification:1,2" default="Reject" label="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_REJECT" description="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_REJECT_DESC"/>
+				<field name="user_notification_button_text_dismiss_enable" type="radio" layout="joomla.form.field.radio.switcher" showon="enable_user_notification:1,2" default="1" label="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_DISMISS_ENABLE" description="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_DISMISS_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="user_notification_button_text_dismiss" type="text" showon="enable_user_notification:1,2" default="Dismiss" label="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_DISMISS" description="PLG_JAMP_USER_NOTIFICATION_BUTTON_TEXT_DISMISS_DESC"/>
+			</fieldset>
+			
+			<fieldset name="ampstory" label="PLG_JAMP_AMPSTORY" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AMPSTORY_SETTINGS"/>
+				<field name="amp_story_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_AMP_STORY_ENABLE" description="PLG_JAMP_AMP_STORY_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_maintitle" type="text" default="" label="PLG_JAMP_AMP_STORY_MAINTITLE" description="PLG_JAMP_AMP_STORY_MAINTITLE_DESC"/>
+				<field name="amp_story_publisher_name" type="text" default="" label="PLG_JAMP_AMP_STORY_PUBLISHER_NAME" description="PLG_JAMP_AMP_STORY_PUBLISHER_NAME_DESC"/>
+				<field name="amp_story_publisher_logo" type="media" label="PLG_JAMP_AMP_STORY_PUBLISHER_LOGO" description="PLG_JAMP_AMP_STORY_PUBLISHER_LOGO_DESC"/>
+				<field name="amp_story_poster_image" type="media" label="PLG_JAMP_AMP_STORY_POSTER_IMAGE" description="PLG_JAMP_AMP_STORY_POSTER_IMAGE_DESC"/>
+				<field name="amp_story_audio_background" type="text" class="absolute-url" label="PLG_JAMP_AMP_STORY_AUDIO_BACKGROUND" description="PLG_JAMP_AMP_STORY_AUDIO_BACKGROUND_DESC"/>
+				<field name="amp_story_auto_advance" type="list" default="" label="PLG_JAMP_AMP_AUTO_ADVANCE" description="PLG_JAMP_AMP_AUTO_ADVANCE_DESC">
+					<option value="">PLG_JAMP_AMP_AUTO_ADVANCE_DISABLED</option>
+					<option value="1">PLG_JAMP_AMP_AUTO_ADVANCE_1SEC</option>
+					<option value="2">PLG_JAMP_AMP_AUTO_ADVANCE_2SEC</option>
+					<option value="3">PLG_JAMP_AMP_AUTO_ADVANCE_3SEC</option>
+					<option value="4">PLG_JAMP_AMP_AUTO_ADVANCE_4SEC</option>
+					<option value="5">PLG_JAMP_AMP_AUTO_ADVANCE_5SEC</option>
+					<option value="6">PLG_JAMP_AMP_AUTO_ADVANCE_6SEC</option>
+					<option value="7">PLG_JAMP_AMP_AUTO_ADVANCE_7SEC</option>
+					<option value="8">PLG_JAMP_AMP_AUTO_ADVANCE_8SEC</option>
+					<option value="9">PLG_JAMP_AMP_AUTO_ADVANCE_9SEC</option>
+					<option value="10">PLG_JAMP_AMP_AUTO_ADVANCE_10SEC</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AMPSTORY_PAGE1"/>
+				<field name="amp_story_page1_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_AMP_STORY_PAGE_ENABLE" description="PLG_JAMP_AMP_STORY_PAGE_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_content_template_page1" type="list" default="vertical" label="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE" description="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_DESC">
+					<option value="vertical">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_VERTICAL</option>
+					<option value="horizontal">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_HORIZONTAL</option>
+				</field>
+				<field name="amp_story_background_image_page1" type="media" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE_DESC"/>
+				<field name="amp_story_background_video_page1" type="text" class="absolute-url" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_DESC"/>
+				<field name="amp_story_background_video_width_page1" type="text" default="720" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH_DESC"/>
+				<field name="amp_story_background_video_height_page1" type="text" default="960" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT_DESC"/>
+				<field name="amp_story_background_video_loop_page1" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_videoposter_page1" type="media" label="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER" description="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER_DESC"/>
+				<field name="amp_story_title_page1" type="text" default="" label="PLG_JAMP_AMP_STORY_PAGE_TITLE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_DESC"/>
+				<field name="amp_story_title_color_page1" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR_DESC"/>
+				<field name="amp_story_title_fontsize_page1" type="text" default="32" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE_DESC"/>
+				<field name="amp_story_title_animation_page1" type="list" default="fly-in-top" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_title_animation_duration_page1" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_title_alignment_page1" type="list" default="left" label="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT" description="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_content_page1" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_DESC"/>
+				<field name="amp_story_content_color_page1" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR_DESC"/>
+				<field name="amp_story_content_fontsize_page1" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE_DESC"/>
+				<field name="amp_story_content_animation_page1" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_content_animation_duration_page1" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_content_alignment_page1" type="list" default="left" label="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT" description="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AMPSTORY_PAGE2"/>
+				<field name="amp_story_page2_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_AMP_STORY_PAGE_ENABLE" description="PLG_JAMP_AMP_STORY_PAGE_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_content_template_page2" type="list" default="vertical" label="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE" description="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_DESC">
+					<option value="vertical">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_VERTICAL</option>
+					<option value="horizontal">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_HORIZONTAL</option>
+				</field>
+				<field name="amp_story_background_image_page2" type="media" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE_DESC"/>
+				<field name="amp_story_background_video_page2" type="text" class="absolute-url" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_DESC"/>
+				<field name="amp_story_background_video_width_page2" type="text" default="720" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH_DESC"/>
+				<field name="amp_story_background_video_height_page2" type="text" default="960" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT_DESC"/>
+				<field name="amp_story_background_video_loop_page2" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_videoposter_page2" type="media" label="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER" description="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER_DESC"/>
+				<field name="amp_story_title_page2" type="text" default="" label="PLG_JAMP_AMP_STORY_PAGE_TITLE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_DESC"/>
+				<field name="amp_story_title_color_page2" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR_DESC"/>
+				<field name="amp_story_title_fontsize_page2" type="text" default="32" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE_DESC"/>
+				<field name="amp_story_title_animation_page2" type="list" default="fly-in-top" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_title_animation_duration_page2" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_title_alignment_page2" type="list" default="left" label="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT" description="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_content_page2" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_DESC"/>
+				<field name="amp_story_content_color_page2" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR_DESC"/>
+				<field name="amp_story_content_fontsize_page2" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE_DESC"/>
+				<field name="amp_story_content_animation_page2" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_content_animation_duration_page2" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_content_alignment_page2" type="list" default="left" label="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT" description="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_links_page2" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_LINKS" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_DESC"/>
+				<field name="amp_story_links_color_page2" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_LINKS_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_COLOR_DESC"/>
+				<field name="amp_story_links_fontsize_page2" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_LINKS_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_FONTSIZE_DESC"/>
+				<field name="amp_story_links_animation_page2" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_LINKS_ANIMATION" description="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_links_animation_duration_page2" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_links_alignment_page2" type="list" default="left" label="PLG_JAMP_AMP_STORY_LINKS_ALIGNMENT" description="PLG_JAMP_AMP_STORY_LINKS_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AMPSTORY_PAGE3"/>
+				<field name="amp_story_page3_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_AMP_STORY_PAGE_ENABLE" description="PLG_JAMP_AMP_STORY_PAGE_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_content_template_page3" type="list" default="vertical" label="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE" description="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_DESC">
+					<option value="vertical">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_VERTICAL</option>
+					<option value="horizontal">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_HORIZONTAL</option>
+				</field>
+				<field name="amp_story_background_image_page3" type="media" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE_DESC"/>
+				<field name="amp_story_background_video_page3" type="text" class="absolute-url" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_DESC"/>
+				<field name="amp_story_background_video_width_page3" type="text" default="720" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH_DESC"/>
+				<field name="amp_story_background_video_height_page3" type="text" default="960" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT_DESC"/>
+				<field name="amp_story_background_video_loop_page3" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_videoposter_page3" type="media" label="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER" description="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER_DESC"/>
+				<field name="amp_story_title_page3" type="text" default="" label="PLG_JAMP_AMP_STORY_PAGE_TITLE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_DESC"/>
+				<field name="amp_story_title_color_page3" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR_DESC"/>
+				<field name="amp_story_title_fontsize_page3" type="text" default="32" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE_DESC"/>
+				<field name="amp_story_title_animation_page3" type="list" default="fly-in-top" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_title_animation_duration_page3" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_title_alignment_page3" type="list" default="left" label="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT" description="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_content_page3" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_DESC"/>
+				<field name="amp_story_content_color_page3" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR_DESC"/>
+				<field name="amp_story_content_fontsize_page3" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE_DESC"/>
+				<field name="amp_story_content_animation_page3" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_content_animation_duration_page3" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_content_alignment_page3" type="list" default="left" label="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT" description="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_links_page3" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_LINKS" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_DESC"/>
+				<field name="amp_story_links_color_page3" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_LINKS_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_COLOR_DESC"/>
+				<field name="amp_story_links_fontsize_page3" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_LINKS_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_FONTSIZE_DESC"/>
+				<field name="amp_story_links_animation_page3" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_LINKS_ANIMATION" description="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_links_animation_duration_page3" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_links_alignment_page3" type="list" default="left" label="PLG_JAMP_AMP_STORY_LINKS_ALIGNMENT" description="PLG_JAMP_AMP_STORY_LINKS_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AMPSTORY_PAGE4"/>
+				<field name="amp_story_page4_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_AMP_STORY_PAGE_ENABLE" description="PLG_JAMP_AMP_STORY_PAGE_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_content_template_page4" type="list" default="vertical" label="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE" description="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_DESC">
+					<option value="vertical">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_VERTICAL</option>
+					<option value="horizontal">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_HORIZONTAL</option>
+				</field>
+				<field name="amp_story_background_image_page4" type="media" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE_DESC"/>
+				<field name="amp_story_background_video_page4" type="text" class="absolute-url" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_DESC"/>
+				<field name="amp_story_background_video_width_page4" type="text" default="720" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH_DESC"/>
+				<field name="amp_story_background_video_height_page4" type="text" default="960" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT_DESC"/>
+				<field name="amp_story_background_video_loop_page4" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_videoposter_page4" type="media" label="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER" description="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER_DESC"/>
+				<field name="amp_story_title_page4" type="text" default="" label="PLG_JAMP_AMP_STORY_PAGE_TITLE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_DESC"/>
+				<field name="amp_story_title_color_page4" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR_DESC"/>
+				<field name="amp_story_title_fontsize_page4" type="text" default="32" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE_DESC"/>
+				<field name="amp_story_title_animation_page4" type="list" default="fly-in-top" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_title_animation_duration_page4" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_title_alignment_page4" type="list" default="left" label="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT" description="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_content_page4" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_DESC"/>
+				<field name="amp_story_content_color_page4" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR_DESC"/>
+				<field name="amp_story_content_fontsize_page4" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE_DESC"/>
+				<field name="amp_story_content_animation_page4" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_content_animation_duration_page4" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_content_alignment_page4" type="list" default="left" label="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT" description="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_links_page4" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_LINKS" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_DESC"/>
+				<field name="amp_story_links_color_page4" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_LINKS_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_COLOR_DESC"/>
+				<field name="amp_story_links_fontsize_page4" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_LINKS_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_FONTSIZE_DESC"/>
+				<field name="amp_story_links_animation_page4" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_LINKS_ANIMATION" description="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_links_animation_duration_page4" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_links_alignment_page4" type="list" default="left" label="PLG_JAMP_AMP_STORY_LINKS_ALIGNMENT" description="PLG_JAMP_AMP_STORY_LINKS_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_AMPSTORY_PAGE5"/>
+				<field name="amp_story_page5_enable" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_AMP_STORY_PAGE_ENABLE" description="PLG_JAMP_AMP_STORY_PAGE_ENABLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_content_template_page5" type="list" default="vertical" label="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE" description="PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_DESC">
+					<option value="vertical">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_VERTICAL</option>
+					<option value="horizontal">PLG_JAMP_AMP_STORY_CONTENT_TEMPLATE_HORIZONTAL</option>
+				</field>
+				<field name="amp_story_background_image_page5" type="media" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_IMAGE_DESC"/>
+				<field name="amp_story_background_video_page5" type="text" class="absolute-url" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_DESC"/>
+				<field name="amp_story_background_video_width_page5" type="text" default="720" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_WIDTH_DESC"/>
+				<field name="amp_story_background_video_height_page5" type="text" default="960" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_HEIGHT_DESC"/>
+				<field name="amp_story_background_video_loop_page5" type="radio" layout="joomla.form.field.radio.switcher" default="1" label="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP" description="PLG_JAMP_AMP_STORY_PAGE_BACKGROUND_VIDEO_LOOP_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_story_videoposter_page5" type="media" label="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER" description="PLG_JAMP_AMP_STORY_PAGE_VIDEOPOSTER_DESC"/>
+				<field name="amp_story_title_page5" type="text" default="" label="PLG_JAMP_AMP_STORY_PAGE_TITLE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_DESC"/>
+				<field name="amp_story_title_color_page5" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_COLOR_DESC"/>
+				<field name="amp_story_title_fontsize_page5" type="text" default="32" label="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_TITLE_FONTSIZE_DESC"/>
+				<field name="amp_story_title_animation_page5" type="list" default="fly-in-top" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_title_animation_duration_page5" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_TITLE_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_title_alignment_page5" type="list" default="left" label="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT" description="PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_content_page5" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_DESC"/>
+				<field name="amp_story_content_color_page5" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_COLOR_DESC"/>
+				<field name="amp_story_content_fontsize_page5" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_CONTENT_FONTSIZE_DESC"/>
+				<field name="amp_story_content_animation_page5" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_content_animation_duration_page5" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_CONTENT_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_content_alignment_page5" type="list" default="left" label="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT" description="PLG_JAMP_AMP_STORY_CONTENT_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+				<field name="amp_story_links_page5" type="textarea" default="" filter="raw" rows="10" class="code_textarea" label="PLG_JAMP_AMP_STORY_PAGE_LINKS" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_DESC"/>
+				<field name="amp_story_links_color_page5" type="color" default="#FFF" label="PLG_JAMP_AMP_STORY_PAGE_LINKS_COLOR" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_COLOR_DESC"/>
+				<field name="amp_story_links_fontsize_page5" type="text" default="24" label="PLG_JAMP_AMP_STORY_PAGE_LINKS_FONTSIZE" description="PLG_JAMP_AMP_STORY_PAGE_LINKS_FONTSIZE_DESC"/>
+				<field name="amp_story_links_animation_page5" type="list" default="fly-in-bottom" label="PLG_JAMP_AMP_STORY_LINKS_ANIMATION" description="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DESC">
+					<option value="none">PLG_JAMP_AMP_STORY_ANIMATION_NONE</option>
+					<option value="drop">PLG_JAMP_AMP_STORY_ANIMATION_DROP</option>
+					<option value="fade-in">PLG_JAMP_AMP_STORY_ANIMATION_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_AMP_STORY_ANIMATION_FLYINBOTTOM</option>
+					<option value="fly-in-left">PLG_JAMP_AMP_STORY_ANIMATION_FLYINLEFT</option>
+					<option value="fly-in-right">PLG_JAMP_AMP_STORY_ANIMATION_FLYINRIGHT</option>
+					<option value="fly-in-top">PLG_JAMP_AMP_STORY_ANIMATION_FLYINTOP</option>
+					<option value="pulse">PLG_JAMP_AMP_STORY_ANIMATION_PULSE</option>
+					<option value="rotate-in-left">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINLEFT</option>
+					<option value="rotate-in-right">PLG_JAMP_AMP_STORY_ANIMATION_ROTATEINRIGHT</option>
+					<option value="twirl-in">PLG_JAMP_AMP_STORY_ANIMATION_TWIRLIN</option>
+					<option value="whoosh-in-left">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINLEFT</option>
+					<option value="whoosh-in-right">PLG_JAMP_AMP_STORY_ANIMATION_WHOOSHINRIGHT</option>
+					<option value="pan-left">PLG_JAMP_AMP_STORY_ANIMATION_PANLEFT</option>
+					<option value="pan-right">PLG_JAMP_AMP_STORY_ANIMATION_PANRIGHT</option>
+					<option value="pan-down">PLG_JAMP_AMP_STORY_ANIMATION_PANDOWN</option>
+					<option value="pan-up">PLG_JAMP_AMP_STORY_ANIMATION_PANUP</option>
+					<option value="zoom-in">PLG_JAMP_AMP_STORY_ANIMATION_ZOOMIN</option>
+					<option value="zoom-out">PLG_JAMP_AMP_STORY_ANIMATION_PANOUT</option>
+				</field>
+				<field name="amp_story_links_animation_duration_page5" type="list" default="0.5" label="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DURATION" description="PLG_JAMP_AMP_STORY_LINKS_ANIMATION_DURATION_DESC">
+					<option value="0.5">0.5s</option>
+					<option value="1">1s</option>
+					<option value="1.5">1.5s</option>
+					<option value="2">2s</option>
+					<option value="2.5">2.5s</option>
+					<option value="3">3s</option>
+					<option value="3.5">3.5s</option>
+					<option value="4">4s</option>
+					<option value="4.5">4.5s</option>
+					<option value="5">5s</option>
+				</field>
+				<field name="amp_story_links_alignment_page5" type="list" default="left" label="PLG_JAMP_AMP_STORY_LINKS_ALIGNMENT" description="PLG_JAMP_AMP_STORY_LINKS_ALIGNMENT_DESC">
+					<option value="left">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_LEFT</option>
+					<option value="center">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_CENTER</option>
+					<option value="right">PLG_JAMP_AMP_STORY_TITLE_ALIGNMENT_RIGHT</option>
+				</field>
+			</fieldset>
+			
+			<fieldset name="addons" label="PLG_JAMP_ADDONS" addfieldpath="/plugins/system/jamp/fields">
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_ADDONS_INSTAGRAM"/>
+				<field name="amp_instagram_enable_top" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_ADDONS_AMP_INSTAGRAM_ENABLE_TOP" description="PLG_JAMP_ADDONS_AMP_INSTAGRAM_ENABLE_TOP_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_instagram_top_shortcode" type="text" default="" label="PLG_JAMP_ADDONS_AMP_INSTAGRAM_TOP_SHORTCODE" description="PLG_JAMP_ADDONS_AMP_INSTAGRAM_TOP_SHORTCODE_DESC"/>
+				<field name="amp_instagram_enable_bottom" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_ADDONS_AMP_INSTAGRAM_ENABLE_BOTTOM" description="PLG_JAMP_ADDONS_AMP_INSTAGRAM_ENABLE_BOTTOM_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_instagram_bottom_shortcode" type="text" default="" label="PLG_JAMP_ADDONS_AMP_INSTAGRAM_BOTTOM_SHORTCODE" description="PLG_JAMP_ADDONS_AMP_INSTAGRAM_BOTTOM_SHORTCODE_DESC"/>
+				<field name="amp_instagram_pages" type="menumultiselect" default="0" size="20" multiple="multiple" label="PLG_JAMP_AMP_INSTAGRAM_PAGES" description="PLG_JAMP_AMP_INSTAGRAM_PAGES_DESC" />
+				<field name="amp_instagram_transform" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_ADDONS_AMP_INSTAGRAM_TRANSFORM" description="PLG_JAMP_ADDONS_AMP_INSTAGRAM_TRANSFORM_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_instagram_transform_css_selector" type="text" default="a.instagram-media" class="css-selectors" hint="PLG_JAMP_LIGHTBOX_BYSELECTOR_HINT" label="PLG_JAMP_ADDONS_AMP_INSTAGRAM_TRANSFORM_CSS_SELECTOR" description="PLG_JAMP_ADDONS_AMP_INSTAGRAM_TRANSFORM_CSS_SELECTOR_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_ADDONS_TWITTER"/>
+				<field name="amp_twitter_enable_top" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_ADDONS_AMP_TWITTER_ENABLE_TOP" description="PLG_JAMP_ADDONS_AMP_TWITTER_ENABLE_TOP_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_twitter_top_tweetid" type="text" default="" label="PLG_JAMP_ADDONS_AMP_TWITTER_TOP_TWEETID" description="PLG_JAMP_ADDONS_AMP_TWITTER_TOP_TWEETID_DESC"/>
+				<field name="amp_twitter_enable_bottom" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_ADDONS_AMP_TWITTER_ENABLE_BOTTOM" description="PLG_JAMP_ADDONS_AMP_TWITTER_ENABLE_BOTTOM_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_twitter_bottom_tweetid" type="text" default="" label="PLG_JAMP_ADDONS_AMP_TWITTER_BOTTOM_TWEETID" description="PLG_JAMP_ADDONS_AMP_TWITTER_BOTTOM_TWEETID_DESC"/>
+				<field name="amp_twitter_pages" type="menumultiselect" default="0" size="20" multiple="multiple" label="PLG_JAMP_AMP_TWITTER_PAGES" description="PLG_JAMP_AMP_TWITTER_PAGES_DESC" />
+				<field name="amp_twitter_transform" layout="joomla.form.field.radio.switcher" type="radio" default="0" label="PLG_JAMP_ADDONS_AMP_TWITTER_TRANSFORM" description="PLG_JAMP_ADDONS_AMP_TWITTER_TRANSFORM_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amp_twitter_transform_css_selector" type="text" default="a.twitter-tweet" class="css-selectors" hint="PLG_JAMP_LIGHTBOX_BYSELECTOR_HINT" label="PLG_JAMP_ADDONS_AMP_TWITTER_TRANSFORM_CSS_SELECTOR" description="PLG_JAMP_ADDONS_AMP_TWITTER_TRANSFORM_CSS_SELECTOR_DESC"/>
+				
+				<field type="spacer" class="badge bg-primary spacer" label="PLG_JAMP_ADDONS_LIGHTBOX"/>
+				<field name="enable_lightbox_byselector" type="radio" layout="joomla.form.field.radio.switcher" default="0" label="PLG_JAMP_ENABLE_LIGHTBOX_BYSELECTOR" description="PLG_JAMP_ENABLE_LIGHTBOX_BYSELECTOR_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="lightbox_byselector" type="text" default="" class="css-selectors" hint="PLG_JAMP_LIGHTBOX_BYSELECTOR_HINT" label="PLG_JAMP_LIGHTBOX_BYSELECTOR" description="PLG_JAMP_LIGHTBOX_BYSELECTOR_DESC"/>
+				<field name="lightbox_effect" type="list" default="fade-in" label="PLG_JAMP_LIGHTBOX_EFFECT" description="PLG_JAMP_LIGHTBOX_EFFECT_DESC">
+					<option value="fade-in">PLG_JAMP_LIGHTBOX_EFFECT_FADEIN</option>
+					<option value="fly-in-bottom">PLG_JAMP_LIGHTBOX_EFFECT_FLYBOTTOM</option>
+					<option value="fly-in-top">PLG_JAMP_LIGHTBOX_EFFECT_FLYTOP</option>
+				</field>
+				<field name="lightbox_bg_color" type="color" default="#FFFFFF" label="PLG_JAMP_LIGHTBOX_BG_COLOR" description="PLG_JAMP_LIGHTBOX_BG_COLOR_DESC"/>
+				<field name="lightbox_color" type="color" default="#000000" label="PLG_JAMP_LIGHTBOX_COLOR" description="PLG_JAMP_LIGHTBOX_COLOR_DESC"/>
+				<field name="lightbox_border_color" type="color" default="9A9A9A" label="PLG_JAMP_LIGHTBOX_BORDER_COLOR" description="PLG_JAMP_LIGHTBOX_BORDER_COLOR_DESC"/>
+				<field name="lightbox_bg_transparency" type="list" default="255" label="PLG_JAMP_BG_TRANSPARENCY" description="PLG_JAMP_BG_TRANSPARENCY_DESC">
+					<option value="160">PLG_JAMP_BG_TRANSPARENCY_20%</option>
+					<option value="180">PLG_JAMP_BG_TRANSPARENCY_40%</option>
+					<option value="200">PLG_JAMP_BG_TRANSPARENCY_60%</option>
+					<option value="220">PLG_JAMP_BG_TRANSPARENCY_80%</option>
+					<option value="255">PLG_JAMP_BG_TRANSPARENCY_100%</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+	
+	<!-- CHANGELOG -->
+	<changelogurl>http://storejextensions.org/changelogs/jamp.xml</changelogurl>
+	
+	<!-- UPDATE SERVERS -->
+	<updateservers>
+		<server type="extension" priority="1" name="JAmp Update Server">http://storejextensions.org/updates/jamp_updater.xml</server>
+	</updateservers>
+</extension>

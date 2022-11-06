@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Customer layout: User Balances">
+		<message>
+			<![CDATA[Customer layout: User Balances.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Customer layout: User Balances</name>
+		<description>Customer layout: User Balances</description>
+	</state>
+</metadata>

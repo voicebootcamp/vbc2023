@@ -1,0 +1,48 @@
+name: Columns
+slug: column
+groups: general
+helpId: 5d1fef9104286369ad8d5efb
+visibility:
+  lg: true
+  md: true
+  sm: true
+  xs: true
+form:
+  general:
+    - name : layout_fields_group
+      label: Layout
+      type: fields-group
+      status: open
+      schema:
+        - name: col_width_id
+          type: note
+
+        # HARDCODED COLUMN WIDTH SETTER
+        - name: col_width
+          label: Column Width
+          type: slider
+          units: %
+          defaultUnit: %
+          step: 1
+        
+        - name: element_spacing
+          label: Element Spacing
+          type: slider
+          suffix: px
+          units: px
+          help: Control gap between elements in this column.
+          value:
+            desktop: 20
+            tablet: 20
+            phone : 10
+  
+  styles:
+    - name : background_overlay_fields_group
+      label: Background Overlay
+      type: fields-group
+      schema:
+        - name: background_overlay
+          type: background
+          opacity: true
+          parallax: false
+

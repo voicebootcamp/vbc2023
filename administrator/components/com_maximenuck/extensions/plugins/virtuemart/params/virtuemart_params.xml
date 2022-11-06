@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="editionfieldset" label="" addfieldpath="/plugins/maximenuck/virtuemart/elements">
+			<field
+				name="virtuemartspacer"
+				type="maximenuckspacer"
+				label="MAXIMENUCK_VIRTUEMART_LABEL"
+				style="title"
+				showon="source:virtuemart"
+				/>
+			<field
+				name="usevirtuemartimages"
+				type="maximenuckradio"
+				class="btn-group"
+				default="0"
+				label="MOD_MAXIMENUCK_USEVIRTUEMARTIMAGES_LABEL"
+				description="MOD_MAXIMENUCK_USEVIRTUEMARTIMAGES_DESC"
+				showon="source:virtuemart"
+				icon="images.png">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="usevirtuemartsuffix"
+				type="maximenuckradio"
+				class="btn-group"
+				default="0"
+				label="MOD_MAXIMENUCK_USEVIRTUEMARTSUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_USEVIRTUEMARTSUFFIX_DESC"
+				showon="source:virtuemart"
+				>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="virtuemartimagesuffix"
+				type="maximenucktext"
+				default="_mini"
+				label="MOD_MAXIMENUCK_VIRTUEMARTIMAGESUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_VIRTUEMARTIMAGESUFFIX_DESC"
+				showon="source:virtuemart"
+				icon="image.png" />
+			<field
+				name="virtuemartcategoryroot"
+				type="ckvmcategory"
+				label="MOD_MAXIMENUCK_VIRTUEMARTCATEGORYROOT_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_VIRTUEMARTCATEGORYROOT_DESC"
+				showon="source:virtuemart"
+			/>
+			<field
+				name="virtuemartcategorydepth"
+				type="maximenucklist"
+				label="MOD_MAXIMENUCK_VIRTUEMARTCATEGORYDEPTH_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_VIRTUEMARTCATEGORYDEPTH_DESC"
+				showon="source:virtuemart"
+			>
+				<option value="0">JALL</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</field>
+			<field
+				name="virtuemartsorting"
+				type="maximenucklist"
+				class="btn-group"
+				default="default"
+				label="MOD_MAXIMENUCK_VIRTUEMARTSORTING_LABEL"
+				showon="source:virtuemart"
+				>
+				<option value="default">JDEFAULT</option>
+				<option value="alphabetical">MOD_MAXIMENUCK_VIRTUEMART_ALPHABETICAL</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

@@ -1,0 +1,36 @@
+setTimeout(function() {
+  jQuery(function($){
+
+    jQuery('#{{ advanced.identifier.id }}.qx-element-smart-tab-v2 a.toggler').each(function(index, item){
+        if(jQuery('.app-mount').length) return;
+
+        var idParent = jQuery(item).parents().find('#{{ advanced.identifier.id }}.qx-element-smart-tab-v2').attr('id');
+        var link = jQuery(item).attr('href');
+        jQuery(link).addClass('qx-element-smart-tab-content');
+        jQuery(link).attr('data-parent', idParent);
+
+        if(index != 0){
+          jQuery(link).hide();
+        } else {
+          jQuery(this).addClass('qx-active');
+        }
+    });
+
+    jQuery('#{{ advanced.identifier.id }}.qx-element-smart-tab-v2 a.toggler').on('click', function(e){
+        e.preventDefault();
+        if(jQuery('.app-mount').length) return;
+
+        let item = jQuery(this);
+
+        {#// hide all parent content#}
+        jQuery('[data-parent="'+item.parents('#{{ advanced.identifier.id }}.qx-element-smart-tab-v2').attr('id')+'"]').hide();
+
+        {#// now show the content#}
+        jQuery(item.attr('href')).show();
+
+        {#// Active tab item#}
+        jQuery('#{{ advanced.identifier.id }}.qx-element-smart-tab-v2 a').removeClass('qx-active');
+        jQuery(item).addClass('qx-active');
+    });
+  });
+}, 10);

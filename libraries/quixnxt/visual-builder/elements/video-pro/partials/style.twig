@@ -1,0 +1,33 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set videoId = id ~ ' .custom-link-wrapper #video-' ~ advanced.identifier.id %}
+{% set videoPoster = id ~ ' .custom-video-wrapper #video-' ~ advanced.identifier.id ~ '[poster]' %}
+{% set videoWrapper = videoPoster ~ ',' ~ id ~ ' .custom-link-wrapper,' ~ id ~ ' .overlay-video-wrapper' %}
+{% set img = id ~ ' video' %}
+{% set modal = '#video-' ~ advanced.identifier.id ~ ' .qx-modal-dialog' %}
+{% set playIconSelector = '.qx-element-video-v2 .playIcon' %}
+
+{# Border #}
+{{ style.border(videoWrapper, styles.text_fields_group.wrapper_border) }}
+
+{# Image #}
+{% if styles.text_fields_group.adjust_image %}
+  {{ style.css(img ~ ', ' ~ videoPoster, 'object-fit', 'cover') }}
+{% endif %}
+
+
+{# Height #}
+{{ style.height(videoWrapper ~ ',' ~ img, styles.text_fields_group.height) }}
+
+{# Width #}
+{{ style.width(videoWrapper, styles.text_fields_group.width) }}
+{{ style.css(videoWrapper, 'overflow', 'hidden') }}
+
+{{ style.css(videoId, 'margin', '0 auto') }}
+{{ style.css(videoId, 'height', '100%') }}
+{{ style.css(id ~ ' .playIcon i', 'line-height', '0.5') }}
+{{ style.css(id ~ ' .playIcon img', 'object-fit', 'contain') }}
+{{ style.css(modal, 'pointer-events', 'auto') }}
+
+{{ style.load(id) }}

@@ -1,0 +1,478 @@
+slug: section
+name: Section
+type: section
+visibility:
+  lg: true
+  md: true
+  sm: true
+  xs: true
+form:
+  general:
+    - name: layout_fields_group
+      label: Layout
+      type: fields-group
+      status: open
+      schema:
+        - name: section_stretch
+          label: Stretch Section
+          type: switch
+
+        - name: container_type
+          label: Container Type
+          help: Containers provide a means to center and horizontally pad your site’s contents.
+          type: select
+          value: boxed
+          responsive: false
+          options:
+            boxed: Boxed
+            fluid: Full Width
+            custom: Custom
+
+        - name: container_width
+          label: Container Width
+          type: slider
+          units: %, px, rem, vw
+          value: 1140
+          min: 0
+          max: 3000
+          depends:
+            container_type: 'custom'
+
+        - name: height
+          type: select
+          value: default
+          options:
+            default: Default
+            full: Fit To Screen
+            custom: Min Height
+
+        - name: custom_height
+          label: Minimum Height
+          type: slider
+          min: 0
+          max: 1500
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+          suffix: px
+          units: [ '%', 'px' ]
+          responsive: true
+          depends:
+            height: 'custom'
+
+        - name: v_align
+          label: Column Position
+          type: choose
+          responsive: false
+          depends:
+            height: [ 'full', 'custom' ]
+          options:
+            qx-align-items-start:
+              label: Top
+              icon: qxuicon-arrow-to-top
+            qx-align-items-center:
+              label: Middle
+              icon: qxuicon-minus
+            qx-align-items-end:
+              label: Bottom
+              icon: qxuicon-arrow-to-bottom
+
+        - name: html_tag
+          label: HTML Tag
+          type: select
+          value: section
+          options:
+            section: Section
+            header: Header
+            footer: Footer
+            main: Main
+            aside: Aside
+            article: Article
+            nav: Nav
+            div: Div
+
+  styles:
+    - name: spacing_fields_group
+      label: Spacing
+      type: fields-group
+      schema:
+        - name: margin
+          type: dimensions
+          units: %, px, em, rem, vh
+
+        - name: padding
+          type: dimensions
+          units: %, px, em, rem, vh
+          value:
+            desktop:
+              top: 80
+              bottom: 80
+              left: 0
+              right: 0
+            tablet:
+              top: 40
+              bottom: 40
+              left: 0
+              right: 0
+            phone:
+              top: 20
+              bottom: 20
+              left: 0
+              right: 0
+
+        - name: zindex
+          label: Z-Index
+          type: slider
+          value: 0
+          min: 0
+          max: 999
+          units: false
+          responsive: false
+
+    - name: background_fields_group
+      label: Background
+      type: fields-group
+      schema:
+        - name: background
+          type: background
+          video: true
+
+        - name: poster
+          type: media
+          depends:
+            background: "extensions: mp4"
+
+        - name: pause
+          type: switch
+          depends:
+            background: "extensions: mp4"
+
+
+    - name: background_overlay_fields_group
+      label: Background Overlay
+      type: fields-group
+      schema:
+        - name: background_overlay
+          type: background
+          opacity: true
+          parallax: false
+
+    - name: border_fields_group
+      label: Border & Box Shadow
+      type: fields-group
+      schema:
+        - name: border
+          type: border
+
+    - name: positioning_fields_group
+      label: Positioning
+      type: fields-group
+      schema:
+        - name: global_position
+          label: Position
+          type: select
+          value: default
+          options:
+            default: Default
+            absolute: Absolute
+            fixed: Fixed
+            sticky: Sticky
+
+        - name: horizontal
+          label: Horizontal Orientation
+          responsive: false
+          type: choose
+          value: right
+          depends:
+            global_position: [ absolute, fixed ]
+          options:
+            left:
+              label: Left
+              icon: qxuicon-arrow-to-left
+            right:
+              label: Right
+              icon: qxuicon-arrow-to-right
+
+        - name: horizontal_offset
+          label: Offset
+          type: slider
+          value:
+            desktop: 0
+            tablet: 0
+            phone: 0
+          min: -999
+          max: 999
+          step: 1
+          responsive: true
+          units: px, %, vw, vh
+          defaultUnit: px
+          depends:
+            global_position: [ absolute, fixed ]
+
+        - name: vertical
+          label: Vertical Orientation
+          responsive: false
+          type: choose
+          value: top
+          options:
+            top:
+              label: Top
+              icon: qxuicon-arrow-to-top
+            bottom:
+              label: Bottom
+              icon: qxuicon-arrow-to-bottom
+          depends:
+            global_position: [ absolute, fixed ]
+
+        - name: vertical_offset
+          label: Offset
+          type: slider
+          value:
+            desktop: 0
+            tablet: 0
+            phone: 0
+          min: -999
+          max: 999
+          step: 1
+          responsive: true
+          units: px, %, vw, vh
+          defaultUnit: px
+          depends:
+            global_position: [ absolute, fixed ]
+
+        - name: global_position_width
+          label: Width
+          type: select
+          value: default
+          options:
+            default: Default
+            full-width: Full Width (100%)
+            inline: Inline (auto)
+            custom: Custom
+
+        - name: custom_width
+          label: Custom Width
+          responsive: true
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+          type: slider
+          min: 0
+          max: 1000
+          step: 1
+          units: px, %, vh
+          defaultUnit: px
+          depends:
+            position_width: custom
+
+        # sticky start
+        - name: sticky_animation
+          label: Sticky Animation
+          help: Add an animation in order to have the sticky element reappear smoothly.
+          type: select
+          value: 0
+          options:
+            0: None
+            qx-animation-slide-top: Slide Top
+            qx-animation-slide-bottom: Slide Bottom
+            qx-animation-slide-left: Slide Left
+            qx-animation-slide-right: Slide Right
+          depends:
+            global_position: sticky
+
+        - name: sticky_bottom
+          label: Sticky Bottom
+          help: Bind the sticky behavior to a specific element, so that it disappears after scrolling past that point of the page.
+          type: text
+          value: footer
+          depends:
+            global_position: sticky
+
+        - name: sticky_show_on_up
+          label: Sticky on scroll up
+          help: You can make the sticky element show only when scrolling up to save space. Together with an animation, this makes for a very smooth experience.
+          type: switch
+          value: true
+          depends:
+            global_position: sticky
+
+        - name: sticky_media
+          label: Responsive
+          help: The element will be sticky from the specified viewport width and upwards, but not below. Only numbers allowed.
+          type: text
+          value: 640
+          depends:
+            global_position: sticky
+
+        - name: sticky_offset
+          label: Offset
+          help: You can position the element below the viewport edge.
+          type: slider
+          min: 0
+          max: 500
+          units: px
+          defaultUnit: px
+          responsive: false
+          value: 0
+          depends:
+            global_position: sticky
+        # sticky ends
+
+    - name: divider_top_fields_group
+      label: Divider Top
+      type: fields-group
+      schema:
+        - name: top_divider_style
+          label: Divider Style
+          type: select
+          value: none
+          options:
+            none: None
+            qx-tilt-opacity: Tilt Opacity
+            qx-waves-shake: Waves Shake
+            qx-triangle-wave: Triangle Wave
+            qx-triangle-dobule-wave: Triangle Dobule Wave
+            arrow: Arrow
+            book: Book
+            clouds: Clouds
+            curve-asymmetrical: Curve Asymmetrical
+            curve: Curve
+            drops: Drops
+            mountains: Mountains
+            opacity-fan: Fan Opacity
+            opacity-tilt: Tilt Opacity
+            pyramids: Pyramids
+            split: Split
+            tilt: Tilt
+            triangle-asymmetrical: Triangle Asymmetrical
+            triangle: Triangle
+            wave-brush: Waves Brush
+            waves-pattern: Waves Pattern
+            waves: Waves
+            zigzag: Zigzag
+
+        - name: top_divider_color
+          label: Color
+          type: color
+          depends:
+            top_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+        - name: top_divider_width
+          label: Width
+          type: slider
+          min: 0
+          max: 100
+          units: %
+          defaultUnit: %
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+          depends:
+            top_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+        - name: top_divider_height
+          label: Height
+          type: slider
+          units: px
+          defaultUnit: px
+          max: 700
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+          depends:
+            top_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+
+        - name: top_divider_flip
+          label: Flip
+          type: switch
+          depends:
+            top_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+        - name: top_divider_front
+          label: Bring to Front
+          type: switch
+          depends:
+            top_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+    - name: divider_bottom_fields_group
+      label: Divider Bottom
+      type: fields-group
+      schema:
+        - name: bottom_divider_style
+          label: Divider Style
+          type: select
+          value: none
+          options:
+            none: None
+            qx-tilt-opacity: Tilt Opacity
+            qx-waves-shake: Waves Shake
+            qx-triangle-wave: Triangle Wave
+            qx-triangle-dobule-wave: Triangle Dobule Wave
+            arrow: Arrow
+            book: Book
+            clouds: Clouds
+            curve-asymmetrical: Curve Asymmetrical
+            curve: Curve
+            drops: Drops
+            mountains: Mountains
+            opacity-fan: Fan Opacity
+            opacity-tilt: Tilt Opacity
+            pyramids: Pyramids
+            split: Split
+            tilt: Tilt
+            triangle-asymmetrical: Triangle Asymmetrical
+            triangle: Triangle
+            wave-brush: Waves Brush
+            waves-pattern: Waves Pattern
+            waves: Waves
+            zigzag: Zigzag
+
+        - name: bottom_divider_color
+          label: Color
+          type: color
+          depends:
+            bottom_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+        - name: bottom_divider_width
+          label: Width
+          type: slider
+          min: 0
+          max: 100
+          units: %
+          defaultUnit: %
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+          depends:
+            bottom_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+        - name: bottom_divider_height
+          label: Height
+          type: slider
+          max: 700
+          units: px
+          defaultUnit: px
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+          depends:
+            bottom_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+        - name: bottom_divider_flip
+          label: Flip
+          type: switch
+          depends:
+            bottom_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]
+
+        - name: bottom_divider_front
+          label: Bring to Front
+          type: switch
+          depends:
+            bottom_divider_style: [ 'qx-tilt-opacity','qx-waves-shake','qx-triangle-wave','qx-triangle-dobule-wave','arrow','book','clouds','curve-asymmetrical','curve','drops','mountains','opacity-fan','opacity-tilt','pyramids','split','tilt','triangle-asymmetrical','triangle','wave-brush','waves-pattern','waves','zigzag' ]

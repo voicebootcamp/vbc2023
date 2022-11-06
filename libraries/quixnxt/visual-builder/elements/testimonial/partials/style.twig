@@ -1,0 +1,62 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set contentWrapper = id ~ ' .qx-testimonial-content' %}
+{% set contentSelector = id ~ ' .qx-testimonial-content p.qx-testimonial__quote' %}
+{% set imgSpacing = id ~ ' .qx-testimonial__media_author' %}
+{% set mediaSelector = id ~ ' .qx-element-testimonial__media' %}
+{% set mediaLeftSelector = id ~ ' .imageAlign-left .qx-element-testimonial__media' %}
+{% set mediaRightSelector = id ~ ' .imageAlign-right .qx-element-testimonial__media' %}
+{% set mediaTopSelector = id ~ ' .imageAlign-top .qx-element-testimonial__media' %}
+{% set mediaBottomSelector = id ~ ' .imageAlign-bottom .qx-element-testimonial__media' %}
+{% set imgSelector = id ~ ' .qx-element-testimonial__media img' %}
+{% set nameSelector = id ~ ' .qx-testimonial__name' %}
+{% set positionSelector = id ~ ' .qx-testimonial__position' %}
+
+{# Testimonial #}
+{{ style.css( contentSelector, 'font-size', '20px') }}
+{{ style.css( contentSelector, 'color', styles.testimonial_fg_testimonial.content_color) }}
+{{ style.typography(contentSelector, styles.testimonial_fg_testimonial.content_font) }}
+{{ style.alignment( id, styles.testimonial_fg_testimonial.content_alignment) }}
+
+{# Media #}
+{{ style.css(imgSelector, 'border-radius', '100%') }}
+{{ style.css(imgSelector, 'object-fit', 'cover') }}
+{{ style.width(imgSelector, styles.image_fields_group.width) }}
+{{ style.height(imgSelector, styles.image_fields_group.width) }}
+{{ style.border(imgSelector, styles.image_fields_group.image_border) }}
+
+{# Image spacing #}
+{{ style.desktop(mediaTopSelector, 'margin-bottom:' ~ styles.image_fields_group.image_spacing.desktop ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.desktop(mediaLeftSelector, 'margin-right:' ~ styles.image_fields_group.image_spacing.desktop ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.desktop(mediaRightSelector, 'margin-left:' ~ styles.image_fields_group.image_spacing.desktop ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.desktop(mediaBottomSelector, 'margin-bottom:' ~ styles.image_fields_group.image_spacing.desktop ~ styles.image_fields_group.image_spacing.unit) }}
+
+{{ style.tablet(mediaTopSelector, 'margin-bottom:' ~ styles.image_fields_group.image_spacing.tablet ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.tablet(mediaLeftSelector, 'margin-right:' ~ styles.image_fields_group.image_spacing.tablet ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.tablet(mediaRightSelector, 'margin-left:' ~ styles.image_fields_group.image_spacing.tablet ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.tablet(mediaBottomSelector, 'margin-bottom:' ~ styles.image_fields_group.image_spacing.tablet ~ styles.image_fields_group.image_spacing.unit) }}
+
+{{ style.phone(mediaTopSelector, 'margin-bottom:' ~ styles.image_fields_group.image_spacing.phone ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.phone(mediaLeftSelector, 'margin-right:' ~ styles.image_fields_group.image_spacing.phone ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.phone(mediaRightSelector, 'margin-left:' ~ styles.image_fields_group.image_spacing.phone ~ styles.image_fields_group.image_spacing.unit) }}
+{{ style.phone(mediaBottomSelector, 'margin-bottom:' ~ styles.image_fields_group.image_spacing.phone ~ styles.image_fields_group.image_spacing.unit) }}
+
+{# Content Spacing #}
+{{ style.desktop(contentSelector, 'margin-bottom:' ~ styles.testimonial_fg_testimonial.content_spacing.desktop ~ styles.testimonial_fg_testimonial.content_spacing.unit) }}
+{{ style.tablet(contentSelector, 'margin-bottom:' ~ styles.testimonial_fg_testimonial.content_spacing.tablet ~ styles.testimonial_fg_testimonial.content_spacing.unit) }}
+{{ style.phone(contentSelector, 'margin-bottom:' ~ styles.testimonial_fg_testimonial.content_spacing.phone ~ styles.testimonial_fg_testimonial.content_spacing.unit) }}
+
+{# Name #}
+{{ style.css(nameSelector, 'font-size', '16px') }}
+{{ style.css(nameSelector, 'color', styles.testimonial_fg_name.name_color) }}
+{{ style.typography(nameSelector, styles.testimonial_fg_name.name_font) }}
+{{ style.responsiveCss(nameSelector, styles.testimonial_fg_name.name_spacing, 'margin-bottom', styles.testimonial_fg_name.name_spacing.unit) }}
+
+{# Position #}
+{{ style.css( positionSelector, 'font-size', '16px') }}
+{{ style.css( positionSelector, 'color', styles.testimonial_fg_position.position_color) }}
+{{ style.typography(positionSelector, styles.testimonial_fg_position.position_font) }}
+
+
+{{ style.load(id) }}

@@ -1,0 +1,152 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Title #}
+{% set titleColor = styles['video-title-fg_style'].title_color %}
+{% set titleFont = styles['video-title-fg_style'].title_font %}
+
+{# Designation #}
+{% set desigColor = styles['video-des-comp-fg_style'].desig_color %}
+{% set desigFont = styles['video-des-comp-fg_style'].desig_font %}
+
+{# Content #}
+{% set contentColor = styles['video-content-fg_style'].content_color %}
+{% set contentFont = styles['video-content-fg_style'].content_font %}
+{% set contentPadding = styles['video-content-fg_style'].content_padding %}
+
+{# Navigation #}
+{% set dotColor = styles['dot-fg_style'].dot_color %}
+{% set dotActiveColor = styles['dot-fg_style'].dot_active_color %}
+{% set dotWidth = styles['dot-fg_style'].dot_width %}
+{% set dotSpacing = styles['dot-fg_style'].dot_spacing %}
+{% set dotMargin = styles['dot-fg_style'].dot_margin %}
+
+{# Bar Nav #}
+{% set barColor = styles['video_carousel_fg_bar-style'].bar_color %}
+{% set barActiveColor = styles['video_carousel_fg_bar-style'].bar_active_color %}
+{% set barWidth = styles['video_carousel_fg_bar-style'].bar_width %}
+{% set barHeight = styles['video_carousel_fg_bar-style'].bar_height %}
+{% set barActiveWidth = styles['video_carousel_fg_bar-style'].barActive_width %}
+{% set barActiveHeight = styles['video_carousel_fg_bar-style'].barActive_height %}
+
+{# Selectors #}
+{% set videoId = '#' ~ advanced.identifier.id ~ ' iframe#video-' ~ advanced.identifier.id %}
+{% set wrapperSelector = id ~ ' .qx-element-video-carousel__wrapper' %}
+{% set carouselItemWrapper = wrapperSelector ~ ' .qx-slider-items' %}
+{% set colSelector = wrapperSelector ~ ' .qx-slider-items li' %}
+
+{% set mediaSelector = id ~ ' .qx-card-media-top' %}
+{% set metaSelector = id ~ ' .qx-video-meta' %}
+{% set titleSelector = id ~ ' .qx-video-meta .qx-video-author-name' %}
+{% set desigSelector = id ~ ' .qx-video-meta .qx-video-designation' %}
+{% set contBody = id ~ ' .qx-card' %}
+{% set contentSelector = id ~ ' .qx-video-content' %}
+{% set contBodySelector = id ~ ' .qx-card-body' %}
+
+{% set playIconSelector = wrapperSelector ~ ' .playIcon' %}
+
+{% set dotSelector = id ~ ' .qx-dotnav li' %}
+{% set dotItemSelector = id ~ ' .qx-dotnav li *' %}
+{% set dotActiveItemSelector = id ~ ' .qx-dotnav li.qx-active *' %}
+
+{% set barNavSelector = id ~ ' .bar-navigation .qx-barnav' %}
+{% set barNavigationActiveSelector = id ~ ' .bar-navigation .qx-barnav li.qx-active' %}
+{% set barNavHrSelector = id ~ ' .bar-navigation .qx-barnav-horizontal' %}
+{% set barNavigationHr = id ~ ' .bar-navigation .qx-barnav-horizontal li' %}
+{% set barNavVerSelector = id ~ ' .bar-navigation .qx-barnav-vertical' %}
+{% set barNavigationVer = id ~ ' .bar-navigation .qx-barnav-vertical li' %}
+{% set barNavigation = id ~ ' .bar-navigation .qx-barnav li' %}
+
+
+{# Height & Width #}
+{{ style.height(videoId, styles['video-carousel-fg_style'].height) }}
+{{ style.width(videoId, styles['video-carousel-fg_style'].width) }}
+
+{# Media #}
+{{ style.css(mediaSelector, 'position', 'relative') }}
+{{ style.css(mediaSelector, 'overflow', 'hidden') }}
+
+{# padding #}
+{{ style.css(id ~ ' .qx-panel-wrapper', 'position', 'relative') }}
+{{ style.css(id ~ ' .qx-panel-wrapper', 'overflow', 'hidden') }}
+
+{# default width #}
+{{ style.css(colSelector, 'min-width', '1px') }}
+
+{# Title #}
+{{ style.css(titleSelector, 'color', titleColor) }}
+{{ style.typography(titleSelector, titleFont) }}
+{{ style.css(titleSelector, 'margin-right', '15px') }}
+
+{# Designation #}
+{{ style.css(desigSelector, 'color', desigColor) }}
+{{ style.typography(desigSelector, desigFont) }}
+
+{# Content #}
+{{ style.css(contentSelector, 'color', contentColor) }}
+{{ style.typography( contentSelector, contentFont) }}
+{{ style.padding( contBodySelector, contentPadding) }}
+{{ style.css(contBody, 'border-width', '0px') }}
+
+{# Navigation #}
+{{ style.css(dotItemSelector, 'background-color', dotColor) }}
+{{ style.css(dotActiveItemSelector, 'background-color', dotActiveColor) }}
+{{ style.responsiveCss(dotItemSelector, dotWidth, 'width', dotWidth.unit) }}
+{{ style.responsiveCss(dotItemSelector, dotWidth, 'height', dotWidth.unit) }}
+{{ style.responsiveCss(dotSelector, dotSpacing, 'padding-left', dotSpacing.unit) }}
+{{ style.responsiveCss(dotSelector, dotMargin, 'margin-top', dotMargin.unit) }}
+
+{# Bar Nav #}
+{{ style.css(barNavHrSelector, 'display', 'flex') }}
+{{ style.css(barNavHrSelector, 'flex-wrap', 'wrap') }}
+{{ style.css(barNavHrSelector, 'margin', '0') }}
+{{ style.css(barNavHrSelector, 'padding', '0') }}
+{{ style.css(barNavHrSelector, 'list-style', 'none') }}
+{{ style.css(barNavHrSelector, 'margin-left', '-12px') }}
+
+{{ style.css(barNavigationHr, 'padding-left', '12px') }}
+{{ style.css(barNavigationHr ~ ':first-child', 'padding-left', '0') }}
+{{ style.css(barNavigationHr ~ ' a', 'background-color', 'rgba(238, 238, 238, 1)') }}
+{{ style.css(barNavigationHr ~ ' a', 'text-indent', '100%') }}
+{{ style.css(barNavigationHr ~ ' a', 'overflow', 'hidden') }}
+{{ style.css(barNavigationHr ~ ' a', 'display', 'block') }}
+{{ style.css(barNavigationHr ~ ' a', 'box-sizing', 'border-box') }}
+{{ style.css(barNavigationHr ~ ' a', 'white-space', 'nowrap') }}
+
+{{ style.css(barNavVerSelector, 'display', 'inline') }}
+{{ style.css(barNavVerSelector, 'list-style', 'none') }}
+{{ style.css(barNavigationVer ~ ' a', 'background-color', 'rgba(238, 238, 238, 1)') }}
+{{ style.css(barNavigationVer ~ ' a', 'text-indent', '100%') }}
+{{ style.css(barNavigationVer ~ ' a', 'overflow', 'hidden') }}
+{{ style.css(barNavigationVer ~ ' a', 'display', 'block') }}
+{{ style.css(barNavigationVer ~ ' a', 'box-sizing', 'border-box') }}
+{{ style.css(barNavigationVer ~ ' a', 'white-space', 'nowrap') }}
+{{ style.css(barNavigationVer ~ ':first-child', 'padding-top', '0') }}
+{{ style.css(barNavigationVer, 'padding-top', '12px') }}
+
+{{ style.css(barNavigationHr ~ ' a', 'background-color', barColor) }}
+{{ style.css(barNavigationVer ~ ' a', 'background-color', barColor) }}
+{{ style.css(barNavigationActiveSelector ~ ' a', 'background-color', barActiveColor) }}
+{{ style.responsiveCss(barNavigationHr ~ ' a', barWidth, 'width', barWidth.unit) }}
+{{ style.responsiveCss(barNavigationHr ~ ' a', barHeight, 'height', barHeight.unit) }}
+{{ style.responsiveCss(barNavigationVer ~ ' a', barWidth, 'height', barWidth.unit) }}
+{{ style.responsiveCss(barNavigationVer ~ ' a', barHeight, 'width', barHeight.unit) }}
+{{ style.responsiveCss(barNavigationActiveSelector ~ ' a', barActiveWidth, 'width', barActiveWidth.unit) }}
+{{ style.responsiveCss(barNavigationActiveSelector ~ ' a', barActiveHeight, 'height', barActiveHeight.unit) }}
+
+{# Play Icon #}
+{{ style.css(playIconSelector, 'position', 'absolute') }}
+{{ style.css(playIconSelector, 'top', '50%') }}
+{{ style.css(playIconSelector, 'left', '50%') }}
+{{ style.css(playIconSelector, 'color', '#fff') }}
+{{ style.css(playIconSelector, 'font-size', '70px') }}
+{{ style.css(playIconSelector, 'transform', 'translateX(-50%) translateY(-50%)') }}
+{{ style.css(playIconSelector, 'cursor', 'pointer') }}
+{{ style.css(playIconSelector ~ ' a', 'color', '#fff') }}
+{{ style.css(playIconSelector ~ ' a:hover', 'color', '#fff') }}
+{{ style.css(playIconSelector ~ ' a:hover', 'text-decoration', 'none') }}
+
+{{ style.css (wrapperSelector, 'position', 'relative') }}
+
+{{ style.load(id) }}

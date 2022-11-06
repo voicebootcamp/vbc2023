@@ -1,0 +1,179 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Content Alignment #}
+{% set contentAlignment = styles.pricing_style.content_alignment %}
+{% set contentPadding = styles.pricing_style.content_padding %}
+
+{# Header #}
+{% set headerBackgroundColor = styles.header_style.header_bg %}
+{% set headerPadding = styles.header_style.header_padding %}
+{% set headerBorder = styles.header_style.header_border %}
+
+{# Image Width #}
+{% set imageWidth = styles.pricing_image_style.image_width %}
+
+{# Media #}
+{% set imageSpacing = styles.pricing_image_style.image_spacing %}
+
+{# Image and Icon #}
+{% set imageBorder = styles.pricing_image_style.image_border %}
+{% set imageBackground = styles.pricing_image_style.image_bg %}
+{% set imagePadding = styles.pricing_image_style.image_padding %}
+{% set iconColor = styles.pricing_image_style.icon_color %}
+
+{# Title #}
+{% set titleColor = styles.pricing_title_style.title_color %}
+{% set titleSpacing = styles.pricing_title_style.title_spacing %}
+{% set titleFont = styles.pricing_title_style.title_font %}
+{% set titlePadding = styles.pricing_title_style.title_padding %}
+
+{# Price Amount #}
+{% set priceColor = styles.pricing_price_style.price_color %}
+{% set priceSpacing = styles.pricing_price_style.price_spacing %}
+{% set priceFont = styles.pricing_price_style.price_font %}
+
+{# Old Price #}
+{% set oldPriceColor = styles.pricing_price_style.old_price_color %}
+{% set oldPriceFS = styles.pricing_price_style.old_price_fs %}
+
+{# Currency #}
+{% set currencyColor = styles.pricing_price_style.currency_color %}
+{% set currencyFS = styles.pricing_price_style.currency_fs %}
+
+{# Duration #}
+{% set durationColor = styles.pricing_price_style.duration_color %}
+{% set durationFS = styles.pricing_price_style.duration_fs %}
+
+{# Features #}
+{% set featureSpacing = styles.pricing_features_style.feature_spacing %}
+{% set featuresColor = styles.pricing_features_style.features_color %}
+{% set featuresFont = styles.pricing_features_style.features_font %}
+{% set featuresBorder = styles.pricing_features_style.features_border %}
+{% set featureItemPadding = styles.pricing_features_style.feature_item_padding %}
+
+{# Feature Icon #}
+{% set featuresIconColor = styles.pricing_features_style.features_icon_color %}
+{% set featureIconSpace = styles.pricing_features_style.feature_icon_space %}
+
+{# Badge #}
+{% set badgeTextColor = styles.pricing_badge_style.badge_text_color %}
+{% set badgeFont = styles.pricing_badge_style.badge_font %}
+{% set badgeBorder = styles.pricing_badge_style.badge_border %}
+{% set badgePadding = styles.pricing_badge_style.badge_padding %}
+{% set badgeMargin = styles.pricing_badge_style.badge_margin %}
+{% set badgeBackground = styles.pricing_badge_style.badge_bg %}
+
+{# Button #}
+{% set buttonTextColor = styles.pricing_button_style.button_text_color %}
+{% set buttonHoverTextColor = styles.pricing_button_style.button_hover_text_color %}
+{% set buttonBackgroundColor = styles.pricing_button_style.button_bg %}
+{% set buttonBorder = styles.pricing_button_style.btn_border %}
+{% set buttonFont = styles.pricing_button_style.button_font %}
+{% set buttonPadding = styles.pricing_button_style.button_padding %}
+{% set buttonMargin = styles.pricing_button_style.button_margin %}
+
+{# Selectors #}
+{% set wrapperSelector = id ~ ' .qx-element-pricing-table__content' %}
+{% set imgSelector = id ~ ' .pricing-media' %}
+{% set titleSelector = id ~ ' .title' %}
+{% set headerSelector = id ~ ' .pricing-header' %}
+{% set priceSelector = id ~ ' .price h2' %}
+{% set priceSpaceSelector = id ~ ' .price' %}
+{% set oldPriceSelector = id ~ ' .price h2 .old-price-amount' %}
+{% set currencySelector = id ~ ' .price h2 .price-currency' %}
+{% set durationSelector = id ~ ' .price h2 .price-duration' %}
+{% set featureSelector = id ~ ' .qx-list-unstyled.feature li' %}
+{% set featureIconSelector = id ~ ' .qx-list-unstyled.feature li i' %}
+{% set featureItem = id ~ ' .qx-list-unstyled.feature' %}
+{% set badgeSelector = id ~ ' .badge' %}
+{% set badgeWrapSelector = id ~ ' .badge-wrap' %}
+{% set buttonSelector = id ~ ' .pTable-button a' %}
+
+{# Content Alignment #}
+{{ style.alignment(wrapperSelector, contentAlignment) }}
+{{ style.padding(wrapperSelector, contentPadding) }}
+
+{# Media #}
+{% set imageSpacing = prepareResponsiveValue(imageSpacing) %}
+{{ style.responsiveCss(imgSelector, imageSpacing, 'margin-bottom', imageSpacing.unit) }}
+
+{# Header #}
+{{ style.background(headerSelector, headerBackgroundColor) }}
+{{ style.padding(headerSelector, headerPadding) }}
+{{ style.border(headerSelector, headerBorder) }}
+
+{# Image Width #}
+{% set imgWidth = prepareWidthValue(imageWidth) %}
+{{ style.width(imgSelector ~ ' img', imgWidth) }}
+
+{# svg #}
+{{ style.border(imgSelector ~ ' svg', imageBorder) }}
+{{ style.background(imgSelector ~ ' svg', imageBackground) }}
+{{ style.padding(imgSelector ~ ' svg', imagePadding) }}
+{{ style.css(imgSelector ~ ' svg,' ~ imgSelector ~ ' i', 'display', 'inline-block') }}
+{{ style.css(imgSelector ~ ' path', 'fill', iconColor) }}
+{{ style.responsiveCss(imgSelector ~ ' svg', imageWidth, 'width', imageWidth.unit) }}
+
+{# Image and Icon #}
+{{ style.border(imgSelector ~ ' img', imageBorder) }}
+{{ style.border(imgSelector ~ ' i', imageBorder) }}
+{{ style.background(imgSelector ~ ' i', imageBackground) }}
+{{ style.background(imgSelector ~ ' img', imageBackground) }}
+{{ style.padding(imgSelector ~ ' i', imagePadding) }}
+{{ style.padding(imgSelector ~ ' img', imagePadding) }}
+
+{# Title #}
+{{ style.css(titleSelector ~ ' *', 'color', titleColor) }}
+{{ style.responsiveCss(titleSelector ~ ' *', titleSpacing, 'margin-bottom', 'px') }}
+{{ style.typography(titleSelector ~ ' *', titleFont) }}
+{{ style.padding(titleSelector, titlePadding) }}
+
+{# Price Amount #}
+{{ style.css(priceSelector, 'color', priceColor) }}
+{{ style.responsiveCss(priceSpaceSelector, priceSpacing, 'margin-bottom', 'px') }}
+{{ style.typography(priceSelector ~ ' *', priceFont) }}
+
+{# Old Price #}
+{{ style.css(oldPriceSelector, 'color', oldPriceColor) }}
+{{ style.responsiveCss(oldPriceSelector, oldPriceFS, 'font-size', oldPriceFS.unit) }}
+
+{# Currency #}
+{{ style.css(currencySelector, 'color', currencyColor) }}
+{{ style.responsiveCss(currencySelector, currencyFS, 'font-size', currencyFS.unit) }}
+
+{# Duration #}
+{{ style.css(durationSelector, 'color', durationColor) }}
+{{ style.responsiveCss(durationSelector, durationFS, 'font-size', durationFS.unit) }}
+
+{# Features #}
+{{ style.responsiveCss(featureSelector, featureSpacing, 'padding-top', 'px') }}
+{{ style.responsiveCss(featureSelector, featureSpacing, 'padding-bottom', 'px') }}
+{{ style.css(featureSelector, 'color', featuresColor) }}
+{{ style.typography(featureSelector, featuresFont) }}
+{{ style.border(featureSelector, featuresBorder) }}
+{{ style.padding(featureItem, featureItemPadding) }}
+
+{# Feature Icon #}
+{{ style.css(featureIconSelector, 'color', featuresIconColor) }}
+{{ style.responsiveCss(featureIconSelector, featureIconSpace, 'padding-right', featureIconSpace.unit) }}
+
+{# Badge #}
+{{ style.css(badgeSelector, 'color', badgeTextColor) }}
+{{ style.typography(badgeSelector, badgeFont) }}
+{{ style.border(badgeSelector, badgeBorder) }}
+{{ style.padding(badgeSelector, badgePadding) }}
+{{ style.margin(badgeWrapSelector, badgeMargin) }}
+{{ style.background(badgeSelector, badgeBackground) }}
+
+{# Button #}
+{{ style.css(buttonSelector, 'color', buttonTextColor) }}
+{{ style.css(buttonSelector ~ ':hover', 'color', buttonHoverTextColor) }}
+{{ style.background(buttonSelector, buttonBackgroundColor) }}
+{{ style.border(buttonSelector, buttonBorder) }}
+{{ style.typography(buttonSelector , buttonFont) }}
+{{ style.padding(buttonSelector, buttonPadding) }}
+{{ style.margin(buttonSelector, buttonMargin) }}
+
+{{ style.load(id) }}

@@ -1,0 +1,54 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set layoutItem = id ~ ' ul li' %}
+
+{% set deskHrSpace = id ~ ' ul.horizontalDesktopLayout' %}
+{% set tabHrSpace = id ~ ' ul.horizontalTabletLayout' %}
+{% set phnHrSpace = id ~ ' ul.horizontalPhoneLayout' %}
+{% set deskHrSpaceLi = id ~ ' ul.horizontalDesktopLayout li' %}
+{% set tabHrSpaceLi = id ~ ' ul.horizontalTabletLayout li' %}
+{% set phnHrSpaceLi = id ~ ' ul.horizontalPhoneLayout li' %}
+
+{% set deskVrSpace = id ~ ' ul.verticalDesktopLayout' %}
+{% set tabVrSpace = id ~ ' ul.verticalTabletLayout' %}
+{% set phnVrSpace = id ~ ' ul.verticalPhoneLayout' %}
+{% set deskVrSpaceLi = id ~ ' ul.verticalDesktopLayout li' %}
+{% set tabVrSpaceLi = id ~ ' ul.verticalTabletLayout li' %}
+{% set phnVrSpaceLi = id ~ ' ul.verticalPhoneLayout li' %}
+
+{% set singleIcon = id ~ ' ul li a' %}
+
+{# common #}
+{{ style.desktop('.qx-element-social-icon svg', 'width: 30px;') }}
+{{ style.desktop('.qx-element-social-icon i', 'font-size: 30px;') }}
+
+{# Color #}
+{{ style.css(singleIcon, 'background-color', styles.color_setting.icon_bg) }}
+
+{{ style.css(singleIcon ~ ':hover', 'color', styles.color_setting.icon_hover) }}
+{{ style.css(singleIcon ~ ':hover', 'fill', styles.color_setting.icon_hover)}}
+{{ style.css(singleIcon ~ ':hover', 'background-color', styles.color_setting.icon_hover_bg) }}
+
+{# Spacing #}
+{{ style.desktop(deskHrSpace, 'margin:' ~ '-' ~ styles.spacing_setting.item_spacing.desktop ~ styles.spacing_setting.item_spacing.unit) }}
+{{ style.tablet(tabHrSpace, 'margin:' ~ '-' ~ styles.spacing_setting.item_spacing.desktop ~ styles.spacing_setting.item_spacing.unit) }}
+{{ style.phone(phnHrSpace, 'margin:' ~ '-' ~ styles.spacing_setting.item_spacing.desktop ~ styles.spacing_setting.item_spacing.unit) }}
+
+
+{{ style.desktop(deskVrSpaceLi, 'margin-bottom:' ~ styles.spacing_setting.item_spacing.desktop ~ styles.spacing_setting.item_spacing.unit) }}
+{{ style.tablet(tabVrSpaceLi, 'margin-bottom:' ~ styles.spacing_setting.item_spacing.tablet ~ styles.spacing_setting.item_spacing.unit) }}
+{{ style.phone(phnVrSpaceLi, 'margin-bottom:' ~ styles.spacing_setting.item_spacing.phone ~ styles.spacing_setting.item_spacing.unit) }}
+
+{{ style.desktop(deskHrSpaceLi, 'margin:' ~ styles.spacing_setting.item_spacing.desktop ~ styles.spacing_setting.item_spacing.unit) }}
+{{ style.tablet(tabHrSpaceLi, 'margin:' ~ styles.spacing_setting.item_spacing.tablet ~ styles.spacing_setting.item_spacing.unit) }}
+{{ style.phone(phnHrSpaceLi, 'margin:' ~ styles.spacing_setting.item_spacing.phone ~ styles.spacing_setting.item_spacing.unit) }}
+
+{{ style.padding(singleIcon , styles.spacing_setting.item_padding) }}
+
+
+{# Border #}
+{{ style.border(singleIcon, styles.spacing_setting.btn_border) }}
+
+
+{{ style.load(id) }}

@@ -1,0 +1,67 @@
+{% set id = field('id') %}
+{% set class = field('class') %}
+{% set event = field('prepare_content')|default('false') %}
+{% set show_date_format = field('show_date_format')|default('d M Y') %}
+
+{% set classes = classNames('qx-element qx-element-article-meta', visibilityClass(node.visibility), class) %}
+
+{% set itemData = ElementApiCall('article-title', {
+    'show_date_format' : show_date_format
+}) %}
+
+{% set animation = field("animation") %}
+{% set animationRepeat = field("animation_repeat") %}
+{% set animationDelay = field('animation_delay').value %}
+{% set background = field('background') %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+    	{% if field('show_category') %}
+        <span class="qx-element-jarticle-category">
+            {% if field('show_meta_icon') %}
+            <i class="qxif-folder-open"></i>
+            {% endif %}
+            {{ itemData.displayCategoryTitle | raw }}
+        </span>
+        {% endif %}
+        
+        {% if field('show_tag') and itemData.tags  %}
+        <span class="qx-element-jarticle-tags">
+            {% set itemTags = itemData.tags.itemTags %}
+            {% for itemTag in itemTags %}
+                #{{ itemTag.title }}
+            {% endfor %}
+        </span>
+        {% endif %}
+
+        {% if field('show_date') %}
+        <span class="qx-element-jarticle-date">
+            {% if field('show_meta_icon') %}
+                <i class="qxif-calendar-alt"></i>
+            {% endif %}
+            
+            {{ itemData.displayDate }}
+        </span>
+        {% endif %}
+
+        {% if field('show_author') %}
+        <span class="qx-element-jarticle-writtenby">
+            {% if field('show_meta_icon') %}
+                <i class="qxif-user"></i>
+            {% endif %}
+            
+            {{ itemData.displayAuthorName }}
+        </span>
+        {% endif %}
+
+
+
+    {% endblock %}
+{% endembed %}

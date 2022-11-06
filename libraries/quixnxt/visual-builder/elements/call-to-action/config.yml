@@ -1,0 +1,478 @@
+name: Call to Action
+slug: call-to-action
+groups: pro
+helpId: 5d1fea8c04286369ad8d5ed1
+form:
+  general:
+    - name : call_to_action_fg_element_mode
+      label: Image
+      type: fields-group
+      status: open
+      schema:
+        - name : element_mode
+          type: select
+          label: Skin
+          value: cover
+          options:
+            classic : Classic
+            cover: Cover
+
+        - name : image_position
+          label: Image Position
+          type : choose
+          responsive: false
+          value: left
+          depends:
+            element_mode : classic
+          options:
+            left :
+              label: Left
+              icon : qxuicon-arrow-to-left
+            right :
+              label : Right
+              icon : qxuicon-arrow-to-right
+            center :
+              label : Top
+              icon : qxuicon-arrow-to-top
+            down :
+              label : Bottom
+              icon : qxuicon-arrow-to-bottom
+
+        - name: image
+          type: media
+          filters : image
+          showstyle: true
+          value: 'media/quixnxt/images/placeholder.png'
+
+        - name: alt_text
+          label : Alt Text
+          type: text
+          help : Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            image: '*'
+
+    - name : call_to_action_fg_content
+      label: Content
+      type: fields-group
+      schema:
+        - name: title
+          label: Title
+          type: text
+          value: Hello World
+
+        - name: subtitle
+          label: Subtitle
+          type: text
+          value: Feel the taste and make it comfortable
+
+        - name: description
+          label: Description
+          type: editor
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: content_image_divider
+          type: divider
+          label: Content Image
+
+        - name: graphics_image
+          label : Graphics
+          type: media
+          showstyle: true
+
+        - name: graphics_alt_text
+          label : Alt Text
+          type: text
+          help : Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            graphics_image: '*'
+
+    - name: call_to_action_fg_button
+      label: Button
+      type: fields-group
+      schema:
+      - name: button
+        label: Text
+        type: text
+        value: Click Me
+
+      - name: button_type
+        lable: Button Type
+        type: select
+        value: primary
+        options:
+          primary: Primary
+          secondary: Secondary
+          success : Success
+          danger : Danger
+          warning : Warning
+          info : Info
+          light : Light
+          dark: Dark
+          link : Link
+
+      - name : link
+        label : Link
+        type : link
+        value :
+          url: '#'
+          target: ''
+          nofollow: false
+
+    - name : call_to_action_fg_additional
+      label : Additional Settings
+      type: fields-group
+      schema:
+        - name: title_html_tag
+          label: Title HTML Tag
+          type: select
+          value: h2
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+
+        - name: html_subtitle_tag
+          label: Subtitle HTML Tag
+          type: select
+          value: h4
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+
+        - name : cta_vertical_position
+          label: Vertical Position
+          type : choose
+          responsive: false
+          value: qx-justify-content-center
+          options:
+              qx-justify-content-start :
+                label: Top
+                icon : qxuicon-arrow-to-top
+              qx-justify-content-center :
+                label : Middle
+                icon : qxuicon-minus
+              qx-justify-content-end :
+                label : Bottom
+                icon : qxuicon-arrow-to-bottom
+
+  styles:
+    - name : call_to_action_fg_element_style
+      label : Panel
+      type: fields-group
+      schema:
+        - name : height
+          type: select
+          value: default
+          options:
+            default : Default
+            custom: Min Height
+
+        - name : element_min_height
+          label: Minimum Height
+          type : slider
+          min: 0
+          max: 1500
+          suffix: px
+          responsive: true
+          depends :
+            height : 'custom'
+
+        - name : element_alignment
+          label: Alignment
+          type : choose
+          value:
+            desktop: center
+            tablet : center
+            phone : center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+            justify :
+              label : Justify
+              icon : qxuicon-align-justify
+
+        - name: element_padding
+          label : Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 100
+              bottom: 100
+              left: 100
+              right: 100
+            tablet:
+              top: 100
+              bottom: 100
+              left: 50
+              right: 50
+            phone:
+              top: 50
+              bottom: 50
+              left: 25
+              right: 25
+
+    - name : call_to_action_image_style
+      label: Image
+      type: fields-group
+      depends:
+        element_mode: 'classic'
+      schema:
+      - name  : image_width
+        label : Width
+        type: slider
+        min: 0
+        units : %, px
+        defaultUnit: %
+        responsive: true
+        max: 2000
+        value:
+            desktop : 100
+            tablet : 100
+            phone : 100
+
+      - name  : image_min_height
+        label : Minimum Height
+        type: slider
+        min: 0
+        max: 1500
+        units : 'px'
+        defaultUnit: 'px'
+        suffix: px
+        responsive: true
+
+      - name : image_alignment
+        label: Alignment
+        type : choose
+        options:
+          left :
+            label: Left
+            icon : qxuicon-align-left
+          center :
+            label : Center
+            icon : qxuicon-align-center
+          right :
+            label : Right
+            icon : qxuicon-align-right
+        value:
+          desktop: center
+          tablet: center
+          phone: center
+
+    - name: call_to_action_title_style
+      label: Title
+      type: fields-group
+      schema:
+        - name: title_color
+          label: Color
+          type: color
+
+        - name: title_hover_color
+          label: Hover Color
+          type: color
+
+        - name  : title_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 10
+            phone : 10
+
+        - name: title_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name: call_to_action_subtitle_style
+      label: Subtitle
+      type: fields-group
+      schema:
+        - name: subtitle_color
+          label: Color
+          type: color
+
+        - name: subtitle_hover_color
+          label: Hover Color
+          type: color
+
+        - name  : subtitle_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 10
+            phone : 10
+
+        - name: subtitle_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name: call_to_action_description_style
+      label: Description
+      type: fields-group
+      schema:
+        - name: description_color
+          label: Color
+          type: color
+
+        - name: description_hover_color
+          label: Hover Color
+          type: color
+
+        - name  : description_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 10
+            phone : 10
+
+        - name: description_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name: call_to_action_button_style
+      label: Button
+      type: fields-group
+      schema:
+        - name: button_text_color
+          label: Text Color
+          type: color
+
+        - name: button_hover_text_color
+          label: Hover Color
+          type: color
+
+        - name: button_bg
+          label: Background
+          type: background
+          popover: true
+
+        - name: button_border_new
+          type: border
+          label: Border
+          popover: true
+
+        - name: button_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: button_padding
+          label : Button Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 15
+              bottom: 15
+              left: 45
+              right: 45
+            tablet:
+              top: 10
+              bottom: 10
+              left: 30
+              right: 30
+            phone:
+              top: 10
+              bottom: 10
+              left: 25
+              right: 25
+
+    - name: call_to_action_background_style
+      label: Background Overlay
+      type: fields-group
+      depends:
+        element_mode: 'cover'
+      schema:
+        - name: background_overlay_color
+          label: Overlay Color
+          type: color
+
+        - name: background_overlay_hover_color
+          label: Hover Overlay Color
+          type: color
+
+        - name : bg_blend_mode
+          type: select
+          label: Blend Mode
+          value: overlay
+          options:
+            normal : Normal
+            multiply: Multiply
+            screen: Screen
+            overlay: Overlay
+            darken: Darken
+            lighten: Lighten
+            color-dodge: Color Dodge
+            saturation: Saturation
+            color: Color
+            luminosity: Luminosity
+
+        - name : bg_blend_mode_hover
+          type: select
+          label: Hover Blend Mode
+          value: overlay
+          options:
+            normal : Normal
+            multiply: Multiply
+            screen: Screen
+            overlay: Overlay
+            darken: Darken
+            lighten: Lighten
+            color-dodge: Color Dodge
+            saturation: Saturation
+            color: Color
+            luminosity: Luminosity
+
+    - name : call_to_action_graphics_style
+      label: Content Image
+      type: fields-group
+      depends:
+        graphics_image: '*'
+      schema:
+        - name  : graphics_width
+          label : Width
+          type: slider
+          max : 2000
+          units: %, px
+          defaultUnit: %
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+
+        - name  : graphics_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 10
+
+        - name: graphics_border_radius
+          label : Border Radius
+          type: dimensions

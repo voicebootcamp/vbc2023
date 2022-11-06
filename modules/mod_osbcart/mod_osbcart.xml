@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.19.0" method="upgrade" client="site">
+    <name>OSB Cart</name>
+    <author>Dang Thuc Dam</author>
+    <authorEmail>damdt@joomservices.com</authorEmail>
+    <authorUrl>http://joomdonation.com</authorUrl>
+    <version>2.19.0</version>
+    <creationDate>March 2017</creationDate>
+    <copyright>Copyright (C) 2022 Ossolution. All rights reserved.</copyright>
+    <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+    <description>Display OS Services Booking cart box</description>
+    <files>
+        <filename module="mod_osbcart">mod_osbcart.php</filename>
+        <filename>index.html</filename>
+		<folder>asset</folder>
+		<folder>tmpl</folder>		
+    </files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="textarea" rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

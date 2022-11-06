@@ -1,0 +1,113 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set dateJson = general.date_time.countdown_date|json_decode %}
+
+{% set days = general.date_time.days %}
+{% set hours = general.date_time.hours %}
+{% set minutes = general.date_time.minutes %}
+{% set seconds = general.date_time.seconds %}
+
+{% set show_separator = general.options.show_separator %}
+{% set showLabel = general.options.show_label %}
+{% set customLabel = general.options.custom_label %}
+{% set cdays = general.options.cdays %}
+{% set chours = general.options.chours %}
+{% set cminutes = general.options.cminutes %}
+{% set cseconds = general.options.cseconds %}
+{% set mobilegrid = general.options.mobile_grid %}
+{% if mobilegrid.value %}
+    {% set mobilegrid = mobilegrid.value %}
+{% endif %}
+
+{% set classes = classNames('qx-element qx-element-countdown-v2', visibilityClass(visibility), class ) %}
+
+{% set separator = '' %}
+{% set separatorSign = general.options.separator_sign | default(':') %}
+{% if show_separator %}
+    {% set separatorStart = '<div class="qx-countdown-separator qx-text-center qx-align-self-center">' %}
+    {% set separatorEnd = '</div>' %}
+    {% set separator = separatorStart ~ separatorSign ~ separatorEnd %}
+{% endif %}
+
+{% set animation = "" %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {% if dateJson.string %}
+            {% set date = dateJson.string | replace({' ': 'T' }) %}
+        {% else %}
+            {% set date = "now"|date("Y-m-d")~"T23:57:36+00:00" %}
+        {% endif %}
+
+        <div class="qx-countdown-wrapper qx-grid qx-grid-collapse qx-child-width-expand@s qx-child-width-1-{{mobilegrid|default(2)}}" qx-grid qx-countdown="date:{{ date }}">
+            {% if days %}
+                <div class="qx-countdown-days-wrap">
+                    <div class="qx-countdown-item qx-text-center">
+                        <div class="qx-countdown-number qx-countdown-days"></div>
+                        {% if showLabel %}
+                        <div class="qx-countdown-label qx-margin-small qx-visible@s">
+                            {{ customLabel ? cdays : 'Days' }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {{ separator|raw }}
+            {% endif %}
+
+            {% if hours %}
+                <div class="qx-countdown-hours-wrap">
+                    <div class="qx-countdown-item qx-text-center">
+                        <div class="qx-countdown-number qx-countdown-hours"></div>
+                        {% if showLabel %}
+                        <div class="qx-countdown-label qx-margin-small qx-visible@s">
+                            {{ customLabel ? chours : 'Hours' }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {{ separator|raw }}
+            {% endif %}
+
+            {% if minutes %}
+                <div class="qx-countdown-minutes-wrap">
+                    <div class="qx-countdown-item qx-text-center">
+                        <div class="qx-countdown-number qx-countdown-minutes"></div>
+                        {% if showLabel %}
+                        <div class="qx-countdown-label qx-margin-small qx-visible@s">
+                            {{ customLabel ? cminutes : 'Minutes' }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {{ separator|raw }}
+            {% endif %}
+
+            {% if seconds %}
+                <div class="qx-countdown-seconds-wrap">
+                    <div class="qx-countdown-item qx-text-center">
+                        <div class="qx-countdown-number qx-countdown-seconds"></div>
+                        {% if showLabel %}
+                        <div class="qx-countdown-label qx-margin-small qx-visible@s">
+                            {{ customLabel ? cseconds : 'Seconds' }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endembed %}

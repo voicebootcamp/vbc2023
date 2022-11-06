@@ -1,0 +1,4 @@
+.qx-element-testimonial-v2 .qx-element-testimonial__wrapper.qx-flex-row-reverse .qx-testimonial-content,
+.qx-element-testimonial-v2 .qx-element-testimonial__wrapper.qx-flex-row .qx-testimonial-content {flex: 3;}
+.qx-element-testimonial-v2 .qx-element-testimonial__wrapper.qx-flex-row-reverse .qx-element-testimonial__media ,
+.qx-element-testimonial-v2 .qx-element-testimonial__wrapper.qx-flex-row .qx-element-testimonial__media {flex: 1}

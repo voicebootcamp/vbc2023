@@ -1,0 +1,75 @@
+{% set dataAll = allfield() %}
+
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set fieldsGroup = general.icon_list %}
+{% set classes = classNames('qx-element qx-element-icon-list', visibilityClass(visibility), class) %}
+{% set commonIcon = general.iconlist_fg_layout.common_icon %}
+
+{% set chooseLayout = general.iconlist_fg_layout.choose_layout %}
+
+{% set layoutClass = 'desktop-' ~ chooseLayout.desktop ~ '-layout' ~ ' ' ~ 'tablet-' ~ chooseLayout.tablet ~ '-layout' ~ ' ' ~ 'phone-' ~ chooseLayout.phone ~ '-layout' %}
+{% set layoutAlignment = general.iconlist_fg_layout.alignment %}
+{% set layoutAlign = chooseLayout.desktop ~ '-alignDesktop-' ~ layoutAlignment.desktop ~ ' ' ~ chooseLayout.tablet ~ '-alignTablet-' ~ layoutAlignment.tablet ~ ' ' ~ chooseLayout.phone ~ '-alignPhone-' ~ layoutAlignment.phone %}
+
+{# Start Animation #}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        <div class="{{ id }}-wrapper">
+            {% if fieldsGroup %}
+                <ul class="qx-flex {{ layoutClass }} {{ layoutAlign }}">
+                    {% for index, fields in fieldsGroup %}
+                        <li class="item-{{ index }}">
+                            {% set data = fieldsGroup(fieldsGroup, index ) %}
+
+                            {% set src = data.icon %}
+                            {% set link = data.link %}
+                            {% set alt_text = '' %}
+
+                            {% set string = "" %}
+
+                            {% if src.source %}
+                                {% if src.type == "svg" %}
+                                    {% set string = string ~ icon(src.source) | raw %}
+                                {% endif %}
+                            {% elseif commonIcon.source %}
+                                {% if commonIcon.type == "svg" %}
+                                    {% set string = string ~ icon(commonIcon.source) | raw %}
+                                {% endif %}
+                            {% else %}
+                                {% set string = string ~ '<svg version="1.1" id="Layer_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><polygon points="480,200 308.519,200 256.029,32 203.519,200 32,200 170.946,304.209 116,480 256,368 396,480 341.073,304.195 "/></svg>' | raw %}
+                            {% endif %}
+
+                            {% set string = string ~ '<span class="qx-icon-text">' ~ data.title ~ '</span>' | raw %}
+
+                            {{ string | raw | link(link) }}
+
+                            {% if src.type == "svg" %}
+                                {{ addIconStyle('#' ~ id ~ ' li.item-' ~ index, src) }}
+                            {% endif %}
+
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if commonIcon.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' li', commonIcon) }}
+            {% endif %}
+
+
+        </div>
+    {% endblock %}
+{% endembed %}

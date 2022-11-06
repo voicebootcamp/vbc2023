@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="library" version="3.0" method="upgrade">
+    <name>lib_jmedia</name>
+    <libraryname>jmedia</libraryname>
+    <creationDate>12-02-2020</creationDate>
+    <packager>ThemeXpert</packager>
+    <copyright>(C) 2010 - 2020 ThemeXpert. All rights reserved.</copyright>
+    <packageremail>info@themexpert.com</packageremail>
+    <packagerurl>www.themexpert.com</packagerurl>
+    <author>ThemeXpert</author>
+    <authorEmail>info@themexpert.com</authorEmail>
+    <authorUrl>www.themexpert.com</authorUrl>
+    <version>1.0.0</version>
+    <license>GNU General Public License version 3 or later;</license>
+    <description>LIB_JMEDIA</description>
+
+    <files>
+        <folder>php-server</folder>
+        <filename>README.md</filename>
+        <filename>jmedia.xml</filename>
+    </files>
+</extension>

@@ -1,0 +1,911 @@
+name: Slider Pro
+slug: slider-pro
+groups: pro
+helpId: 5d1feb3504286369ad8d5ed8
+form:
+  general:
+    - name: slider-pro_fg_element
+      label: Slider Items
+      type: group-repeater
+      schema:
+        - name: title
+          type: text
+          value: Slider Heading 1
+
+        - name: description
+          type: editor
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: slide_background_image
+          type: divider
+          label: Background Image
+
+        - name: background
+          type: media
+          label: Background Image
+          filters: image, unsplash
+          showstyle: true
+          value: media/quixnxt/images/placeholder.png
+
+        - name: button_text
+          type: text
+          value: Click Me
+
+        - name: link
+          type: link
+          value:
+            url: '#'
+            target: ''
+            nofollow: false
+
+        - name: slide_thumb_image
+          type: divider
+          label: Thumb Image
+
+        - name: thumb_image
+          type: media
+          label: Thumb Image
+          filters: image, unsplash
+          showstyle: true
+          help: Only shows if you select thumbnail form navigation settings.
+          value: media/quixnxt/images/placeholder.png
+
+      value:
+        - title: Slider Item 1
+          background: media/quixnxt/images/placeholder.png
+          thumb_image: media/quixnxt/images/placeholder.png
+
+        - title: Slider Item 2
+          background: media/quixnxt/images/placeholder.png
+          thumb_image: media/quixnxt/images/placeholder.png
+
+    - name: slider-pro_fg_alignment
+      label: Content Alignment
+      type: fields-group
+      status: close
+      schema:
+        - name: text_alignment
+          label: Text Alignment
+          type: choose
+          responsive: false
+          value: center
+          help:  Align the text to the left, center, and right
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            right:
+              label: Right
+              icon: qxuicon-align-right
+
+        - name: horizontal_position
+          label: Horizontal Position
+          type: choose
+          responsive: false
+          value: center
+          help:  Move the content horizontally
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            right:
+              label: Right
+              icon: qxuicon-align-right
+
+        - name: vertical_position
+          label: Vertical Position
+          type: choose
+          responsive: false
+          value: center
+          help:  Move the content vertically
+          options:
+            top:
+              label: Top
+              icon: qxuicon-arrow-to-top
+            center:
+              label: Center
+              icon: qxuicon-minus
+            bottom:
+              label: Bottom
+              icon: qxuicon-arrow-to-bottom
+
+    - name: slider-pro_fg_display
+      label: Display
+      type: fields-group
+      status: close
+      schema:
+        - name: show_title
+          label: Show Title
+          type: switch
+          value: true
+
+        - name: show_content
+          label: Show Content
+          type: switch
+          value: true
+
+        - name: show_button
+          label: Show Button
+          type: switch
+          value: true
+
+        - name: enable_icon
+          type: switch
+          label: Enable Icon
+          value: false
+
+        - name: icon
+          type: media
+          filters: icon
+          showstyle: true
+          help: Icon will visible left to the title
+          depends:
+            enable_icon: true
+
+        - name: icon_alignment
+          type: choose
+          label: Icon Placement
+          value: left
+          responsive: false
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            right:
+              label: Right
+              icon: qxuicon-align-right
+          depends:
+            enable_icon: true
+
+    - name: slider-pro_fg_overlay
+      label: Overlay Color
+      type: fields-group
+      status: close
+      schema:
+        - name: enable_overlay
+          label: Enable Overlay
+          type: switch
+          value: true
+
+        - name: overlay_bg_color
+          label: Overlay Color
+          type: color
+          value: rgba(0, 0, 0, 0.5)
+          depends:
+            enable_overlay: true
+
+    - name: slider-pro_fg_animation
+      label: Slide Animation
+      type: fields-group
+      status: close
+      schema:
+        - name: slide_animation
+          label: Animation
+          type: select
+          value: 'slide'
+          options:
+            'slide': 'Slide'
+            'fade': 'Fade'
+            'scale': 'Scale'
+            'pull': 'Pull'
+            'push': 'Push'
+
+        - name: slide_kenburns
+          label: Enbale Kenburns
+          type: switch
+          value: false
+
+        - name: slide_kenburns_reverse
+          label: Reverse Kenburns
+          type: switch
+          value: false
+          depends:
+            slide_kenburns: true
+
+    - name: slider-pro_fg_transitions
+      label: Content Animation
+      type: fields-group
+      status: close
+      schema:
+        - name: content_transitions
+          label: Enable Content Transitions
+          type: switch
+          value: false
+          help: If use content transitions, don't need to use the content parallax.
+
+        - name: transitions_effect
+          label: Transition Effect
+          type: select
+          value: 'qx-transition-fade'
+          options:
+            'qx-transition-fade': 'Fade'
+            'qx-transition-scale-up': 'Scale Up'
+            'qx-transition-scale-down': 'Scale Down'
+            'qx-transition-slide-top': 'Slide Top'
+            'qx-transition-slide-bottom': 'Slide Bottom'
+            'qx-transition-slide-left': 'Slide Left'
+            'qx-transition-slide-right': 'Slide Right'
+            'qx-transition-slide-top-small': 'Slide Top Small'
+            'qx-transition-slide-bottom-small': 'Slide Bottom Small'
+            'qx-transition-slide-left-small': 'Slide Left Small'
+            'qx-transition-slide-right-small': 'Slide Right Small'
+            'qx-transition-slide-bottom-medium': 'Slide Bottom Medium'
+            'qx-transition-slide-left-medium': 'Slide Left Medium'
+            'qx-transition-slide-right-medium': 'Slide Right Medium'
+          depends:
+            content_transitions: true
+
+        - name: content_parallax
+          label: Enable Content Parallax
+          type: switch
+          value: false
+          help: If use content parallax, don't need to use the content transition.
+
+        - name: for_heading
+          label: For Heading
+          type: switch
+          value: false
+          depends:
+            content_parallax: true
+
+        - name: heading_effect
+          label: Select Effect Style
+          type: select
+          value: 'x'
+          options:
+            'x': 'X'
+            'y': 'Y'
+          depends:
+            for_heading: true
+
+        - name: heading_paraIN
+          label: Parallax IN
+          type: slider
+          max: 500
+          min: -500
+          value: 0
+          responsive: false
+          depends:
+            for_heading: true
+
+        - name: heading_ParaOut
+          label: Parallax Out
+          type: slider
+          max: 500
+          min: -500
+          value: 0
+          responsive: false
+          depends:
+            for_heading: true
+
+        - name: for_desc
+          label: For Description
+          type: switch
+          value: false
+          depends:
+            content_parallax: true
+
+        - name: desc_effect
+          label: Select Effect Style
+          type: select
+          value: 'x'
+          options:
+            'x': 'X'
+            'y': 'Y'
+          depends:
+            for_desc: true
+
+        - name: desc_paraIN
+          label: Parallax IN
+          type: slider
+          max: 500
+          min: -500
+          value: 0
+          responsive: false
+          depends:
+            for_desc: true
+
+        - name: desc_ParaOut
+          label: Parallax Out
+          type: slider
+          max: 500
+          min: -500
+          value: 0
+          responsive: false
+          depends:
+            for_desc: true
+
+        - name: for_button
+          label: For Button
+          type: switch
+          value: false
+          depends:
+            content_parallax: true
+
+        - name: button_effect
+          label: Select Effect Style
+          type: select
+          value: 'x'
+          options:
+            'x': 'X'
+            'y': 'Y'
+          depends:
+            for_button: true
+
+        - name: button_paraIN
+          label: Parallax IN
+          type: slider
+          max: 500
+          min: -500
+          value: 0
+          responsive: false
+          depends:
+            for_button: true
+
+        - name: button_ParaOut
+          label: Parallax Out
+          type: slider
+          max: 500
+          min: -500
+          value: 0
+          responsive: false
+          depends:
+            for_button: true
+
+
+    - name: slider-pro_fg_height
+      label: Height
+      type: fields-group
+      status: close
+      schema:
+
+        - name: height_option
+          label: Height
+          type: select
+          value: 'default'
+          options:
+            'default': 'Default'
+            'custom': 'Custom'
+            'fit-to-screen': 'Fit to Screen'
+        - name: custom_height_guide
+          type: divider
+          help: Set custom height from "Styles > Content Style > Slider Custom Height"
+          depends:
+            height_option: [ 'custom' ]
+
+
+    - name: slider-pro_fg_navigation
+      label: Navigation
+      type: fields-group
+      schema:
+        - name: slide_nav
+          label: Slidenav
+          type: select
+          value: 'default'
+          options:
+            'none': 'None'
+            'default': 'Default'
+            'top-left': 'Top Left'
+            'top-right': 'Top Right'
+            'center-left': 'Center Left'
+            'center-right': 'Center Right'
+            'bottom-left': 'Bottom Left'
+            'bottom-center': 'Bottom Center'
+            'bottom-right': 'Bottom Right'
+
+        - name: navigation
+          label: Navigation
+          type: select
+          value: 'dot-inside'
+          options:
+            'none': 'None'
+            'dot-inside': 'Dot Inside'
+            'dot-outside': 'Dot Outside'
+            'thumb-inside': 'Thumb Inside'
+            'thumb-outside': 'Thumb Outside'
+            'bar-nav': 'Bar Nav'
+
+        - name: navigation_outside_position
+          label: Position
+          depends:
+            navigation: [ 'dot-outside', 'thumb-outside' ]
+          type: select
+          value: 'center'
+          options:
+            'left': 'Left'
+            'center': 'Center'
+            'right': 'Right'
+
+        - name: navigation_inside_position
+          label: Position
+          depends:
+            navigation: [ 'dot-inside','thumb-inside' ]
+          type: select
+          value: 'bottom-center'
+          options:
+            'top-left': 'Top Left'
+            'top-right': 'Top Right'
+            'center-left': 'Center Left'
+            'center-right': 'Center Right'
+            'bottom-left': 'Bottom Left'
+            'bottom-center': 'Bottom Center'
+            'bottom-right': 'Bottom Right'
+
+        - name: navigation_margin
+          label: Margin
+          type: select
+          value: 'medium'
+          options:
+            'none': 'None'
+            'small': 'Small'
+            'medium': 'Medium'
+            'large': 'Large'
+
+        - name: bar_vertical
+          label: For Vertical
+          type: switch
+          value: false
+          depends:
+            navigation: 'bar-nav'
+
+        - name: barNav_position
+          label: Position
+          type: select
+          value: 'bottom-center'
+          options:
+            'top-left': 'Top Left'
+            'top-right': 'Top Right'
+            'center-left': 'Center Left'
+            'center-right': 'Center Right'
+            'bottom-left': 'Bottom Left'
+            'bottom-center': 'Bottom Center'
+            'bottom-right': 'Bottom Right'
+          depends:
+            navigation: 'bar-nav'
+
+        - name: barNav_margin
+          label: Margin
+          type: select
+          value: 'medium'
+          options:
+            'none': 'None'
+            'small': 'Small'
+            'medium': 'Medium'
+            'large': 'Large'
+          depends:
+            navigation: 'bar-nav'
+
+    - name: slider-pro_fg_settings
+      label: Behaviour
+      type: fields-group
+      schema:
+        - name: pause_on_hover
+          label: Pause on Hover
+          type: switch
+          value: true
+
+        - name: autoplay
+          type: switch
+          value: true
+
+        - name: autoplay_speed
+          label: Autoplay Speed ( MS )
+          type: text
+          value: 5000
+          depends:
+            autoplay: true
+
+        - name: infinite_loop
+          label: Infinite Loop
+          type: switch
+          value: true
+
+
+  styles:
+    - name: slider-pro_fg_slider-style
+      label: Content Style
+      type: fields-group
+      status: open
+      schema:
+        - name: slider_height_custom
+          label: Slider Custom Height
+          type: slider
+          max: 2000
+          defaultUnit: px
+          help: Only workes when slider height set to "custom"
+          value:
+            desktop: 1000
+            tablet: 600
+            phone: 400
+
+        - name: slides_margin
+          label: Margin
+          type: dimensions
+          defaultUnit: px
+
+
+        - name: slides_padding
+          label: Padding
+          type: dimensions
+          defaultUnit: px
+
+        - name: content_bg
+          label: Content Background
+          type: color
+
+        - name: content_width
+          label: Content Width
+          type: slider
+          max: 100
+          units: '%'
+          defaultUnit: '%'
+          value:
+            desktop: 50
+            tablet: 70
+            phone: 85
+
+        - name: content_border
+          label: Content Border
+          type: border
+          popover: true
+
+    - name: slider-pro_fg_title-style
+      label: Title
+      type: fields-group
+      schema:
+        - name: title_text_color
+          label: Text Color
+          type: color
+          value: rgba(255, 255, 255, 1)
+
+        - name: title_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: title_margin
+          label: Margin
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 0
+              bottom: 20
+              left: 0
+              right: 0
+            tablet:
+              top: 0
+              bottom: 20
+              left: 0
+              right: 0
+            phone:
+              top: 0
+              bottom: 20
+              left: 0
+              right: 0
+
+    - name: slider-pro_fg_description-style
+      label: Description
+      type: fields-group
+      schema:
+        - name: description_text_color
+          label: Text Color
+          type: color
+          value: rgba(255, 255, 255, 1)
+
+        - name: description_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: description_margin
+          label: Margin
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 0
+              bottom: 25
+              left: 0
+              right: 0
+            tablet:
+              top: 0
+              bottom: 20
+              left: 0
+              right: 0
+            phone:
+              top: 0
+              bottom: 30
+              left: 0
+              right: 0
+
+    - name: slider-pro_fg_image-style
+      label: Image
+      type: fields-group
+      schema:
+        - name: image_size
+          label: Image size
+          type: choose
+          responsive: false
+          value: cover
+          options:
+            contain:
+              label: contain
+            cover:
+              label: cover
+            fill:
+              label: fill
+            scale-down:
+              label: scale-down
+            unset:
+              label: unset
+            none:
+              label: none
+
+    - name: slider-pro_fg_button-style
+      label: Button
+      type: fields-group
+      schema:
+        - name: btn_text_color
+          label: Text Color
+          type: color
+          value: rgba(255, 255, 255, 1)
+
+        - name: btn_hover_text_color
+          label: Hover Text Color
+          type: color
+
+        - name: btn_bg_color
+          label: Background Color
+          type: color
+
+        - name: btn_hover_bg_color
+          label: Hover Background Color
+          type: color
+
+        - name: hover_icon_color
+          label: Hover Icon Color
+          type: color
+
+        - name: icon_spacing
+          label: Icon Spacing
+          type: slider
+          responsive: false
+          unit: px
+          value: 10
+          max: 250
+
+        - name: button_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: button_padding
+          label: Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 15
+              bottom: 15
+              left: 30
+              right: 30
+            tablet:
+              top: 10
+              bottom: 10
+              left: 20
+              right: 20
+            phone:
+              top: 5
+              bottom: 5
+              left: 10
+              right: 10
+
+        - name: button_margin
+          label: Margin
+          type: dimensions
+          units: px
+          defaultUnit: px
+
+        - name: button_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: slider-pro_fg_arrow-style
+      label: Arrow Nav
+      type: fields-group
+      status: close
+      schema:
+        - name: arrow_color
+          label: Color
+          type: color
+          value: rgba(247, 247, 247, 0.6)
+
+        - name: arrow_hover_color
+          label: Hover Color
+          type: color
+
+        - name: arrow_size
+          label: Size
+          type: slider
+          max: 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop: 25
+            tablet: 25
+            phone: 20
+
+        - name: arrow_padding
+          label: Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+
+
+        - name: arrow_nav_spacing
+          label: Nav Space
+          type: dimensions
+          units: px
+          defaultUnit: px
+
+        - name: arrow_spacing
+          label: Spacing
+          type: dimensions
+          units: px
+          defaultUnit: px
+
+        - name: arrow_nav_bg
+          label: Background Color
+          type: background
+          popover: true
+
+        - name: arrow_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: slider-pro_fg_dot-style
+      label: Dot Nav
+      type: fields-group
+      status: close
+      schema:
+        - name: dot_color
+          label: Color
+          type: color
+          value: rgba(102, 102, 102, 0.6)
+
+        - name: dot_active_color
+          label: Active Color
+          type: color
+          value: rgba(238, 238, 238, 1)
+
+        - name: dot_bg
+          label: Background Color
+          type: color
+
+        - name: dot_padding
+          label: Background Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+
+        - name: dot_width
+          label: Width
+          type: slider
+          max: 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop: 15
+            tablet: 15
+            phone: 15
+
+        - name: dot_spacing
+          label: Spacing
+          type: slider
+          max: 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop: 12
+            tablet: 12
+            phone: 10
+
+        - name: dot_border
+          label: Background Border
+          type: border
+          popover: true
+
+        - name: thumb_divider
+          type: divider
+          label: Thumb Size
+
+        - name: thumb_width
+          label: Width
+          type: slider
+          max: 200
+          units: px
+          defaultUnit: px
+          value:
+            desktop: 100
+            tablet: 50
+            phone: 35
+
+        - name: thumb_height
+          label: Height
+          type: slider
+          max: 200
+          units: px
+          defaultUnit: px
+          value:
+            desktop: 100
+            tablet: 50
+            phone: 35
+
+    - name: slider-pro_fg_bar-style
+      label: Bar Nav
+      type: fields-group
+      status: close
+      depends:
+        navigation: bar-nav
+      schema:
+        - name: bar_color
+          label: Color
+          type: color
+          value: rgba(238, 238, 238, 1)
+
+        - name: bar_active_color
+          label: Active Color
+          type: color
+          value: rgba(102, 102, 102, 0.6)
+
+        - name: bar_width
+          label: Width
+          type: slider
+          max: 100
+          units: px
+          help: Height for Vartical bar
+          defaultUnit: px
+          value:
+            desktop: 25
+            tablet: 25
+            phone: 25
+
+        - name: barActive_width
+          label: Active Width
+          type: slider
+          max: 100
+          units: px
+          help: Width (Active) for Vartical bar
+          defaultUnit: px
+
+        - name: bar_height
+          label: Height
+          type: slider
+          max: 100
+          units: px
+          help: Width for Vartical bar
+          defaultUnit: px
+          value:
+            desktop: 5
+            tablet: 5
+            phone: 5
+
+        - name: barActive_height
+          label: Active Height
+          type: slider
+          max: 100
+          units: px
+          help: Height (Active) for Vertical bar
+          defaultUnit: px

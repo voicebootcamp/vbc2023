@@ -1,0 +1,85 @@
+/* ======================================================
+ # Limit Active Logins for Joomla! - v1.1.2 (pro version)
+ # -------------------------------------------------------
+ # For Joomla! CMS (v4.x)
+ # Author: Web357 (Yiannis Christodoulou)
+ # Copyright (©) 2014-2022 Web357. All rights reserved.
+ # License: GNU/GPLv3, http://www.gnu.org/licenses/gpl-3.0.html
+ # Website: https:/www.web357.com
+ # Demo: https://limitactivelogins.web357.com/
+ # Support: support@web357.com
+ # Last modified: Thursday 31 March 2022, 12:05:22 PM
+ ========================================================= */
+ 
+a {
+    cursor: pointer;
+}
+
+/* Icons */
+.icon-48-limitactivelogins {
+	background-image: url("../icons/limitactivelogins.png");
+}
+
+/* Notification Boxes (http://www.cssportal.com/blog/css-notification-boxes/) */
+.alert-box {
+	color:#555;
+	border-radius:10px;
+	font-family:Tahoma,Geneva,Arial,sans-serif;font-size:11px;
+	padding:10px 36px;
+	margin:10px;
+}
+.alert-box span {
+	font-weight:bold;
+	text-transform:uppercase;
+}
+.error {
+	background:#ffecec url("../icons/error.png") no-repeat 10px 50%;
+	border:1px solid #f5aca6;
+}
+.success {
+	background:#e9ffd9 url("../icons/success.png") no-repeat 10px 50%;
+	border:1px solid #a6ca8a;
+}
+.warning {
+	background:#fff8c4 url("../icons/warning.png") no-repeat 10px 50%;
+	border:1px solid #f2c779;
+}
+.notice {
+	background:#e3f7fc url("../icons/notice.png") no-repeat 10px 50%;
+	border:1px solid #8ed9f6;
+}
+.dottedUnderline {
+    border-bottom: 1px dotted;
+}
+
+/* Alignment */
+.center {
+    text-align: center;
+}
+
+/************* Tables *************/
+.table#logList th, 
+.table#logList td {
+    vertical-align: middle;
+}
+td { 
+	word-break: break-all;
+}
+/* Hide joomla's copyright text in the footer */
+footer.footer {
+    display: none;
+}
+/* Gravatar */
+.w357-gravatar { 
+    max-width: 40px; 
+    margin-right: 10px; 
+}
+
+/* fix responsive issues */
+@media (max-width: 1900px){
+    .w357-col-span.span6 {
+       float: none !important;
+       width: 100% !important;
+       margin-left: 0 !important;
+    }
+}

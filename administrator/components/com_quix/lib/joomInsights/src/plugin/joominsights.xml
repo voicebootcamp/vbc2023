@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+	<name>JoomInsights</name>
+	<author>JoomInsights</author>
+	<creationDate>Aug 2019</creationDate>
+	<copyright>Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@joominsights.com</authorEmail>
+	<authorUrl>www.joominsights.com</authorUrl>
+	<version>1.0.0</version>
+	<description></description>
+	<files>
+		<filename plugin="joominsights">joominsights.php</filename>
+	</files>
+	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					type="hidden"
+					name="allow_data"
+					default="0"
+					value="0"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>

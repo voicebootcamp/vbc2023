@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field name="id" type="text" default="0" label="COM_QUIX_FORM_LBL_PAGE_ID" readonly="true" class="readonly"
+               description="JGLOBAL_FIELD_ID_DESC"/>
+        <field name="title" type="text" label="COM_QUIX_FORM_LBL_PAGE_TITLE" description="COM_QUIX_FORM_DESC_PAGE_TITLE"
+               required="true" class="input-xxlarge input-large-text"/>
+        <field name="data" type="hidden" filter="raw"/>
+        <field name="builder" type="hidden" default="frontend"/>
+        <field name="builder_version" type="hidden" default=""/>
+        <field name="access" type="usergroup" label="COM_QUIX_FORM_LBL_PAGE_ACCESS"
+               description="COM_QUIX_FORM_DESC_PAGE_ACCESS"/>
+        <field name="catid"
+               label="JCATEGORY" description="JFIELD_CATEGORY_DESC"
+               type="category" extension="com_quix"
+               default="0"
+        >
+        </field>
+        <field name="language" type="language" label="COM_QUIX_FORM_LBL_PAGE_LANGUAGE"
+               description="COM_QUIX_FORM_DESC_PAGE_LANGUAGE" default="*" client="site"/>
+        <field name="created_by" type="createdby" default="" label="COM_QUIX_FORM_LBL_PAGE_CREATED_BY"
+               description="COM_QUIX_FORM_DESC_PAGE_CREATED_BY"/>
+
+        <field name="state" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1"
+               default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+            <option value="2">JARCHIVED</option>
+            <option value="-2">JTRASHED</option>
+        </field>
+        <field name="checked_out" type="hidden" filter="unset"/>
+        <field name="checked_out_time" type="hidden" filter="unset"/>
+        <field
+                name="ordering"
+                type="text"
+                label="JFIELD_ORDERING_LABEL"
+                size="6"
+                default="0"
+        />
+    </fieldset>
+
+
+    <fields name="metadata" label="COM_QUIX_FORM_LBL_PAGE_METADATA" description="COM_QUIX_FORM_DESC_PAGE_METADATA">
+
+        <field type="spacer" name="metaspacer" class="text" label="COM_QUIX_FORM_DESC_PAGE_METADATA"/>
+
+        <field name="addog" type="list" label="COM_QUIX_FORM_ADDOG_LABEL" description="COM_QUIX_FORM_ADDOG_DESC"
+               class="inputbox" default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="addtw" type="list" label="COM_QUIX_FORM_ADDTW_LABEL" description="COM_QUIX_FORM_ADDTW_DESC"
+               class="inputbox" default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field type="text" name="title" class="text" label="COM_QUIX_FORM_LBL_PAGE_METADATA_TITLE"
+               description="COM_QUIX_FORM_LBL_PAGE_METADATA_TITLE_PLACEHOLDER"/>
+
+        <!-- <field name="image_intro" type="media" label="COM_QUIX_FORM_LBL_PAGE_METADATA_IMAGE" description="COM_QUIX_FORM_DESC_PAGE_METADATA_IMAGE" /> -->
+
+        <field type="textarea" name="desc" class="text" label="COM_QUIX_FORM_LBL_PAGE_METADATA_DESC"/>
+
+        <field type="text" name="twitter_username" class="text" label="COM_QUIX_FORM_LBL_PAGE_METADATA_TWITTER_USERNAME"
+               description="COM_QUIX_FORM_LBL_PAGE_METADATA_TWITTER_USERNAME_PLACEHOLDER"/>
+        <field type="text" name="fb_appid" class="text" label="COM_QUIX_FORM_LBL_PAGE_METADATA_FB_APPID"
+               description="COM_QUIX_FORM_LBL_PAGE_METADATA_FB_APPID_PLACEHOLDER"/>
+
+
+    </fields>
+
+    <fieldset name="accesscontrol">
+        <field name="asset_id" type="hidden" filter="unset"/>
+        <field name="rules" type="rules" label="JFIELD_RULES_LABEL" translate_label="false" filter="rules"
+               validate="rules" class="inputbox" component="com_quix" section="page"/>
+    </fieldset>
+
+    <fields name="params" label="COM_QUIX_FORM_LBL_PAGE_PARAMS" description="COM_QUIX_FORM_DESC_PAGE_PARAMS">
+        <field type="spacer" name="codespacer" class="text" label="COM_QUIX_FORM_LABEL_PAGE_PARAMS"/>
+        <field name="enable_confetti"
+               type="list" class="btn-group btn-yes-no"
+               label="COM_QUIX_FORM_LBL_PAGE_PARAMS_CONFETTI"
+               description="COM_QUIX_FORM_LBL_PAGE_PARAMS_CONFETTI_DESC"
+               default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field
+                name="code"
+                type="textarea"
+                editor="codemirror|none"
+                buttons="no"
+                label="COM_QUIX_FORM_LBL_PAGE_PARAMS_EDITOR"
+                description="COM_QUIX_FORM_DESC_PAGE_CODE"
+                height="500px"
+                rows="20"
+                cols="80"
+                filter="raw"
+                syntax="html"
+        />
+
+        <field
+                name="reset_counter"
+                type="list"
+                label="COM_QUIX_FORM_LBL_RESET_COUNTER"
+                description="COM_QUIX_FORM_DESC_RESET_COUNTER"
+                default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+    </fields>
+
+</form>

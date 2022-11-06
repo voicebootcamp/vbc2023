@@ -1,0 +1,143 @@
+name: Video Pro
+slug: video-pro
+groups: pro
+helpId: 5d1fec6d04286369ad8d5ede
+form:
+  general:
+    - name: video_fg_text
+      label: Video
+      type: fields-group
+      status: open
+      schema:
+
+        - name: link_type
+          label: Video Type
+          type: select
+          value: link
+          options:
+            link: Link
+            custom: Custom
+
+        - name: video_link
+          label: Video Embed Url
+          type: text
+          value: https://www.youtube-nocookie.com/embed/QKG9AmiJEeo
+          help:  add `?controls=0` at the end of youtube embed video link to hide controls
+          depends:
+            link_type: link
+
+        - name: custom_video
+          label: Select Video
+          type: media
+          filters: video
+          showstyle: true
+          depends:
+            link_type: custom
+
+        - name: video_poster
+          type: media
+          filters: image, unsplash
+          showstyle: true
+          depends:
+            link_type: custom
+
+        - name: controls
+          type: switch
+          value: true
+          depends:
+            link_type: custom
+
+        - name: autoplay
+          type: switch
+          value: false
+
+        - name: mute
+          type: switch
+          value: false
+
+        - name: loop
+          type: switch
+          value: true
+          depends:
+            link_type: custom
+
+        - name: enable_overlay
+          type: switch
+          label: Video Overlay
+          value: false
+          depends:
+            link_type: link
+
+        - name: overlay_img
+          type: media
+          label: Overlay Image
+          help: Preview image
+          filters: image
+          showstyle: true
+          depends:
+            enable_overlay: true
+
+        - name: play_icon
+          lable: Play Icon
+          type: switch
+          value: false
+          help: Enbale the overlay image at first
+          depends:
+            enable_overlay: true
+
+        - name: upload_Picon
+          type: media
+          label: Upload Icon
+          showstyle: true
+          depends:
+            play_icon: true
+
+        - name: alignment
+          type: choose
+          responsive: false
+          value: center
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            right:
+              label: Right
+              icon: qxuicon-align-right
+
+
+  styles:
+    - name: text_fields_group
+      label: Style
+      type: fields-group
+      status: open
+      schema:
+        - name: height
+          type: slider
+          defaultUnit: px
+          units: px
+          max: 1000
+          value:
+            desktop: 450
+            tablet: 300
+            phone: 300
+
+        - name: width
+          type: slider
+          defaultUnit: %
+          max: 1000
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+
+        - name: adjust_image
+          type: switch
+          value: true
+
+        - name: wrapper_border
+          type: border
+          label: Border
+          popover: true

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Categories List">
+		<message>
+			Displays a list of subscription categories
+		</message>
+	</layout>
+    <fields name="request">
+        <fieldset name="request"
+                  addfieldpath="/administrator/components/com_osmembership/model/fields">
+            <field name="id" type="osmcategory" size="3" default="0" label="Select Category" description="Choose the category which you want to list it's sub categories" />
+        </fieldset>
+    </fields>
+    <fields name="params">
+        <fieldset name="basic">
+            <field type="editor" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of page." />
+        </fieldset>
+    </fields>
+</metadata>

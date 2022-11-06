@@ -1,0 +1,36 @@
+{% set id = advanced.identifier.id %}
+{% set classes = classNames('qx-row', general.layout_fields_group.v_align, {
+    'qx-no-gutters' : (general.layout_fields_group.columns_gap == 'no-gutters'),
+    'qx-flex-md-row qx-flex-column-reverse' : (general.layout_fields_group.mobile_reverse == true),
+}, advanced.identifier.class) %}
+
+{% set wrapClasse = classNames('qx-row-wrap', 'lazyload',visibilityClassNode(visibility)) %}
+{% set rowId = "id='" ~ id ~ "'" %}
+{% set rowClasses = "class='" ~ classes ~ "'" %}
+{% set wrapClasses = "class='" ~ wrapClasse ~ "'" %}
+{% set bg_overlay = styles.background_overlay_fields_group.background_overlay %}
+{% set background = styles.background_fields_group.background %}
+
+{% set parallax = '' %}
+{% if background.state.normal.properties.parallax_method == "js" %}
+    {% set parallaxInfo = "" %}
+    {% if background.state.normal.properties.js_parallax_y %}
+        {% set parallaxInfo = parallaxInfo ~ 'bgy:' ~  background.state.normal.properties.js_parallax_y ~ ';' %}
+    {% endif %}
+    {% if background.state.normal.properties.js_parallax_x %}
+        {% set parallaxInfo = parallaxInfo ~ 'bgx:' ~  background.state.normal.properties.js_parallax_x ~ ';' %}
+    {% endif %}
+    {% set parallax = ' data-qx-parallax="' ~ parallaxInfo ~ '"' %}
+{% endif %}
+
+{# dynamic tag #}
+{{ "<" ~ general.layout_fields_group.html_tag ~ " " ~ rowId ~ " " ~ wrapClasses ~ " " ~ lazyBackground(background) ~ ">" }}
+{{ "<div " ~ rowClasses ~ parallax ~ " >" }}
+
+  {% if (bg_overlay and ( getOpacity(bg_overlay, 'normal') or getOpacity(bg_overlay, 'hover') ) ) %}
+      {% set overlayClass = "qx-background-overlay " ~ id ~ "-background-overlay" %}
+      <div class="{{ overlayClass }}"></div>
+  {% endif %}
+   {{ renderer.render( node['children'], null, 'frontend' ) | raw }}
+{{ "</div>" }}
+{{ "</" ~ general.layout_fields_group.html_tag ~ ">" }}

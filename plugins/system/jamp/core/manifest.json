@@ -1,0 +1,66 @@
+{
+	"com_easydiscuss" : 
+	{
+		"images_not_responsive_selectors" : "div.ed-entry img"
+	},
+	
+	"com_easyblog" : 
+	{
+		"page_image_css_selector" : "img[itemprop=image]",
+		"disallowed_attributes" : "loaded, parentid, alt",
+		"images_not_responsive_selectors" : "div.eb-entry-author-bio img",
+		"removed_elements_bycss_selectors" : "div.eb-share, div.icon_container"
+	},
+	
+	"com_virtuemart" : 
+	{
+		"page_image_css_selector" : "a[rel=vm-additional-images] img",
+		"images_not_responsive_selectors" : "div.additional-images img, div.product-description img",
+		"replace_buttons_css_selectors" : "input.addtocart-button"
+	},
+	"com_zoo" : 
+	{
+		"page_image_css_selector" : "div.element-image img"
+	},
+	"com_hikashop" : 
+	{
+		"page_image_css_selector" : "img.hikashop_product_listing_image",
+		"replace_buttons_css_selectors" : "a.hikashop_cart_button,#hikashop_product_quantity_main a.hikacart"
+	},
+	"com_djclassifieds" :
+	{
+		"page_image_css_selector" : "#djc_mainimage",
+		"images_responsive_selectors":"#djc_mainimage",
+		"removed_elements_bycss_selectors":"div.title_top a, div.ask_form_abuse_outer"
+	},
+	"com_k2" :
+	{
+		"page_image_css_selector" : "span.itemImage img, div.itemIntroText img, div.itemFullText img",
+		"removed_elements_bycss_selectors" : "div.itemToolbar, div.itemRatingBlock, div.itemComments, div.itemSocialSharing"
+	},
+	"com_kunena" :
+	{
+		"removed_elements_bycss_selectors" : "div.navbar, *.breadcrumb, div.btn-toolbar, div.pagination, div.profile-expand, div.kreply-form, div.modal"
+	},
+	"com_content" :
+	{
+		"removed_elements_bycss_selectors":"div.icons"
+	},
+	"com_jamp_default" : 
+	{
+		"disallowed_tags" : "g:plusone,g:plus,ins",
+		"disallowed_attributes" : "itemtype,itemscope,itemprop,onchange",
+		"removed_elements_bycss_selectors" : "#fb-root,ul.actions,#jsn-menu-toggle-parent,.jsn-menu-toggle,div.scsocialbuttons,div.scsocialcomments,div.com-contact div.icons",
+		"images_not_responsive_selectors" : "div.ed-entry img, ul.lang-inline img",
+		"enable_form_bycss_selectors" : "form.form-inline,form.form-validate,form.form-horizontal"
+	},
+	"com_dummy_xxx" :
+	{
+		"page_image_css_selector" : "img.testdaconfig",
+		"images_responsive_selectors" : ".testdaconfig",
+		"images_not_responsive_selectors" : "img.notresponsiveimage",
+		"disallowed_tags" : "miotag",
+		"disallowed_attributes" : "loaded",
+		"removed_elements_bycss_selectors" : "img.testdaconfig"
+	}
+}

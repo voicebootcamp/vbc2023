@@ -1,0 +1,91 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Selectors #}
+{% set img = id ~ ' .qx-grid-deck figure img,' ~ id ~ ' .qx-grid-group figure img' %}
+{% set unlistItems = id ~ ' .qx-list-unstyled li' %}
+{% set listItem = id ~ ' .qx-media' %}
+{% set groupItem = id ~ ' .qx-card' %}
+{% set titleSelector = id ~ ' .qx-media-heading' %}
+{% set groupTitleSelector = id ~ ' .qx-card-title' %}
+{% set metaSelector = id ~ ' .qx-post-meta' %}
+{% set imageSelector = id ~ ' figure' %}
+{% set bodySelector = id ~ ' .qx-media-body' %}
+{% set groupBodySelector = id ~ ' .qx-card-body' %}
+{% set introSelector = id ~ ' .qx-element-jarticle-introtext' %}
+{% set groupIntroSelector = id ~ ' .qx-card-text' %}
+{% set btnSelector = id ~ ' .qx-btn' %}
+{% set iconBtnSpacing = styles.articles_button_options.icon_spacing %}
+{% set iconBtnLeftSelector = id ~ ' a.qx-btn.iconAlignleft svg,' ~ id ~ ' a.qx-btn.iconAlignleft i' %}
+{% set iconBtnRightSelector = id ~ ' a.qx-btn.iconAlignright svg,' ~ id ~ ' a.qx-btn.iconAlignright i' %}
+{% set iconBtnHoverSelector = id ~ ' a.qx-btn' %}
+
+{{ style.padding(groupBodySelector, styles.articles_common.contentBody_padding) }}
+{{ style.padding(bodySelector, styles.articles_common.contentBody_padding) }}
+
+{# Width > img #}
+{{ style.width( img, styles.articles_common.image_size, '%' )}}
+{{ style.width( unlistItems ~ ' img', styles.articles_common.image_size, '%' )}}
+{{ style.css(unlistItems ~ '::before', 'display', 'none' ) }}
+
+{# Group Item (border ~ box shadow) #}
+{{ style.border( listItem ~ ',' ~ groupItem, styles.articles_common.item_border) }}
+{{ style.margin( listItem ~ ',' ~ groupItem, styles.articles_common.bg_margin) }}
+{{ style.padding( listItem ~ ',' ~ groupItem, styles.articles_common.bg_padding) }}
+{{ style.css( listItem ~ ',' ~ groupItem, 'background-color', styles.articles_common.bg_color) }}
+
+{# Alignment #}
+{{ style.alignment(listItem, styles.articles_common.nalignment) }}
+{{ style.alignment(groupItem, styles.articles_common.nalignment) }}
+
+{# Title #}
+{{ style.css( titleSelector, 'line-height', '1.1' ) }}
+{{ style.css( titleSelector, 'font-size', '24px' ) }}
+{{ style.typography( titleSelector, styles.articles_options.title_font) }}
+{{ style.css( titleSelector ~ greaterThanSign() ~ ' *', 'color', styles.articles_options.title_color) }}
+{{ style.css( titleSelector ~ greaterThanSign() ~ ' *:hover', 'color', styles.articles_options.title_hvcolor) }}
+{{ style.margin( titleSelector, styles.articles_options.title_margin) }}
+
+{{ style.typography( groupTitleSelector, styles.articles_options.title_font) }}
+{{ style.css( groupTitleSelector ~ greaterThanSign() ~ ' *', 'color', styles.articles_options.title_color) }}
+{{ style.css( groupTitleSelector ~ greaterThanSign() ~ ' *:hover', 'color', styles.articles_options.title_hvcolor) }}
+{{ style.margin( groupTitleSelector, styles.articles_options.title_margin) }}
+
+{# Meta #}
+{{ style.css( metaSelector, 'font-size', '13px' ) }}
+{{ style.typography( metaSelector, styles.articles_meta_options.meta_font) }}
+{{ style.css( metaSelector ~ ' *', 'color', styles.articles_meta_options.meta_color) }}
+{{ style.css( metaSelector ~ ' i', 'color', styles.articles_meta_options.metaIcon_color) }}
+{{ style.css( metaSelector ~ ' i', 'font-size', styles.articles_meta_options.metaIcon_size.value ~ styles.articles_meta_options.metaIcon_size.unit) }}
+{{ style.css( metaSelector ~ ' span', 'margin-right', styles.articles_meta_options.meta_spacing.value ~ styles.articles_meta_options.meta_spacing.unit) }}
+{{ style.margin( metaSelector, styles.articles_meta_options.meta_margin) }}
+
+{# Intro Text #}
+{{ style.css( introSelector, 'line-height', 'normal' ) }}
+{{ style.typography( introSelector, styles.articles_body_options.introtext_font) }}
+{{ style.css( introSelector, 'color', styles.articles_body_options.introtext_color) }}
+{{ style.margin( introSelector, styles.articles_body_options.introtext_margin) }}
+
+{{ style.typography( groupIntroSelector, styles.articles_body_options.introtext_font) }}
+{{ style.css( groupIntroSelector, 'color', styles.articles_body_options.introtext_color) }}
+{{ style.margin( groupIntroSelector, styles.articles_body_options.introtext_margin) }}
+
+{# Button #}
+{{ style.typography( btnSelector, styles.articles_button_options.readmore_font) }}
+{{ style.css( btnSelector, 'color', styles.articles_button_options.readmore_color) }}
+{{ style.css( btnSelector ~ ':hover', 'color', styles.articles_button_options.readmoreHover_color) }}
+{{ style.css( iconBtnHoverSelector ~ ':hover i', 'color', styles.articles_button_options.iconHover_color) }}
+{{ style.css( iconBtnHoverSelector ~ ':hover', 'text-decoration', 'none') }}
+{{ style.padding( btnSelector, styles.articles_button_options.readmore_padding) }}
+{{ style.background (btnSelector, styles.articles_button_options.readmore_bg) }}
+
+{# Border ~ box shadow #}
+{{ style.border (btnSelector, styles.articles_button_options.readmore_border) }}
+
+{# For Icon Spacing #}
+{% set iconBtnSpacing = iconBtnSpacing.unit != '' ? iconBtnSpacing.value : iconBtnSpacing %}
+{{ style.css( iconBtnLeftSelector, 'margin-right', iconBtnSpacing ~  'px') }}
+{{ style.css( iconBtnRightSelector, 'margin-left', iconBtnSpacing ~  'px') }}
+
+{{ style.load(id) }}

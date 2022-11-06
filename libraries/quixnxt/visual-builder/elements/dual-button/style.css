@@ -1,0 +1,157 @@
+/*
+Custom Style 
+*/
+.qx-element-dual-button .btn-first a {
+    background-color: #303841;
+    color: #fff;
+}
+.qx-element-dual-button .btn-second a {
+    background-color: #ff3059;
+    color: #fff;
+}
+.qx-element-dual-button,
+.qx-element-dual-button .btn-wrapper {
+    position: relative;
+}
+.qx-element-dual-button-wrapper {
+    align-items: center;
+}
+.qx-element-dual-button .connector-wrapper {
+    position: absolute!important;   
+    text-align: center;
+    z-index: 9;
+    overflow: hidden;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgba(255,255,255,.3);
+    color: #27374c;
+    text-transform: uppercase;
+    font-size: 14px;
+    -webkit-transform: translate(50%,-50%);
+    -ms-transform: translate(50%,-50%);
+    transform: translate(50%,-50%);    
+}
+.qx-element-dual-button .qx-btn {
+    border-radius: 0;
+    padding: 1.375rem 1.75rem;
+}
+.qx-element-dual-button-vertical {
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+.qx-element-dual-button-horizontal {
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+.qx-element-dual-button-horizontal .connector-wrapper {
+    top: 50%;
+    right: 0;         
+} 
+.qx-element-dual-button-vertical .connector-wrapper {
+    top: 100%;
+    right: 50%;         
+} 
+.qx-element-dual-button-vertical .btn-first a,
+.qx-element-dual-button-vertical .btn-second a {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .vertical-alignPhone-left {
+        align-items: flex-start;
+    }        
+    .vertical-alignPhone-center {
+        align-items: center;
+    }        
+    .vertical-alignPhone-right {
+        align-items: flex-end;
+    }
+    .horizontal-alignPhone-left {
+        justify-content: flex-start;
+    }        
+    .horizontal-alignPhone-center {
+        justify-content: center;
+    }        
+    .horizontal-alignPhone-right {
+        justify-content: flex-end;
+    }    
+}
+ 
+@media (min-width: 640px) {
+    .qx-element-dual-button-vertical {
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .qx-element-dual-button-horizontal {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+    }
+    .vertical-alignTablet-left {
+        align-items: flex-start;
+    }        
+    .vertical-alignTablet-center {
+        align-items: center;
+    }        
+    .vertical-alignTablet-right {
+        align-items: flex-end;
+    }
+    .horizontal-alignTablet-left {
+        justify-content: flex-start;
+    }        
+    .horizontal-alignTablet-center {
+        justify-content: center;
+    }        
+    .horizontal-alignTablet-right {
+        justify-content: flex-end;
+    }   
+    .qx-element-dual-button-vertical .connector-wrapper {
+        top: 100%;
+        right: 50%;         
+    }     
+    .qx-element-dual-button-horizontal .connector-wrapper {
+        top: 50%;
+        right: 0;         
+    }            
+}
+@media (min-width: 960px) {
+    .qx-element-dual-button-vertical {
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .qx-element-dual-button-horizontal {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;        
+    }
+    .vertical-alignDesktop-left {
+        align-items: flex-start;
+    }        
+    .vertical-alignDesktop-center {
+        align-items: center;
+    }        
+    .vertical-alignDesktop-right {
+        align-items: flex-end;
+    }
+    .horizontal-alignDesktop-left {
+        justify-content: flex-start;
+    }        
+    .horizontal-alignDesktop-center {
+        justify-content: center;
+    }        
+    .horizontal-alignDesktop-right {
+        justify-content: flex-end;
+    }
+    .qx-element-dual-button-vertical .connector-wrapper {
+        top: 100%;
+        right: 50%;         
+    }     
+    .qx-element-dual-button-horizontal .connector-wrapper {
+        top: 50%;
+        right: 0;         
+    }    
+}

@@ -1,0 +1,73 @@
+name: Component
+slug: component
+groups: joomla
+type: mainbody
+form:
+  general:
+    - name : general
+      label: General
+      type: fields-group
+      status: open
+      schema:
+        - name: html_tag
+          label: HTML Tag
+          type: select
+          value: content
+          options:
+            content: Content
+            div: Div
+            section: Section
+            main: Main
+  styles:
+    - name    : styles
+      label   : Styles
+      status  : open
+      type    : fields-group
+      schema  :
+        - name : alignment
+          label : Alignment
+          type : choose
+          responsive : true
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+            justify :
+              label : Justify
+              icon : qxuicon-align-justify
+
+        - name  : text_color
+          label : Text Color
+          type  : color
+          depends:
+            enable_bg : false
+        
+        - name  : enable_bg
+          label : Enable Text Background
+          type  : switch
+          value : false
+          help  : When text background is enabled, text color option will not work. Set your color from background color settings. Also Blend mode will not work for text background.
+
+        - name  : text_bg
+          label : Text Background
+          type  : background
+          parallax: false
+          depends:
+            enable_bg : true
+
+    - name : typography
+      label: Typography
+      type: fields-group
+      schema :
+        - name: font
+          type: typography
+          units: %, px, rem
+
+      
+    

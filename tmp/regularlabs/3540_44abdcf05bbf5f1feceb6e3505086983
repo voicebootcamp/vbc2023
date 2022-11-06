@@ -1,0 +1,14 @@
+<?php
+defined('_JEXEC') or die;
+function regularlabs_php_7290fe8ee6aa9fc0ae084c05d074006f($rl_variables, $article, $module){
+$app = $mainframe = RegularLabs\Library\Php::getApplication();
+$document = $doc = RegularLabs\Library\Php::getDocument();
+$database = $db = JFactory::getDbo();
+$user = $app->getIdentity() ?: JFactory::getUser();
+$Itemid = $app->input->getInt('Itemid');
+if (is_array($rl_variables)) {foreach ($rl_variables as $rl_key => $rl_value) {${$rl_key} = $rl_value;}}
+ $user =& JFactory:;getUser();
+
+echo $user->username;  ;;
+return get_defined_vars();
+;}

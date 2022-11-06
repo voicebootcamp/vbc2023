@@ -1,0 +1,22 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set module_id = general.modules_core.module_id %}
+{% set classes = classNames('qx-element qx-element-joomla-mod-v2', visibilityClass(visibility), class ) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {{ getJoomlaModule(module_id, 'none')|raw }}
+    {% endblock %}
+{% endembed %}

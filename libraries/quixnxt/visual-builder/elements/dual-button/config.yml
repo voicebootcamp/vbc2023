@@ -1,0 +1,333 @@
+name: Dual Button
+slug: dual-button
+groups: general
+helpId: 5dc83eb604286364bc919159
+form:
+  general:
+    - name : primary_button_fields_group
+      label: Primary Button
+      type: fields-group
+      status: open
+      schema:
+        - name: primary_text
+          type: text
+          label: Text
+          value: Primary Button
+
+        - name: primary_link
+          type: link
+          label: Link
+          value:
+            url : '#'
+            target: ''
+            nofollow: ''
+
+        - name: primary_icon_lebel
+          label: Icon
+          type: divider
+
+        - name: primary_icon
+          type : media
+          label: Icon
+          filters: icon
+          help: Icon will visible left to the title
+
+        - name : primary_button_icon_alignment
+          type : choose
+          label: Icon Placement
+          responsive : false
+          value: left
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: primary_enable_smoothscroll
+          label : Scroll Smoothly
+          type: switch
+          value: false
+          help: If you link internal section, you can enable it.
+
+        - name: primary_scroll_offset
+          label: Set Offset
+          help: Offset value added to scroll if needed
+          type: text
+          depends:
+            primary_enable_smoothscroll: true
+
+    - name : connector_button_fields_group
+      label: Connector
+      type: fields-group
+      schema:
+        - name: enable_connector
+          label: Display
+          type: switch
+          value: true
+
+        - name: connector_text
+          label: Text
+          type: text
+          value: 'Or'
+          help: If use icon, the text will not display.
+          depends:
+            enable_connector: true
+
+        - name: conn_divider
+          label: Icon
+          type: divider
+
+        - name: connector_icon
+          type : media
+          label: Icon
+          filters: icon
+          help: The text connector will not display after using icon.
+          depends:
+            enable_connector: true
+
+    - name : secondary_button_fields_group
+      label: Secondary Button
+      type: fields-group
+      schema:
+        - name: secondary_text
+          type: text
+          label: Text
+          value: Secondary Button
+
+        - name: secondary_link
+          type: link
+          label: Link
+          value:
+            url : '#'
+            target: ''
+            nofollow: ''
+
+        - name: secondary_icon_lebel
+          label: Icon
+          type: divider
+
+        - name: secondary_icon
+          type : media
+          label: Icon
+          filters: icon
+          help: Icon will visible left to the title
+
+        - name : secondary_button_icon_alignment
+          type : choose
+          label: Icon placement
+          responsive : false
+          value: left
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: secondary_enable_smoothscroll
+          label : Scroll Smoothly
+          type: switch
+          value: false
+          help: If you link internal section, you can enable it.
+
+        - name: secondary_scroll_offset
+          label: Set Offset
+          help: Offset value added to scroll if needed
+          type: text
+          depends:
+            secondary_enable_smoothscroll: true
+
+    - name : layout_button_fields_group
+      label: Layout
+      type: fields-group
+      schema:
+        - name: choose_button_layout
+          type: choose
+          label: Layout
+          value: horizontal
+          responsive: false
+          options:
+            horizontal :
+              label: Horizontal
+            vertical :
+              label: Vertical
+
+        - name : button_layout_alignment
+          label: Alignment
+          type : choose
+          value:
+            desktop: center
+            tablet: center
+            phone: center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+  styles:
+    - name : button_common_fields_group
+      label: Common
+      type: fields-group
+      schema :
+        - name: btn_space
+          type: slider
+          label: Space Between
+          max: 100
+          units: %, px, em
+          defaultUnit: px
+
+        - name: btn_padding
+          label : Padding
+          type: dimensions
+          units: %, px, em, rem, vh
+
+        - name: btn_typography
+          type: typography
+          label: Typography
+          popover: true
+
+    - name : button_primary_fields_group
+      label: Primary
+      type: fields-group
+      schema :
+        - name: text_divider
+          type: divider
+          label: Text
+
+        - name: btn_primary_text_color
+          label: Text Color
+          type: color
+
+        - name: btn_primary_text_hover_color
+          label: Text Hover Color
+          type: color
+
+        - name: icon_divider
+          type: divider
+          label: Icon
+
+        - name  : icon_primary_spacing
+          label : Icon Spacing
+          type: slider
+          max : 100
+          min: 0
+          value:
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+        - name: icon_primary_hover_color
+          label: Icon Hover Color
+          type: color
+
+        - name: btn_primary_bg_color
+          type: background
+          label: Background
+          popover: true
+
+        - name: btn_primary_typo
+          type: typography
+          label: Typography
+          popover: true
+
+        - name: btn_primary_border
+          type: border
+          label: Border
+          popover: true
+
+    - name : button_connector_fields_group
+      label: Connector
+      type: fields-group
+      schema :
+        - name: btn_connector_text_color
+          label: Color
+          type: color
+
+        - name: btn_connector_text_hover_color
+          label: Hover Color
+          type: color
+
+        - name: btn_connector_width_height
+          type: slider
+          label: Width/Height
+          max: 100
+          value:
+            desktop: 30
+            tablet: 30
+            phone: 30
+          min: 0
+          units: px, em
+          defaultUnit: px
+
+        - name: btn_connector_typo
+          type: typography
+          label: Typography
+          popover: true
+
+        - name: btn_connector_bg_color
+          type: background
+          label: Background
+          popover: true
+
+        - name: btn_connector_border
+          type: border
+          label: Border
+          popover: true
+
+    - name : button_secondary_fields_group
+      label: Secondary
+      type: fields-group
+      schema :
+        - name: text_sec_divider
+          type: divider
+          label: Text
+
+        - name: btn_secondary_text_color
+          label: Text Color
+          type: color
+
+        - name: btn_secondary_text_hover_color
+          label: Text Hover Color
+          type: color
+
+        - name: icon_sec_divider
+          type: divider
+          label: Icon
+
+        - name  : icon_secondary_spacing
+          label : Icon Spacing
+          type: slider
+          max : 100
+          min: 0
+          value:
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+        - name: icon_secondary_hover_color
+          label: Icon Hover Color
+          type: color
+
+        - name: btn_secondary_bg_color
+          type: background
+          label: Background
+          popover: true
+
+        - name: btn_secondary_typo
+          type: typography
+          label: Typography
+          popover: true
+
+        - name: btn_secondary_border
+          type: border
+          label: Border
+          popover: true

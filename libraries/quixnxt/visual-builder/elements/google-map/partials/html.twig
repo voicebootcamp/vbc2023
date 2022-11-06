@@ -1,0 +1,43 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set location = general.configuration.location %}
+{% set views = general.configuration.views %}
+{% set q = location | url_encode %}
+{% set label = location %}
+{% set height = general.configuration.height %}
+
+{% set zoom = general.configuration.zoom %}
+{% if zoom.value %}
+    {% set zoom = zoom.value %}
+{% endif %}
+
+{% set classes = classNames('qx-element qx-element-map', visibilityClass(visibility), class ) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        <div class="google-map-container">
+            <iframe
+                    id="googleMaps"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0"
+                    src="https://maps.google.com/maps?q={{ q }}&amp;t={{ views }}&amp;z={{ zoom|default('16') }}&amp;output=embed&amp;iwloc=near"
+                    aria-label="{{ label }}"
+                    allowfullscreen=""
+                    style="height: {{ height }}px;">
+                Loading...
+            </iframe>
+        </div>
+    {% endblock %}
+{% endembed %}

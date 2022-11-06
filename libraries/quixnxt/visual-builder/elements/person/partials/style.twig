@@ -1,0 +1,76 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Image Style #}
+{% set imageSpacing = styles.person_fg_image_style.image_spacing %}
+
+{# Width > img #}
+{% set imgWidth = styles.person_fg_image_style.img_width %}
+{% set imgBackground = styles.person_fg_image_style.img_background %}
+{% set imgBorder = styles.person_fg_image_style.img_border %}
+{% set imgPadding = styles.person_fg_image_style.img_padding %}
+
+{# Name Style #}
+{% set nameSpacing = styles.person_fg_name_style.name_spacing %}
+{% set nameColor = styles.person_fg_name_style.name_color %}
+{% set nameFont = styles.person_fg_name_style.name_font %}
+
+{# Position Style #}
+{% set positionSpacing = styles.person_fg_position_style.position_spacing %}
+{% set positionColor = styles.person_fg_position_style.position_color %}
+{% set positionFont = styles.person_fg_position_style.position_font %}
+
+{# Description Style #}
+{% set descriptionColor = styles.person_fg_description_style.description_color %}
+{% set descriptionFont = styles.person_fg_description_style.description_font %}
+
+{# Content #}
+{% set contentAlignment = styles.person_fg_panel.content_alignment %}
+{% set contentPadding = styles.person_fg_panel.content_padding %}
+ 
+{# Selector #}
+{% set wrapperSelector = id ~ ' .qx-element-person__wrapper' %}
+{% set imageSelector = id ~ ' .qx-element-person__image' %}
+{% set imagePositionLeft = id ~ ' .image-position-left .qx-element-person__image' %}
+{% set imagePositionRight = id ~ ' .image-position-right .qx-element-person__image' %}
+{% set imagePositionCenter = id ~ ' .image-position-center .qx-element-person__image' %}
+{% set flexSelector = id ~ ' .qx-element-person__image, ' ~ id ~ ' .qx-element-person__profile' %}
+{% set nameSelector = id ~ ' .qx-element-person__name' %}
+{% set positionSelector = id ~ ' .qx-element-person__position' %}
+{% set descriptionSelector = id ~ ' .qx-element-person__description' %}
+{% set profileSelector = id ~ ' .qx-element-person__profile' %}
+
+{# Image Style #}
+{{ style.responsiveCss(imagePositionLeft, imageSpacing, 'margin-right', imageSpacing.unit) }}
+{{ style.responsiveCss(imagePositionRight, imageSpacing, 'margin-left', imageSpacing.unit) }}
+{{ style.css(imageSelector , 'margin-bottom', '0px') }}
+{{ style.css(flexSelector , 'flex', '1 0 0') }}
+{{ style.responsiveCss(imagePositionCenter, imageSpacing, 'margin-bottom', imageSpacing.unit) }}
+
+{# Width > img #}
+{{ style.width(imageSelector ~ ' *', imgWidth) }}
+{{ style.background(imageSelector, imgBackground) }}
+{{ style.border(imageSelector, imgBorder) }}
+{{ style.padding(imageSelector, imgPadding) }}
+{{ style.css(imageSelector, 'overflow', 'hidden') }}
+
+{# Name Style #}
+{{ style.responsiveCss(nameSelector ~ ' *', nameSpacing, 'margin-bottom', nameSpacing.unit) }}
+{{ style.css(nameSelector ~ ' *', 'color', nameColor) }}
+{{ style.typography(nameSelector ~ ' *', nameFont) }}
+
+{# Position Style #}
+{{ style.responsiveCss(positionSelector , positionSpacing, 'margin-bottom', positionSpacing.unit) }}
+{{ style.css(positionSelector, 'color', positionColor) }}
+{{ style.typography(positionSelector, positionFont) }}
+
+{# Description Style #}
+{{ style.css(descriptionSelector, 'color', descriptionColor) }}
+{{ style.typography(descriptionSelector, descriptionFont) }}
+
+{# Content #}
+{{ style.alignment(wrapperSelector, contentAlignment) }}
+{{ style.padding(profileSelector, contentPadding) }}
+
+{{ style.load(id) }}

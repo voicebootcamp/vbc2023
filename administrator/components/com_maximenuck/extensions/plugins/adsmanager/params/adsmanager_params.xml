@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="editionfieldset" label="" addfieldpath="/plugins/maximenuck/adsmanager/elements">
+			<field
+				name="adsmanagerspacer"
+				type="maximenuckspacer"
+				label="MAXIMENUCK_ADSMANAGER_LABEL"
+				style="title"
+				showon="source:adsmanager"
+				/>
+			<field
+				name="useadsmanagerimages"
+				type="maximenuckradio"
+				class="btn-group"
+				default="0"
+				label="MOD_MAXIMENUCK_USEADSMANAGERIMAGES_LABEL"
+				description="MOD_MAXIMENUCK_USEADSMANAGERIMAGES_DESC"
+				showon="source:adsmanager"
+				icon="images.png">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="useadsmanagersuffix"
+				type="maximenuckradio"
+				class="btn-group"
+				default="0"
+				label="MOD_MAXIMENUCK_USEADSMANAGERSUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_USEADSMANAGERSUFFIX_DESC"
+				showon="source:adsmanager"
+				>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="adsmanagerimagesuffix"
+				type="maximenucktext"
+				default="_mini"
+				label="MOD_MAXIMENUCK_ADSMANAGERIMAGESUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_ADSMANAGERIMAGESUFFIX_DESC"
+				showon="source:adsmanager"
+				icon="image.png" />
+			<field
+				name="adsmanagercategoryroot"
+				type="ckadsmanagercategory"
+				label="MOD_MAXIMENUCK_ADSMANAGERCATEGORYROOT_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_ADSMANAGERCATEGORYROOT_DESC"
+				showon="source:adsmanager"
+			/>
+			<field
+				name="adsmanagercategorydepth"
+				type="maximenucklist"
+				label="MOD_MAXIMENUCK_ADSMANAGERCATEGORYDEPTH_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_ADSMANAGERCATEGORYDEPTH_DESC"
+				showon="source:adsmanager"
+			>
+				<option value="0">JALL</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</field>
+			<field
+				name="adsmanagershownumberproducts"
+				type="radio"
+				label="MOD_MAXIMENUCK_ADSMANAGERSHOWNUMBERPRODUCTS_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_ADSMANAGERSHOWNUMBERPRODUCTS_DESC"
+				showon="source:adsmanager"
+				class="btn-group"
+			>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

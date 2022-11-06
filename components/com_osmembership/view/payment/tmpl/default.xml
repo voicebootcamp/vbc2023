@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Subscription Payment">
+		<message>
+			Display form to allow making payment for certain subscription (The menu item should be hidded, use to create URL to link to payment page only. DO NOT MAKE IT VISIBLE
+		</message>
+	</layout>
+</metadata>

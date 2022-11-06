@@ -1,0 +1,46 @@
+name: Google Map
+slug: google-map
+groups: general
+helpId: 5d1fefd304286369ad8d5eff
+form:
+  general:
+    - name : configuration
+      label: Location
+      type: fields-group
+      status: open
+      schema:
+        - name: location
+          type: text
+          help: Location name, address
+          label: Address
+          value: ThemeXpert
+      
+        - name: views
+          type: select
+          help: Map type
+          label: Views
+          value: m
+          options:
+            m : Map
+            h : Hybrid
+            k : Satellite   
+            p : Terrain   
+
+        - name: zoom
+          type: slider
+          help: Select map zoom level.
+          label: Zoom
+          responsive: false
+          units : 
+          min : 5
+          max: 20
+          value: 16
+        
+        - name  : height
+          label : Height
+          type: slider
+          max : 2000
+          min: 100
+          units:
+          responsive: false
+          value: 400

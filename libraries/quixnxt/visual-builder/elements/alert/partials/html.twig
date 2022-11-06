@@ -1,0 +1,51 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set content = general.alert_fg_text.content %}
+{% set heading = general.alert_fg_text.heading %}
+{% set closeOption = general.alert_fg_text.close_option|default(false) %}
+{% set textType = general.alert_fg_text.type %}
+
+{% set classes = classNames('qx-element qx-element-alert-v2 qx-alert',
+	visibilityClass(visibility), textType, {
+	'qx-alert-dismissible' : (closeOption == true)
+},class) %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background,
+    "attributes" : 'qx-alert',
+} %}
+    {% block element %}
+		{% if closeOption %}
+		<a class="close qx-alert-close" qx-close="#{{id}}"></a>
+		{% endif %}
+
+		{% if heading %}
+			{% if mode == 'builder' %} {# inlineEditor #}
+				<h4 class="qx-alert-heading" {{ inlineEditor('general.alert_fg_text.heading') }}>{{ heading }}</h4>
+			{% else %}
+				<h4 class="qx-alert-heading">{{ heading }}</h4>
+			{% endif %}
+		{% endif %}
+
+		{% if content %}
+			{% if mode == 'builder' %} {# inlineEditor #}
+				<div class="qx-alert__content" {{ inlineEditor('general.alert_fg_text.content') }}>{{ content|raw }}</div>
+			{% else %}
+				<div class="qx-alert__content">{{ content|raw }}</div>
+			{% endif %}
+		{% endif %}
+
+	{% endblock %}
+{% endembed %}
+
+

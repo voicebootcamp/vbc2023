@@ -1,0 +1,190 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set testimonialFieldsGroup = general['testimonial-carousel_fg_repeater'] %}
+{% set imageLayout = general['testimonial-carousel_fg_layouts'].image_layout %}
+{% set contentAlignment = general['testimonial-carousel_fg_layouts'].content_inline_alignment %}
+
+{% set layoutGrid = general['testimonial-carousel_fg_layouts'].layout_grid %}
+
+{% set gridClass = layoutGrid.desktop ~ '@m ' ~ layoutGrid.tablet ~ '@s ' ~ layoutGrid.phone %}
+{% set enableQuote = general['testimonial-carousel_fg_layouts'].enable_quote %}
+{% set sizeQuote = styles['testimonial-carousel_fg_quote'].quote_size ~ styles['testimonial-carousel_fg_quote'].quote_size.unit %}
+{% set colorQuote = styles['testimonial-carousel_fg_quote'].quote_color  %}
+
+{% set arrow = general['testimonial-carousel_fg_navigation'].arrow %}
+{% set showArrowNav = general['testimonial-carousel_fg_navigation'].show_arrow_navigation %}
+{% set showDotNav = general['testimonial-carousel_fg_navigation'].show_dot_navigation %}
+{% set navAlignment = general['testimonial-carousel_fg_navigation'].nav_alignment|default('qx-flex-center') %}
+{% set autoPlay = general['testimonial-carousel_fg_behaviour'].auto_play %}
+{% set faqpage = general['testimonial-carousel_fg_behaviour'].faqpage %}
+
+{% set classes = classNames('qx-element qx-element-testimonial-carousel-v2', visibilityClass(visibility), class) %}
+{% set wrapperClasses = classNames('qx-element-testimonial-carousel__wrapper qx-position-relative qx-visible-toggle',
+    imageLayout ? 'image-layout-'~ imageLayout:''
+) %}
+
+{% set ClassesForImagePosition = classNames('image-position',
+{
+  'qx-d-md-flex qx-flex-md-column-reverse' : imageLayout == 'above',
+  'qx-d-md-flex qx-flex-md-row-reverse qx-align-items-center' : imageLayout == 'left',
+  'qx-d-md-flex qx-flex-md-row qx-align-items-center' : imageLayout == 'right',
+}) %}
+
+{% if imageLayout == 'inline' %}
+{% set imageInlinePosition = classNames('image-position-inline',
+{
+  'qx-d-md-flex qx-align-items-center' : imageLayout == 'inline',
+  'qx-justify-content-start' : contentAlignment == 'left',
+  'qx-justify-content-center' : contentAlignment == 'center',
+  'qx-justify-content-end' : contentAlignment == 'right',
+}) %}
+{% endif %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        <div id="testimonial-carousel-{{id}}" class="{{ wrapperClasses }} " qx-slider>
+            <div class="qx-slider-container">
+
+                {% if testimonialFieldsGroup %}
+                    {% set schemaItems = "" %}
+                    <ul class="qx-slider-items {{ gridClass }}">
+                        {% set a = 0 %}
+                        {% for index, fields in testimonialFieldsGroup %}
+
+                            {% set data = fieldsGroup(testimonialFieldsGroup, index ) %}
+
+                            {% set src = data.image %}
+                            {% set altText = data.alt_text %}
+                            {% set name = data.tname %}
+                            {% set content = data.content %}
+                            {% set position = data.position %}
+                            {% set enableRaing = data.rating %}
+                            {% set setRating = data.set_rating %}
+
+                            {# schema #}
+                            {% if index != 0 %}
+                            {% set schemaItems =  schemaItems ~ "," %}
+                            {% endif %}
+
+                            {% set schemaItems =  schemaItems ~ '{
+                            "@type": "Testimonial",
+                            "name": "' ~ name ~ '",
+                            "position": "' ~ position ~ '",
+                            "clientsReview": {
+                                "@type": "Review",
+                                "text": "' ~ content | striptags ~ '"
+                            }
+                            }' %}
+
+                            {% if enableRaing %}
+                                {% set ratingContent = "" %}
+                                {% for i in 1..setRating|number_format %}
+                                    {% set ratingContent = ratingContent ~ icon('qxio-star') | raw %}
+                                {% endfor %}
+
+                                {% set blankStar = 5 - setRating|number_format %}
+                                {% if blankStar > 0 %}
+                                    {% for j in 1..blankStar %}
+                                        {% set ratingContent = ratingContent ~ icon('qxio-ios-star-outline') | raw %}
+                                    {% endfor %}
+                                {% endif %}
+
+                            {% endif %}
+
+
+                            <li class="qx-slider-item testimonial-carousel-slides qx-transition-toggle item-{{index}}">
+                                <div class="slider-wrapper qx-panel-wrapper {{ClassesForImagePosition}}">
+                                    {% if content %}
+                                        <div class="qx-testimonial__description">
+                                            {% if enableQuote %}
+                                                {{  icon('qxif-quote-left') | raw }}
+                                            {% endif %}
+                                                <p class="testimonial-content">{{content|raw}}</p>
+
+                                            {% if imageLayout == 'left' or imageLayout == 'right' or imageLayout == 'above'  %}
+                                            <div class="qx-testimonial-infos">
+                                                {% if enableRaing %}<div class="qx-testimonial-rating">{{ ratingContent }}</div>{% endif %}
+                                                {% if name %} <h3 class="qx-testimonial__name">{{name}}</h3> {% endif %}
+                                                {% if position %}<p class="qx-testimonial__position">{{position}}</p> {% endif %}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+
+                                        {% if imageLayout == "inline" or imageLayout == "stacked" %}
+                                            <div class="qx-testimonial-infos">
+                                                {% if enableRaing %}<div class="qx-testimonial-rating">{{ ratingContent }}</div>{% endif %}
+                                            </div>
+                                        {% endif %}
+
+                                    {% endif %}
+
+                                    <div class="qx-testimonial__person_details {{imageInlinePosition}}">
+                                        {% if src.source %}
+                                            <div class="qx-element-testimonial__media pt-2">
+                                                {% if src.type == "svg" %}
+                                                    {{ icon(src.source) | raw }}
+                                                {% else %}
+                                                    {{ image( src.source, altText, '', '', src)  }}
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+
+                                        {% if imageLayout == "inline" or imageLayout == "stacked" %}
+                                            <div class="qx-testimonial-infos px-2">
+
+                                                {% if name %} <p class="qx-testimonial__name">{{name}}</p> {% endif %}
+                                                {% if position %}<p class="qx-testimonial__position">{{position}}</p> {% endif %}
+                                            </div>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+
+                                {% if src.type == "svg" %}
+                                    {{ addIconStyle('#' ~ id ~ ' li.item-' ~ index ~ ' .qx-element-testimonial__media', icon) }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+            </div>
+
+            {# Arrow Navigation #}
+            {% if showArrowNav %}
+            <div class="qx-visible@s">
+                <a class="qx-position-center-left{{arrow == 'out' ? '-out' : ''}} qx-position-small qx-hidden-hover" href="#" qx-slidenav-previous qx-slider-item="previous"></a>
+                <a class="qx-position-center-right{{arrow == 'out' ? '-out' : ''}} qx-position-small qx-hidden-hover" href="#" qx-slidenav-next qx-slider-item="next"></a>
+            </div>
+            {% endif %}
+
+            {# Dot Navigation #}
+            {% if showDotNav %}
+            <ul class="qx-slider-nav qx-dotnav qx-margin {{ navAlignment }}"></ul>
+            {% endif %}
+
+            {% if faqpage and testimonialFieldsGroup %}
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [{{ schemaItems | raw }}]
+                }
+                </script>
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,96 @@
+name: Heading
+slug: heading
+groups: general
+helpId: 5d1fefee04286369ad8d5f03
+form:
+  general:
+    - name : heading_fields_group
+      label: Title
+      type: fields-group
+      status: open
+      schema:
+        - name: title
+          type: textarea
+          value: Add Your Heading Text Here.
+          help: You can add HTML also.
+      
+        - name: html_tag
+          label: HTML Tag
+          type: select
+          value: h2
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+            div: div
+            span: span
+            p: p
+  
+    - name : heading_links_fields_group
+      label: Link
+      type: fields-group
+      schema:
+        - name: link
+          label: Link Url
+          type: link
+        
+  styles:
+    - name    : opt_fields_group
+      label   : Options
+      status  : open
+      type    : fields-group
+      schema  :
+        - name : nalignment
+          label : Alignment
+          type : choose
+          responsive : true
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+            justify :
+              label : Justify
+              icon : qxuicon-align-justify
+          value:
+            desktop: center
+            tablet: center
+            phone: center
+
+        - name  : text_color
+          label : Text Color
+          type  : color
+          depends:
+            enable_bg : false
+        
+        - name  : enable_bg
+          label : Enable Text Background
+          type  : switch
+          value : false
+          help  : When text background is enabled, text color option will not work. Set your color from background color settings. Also Blend mode will not work for text background.
+
+        - name  : text_bg
+          label : Text Background
+          type  : background
+          parallax: false
+          popover: true
+          depends:
+            enable_bg : true
+
+    - name : heading_typo_fields_group
+      label: Typography
+      type: fields-group
+      schema :
+        - name: font
+          type: typography
+          units: %, px, rem
+          label: Typography
+          popover: true

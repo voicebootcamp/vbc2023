@@ -1,0 +1,34 @@
+{% set id = '#' ~ advanced.identifier.id %}
+{% set wrapper = id ~ ' > .qx-row' %}
+{% set css = '' %}
+{% set backgroundOverlay = id ~ ' .' ~ advanced.identifier.id ~ '-background-overlay' %}
+
+{# margin #}
+{{ style.margin(id, styles.spacing_fields_group.margin) }}
+
+{# padding #}
+{{ style.padding(id, styles.spacing_fields_group.padding) }}
+
+{# Z-Index #}
+{{ style.css(id, 'z-index', styles.spacing_fields_group.zindex) }}
+
+{# background #}
+{{ style.background (id, styles.background_fields_group.background) }}
+
+{# background overlay #}
+{{ style.background(backgroundOverlay, styles.background_overlay_fields_group.background_overlay, id) }}
+
+{# border + box shadow #}
+{{ style.border (id, styles.border_fields_group.border) }}
+
+{# Custom height #}
+{% set heightType = general.layout_fields_group.height %}
+
+{% if heightType == 'custom' %}
+    {{ style.minHeight(wrapper, general.layout_fields_group.custom_height) }}
+{% endif %}
+
+{# custom css #}
+{% set rawCss = advanced.custom_css.code | default('') | removeLines %}
+{{ style.raw(rawCss) }}
+{{ style.load(id) }}

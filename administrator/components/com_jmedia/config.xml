@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset 
+		name="component"
+		label="COM_JMEDIA_FIELDSET_OPTIONS_LABEL">
+		
+		<field
+			name="upload_maxsize"
+			type="number"
+			label="COM_JMEDIA_FIELD_MAXIMUM_SIZE_LABEL"
+			description="COM_JMEDIA_FIELD_MAXIMUM_SIZE_DESC" 
+			validate="number"
+			min="0"
+			size="50"
+			default="10"
+		/>
+
+		<field
+			name="image_path"
+			type="text"
+			label="COM_JMEDIA_FIELD_PATH_IMAGE_FOLDER_LABEL"
+			description="COM_JMEDIA_FIELD_PATH_IMAGE_FOLDER_DESC"
+			size="50"
+			default="images"
+		/>
+
+		<field
+			name="restrict_uploads"
+			type="radio"
+			label="COM_JMEDIA_FIELD_RESTRICT_UPLOADS_LABEL"
+			description="COM_JMEDIA_FIELD_RESTRICT_UPLOADS_DESC"
+			class="btn-group btn-group-yesno"
+			default="0"
+			>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		
+		<field
+			name="upload_mime"
+			type="list"
+			label="COM_JMEDIA_FIELD_LEGAL_MIME_TYPES_LABEL"
+			description="COM_JMEDIA_FIELD_LEGAL_MIME_TYPES_DESC"
+			size="50"
+			showon="restrict_uploads:1"
+			multiple="true"
+			default="image/jpg,image/jpeg,image/gif,image/png,image/bmp"
+			>
+			<option value="image/jpg">JPG</option>
+			<option value="image/jpeg">JPEG</option>
+			<option value="image/gif">GIF</option>
+			<option value="image/png">PNG</option>
+			<option value="image/bmp">BMP</option>
+			<option value="application/msword">MSWORD</option>
+			<option value="application/excel">EXCEL</option>
+			<option value="application/pdf">PDF</option>
+			<option value="application/powerpoint">POWERPOINT</option>
+			<option value="text/plain">TEXT</option>
+			<option value="application/x-zip">ZIP</option>
+			<option value="application/zip">ZIP 2</option>
+		</field>
+
+		<field
+			name="upload_mime_custom"
+			type="text"
+			label="COM_JMEDIA_FIELD_LEGAL_MIME_TYPES_CUSTOM_LABEL"
+			description="COM_JMEDIA_FIELD_LEGAL_MIME_TYPES_CUSTOM_DESC"
+			size="50"
+			default=""
+			showon="restrict_uploads:1"
+		/>
+
+		<field type="spacer" name="spacer1" hr="true" />
+
+		<field
+			name="replace_media_manager"
+			type="radio"
+			label="COM_JMEDIA_FIELD_REPLACE_MEDIA_MANAGER_LABEL"
+			description="COM_JMEDIA_FIELD_REPLACE_MEDIA_MANAGER_DESC"
+			class="btn-group btn-group-yesno"
+			default="1"
+			>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
+
+	<fieldset 
+		name="auth"
+		label="COM_JMEDIA_FIELDSET_AUTH_LABEL"
+		description="COM_JMEDIA_FIELDSET_AUTH_DESC"
+		>
+		
+		<field
+			name="username"
+			type="text"
+			label="COM_JMEDIA_FIELD_AUTH_USERNAME_LABEL"
+			description="COM_JMEDIA_FIELD_AUTH_USERNAME_DESC"
+		/>
+
+		<field
+			name="license"
+			type="text"
+			label="COM_JMEDIA_FIELD_AUTHCODE_LABEL"
+			description="COM_JMEDIA_FIELD_AUTHCODE_DESC"
+		/>
+		
+		
+	</fieldset>
+
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC"
+		>
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			filter="rules"
+			validate="rules"
+			component="com_jmedia"
+			section="component"
+		 />
+	</fieldset>
+</config>

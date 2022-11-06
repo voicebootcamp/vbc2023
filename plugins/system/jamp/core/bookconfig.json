@@ -1,0 +1,20 @@
+{
+  "bookendVersion": "v1.0",
+  "shareProviders": [
+    {
+      "provider": "facebook",
+      "app_id": "1910125565961400"
+    },
+    "twitter",
+    "pinterest",
+    "linkedin",
+    "tumblr",
+    "email"
+  ],
+  "components": [
+    {
+      "type": "heading",
+      "text": ""
+    }
+  ]
+}

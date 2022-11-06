@@ -1,0 +1,19 @@
+name: Raw HTML
+slug: raw-html
+groups: general
+helpId: 5d1ff06004286369ad8d5f09
+form:
+  general:
+    - name : raw_html_group
+      label: HTML
+      type: fields-group
+      status: open
+      schema:
+      - name : content
+        type: textarea
+        label: Enter HTML Code
+        
+      - name: prepare_content
+        type: switch
+        value: false
+        help: Optionally prepare the content with the Joomla Content Plugins.

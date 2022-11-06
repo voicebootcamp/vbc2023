@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Calendar View">
+		<message>
+			<![CDATA[Calendar View]]>
+		</message>
+	</layout>
+	<state>
+		<name>Calendar View</name>
+		<description>Calendar View of Services Booking component</description>
+	</state>
+	<fields name="request">		
+		<fieldset name="request" addfieldpath="/administrator/components/com_osservicesbooking/elements">
+			<field name="id" required="true" type="osbservice" size="3" default="" label="Select Service" description="Choose the service that you want to display" />
+			<field name="venue_id" type="osbvenue" size="3" default="" label="Select Venue" description="Choose the venu that you want to display services" />
+		</fieldset>	
+	</fields>
+</metadata>

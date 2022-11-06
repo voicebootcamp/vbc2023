@@ -1,0 +1,156 @@
+name: Animated Headline
+slug: animated-headline
+groups: pro
+helpId: 5d1fea5a2c7d3a5cd38ec1b2
+form:
+  general:
+    - name : animated_fg_content
+      label: Headline
+      type: fields-group
+      status: open
+      schema:
+        - name: animated_type
+          label: Style
+          type: select
+          value: highlighted
+          options:
+            highlighted: Highlighted
+            rotating: Rotating
+            
+        - name: animated_shape
+          label: Shape
+          type: select
+          value: curly
+          options:
+            curly: Curly
+            underline: Underline
+            double: Double
+            double-underline: Double Underline
+            circle: Circle
+            strikethrough: Strikethrough
+            underline-zigzag: Underline Zigzag
+            diagonal: Diagonal
+            x: X
+          depends: 
+            animated_type: highlighted
+        
+        - name: rotate_style
+          label: Rotate Styles
+          type: select
+          value: rotate-1
+          options:
+            rotate-1 : Rotate
+            letters : Letters
+            loading-bar : Loading Bar
+            push : Push
+            slide : Slide
+            clip is-full-width : Clip Full Width
+            zoom : Zoom
+          depends: 
+            animated_type: rotating
+        
+        - name: rotate_typing_style
+          label: Typing Styles
+          type: select
+          value: type
+          options:
+            type : Type
+            scale : Scale
+            rotate-2 : Rotate 2
+            rotate-3 : Rotate 3
+
+          depends: 
+            rotate_style: letters
+
+        - name: before_text
+          label: Before Text
+          type: text 
+          value: This page is
+     
+        - name: highlighted_text
+          label: Highlighted Text
+          type: text
+          value: Amazing  
+          depends: 
+            animated_type: highlighted
+        
+        - name: rotating_text
+          label: Rotating Text
+          type: textarea
+          value: Amazing, Better, Bigger, Faster
+          depends: 
+            animated_type: rotating
+
+        - name: after_text
+          label: After Text
+          type: text
+
+  styles:
+    - name : alert_fg_align_style
+      label: Alignment
+      type: fields-group
+      status  : open
+      schema :
+        - name : nanimate_alignment
+          label: Alignment
+          type : choose
+          value:
+            desktop: center
+            tablet: center
+            phone: center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+    - name: animate_shape_setting
+      type: fields-group
+      label: Shape
+      status: close
+      schema:
+        - name: animate_shapeColor
+          type: color
+          label: Shape Color
+        
+        - name: animate_shapeWeight
+          type: slider
+          label: Shape Weight
+          max: 20
+          value: 5
+          suffix: px
+          units: false
+          responsive: false
+
+    - name : animated_headline_highlight
+      label: Animated Text
+      type: fields-group
+      status: close
+      schema :
+        - name  : highlight_color
+          label : Highlight Color
+          type  : color
+
+        - name: highlight_font
+          label : Typography
+          type: typography
+          popover: true
+          
+    - name : animated_headline_text
+      label: Headline
+      type: fields-group
+      status: close
+      schema :
+        - name  : headline_color
+          label : Headline Color
+          type  : color
+
+        - name: headline_font
+          label : Typography
+          type: typography     
+          popover: true

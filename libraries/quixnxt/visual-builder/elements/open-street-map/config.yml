@@ -1,0 +1,43 @@
+name: Open Street Map
+slug: open-street-map
+groups: general
+helpId: 5d1ff1832c7d3a5cd38ec1df
+form:
+  general:
+    - name : configuration
+      label: Location
+      type: fields-group
+      status: open
+      schema:
+
+        - name: latitude
+          type: text
+          help: Enter Latitude
+          label: Latitude
+          value: 23.77319
+
+        - name: longitude
+          type: text
+          help: Enter Longitude
+          label: Longitude
+          value: 90.36692
+      
+        - name: views
+          type: select
+          help: Map type
+          label: Views
+          value: mapnik
+          options:
+            mapnik : Standard
+            cyclemap : Cycle Map
+            transportmap : Transport Map   
+            hot : Humanitarian   
+
+        - name  : height
+          label : Height
+          type: slider
+          max : 2000
+          min: 100
+          units: px
+          responsive: false
+          value: 400

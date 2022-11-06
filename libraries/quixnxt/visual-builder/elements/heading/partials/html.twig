@@ -1,0 +1,29 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set tag = general.heading_fields_group.html_tag %}
+{% set link = general.heading_links_fields_group.link %}
+{% set title = general.heading_fields_group.title %}
+
+{% set classes = classNames('qx-element qx-element-heading-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {% if mode == 'builder' %} {#inlineEditor#}
+            {{ ('<span ' ~ inlineEditor('general.heading_fields_group.title') ~ '>' ~ title ~ '</span>') | raw | wrap(tag) | link(link) }}
+        {% else %}
+            {{ (title|raw|wrap('span')) | wrap(tag) | link(link) }}
+        {% endif %}
+    {% endblock %}
+{% endembed %}

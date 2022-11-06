@@ -1,0 +1,2 @@
+<?php die("Access Denied"); ?>#x#a:2:{s:6:"result";s:213:"try{window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-Q6RR0YHWDB');}catch(e){console.error('Error in script declaration; Error:'+e.message);};";s:6:"output";s:0:"";}

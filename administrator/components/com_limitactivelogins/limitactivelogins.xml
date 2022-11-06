@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+    <name>COM_LIMITACTIVELOGINS</name>
+    <author>Web357 (Yiannis Christodoulou)</author>
+	<creationDate>31-Mar-2022</creationDate>
+	<copyright>Copyright (©) 2014-2022 Web357. All rights reserved.</copyright>
+	<license>GNU/GPLv3, http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>support@web357.com</authorEmail>
+	<authorUrl>https:/www.web357.com</authorUrl>
+	<version>1.1.2</version>
+	<variant>pro</variant>
+	<description>By default on a Joomla website, the Users can sign in using one account from unlimited devices/browsers at a time. This is not good for websites that have restricted content for subscribers. With this plugin, you can easily set a limit for the number of active logins that a user can have.</description>
+
+	<scriptfile>script.install.php</scriptfile>
+
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>limitactivelogins.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>language</folder>
+    </files>
+
+    <media folder="media" destination="com_limitactivelogins">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+	</media>
+
+    <administration>
+		<menu link="option=com_limitactivelogins&amp;view=logs&amp;layout=grouped_by_user" view="logs" alt="Limitactivelogins/Logs">COM_LIMITACTIVELOGINS</menu>
+        <submenu>
+    		<menu 
+                link="option=com_limitactivelogins&amp;view=logs&amp;layout=grouped_by_user" 
+                view="logs" 
+                alt="Limitactivelogins/Logs/Grouped">COM_LIMITACTIVELOGINS_LOGGED_IN_USERS_GROUPED_BY_USER</menu>
+    		<menu 
+                link="option=com_limitactivelogins&amp;view=logs" 
+                view="logs" 
+                alt="Limitactivelogins/Logs/Detailed">COM_LIMITACTIVELOGINS_LOGGED_IN_USERS_DETAILED</menu>
+			<menu 
+                link="option=com_config&amp;view=component&amp;component=com_limitactivelogins" 
+                view="component">COM_LIMITACTIVELOGINS_CONFIGURATION</menu>
+        </submenu>
+		<files>
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>script.install.helper.php</filename>
+            <filename>limitactivelogins.php</filename>
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>language</folder>
+            <folder>lib</folder>
+            <folder>models</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+    </administration>
+
+    <updateservers><server type="extension" priority="1" name="Limit Active Logins (pro version)"><![CDATA[https://updates.web357.com/limitactivelogins/limitactivelogins_pro.xml]]></server></updateservers>
+    
+</extension>

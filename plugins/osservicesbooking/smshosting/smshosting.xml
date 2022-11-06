@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.16.0" type="plugin" group="osservicesbooking" method="upgrade">
+    <name>OS Services Booking Booking SMS - SMSHosting</name>
+    <author>Ossolution</author>
+    <creationDate>2022-05-09</creationDate>
+    <copyright>Copyright 2010 - 2022 Ossolution Team</copyright>
+    <license>https://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <version>2.16.0</version>
+    <description>This plugin is used to send SMS in OS Services Booking through SMSHosting service.</description>
+    <files>
+        <filename plugin="smshosting">smshosting.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="api_key" type="text" size="60" default="" label="API Key" />
+				<field name="api_secret" type="text" size="60" default="" label="API Secret" />
+                <field name="sender" type="text" size="60" default="" label="Sender" />
+				<field name="prefix" type="text" size="60" default="" label="Default Prefix" />
+            </fieldset>
+        </fields>
+    </config>            
+</extension>

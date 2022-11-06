@@ -1,0 +1,64 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set tag = general.heading_fields_group.html_tag %}
+{% set beforeText = general.heading_fields_group.before_text %}
+{% set centerText = general.heading_fields_group.center_text %}
+{% set afterText = general.heading_fields_group.after_text %}
+{% set bgText = general.heading_fields_group.bg_text %}
+{% set bgTextAllign = general.heading_fields_group.bg_text_alignment %}
+
+{# text #}
+{% if beforeText %}
+    {% set beforeText = '<span class="before-text">' ~ beforeText ~ '</span> ' %}
+{% endif %}
+
+{% if centerText %}
+    {% set centerText = '<span class="center-text">' ~ centerText ~ '</span> ' %}
+{% endif %}
+
+{% if afterText %}
+    {% set afterText = '<span class="after-text">' ~ afterText ~ '</span>' %}
+{% endif %}
+
+{% set classes = classNames('qx-element qx-element-advanced-heading-v2', visibilityClass(visibility), class) %}
+{% set enableBgText = general.heading_fields_group.enable_bg_text %}
+
+{# Wrapper Class #}
+{% set wrapperClasses = classNames('qx-element-advanced-heading__wrapper qx-animation-toggle qx-position-relative') %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {# heading markup start #}
+        <div class="{{ wrapperClasses }}">
+            {# background text #}
+            {% if bgText %}
+                {% if enableBgText == true %}
+                    {% if bgTextAllign is not empty %}
+                        <span class="bg-text {{bgTextAllign}}">{{bgText}}</span>
+                    {% else %}
+                        <span class="bg-text {{bgTextAllign}}">{{bgText}}</span>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+            <div class="adv-heading-cont">
+                {{ ( beforeText ~  centerText ~ afterText ) | wrap(tag) }}
+            </div>
+        </div>
+        {# end heading markup start #}
+
+    {% endblock %}
+{% endembed %}

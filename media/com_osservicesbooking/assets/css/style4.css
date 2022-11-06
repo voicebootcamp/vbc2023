@@ -1,0 +1,161 @@
+select.form-select, #keyword, #order_general_information input
+{
+	display:inline !important;
+}
+
+
+.datefield, .joomla4calendar .field-calendar
+{
+	width:220px !important;
+}
+
+table.admintable td label
+{
+	margin-left:70px !important;
+}
+
+
+.cpanel div.icon, #cpanelJoomla4 div.icon {
+	text-align: center;
+	margin-right: 15px;
+	float: left;
+	margin-bottom: 15px;
+
+}
+.cpanel div.icon a, #cpanelJoomla4 div.icon a {
+	background-color: #fff;
+	background-position: -30px;
+	display: block;
+	float: left;
+	height: 120px;
+	width: 108px;
+	color: #2a69b8 !important;
+	vertical-align: middle;
+	text-decoration: none;
+	border: 0;
+	background-image: linear-gradient(-45deg,#ffffff,#ffffff);
+	box-shadow: 1px 2px 1px 0 rgba(0,0,0,.15);
+	border-radius: 5px;
+	font-size:14px;
+}
+
+#cpanelJoomla4 div.icon a:hover,
+#cpanelJoomla4 div.icon a:focus,
+#cpanelJoomla4 div.icon a:active,
+.cpanel div.icon a:hover,
+.cpanel div.icon a:focus,
+.cpanel div.icon a:active {
+	background-position: 0;
+	-webkit-border-bottom-left-radius: 50% 20px;
+	-moz-border-radius-bottomleft: 50% 20px;
+	border-bottom-left-radius: 50% 20px;
+	-webkit-box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+	box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+	position: relative;
+	z-index: 10;
+}
+
+#cpanelJoomla4 img,
+.cpanel img {
+	padding: 10px 0;
+	margin: 0 auto;
+}
+
+#cpanelJoomla4 span,
+.cpanel span {
+	display: block;
+	text-align: center;
+}
+
+#dashboardTabTabs li a
+{
+	font-size:14px;
+}
+
+.ilarge, #filter_state
+{
+	width:280px;
+}
+
+.imedium
+{
+	width:200px !important;
+}
+
+.ishort
+{
+	width:150px !important;
+}
+
+.imini
+{
+	width:100px !important;
+}
+
+table.couponTable
+{
+	width:100%;
+}
+table.couponTable tr td.key
+{
+	width:30%;
+}
+
+td.order_update
+{
+	text-align:center;
+	padding:0.75rem 0rem;
+}
+
+td.orderServices
+{
+	text-align:left;
+	padding:0.75rem 0rem;
+}
+
+a[target="_blank"]::before {  
+  content: none;
+}
+
+ul.osb-joomla4
+{
+	margin-bottom:10px;
+}
+
+table.adminlist 
+{
+	margin-top:10px;
+}
+
+table.customertable thead tr th
+{
+	text-transform:uppercase;
+}
+
+
+.busyfield, #service_price, #camount, #earlybirdfieldset input, #earlybirdfieldset select, #slotdiscountfieldset input, #slotdiscountfieldset select , #venueInformation input
+{
+	display:inline;
+}
+
+.switcher label
+{
+	margin-left:70px !important;
+}
+
+#employeeSettingDiv .field-calendar .input-group
+{
+	
+	display:inline;
+}
+
+#breaktimeForm .field-calendar .input-group
+{
+	width:200px;
+}
+
+.inlinedisplay
+{
+	display:inline;
+}

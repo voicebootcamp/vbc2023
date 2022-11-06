@@ -1,0 +1,68 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set fieldsGroup = general.social_list %}
+{% set classes = classNames('qx-element qx-element-social-icon', visibilityClass(visibility), class) %}
+
+{% set chooseLayout = general.basic_setting.choose_layout %}
+{% set layoutClass = chooseLayout.desktop ~ 'DesktopLayout' ~ ' ' ~ chooseLayout.tablet ~ 'TabletLayout' ~ ' ' ~ chooseLayout.phone ~ 'PhoneLayout' %}
+
+{% set layoutAlignment = general.basic_setting.alignment %}
+{% set layoutAlign = chooseLayout.desktop ~ 'AlignDesktopSi' ~ layoutAlignment.desktop ~ ' ' ~ chooseLayout.tablet ~ 'AlignTabletSi' ~ layoutAlignment.tablet ~ ' ' ~ chooseLayout.phone ~ 'AlignPhoneSi' ~ layoutAlignment.phone %}
+
+
+{# Start Animation #}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+	{% block element %}
+		{#<pre>{{ general.basic_setting.alignment | json_encode }}</pre>#}
+		{#<pre>{{ general.basic_setting.choose_layout | json_encode }}</pre>#}
+		{#<pre>{{ general.social_list | json_encode }}</pre>#}
+
+		<div class="{{ id }}-wrapper">
+			{% if fieldsGroup %}
+				<ul class="qx-iconnav {{ layoutClass ~ ' ' ~ layoutAlign }}">
+					{% for index, fields in fieldsGroup %}
+						<li class="item-{{index}}">
+							{% set data = fieldsGroup(fieldsGroup, index ) %}
+
+							{% set src = data.icon %}
+							{% set link = data.link %}
+							{% set alt_text = '' %}
+
+							<a class="qx-icon" href="{{ link.url is defined and link.url ? link.url : '#' }}" aria-label="Visit the following links for more" target="{{ link.target is defined and link.target ? '_blank' : '_self' }}" rel="{{ link.nofollow is defined and link.nofollow ? 'nofollow' : 'follow' }}">
+								{% if src.type == "svg" %}
+									{{ icon(src.source) }}
+								{% else %}
+									{% if index == '0' %}
+										{{ mediaFile( '/storage/icons/qxif-facebook.svg' ) }}
+									{% elseif index == '1' %}
+										{{ mediaFile( '/storage/icons/qxif-twitter-square.svg' ) }}
+									{% elseif index == '2' %}
+										{{ mediaFile( '/storage/icons/qxif-linkedin.svg' ) }}
+									{% else %}
+										{{ mediaFile( '/storage/icons/qxif-joomla.svg' ) }}
+									{% endif %}
+								{% endif %}
+							</a>
+
+							{% if src.type == "svg" %}
+								{{ addIconStyle('#' ~ id ~ ' li.item-' ~ index, src) }}
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	{% endblock %}
+{% endembed %}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" version="3.0" method="upgrade">
+
+    <name>pkg_jmedia</name>
+    <packagename>jmedia</packagename>
+    <creationDate>10-02-2020</creationDate>
+    <packager>ThemeXpert</packager>
+    <copyright>(C) 2010 - 2018 ThemeXpert. All rights reserved.</copyright>
+    <packageremail>info@themexpert.com</packageremail>
+    <packagerurl>www.themexpert.com</packagerurl>
+    <author>ThemeXpert</author>
+    <authorEmail>info@themexpert.com</authorEmail>
+    <authorUrl>www.themexpert.com</authorUrl>
+    <version>1.4.3</version>
+    <license>GNU General Public License version 3 or later;</license>
+    <description>JMedia - Best and Powerful Joomla Media Manager</description>
+    
+    <scriptfile>pkg.script.php</scriptfile>
+
+    <files>
+        <file type="component" id="com_jmedia">com_jmedia.zip</file>
+        <file type="library" id="lib_jmedia">lib_jmedia.zip</file>
+        <file type="system" id="plg_system_jmedia">plg_system_jmedia.zip</file>
+        <file type="module" id="mod_jmediagallery">mod_jmediagallery.zip</file>
+        <file type="module" id="mod_jmediaicons">mod_jmediaicons.zip</file>
+    </files>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB.pkg_jmedia.sys.ini</language>
+    </languages>
+
+    <updateservers>
+         <!-- Note: No spaces or linebreaks allowed between the server tags -->
+        <server type="extension" priority="1" name="JMedia Update Site"><![CDATA[https://www.themexpert.com/index.php?option=com_digicom&task=responses&source=release&format=xml&provider=joomla&pid=224]]></server>
+    </updateservers>
+
+</extension>

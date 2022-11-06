@@ -1,0 +1,180 @@
+name: Button
+slug: button
+groups: general
+helpId: 5d1fef7e2c7d3a5cd38ec1cd
+form:
+  general:
+    - name : button_fields_group
+      label: Button
+      type: fields-group
+      status: open
+      schema:
+        - name: text
+          type: text
+          value: Click Me
+      
+        - name: type
+          type: select
+          value: primary
+          options:
+            primary: Primary
+            secondary: Secondary
+            success : Success
+            danger : Danger
+            warning : Warning
+            info : Info
+            light : Light
+            dark: Dark
+            link : Link 
+        
+        - name: outline
+          label : Outline Style
+          type: switch
+          help: Outline remove all background images and colors from button.
+        
+        - name: full_width
+          label: Full Width Button
+          type: switch
+          help: Take full width of parent element space.
+        
+        - name: text_alignment
+          label: Text Alignment
+          type : choose
+          value: center
+          responsive: false
+          depends:
+            full_width : true
+          options:
+            start :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            end : 
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: icon
+          type : media
+          filters: icon
+          help: Icon will visible left to the title
+
+        - name : icon_alignment
+          type : choose
+          label: Icon placement
+          responsive : false
+          value: left
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+    
+    - name : button_link_fields_group
+      label: Link
+      type: fields-group
+      schema:
+        - name: link
+          type: link
+          value:
+            url : '#'
+            target: ''
+            nofollow: ''
+        - name: enable_smoothscroll
+          label : Scroll smoothly
+          type: switch
+          value: false
+          help: If you link internal section, you can enable it.
+
+        - name: scroll_offset
+          label: Set Offset
+          help: Offset value added to scroll if needed
+          type: text
+          depends:
+            enable_smoothscroll: true          
+        
+  styles:
+    - name : button_spacing_fields_group
+      label: Basic
+      type: fields-group
+      status: open
+      schema :
+        - name : nalignment
+          label: Alignment
+          type : choose
+          responsive : true
+          value:
+            desktop: left
+            tablet: left
+            phone: left
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: btn_padding
+          label : Padding
+          type: dimensions
+          units: %, px, em, rem, vh                          
+
+        - name  : icon_spacing
+          label : Icon Spacing
+          type: slider
+          max : 100
+          value: 
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+    - name : button_typo_fields_group
+      label: Typography
+      type: fields-group
+      schema :
+        - name: font
+          type: typography
+          label: Typography
+          popover: true
+
+    - name    : button_bg_fields_group
+      label   : Background
+      type    : fields-group
+      schema  :
+        - name  : btn_background
+          label : Button Background
+          type  : background
+          video : false
+          popover: true
+    
+    - name    : button_color_fields_group
+      label   : Text & Icon Color
+      type    : fields-group
+      schema  :
+        - name  : text_color
+          label : Text Color
+          type  : color
+        
+        - name  : hover_text_color
+          label : Hover Text Color
+          type  : color         
+
+        - name  : hover_icon_color
+          label : Hover Icon Color
+          type  : color
+
+    - name : button_border_group
+      label : Border
+      type: fields-group
+      schema :
+        - name: btn_border
+          type: border
+          label : Border
+          popover: true 

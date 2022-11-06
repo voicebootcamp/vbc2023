@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field name="type" type="list" label="COM_QUIX_COLLECTION_TYPE_LABEL" description="COM_QUIX_COLLECTION_TYPE_DESC" class="inputbox" size="1" default="1">
+            <option value="page">PAGE</option>
+            <option value="collection">COLLECTION</option>
+        </field>
+        
+        <field name="uid" type="hidden" />
+
+    </fieldset>
+</form>

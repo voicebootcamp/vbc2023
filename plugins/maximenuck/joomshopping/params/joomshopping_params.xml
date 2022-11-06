@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="editionfieldset" label="" addfieldpath="/plugins/maximenuck/joomshopping/elements">
+			<field
+				name="joomshoppingspacer"
+				type="maximenuckspacer"
+				label="MAXIMENUCK_JOOMSHOPPING_LABEL"
+				style="title"
+				showon="source:joomshopping"
+				/>
+			<field
+				name="joomshoppingitemid"
+				type="maximenucktext"
+				label="MOD_MAXIMENUCK_JOOMSHOPPINGITEMID_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_JOOMSHOPPINGITEMID_DESC"
+				showon="source:joomshopping"
+			/>
+			<field
+				name="usejoomshoppingimages"
+				type="maximenuckradio"
+				default="0"
+				label="MOD_MAXIMENUCK_USEJOOMSHOPPINGIMAGES_LABEL"
+				description="MOD_MAXIMENUCK_USEJOOMSHOPPINGIMAGES_DESC"
+				class="btn-group"
+				showon="source:joomshopping"
+				icon="images.png">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="usejoomshoppingsuffix"
+				type="maximenuckradio"
+				default="0"
+				label="MOD_MAXIMENUCK_USEJOOMSHOPPINGSUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_USEJOOMSHOPPINGSUFFIX_DESC"
+				showon="source:joomshopping"
+				class="btn-group">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="joomshoppingimagesuffix"
+				type="maximenucktext"
+				default="_mini"
+				label="MOD_MAXIMENUCK_JOOMSHOPPINGIMAGESUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_JOOMSHOPPINGIMAGESUFFIX_DESC"
+				showon="source:joomshopping"
+				icon="image.png" />
+			<field
+				name="joomshoppingcategoryroot"
+				type="ckjoomshoppingcategory"
+				label="MOD_MAXIMENUCK_JOOMSHOPPINGCATEGORYROOT_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_JOOMSHOPPINGCATEGORYROOT_DESC"
+				showon="source:joomshopping"
+			/>
+			<field
+				name="joomshoppingcategorydepth"
+				type="maximenucklist"
+				label="MOD_MAXIMENUCK_JOOMSHOPPINGCATEGORYDEPTH_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_JOOMSHOPPINGCATEGORYDEPTH_DESC"
+				showon="source:joomshopping"
+			>
+				<option value="0">JALL</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

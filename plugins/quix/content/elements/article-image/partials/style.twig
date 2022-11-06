@@ -1,0 +1,47 @@
+{% include 'global.twig' %}
+
+var id = "#{{ field("id") }}",
+    img = id + " img," + id + " svg",
+    src = {{ field("image") | json_encode() }} 
+
+// Width > img
+style.width( img, {{ field('width') | json_encode() }}); 
+
+// height > img
+style.height( img, {{ field('height') | json_encode() }});
+
+// Opacity > img
+style.css( img, 'opacity', {{ field('opacity').value | json_encode() }} ); 
+
+// Border width > img 
+style.borderWidth( img, {{ field('img_border_width') | json_encode() }} );
+
+// Border style > img 
+style.css( img, 'border-style', {{ field('img_border_type') | json_encode() }} );
+
+// Border color > img 
+style.css( img, 'border-color', {{ field('img_border_color') | json_encode() }} );
+
+// Border radius > img 
+style.borderRadius( img, {{ field('img_border_radius') | json_encode() }} );
+
+// Alignment
+style.alignment(id, {{ field('alignment') | json_encode() }});
+
+// svg
+if( src.media ) {
+  if( src.media.type == "svg" ) {
+	var size = {{ prepareSvgSizeValue(field("image").media.properties.size)|json_encode() }};  
+
+    style.css( id + " path", "fill", src.media.properties.color )
+    style.css( id + " svg", 'width', size.value +  size.unit)
+    style.css( id + " svg", 'height', size.value +  size.unit)
+
+    style.css( id + " i", 'color', src.media.properties.color)
+    style.css( id + " i", 'font-size', size.value +  size.unit)
+  }
+}
+
+{% if renderer %}
+    style.load(id);
+{% endif %}

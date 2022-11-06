@@ -1,0 +1,329 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Content Alignment #}
+{% set contentAlignment = styles.opt_fields_group.content_alignment %}
+
+{# Common Text #}
+{% set textBG = styles.opt_fields_group.text_bg %}
+{% set enableTextBG = styles.opt_fields_group.enable_txt_bg %}
+{% set commonTextBG = styles.opt_fields_group.common_text_bg %}
+{% set commonTextBorder = styles.opt_fields_group.common_text_border %}
+{% set commonTextFont = styles.opt_fields_group.common_text_font %}
+{% set commonTextPadding = styles.opt_fields_group.common_text_padding %}
+{% set commonTextMargin = styles.opt_fields_group.common_text_margin %}
+{% set commonTextColor = styles.opt_fields_group.common_text_color %}
+
+{# Before Text #}
+{% set beforeTextBG = styles.before_text_fields_group.before_text_bg %}
+{% set enableBeforeTxtBG = styles.before_text_fields_group.enable_before_txt_bg %}
+{% set beforeTextBorder = styles.before_text_fields_group.before_text_border %}
+{% set beforeTextFont = styles.before_text_fields_group.before_text_font %}
+{% set beforeTextPadding = styles.before_text_fields_group.before_text_padding %}
+{% set beforeTextMargin = styles.before_text_fields_group.before_text_margin %}
+{% set beforeTextColor = styles.before_text_fields_group.before_text_color %}
+
+{# Center Text #}
+{% set centerTextBG = styles.center_text_fields_group.center_text_bg %}
+{% set enableCenterTextBG = styles.center_text_fields_group.enable_center_txt_bg %}
+{% set centerTextBorder = styles.center_text_fields_group.center_text_border %}
+{% set centerTextFont = styles.center_text_fields_group.center_text_font %}
+{% set centerTextPadding = styles.center_text_fields_group.center_text_padding %}
+{% set centerTextMargin = styles.center_text_fields_group.center_text_margin %}
+{% set centerTextColor = styles.center_text_fields_group.center_text_color %}
+
+{# After Text #}
+{% set afterTextBG = styles.after_text_fields_group.after_text_bg %}
+{% set enableAfterTextBG = styles.after_text_fields_group.enable_after_txt_bg %}
+{% set afterTextBorder = styles.after_text_fields_group.after_text_border %}
+{% set afterTextFont = styles.after_text_fields_group.after_text_font %}
+{% set afterTextPadding = styles.after_text_fields_group.after_text_padding %}
+{% set afterTextMargin = styles.after_text_fields_group.after_text_margin %}
+{% set afterTextColor = styles.after_text_fields_group.after_text_color %}
+
+{# Background Text #}
+{% set bgTextColor = styles.bg_text_fields_group.bg_text_color %}
+{% set bgTextMargin = styles.bg_text_fields_group.bg_text_margin %}
+{% set bgTextPadding = styles.bg_text_fields_group.bg_text_padding %}
+{% set bgTextFont = styles.bg_text_fields_group.bg_text_font %}
+
+{# Text BG #}
+{% set bgTextBG = styles.bg_text_fields_group.bg_text_bg %}
+{% set enableBackgroundTextBG = styles.bg_text_fields_group.enable_bg_txt_bg %}
+
+{# Selectors #}
+{% set wrapperSelector = id ~ ' .qx-element-advanced-heading__wrapper' %}
+
+{% set commonTextSelectorH1 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h1 ' ~ greaterThanSign() ~ ' span' %}
+{% set commonTextSelectorH2 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h2 ' ~ greaterThanSign() ~ ' span' %}
+{% set commonTextSelectorH3 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h3 ' ~ greaterThanSign() ~ ' span' %}
+{% set commonTextSelectorH4 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h4 ' ~ greaterThanSign() ~ ' span' %}
+{% set commonTextSelectorH5 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h5 ' ~ greaterThanSign() ~ ' span' %}
+{% set commonTextSelectorH6 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h6 ' ~ greaterThanSign() ~ ' span' %}
+{% set commonTextSelectorDiv = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' div ' ~ greaterThanSign() ~ ' span' %}
+{% set commonTextSelectorSpan = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' span ' ~ greaterThanSign() ~ ' span' %}
+{% set commonTextSelectorP = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' p ' ~ greaterThanSign() ~ ' span' %}
+
+{% set commonHeadingSelectorH1 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h1' %}
+{% set commonHeadingSelectorH2 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h2' %}
+{% set commonHeadingSelectorH3 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h3' %}
+{% set commonHeadingSelectorH4 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h4' %}
+{% set commonHeadingSelectorH5 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h5' %}
+{% set commonHeadingSelectorH6 = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' h6' %}
+{% set commonHeadingSelectorDiv = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' div' %}
+{% set commonHeadingSelectorSpan = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' span' %}
+{% set commonHeadingSelectorP = id ~ ' .adv-heading-cont ' ~ greaterThanSign() ~ ' p' %}
+
+{% set commonWrapSelector = id ~ ' .qx-element-advanced-heading__wrapper' %}
+{% set beforTextSelector = id ~ ' .adv-heading-cont .before-text' %}
+{% set centerTextSelector = id ~ ' .adv-heading-cont .center-text' %}
+{% set afterTextSelector = id ~ ' .adv-heading-cont .after-text' %}
+{% set bgTextSelector = id ~ ' .bg-text' %}
+
+{# Content Alignment #}
+{{ style.alignment(wrapperSelector, contentAlignment) }}
+
+{# Common Text #}
+{{ style.css(commonTextSelectorH1, 'color', commonTextColor) }}
+{{ style.css(commonTextSelectorH2, 'color', commonTextColor) }}
+{{ style.css(commonTextSelectorH3, 'color', commonTextColor) }}
+{{ style.css(commonTextSelectorH4, 'color', commonTextColor) }}
+{{ style.css(commonTextSelectorH5, 'color', commonTextColor) }}
+{{ style.css(commonTextSelectorH6, 'color', commonTextColor) }}
+{{ style.css(commonTextSelectorDiv, 'color', commonTextColor) }}
+{{ style.css(commonTextSelectorSpan, 'color', commonTextColor) }}
+{{ style.css(commonTextSelectorP, 'color', commonTextColor) }}
+
+{{ style.typography(commonTextSelectorH1, commonTextFont) }}
+{{ style.typography(commonTextSelectorH2, commonTextFont) }}
+{{ style.typography(commonTextSelectorH3, commonTextFont) }}
+{{ style.typography(commonTextSelectorH4, commonTextFont) }}
+{{ style.typography(commonTextSelectorH5, commonTextFont) }}
+{{ style.typography(commonTextSelectorH6, commonTextFont) }}
+{{ style.typography(commonTextSelectorDiv, commonTextFont) }}
+{{ style.typography(commonTextSelectorSpan, commonTextFont) }}
+{{ style.typography(commonTextSelectorP, commonTextFont) }}
+
+{{ style.margin(commonHeadingSelectorH1, commonTextMargin) }}
+{{ style.margin(commonHeadingSelectorH2, commonTextMargin) }}
+{{ style.margin(commonHeadingSelectorH3, commonTextMargin) }}
+{{ style.margin(commonHeadingSelectorH4, commonTextMargin) }}
+{{ style.margin(commonHeadingSelectorH5, commonTextMargin) }}
+{{ style.margin(commonHeadingSelectorH6, commonTextMargin) }}
+{{ style.margin(commonHeadingSelectorDiv, commonTextMargin) }}
+{{ style.margin(commonHeadingSelectorSpan, commonTextMargin) }}
+{{ style.margin(commonHeadingSelectorP, commonTextMargin) }}
+
+{{ style.padding(commonHeadingSelectorH1, commonTextPadding) }}
+{{ style.padding(commonHeadingSelectorH2, commonTextPadding) }}
+{{ style.padding(commonHeadingSelectorH3, commonTextPadding) }}
+{{ style.padding(commonHeadingSelectorH4, commonTextPadding) }}
+{{ style.padding(commonHeadingSelectorH5, commonTextPadding) }}
+{{ style.padding(commonHeadingSelectorH6, commonTextPadding) }}
+{{ style.padding(commonHeadingSelectorDiv, commonTextPadding) }}
+{{ style.padding(commonHeadingSelectorSpan, commonTextPadding) }}
+{{ style.padding(commonHeadingSelectorP, commonTextPadding) }}
+
+{{ style.border(commonHeadingSelectorH1, commonTextBorder) }}
+{{ style.border(commonHeadingSelectorH2, commonTextBorder) }}
+{{ style.border(commonHeadingSelectorH3, commonTextBorder) }}
+{{ style.border(commonHeadingSelectorH4, commonTextBorder) }}
+{{ style.border(commonHeadingSelectorH5, commonTextBorder) }}
+{{ style.border(commonHeadingSelectorH6, commonTextBorder) }}
+{{ style.border(commonHeadingSelectorDiv, commonTextBorder) }}
+{{ style.border(commonHeadingSelectorSpan, commonTextBorder) }}
+{{ style.border(commonHeadingSelectorP, commonTextBorder) }}
+
+{{ style.background(commonHeadingSelectorH1, commonTextBG) }}
+{{ style.background(commonHeadingSelectorH2, commonTextBG) }}
+{{ style.background(commonHeadingSelectorH3, commonTextBG) }}
+{{ style.background(commonHeadingSelectorH4, commonTextBG) }}
+{{ style.background(commonHeadingSelectorH5, commonTextBG) }}
+{{ style.background(commonHeadingSelectorH6, commonTextBG) }}
+{{ style.background(commonHeadingSelectorDiv, commonTextBG) }}
+{{ style.background(commonHeadingSelectorSpan, commonTextBG) }}
+{{ style.background(commonHeadingSelectorP, commonTextBG) }}
+
+
+{% if enableTextBG|default(false) %}
+	{# Text BG #}
+	{{ style.css(commonTextSelectorH1, 'background-color', '#222') }}
+	{{ style.css(commonTextSelectorH2, 'background-color', '#222') }}
+	{{ style.css(commonTextSelectorH3, 'background-color', '#222') }}
+	{{ style.css(commonTextSelectorH4, 'background-color', '#222') }}
+	{{ style.css(commonTextSelectorH5, 'background-color', '#222') }}
+	{{ style.css(commonTextSelectorH6, 'background-color', '#222') }}
+	{{ style.css(commonTextSelectorDiv, 'background-color', '#222') }}
+	{{ style.css(commonTextSelectorSpan, 'background-color', '#222') }}
+	{{ style.css(commonTextSelectorP, 'background-color', '#222') }}
+
+	{{ style.background(commonTextSelectorH1, textBG) }}
+	{{ style.background(commonTextSelectorH2, textBG) }}
+	{{ style.background(commonTextSelectorH3, textBG) }}
+	{{ style.background(commonTextSelectorH4, textBG) }}
+	{{ style.background(commonTextSelectorH5, textBG) }}
+	{{ style.background(commonTextSelectorH6, textBG) }}
+	{{ style.background(commonTextSelectorDiv, textBG) }}
+	{{ style.background(commonTextSelectorSpan, textBG) }}
+	{{ style.background(commonTextSelectorP, textBG) }}
+
+	{# Text Background init #}
+	{{ style.css(commonTextSelectorH1, 'background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH2, 'background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH3, 'background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH4, 'background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH5, 'background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH6, 'background-clip', 'text') }}
+	{{ style.css(commonTextSelectorDiv, 'background-clip', 'text') }}
+	{{ style.css(commonTextSelectorSpan, 'background-clip', 'text') }}
+	{{ style.css(commonTextSelectorP, 'background-clip', 'text') }}
+
+	{{ style.css(commonTextSelectorH1, '-webkit-background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH2, '-webkit-background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH3, '-webkit-background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH4, '-webkit-background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH5, '-webkit-background-clip', 'text') }}
+	{{ style.css(commonTextSelectorH6, '-webkit-background-clip', 'text') }}
+	{{ style.css(commonTextSelectorDiv, '-webkit-background-clip', 'text') }}
+	{{ style.css(commonTextSelectorSpan, '-webkit-background-clip', 'text') }}
+	{{ style.css(commonTextSelectorP, '-webkit-background-clip', 'text') }}	
+
+	{{ style.css(commonTextSelectorH1, 'color', 'transparent') }}
+	{{ style.css(commonTextSelectorH2, 'color', 'transparent') }}
+	{{ style.css(commonTextSelectorH3, 'color', 'transparent') }}
+	{{ style.css(commonTextSelectorH4, 'color', 'transparent') }}
+	{{ style.css(commonTextSelectorH5, 'color', 'transparent') }}
+	{{ style.css(commonTextSelectorH6, 'color', 'transparent') }}
+	{{ style.css(commonTextSelectorDiv, 'color', 'transparent') }}
+	{{ style.css(commonTextSelectorSpan, 'color', 'transparent') }}
+	{{ style.css(commonTextSelectorP, 'color', 'transparent') }}	
+
+
+	{{ style.css(commonHeadingSelectorH1 ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH2 ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH3 ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH4 ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH5 ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH6 ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorDiv ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorSpan ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorP ~ ':hover span', 'background-clip', 'text') }}
+
+	{{ style.css(commonHeadingSelectorH1 ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH2 ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH3 ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH4 ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH5 ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorH6 ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorDiv ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorSpan ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(commonHeadingSelectorP ~ ':hover span', '-webkit-background-clip', 'text') }}
+
+	{{ style.css(commonHeadingSelectorH1 ~ ':hover span', 'color', 'transparent') }}
+	{{ style.css(commonHeadingSelectorH2 ~ ':hover span', 'color', 'transparent') }}
+	{{ style.css(commonHeadingSelectorH3 ~ ':hover span', 'color', 'transparent') }}
+	{{ style.css(commonHeadingSelectorH4 ~ ':hover span', 'color', 'transparent') }}
+	{{ style.css(commonHeadingSelectorH5 ~ ':hover span', 'color', 'transparent') }}
+	{{ style.css(commonHeadingSelectorH6 ~ ':hover span', 'color', 'transparent') }}
+	{{ style.css(commonHeadingSelectorDiv ~ ':hover span', 'color', 'transparent') }}
+	{{ style.css(commonHeadingSelectorSpan ~ ':hover span', 'color', 'transparent') }}
+	{{ style.css(commonHeadingSelectorP ~ ':hover span', 'color', 'transparent') }}
+{% endif %}
+
+{# Before Text #}
+{{ style.css(beforTextSelector, 'color', beforeTextColor) }}
+{{ style.margin(beforTextSelector, beforeTextMargin) }}
+{{ style.padding(beforTextSelector, beforeTextPadding) }}
+{{ style.typography(beforTextSelector, beforeTextFont) }}
+{{ style.border(beforTextSelector, beforeTextBorder) }}
+
+{% if enableBeforeTxtBG|default(false) %}
+
+	{# Text BG #}
+	{{ style.css(beforTextSelector, 'background-color', '#222') }}
+	{{ style.background(beforTextSelector, beforeTextBG) }}
+
+	{# Text Background init #}
+	{{ style.css(beforTextSelector, 'background-clip', 'text') }}
+	{{ style.css(beforTextSelector, '-webkit-background-clip', 'text') }}
+	{{ style.css(beforTextSelector, 'color', 'transparent') }}
+
+	{{ style.css(beforTextSelector ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(beforTextSelector ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(beforTextSelector ~ ':hover span', 'color', 'transparent') }}
+
+{% endif %}
+
+{# Center Text #}
+{{ style.css(centerTextSelector, 'color', centerTextColor) }}
+{{ style.margin(centerTextSelector, centerTextMargin) }}
+{{ style.padding(centerTextSelector, centerTextPadding) }}
+{{ style.typography(centerTextSelector, centerTextFont) }}
+{{ style.border(centerTextSelector, centerTextBorder) }}
+
+{% if enableCenterTextBG|default(false) %}
+
+	{# Text BG #}
+	{{ style.css(centerTextSelector, 'background-color', '#222') }}
+	{{ style.background(centerTextSelector, centerTextBG) }}
+
+	{# Text Background init #}
+	{{ style.css(centerTextSelector, 'background-clip', 'text') }}
+	{{ style.css(centerTextSelector, '-webkit-background-clip', 'text') }}
+	{{ style.css(centerTextSelector, 'color', 'transparent') }}
+
+	{{ style.css(centerTextSelector ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(centerTextSelector ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(centerTextSelector ~ ':hover span', 'color', 'transparent') }}
+
+{% endif %}
+
+{# After Text #}
+{{ style.css(afterTextSelector, 'color', afterTextColor) }}
+{{ style.margin(afterTextSelector, afterTextMargin) }}
+{{ style.padding(afterTextSelector, afterTextPadding) }}
+{{ style.typography(afterTextSelector, afterTextFont) }}
+{{ style.border(afterTextSelector, afterTextBorder) }}
+
+{% if enableAfterTextBG|default(false) %}
+
+	{# Text BG #}
+	{{ style.css(afterTextSelector, 'background-color', '#222') }}
+	{{ style.background(afterTextSelector, afterTextBG) }}
+
+	{# Text Background init #}
+	{{ style.css(afterTextSelector, 'background-clip', 'text') }}
+	{{ style.css(afterTextSelector, '-webkit-background-clip', 'text') }}
+	{{ style.css(afterTextSelector, 'color', 'transparent') }}
+
+	{{ style.css(afterTextSelector ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(afterTextSelector ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(afterTextSelector ~ ':hover span', 'color', 'transparent') }}
+
+{% endif %}
+
+{# Background Text #}
+{{ style.css(bgTextSelector, 'color', bgTextColor) }}
+{{ style.margin(bgTextSelector, bgTextMargin) }}
+{{ style.padding(bgTextSelector, bgTextPadding) }}
+{{ style.typography(bgTextSelector, bgTextFont) }}
+
+{% if enableBackgroundTextBG|default(false) %}
+
+	{# Text BG #}
+	{{ style.css(bgTextSelector, 'background-color', '#222') }}
+	{{ style.background(bgTextSelector, bgTextBG) }}
+
+	{# Text Background init #}
+	{{ style.css(bgTextSelector, 'background-clip', 'text') }}
+	{{ style.css(bgTextSelector, '-webkit-background-clip', 'text') }}
+	{{ style.css(bgTextSelector, 'color', 'transparent') }}
+
+	{{ style.css(bgTextSelector ~ ':hover span', 'background-clip', 'text') }}
+	{{ style.css(bgTextSelector ~ ':hover span', '-webkit-background-clip', 'text') }}
+	{{ style.css(bgTextSelector ~ ':hover span', 'color', 'transparent') }}
+
+{% endif %}
+
+{{ style.load(id) }}

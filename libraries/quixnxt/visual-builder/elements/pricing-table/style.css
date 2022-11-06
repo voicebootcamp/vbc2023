@@ -1,0 +1,125 @@
+.qx-element-pricing-table-v2 .badge-wrap{
+    position: absolute;
+    left: 0;
+    -webkit-transform: rotate(-90deg) translateX(-100%);
+    -ms-transform: rotate(-90deg) translateX(-100%);
+    transform: rotate(-90deg) translateX(-100%);
+    -webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
+    transform-origin: left top;
+    top: -1px;
+}
+.qx-element-pricing-table-v2 .badge {
+    padding: .8rem 1rem;
+    background-color: #2ecc71;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+.qx-element-pricing-table-v2 .badge-wrap.right{
+    left: inherit;
+    right: 0;
+    transform: translateX(100%) rotate(90deg);
+    -webkit-transform: translateX(100%) rotate(90deg);
+    -moz-transform: translateX(100%) rotate(90deg);
+    -ms-transform: translateX(100%) rotate(90deg);
+    -o-transform: translateX(100%) rotate(90deg);
+}
+.qx-element-pricing-table-v2 .badge-wrap.top{
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: translateX(0%) rotate(0deg);
+    -webkit-transform: translateX(0%) rotate(0deg);
+    -moz-transform: translateX(0%) rotate(0deg);
+    -ms-transform: translateX(0%) rotate(0deg);
+    -o-transform: translateX(0%) rotate(0deg);
+}
+.qx-element-pricing-table-v2 {
+    background-color: #fff;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.qx-element-pricing-table-v2 .pTable-button .qx-btn.qx-btn-primary {
+    background-color: #1B1464;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 15px;
+}
+.qx-element-pricing-table-v2 .qx-list.feature li {
+    font-size: 15px;
+    line-height: 25px;
+}
+.qx-element-pricing-table-v2 .qx-list.feature li i {
+    color: #2ecc71;
+}
+.qx-element-pricing-table-v2 .price-amount {
+    font-size: 60px;
+    line-height: 70px;
+    font-weight: 700;
+}
+.qx-element-pricing-table-v2 .price-currency {
+    padding-right: 6px;
+    font-size: 30px;
+    font-weight: 400;
+}
+.qx-element-pricing-table-v2 .title h4 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    color: #1B1464;
+}
+.qx-element-pricing-table-v2 .price h2 {
+    margin-top: 0;
+}
+.qx-element-pricing-table-v2 .pTable-button .qx-btn.qx-btn-primary:hover {
+    background-color: #0652DD;
+}
+.qx-element-pricing-table-v2 .badge-wrap.rotateright {
+    transform: rotate(45deg) translate(75px, -30px);
+    -webkit-transform: rotate(45deg) translate(75px, -30px);
+    -moz-transform: rotate(45deg) translate(75px, -30px);
+    -ms-transform: rotate(45deg) translate(75px, -30px);
+    -o-transform: rotate(45deg) translate(75px, -30px);
+    left: auto;
+    right: 0;
+    top: 0;
+    transform-origin: unset;  
+}
+.qx-element-pricing-table-v2 .badge-wrap.rotateleft {
+    transform: rotate(-45deg) translate(-75px, -30px);
+    -webkit-transform: rotate(-45deg) translate(-75px, -30px);
+    -moz-transform: rotate(-45deg) translate(-75px, -30px);
+    -ms-transform: rotate(-45deg) translate(-75px, -30px);
+    -o-transform: rotate(-45deg) translate(-75px, -30px);
+    left: 0;
+    right: auto;
+    top: 0;
+    transform-origin: unset;  
+}
+.qx-element-pricing-table__wrapper.rotateleft,
+.qx-element-pricing-table__wrapper.rotateright,
+.qx-element-pricing-table__wrapper.left,
+.qx-element-pricing-table__wrapper.right {
+    overflow: hidden;
+}
+.qx-element-pricing-table-v2 .badge-wrap.rotateright .badge,
+.qx-element-pricing-table-v2 .badge-wrap.rotateleft .badge{
+    width: 250px;
+}
+.qx-element-pricing-table-v2 .price-duration {
+    color: #8c8c8c;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.qx-element-pricing-table-v2 .qx-list>li:nth-child(n+2){
+    margin-top: 0;
+}
+

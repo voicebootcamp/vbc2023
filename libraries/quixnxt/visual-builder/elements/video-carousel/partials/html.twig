@@ -1,0 +1,181 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set fieldsGroup = general['video-carousel-fg_element'] %}
+{% set column = general['video-carousel-fg_options'].column %}
+
+{% set playIcon = general['video_carousel-fg_behaviour'].play_icon %}
+{% set pIcon = general['video_carousel-fg_behaviour'].upload_Picon %}
+
+{% set showDotNav = general['video-carousel-navigation_style'].show_dot_navigation %}
+
+{% set classes = classNames('qx-element qx-element-video-carousel', visibilityClass(visibility), class) %}
+{% set wrapperClasses = classNames('qx-element-video-carousel__wrapper qx-position-relative qx-visible-toggle', class) %}
+
+{% set sliderClasses = classNames('qx-slider-items',
+    column ? 'qx-child-width-1-' ~ column ~ ' qx-child-width-1-' ~ column ~ '@m' : ''
+    ) %}
+
+{# Bar Nav #}
+{% set barNavigation = general['video-carousel-navigation_style'].bar_navigation %}
+{% set barNavVertical = general['video-carousel-navigation_style'].bar_vertical %}
+{% set barNavPosition = general['video-carousel-navigation_style'].barNav_position %}
+{% set barNavMargin = general['video-carousel-navigation_style'].barNav_margin %}
+{% if barNavMargin != 'none' %}
+    {% set barNavMarginClass = 'qx-position-' ~ barNavMargin %}
+{% else %}
+    {% set barNavMarginClass = 'qx-position-none' %}
+{% endif %}
+{% set barNavPosClass = 'qx-position-' ~ barNavPosition ~ ' ' ~ barNavMarginClass %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% if mode == 'builder' %}
+    {% set srcAttr = 'src' %}
+{% else %}
+    {% set srcAttr = 'data-src' %}
+{% endif %}
+
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        <div
+                id="video-carousel-{{ id }}"
+                class="{{ wrapperClasses }} "
+                qx-slider="sets: {{ imageSet ? imageSet : 'false' }}"
+        >
+            <div class="qx-slider-container qx-light">
+                <ul
+                        qx-height-match="target: > li; row: false"
+                        class="qx-slider-items qx-child-width-1-1 qx-child-width-1-2@s qx-child-width-1-{{ column }}@m qx-grid"
+                >
+                    {% if fieldsGroup %}
+                        {% for index, fields in fieldsGroup %}
+
+                            {% set data = fieldsGroup(fieldsGroup, index ) %}
+                            {% set count = index + 1 %}
+                            {% set videoId = "video-" ~ advanced.identifier.id %}
+                            {% set authorName = data.author_name %}
+                            {% set degsig = data.author_desig %}
+                            {% set enableOverlay = data.enable_overlay %}
+                            {% set ovImg = data.overlay_img %}
+
+                            {% set linkType = data.link_type %}
+                            {% set video_link = data.video_link %}
+
+                            <li class="qx-transition-toggle">
+                                <div class="qx-panel-wrapper qx-flex-{{ imgalignment }}">
+                                    <div class="qx-card">
+                                        <div class="qx-card-media-top">
+                                            {% if linkType %}
+                                                {% if enableOverlay %}
+                                                    {% if (ovImg.source) %}
+                                                        <a href="#{{ videoId }}" qx-toggle>
+                                                            {% if ovImg.type == "svg" %}
+                                                                {{ icon(ovImg.source) | raw }}
+                                                            {% else %}
+                                                                {{ image( ovImg.source, "", '', '', ovImg) | link("#") }}
+                                                            {% endif %}
+                                                        </a>
+                                                    {% endif %}
+
+                                                    {% if playIcon %}
+                                                        <div class="playIcon">
+                                                            <a href="#{{ videoId }}" qx-toggle>
+                                                                {% if pIcon.source %}
+                                                                    {% if pIcon.type == "svg" %}
+                                                                        {{ icon(pIcon.source) | raw }}
+                                                                    {% else %}
+                                                                        {{ image( pIcon.source, alt_text, "", '', pIcon) | link("") }}
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                            </a>
+                                                        </div>
+                                                    {% else %}
+                                                        <div class="playIcon">
+                                                            <a href="#{{ videoId }}" qx-toggle>
+                                                                <i class="qxif-play-circle"></i>
+                                                            </a>
+                                                        </div>
+                                                    {% endif %}
+
+                                                    <div id="{{ videoId }}" class="qx-flex-top"
+                                                         data-qx-modal="bg-close: false">
+                                                        <div class="qx-modal-dialog qx-width-auto">
+                                                            <button class="qx-modal-close-outside" type="button"
+                                                                    qx-close></button>
+                                                            {% set attr = 'iframe id="'~videoId~'" ' ~ srcAttr ~ '="' ~ video_link ~ '"  class="qx-width-expand lazyload" allowfullscreen frameborder="0"' %}
+                                                            {{ wrapper(attr, 'iframe', false, false) }}{{ wrapper('iframe', 'iframe', false, true) }}
+                                                        </div>
+                                                    </div>
+                                                {% else %}
+
+                                                    {% set attr = 'iframe id="'~videoId~'" ' ~ srcAttr ~ '="' ~ video_link ~ '" class="qx-width-expand lazyload" allowfullscreen frameborder="0"' %}
+
+                                                    {{ wrapper(attr, 'iframe', false, false) }}{{ wrapper('iframe', 'iframe', false, true) }}
+                                                {% endif %}
+                                            {% else %}
+                                                <p class="qx-alert qx-alert-warning qx-m-0">Please select video
+                                                                                            first!</p>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="qx-card-body">
+                                            <div class="qx-video-content">
+                                                <p>{{ data.content|raw }}</p>
+                                            </div>
+                                            <div class="qx-video-meta">
+                                                <span class="qx-video-author-name">{{ authorName }}</span>
+                                                <span class="qx-video-designation">{{ degsig }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+
+            </div>
+
+            {# Dot Navigation #}
+            {% if showDotNav %}
+                <ul class="qx-slider-nav qx-dotnav qx-flex-center qx-margin"></ul>
+            {% endif %}
+
+            {# Start Bar Nav #}
+            {% if barNavigation %}
+                <div class="bar-navigation {{ barNavPosClass }}">
+                    <ul class="qx-slider-nav qx-barnav {{ barNavVertical ? 'qx-barnav-vertical' : 'qx-barnav-horizontal' }}"
+                        style="margin:0;padding:0;">
+                        {% if fieldsGroup %}
+                            {% for index, fields in fieldsGroup %}
+                                {% set data = fieldsGroup(fieldsGroup, index) %}
+                                {% set title = data.title %}
+                                <li qx-slider-item="{{ index }}">
+                                    <a href="#">{title}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+            {# End Bar Nav #}
+
+            {% if pIcon.type == 'svg' %}
+                {{ addIconStyle('#' ~ id ~ ' li.qx-transition-toggle .playIcon', pIcon) }}
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endembed %}

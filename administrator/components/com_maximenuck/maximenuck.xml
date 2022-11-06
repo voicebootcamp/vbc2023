@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>com_maximenuck</name>
+	<ckpro>1</ckpro>
+	<variant>pro</variant>
+	<creationDate>July 2014</creationDate>
+	<copyright>Copyright (C) 2020. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<author>Cedric Keiflin</author>
+	<authorEmail>ced1870@gmail.com</authorEmail>
+	<authorUrl>https://www.joomlack.fr</authorUrl>
+	<version>9.1.27</version>
+	<description>MAXIMENUCK_DESC</description>
+	<scriptfile>install.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update> 
+		<schemas> 
+			<schemapath type="mysql">sql/updates</schemapath> 
+		</schemas> 
+	</update>
+	<files folder="site">
+		<folder>helpers</folder>
+		<folder>language</folder>
+		<folder>views</folder>
+		<filename>controller.php</filename>
+		<filename>maximenuck.php</filename>
+	</files>
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/en-GB.com_maximenuck.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.com_maximenuck.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.com_maximenuck.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.com_maximenuck.sys.ini</language>
+	</languages>
+	<media folder="media" destination="com_maximenuck">
+		<folder>assets</folder>
+		<folder>elements</folder>
+		<folder>fonts</folder>
+		<folder>images</folder>
+		<folder>presets</folder>
+		<folder>webfonts</folder>
+	</media>
+	<administration>
+		<menu>Maximenu CK</menu>
+		<files folder="administrator">
+			<folder>controllers</folder>
+			<folder>elements</folder>
+			<folder>export</folder>
+			<folder>extensions</folder>
+			<folder>helpers</folder>
+			<folder>interfaces</folder>
+			<folder>language</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>views</folder>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>maximenuck.php</filename>
+		</files>
+		<languages folder="administrator">
+			<language tag="en-GB">language/en-GB/en-GB.com_maximenuck.sys.ini</language>
+			<language tag="fr-FR">language/fr-FR/fr-FR.com_maximenuck.sys.ini</language>
+		</languages>
+	</administration>
+	<updateservers>
+		<server type="extension" priority="1" name="Maximenu CK Pro">https://update.joomlack.fr/maximenuck_pro_update.xml</server>
+	</updateservers>
+</extension>

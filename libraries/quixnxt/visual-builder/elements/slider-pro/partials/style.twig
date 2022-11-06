@@ -1,0 +1,158 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Selector #}
+{% set overlaySelector = id ~ ' .qx-overlay-primary' %}
+{% set sliderProWrapper = id ~ ' .qx-slideshow' %}
+{% set sliderProItem = id ~ ' .slider_pro-item' %}
+{% set sliderBgOverlayColor = id ~ ' .qx-overlay-primary' %}
+{% set sliderContentWrapper = id ~ ' .slider-content-wrapper' %}
+{% set slideContent = id ~ ' .slide-content' %}
+{% set slideContentTitle = id ~ ' .slide-content h2' %}
+{% set slideContentDescription = id ~ ' .slide-content p' %}
+{% set slideContentButton = id ~ ' .slide-content a.qx-btn' %}
+{% set slideContentButtonIcon = id ~ ' ul li .slide-content a.qx-btn' %}
+{% set arrowSelector = id ~ ' .qx-icon *' %}
+{% set arrowHoverSelector = id ~ ' .qx-icon' %}
+{% set arrowNavSpace = id ~ ' .qx-slidenav' %}
+{% set arrowSpace = id ~ ' .qx-slidenav-container' %}
+{% set dotNav = id ~ ' .qx-dotnav ' %}
+{% set dotSelector = id ~ ' .qx-dotnav li' %}
+{% set dotItemSelector = id ~ ' .qx-dotnav li *' %}
+{% set dotActiveItemSelector = id ~ ' .qx-dotnav li.qx-active *' %}
+{% set navigationThumbSelector = id ~ ' .qx-thumbnav li a *' %}
+{% set navigationActiveThumbSelector = id ~ ' .qx-thumbnav li.qx-active a *' %}
+{% set barNavSelector = id ~ ' .bar-navigation .qx-barnav' %}
+{% set barNavigationActiveSelector = id ~ ' .bar-navigation .qx-barnav li.qx-active' %}
+{% set barNavHrSelector = id ~ ' .bar-navigation .qx-barnav-horizontal' %}
+{% set barNavigationHr = id ~ ' .bar-navigation .qx-barnav-horizontal li' %}
+{% set barNavVerSelector = id ~ ' .bar-navigation .qx-barnav-vertical' %}
+{% set barNavigationVer = id ~ ' .bar-navigation .qx-barnav-vertical li' %}
+{% set barNavigation = id ~ ' .bar-navigation .qx-barnav li' %}
+{% set iconBtn_spacing = styles['slider-pro_fg_button-style'].icon_spacing %}
+{% set iconBtnSelectorLeft = id ~ ' a.iconAlign-left.qx-btn svg,' ~ id ~ ' a.iconAlign-left.qx-btn i' %}
+{% set iconBtnSelectorRight = id ~ ' a.iconAlign-right.qx-btn svg,' ~ id ~ ' a.iconAlign-right.qx-btn i' %}
+{% set imgSelector = id ~ ' .slider-pro-item ' ~ greaterThanSign() ~ ' img' %}
+{% set imageSize = styles['slider-pro_fg_image-style'].image_size %}
+
+
+{# For Icon Spacing #}
+{% set iconBtn_spacing = iconBtn_spacing.unit != '' ? iconBtn_spacing.value : iconBtn_spacing %}
+{{ style.css(iconBtnSelectorLeft, 'margin-right', iconBtn_spacing ~  'px') }}
+{{ style.css(iconBtnSelectorRight, 'margin-left', iconBtn_spacing ~  'px') }}
+
+
+{# slide #}
+{{ style.margin(slideContent, styles['slider-pro_fg_slider-style'].slides_margin) }}
+{{ style.padding(slideContent, styles['slider-pro_fg_slider-style'].slides_padding) }}
+{{ style.css(slideContent, 'background-color', styles['slider-pro_fg_slider-style'].content_bg) }}
+{{ style.responsiveCss(sliderContentWrapper, styles['slider-pro_fg_slider-style'].content_width, 'width', styles['slider-pro_fg_slider-style'].content_width.unit) }}
+{{ style.border(slideContent, styles['slider-pro_fg_slider-style'].content_border) }}
+{{ style.phone(imgSelector, style._prop('height', '100%')) }}
+{{ style.css(imgSelector, 'object-fit', imageSize) }}
+
+
+{# slider height #}
+{{ style.responsiveCss(sliderProWrapper ~ '.slider-height-custom', styles['slider-pro_fg_slider-style'].slider_height_custom, 'height', styles['slider-pro_fg_slider-style'].slider_height_custom.unit) }}
+{{ style.responsiveCss(sliderProWrapper ~ ' ul.custom-height', styles['slider-pro_fg_slider-style'].slider_height_custom, 'height', styles['slider-pro_fg_slider-style'].slider_height_custom.unit ~ ' !important') }}
+{{ style.responsiveCss(sliderProWrapper ~ ' ul.custom-height', styles['slider-pro_fg_slider-style'].slider_height_custom, 'min-height', styles['slider-pro_fg_slider-style'].slider_height_custom.unit ~ ' !important') }}
+{{ style.css(sliderProWrapper ~ ' ul.custom-height', 'max-height', '100%') }}
+{{ style.responsiveCss(sliderProWrapper ~ '.slider-height-custom .qx-slideshow-items img', styles['slider-pro_fg_slider-style'].slider_height_custom, 'height', styles['slider-pro_fg_slider-style'].slider_height_custom.unit) }}
+
+
+{# title #}
+{{ style.css(slideContentTitle, 'color', styles['slider-pro_fg_title-style'].title_text_color) }}
+{{ style.typography(slideContentTitle, styles['slider-pro_fg_title-style'].title_font) }}
+{{ style.margin(slideContentTitle, styles['slider-pro_fg_title-style'].title_margin) }}
+
+
+{# content #}
+{{ style.css(slideContentDescription, 'color', styles['slider-pro_fg_description-style'].description_text_color) }}
+{{ style.typography(slideContentDescription, styles['slider-pro_fg_description-style'].description_font) }}
+{{ style.margin(slideContentDescription, styles['slider-pro_fg_description-style'].description_margin) }}
+
+
+{# button #}
+{{ style.css(slideContentButton, 'color', styles['slider-pro_fg_button-style'].btn_text_color) }}
+{{ style.css(slideContentButton ~ ':hover', 'color', styles['slider-pro_fg_button-style'].btn_hover_text_color) }}
+{{ style.css(slideContentButtonIcon ~ ':hover i', 'color', styles['slider-pro_fg_button-style'].hover_icon_color) }}
+{{ style.css(slideContentButtonIcon ~ ':hover svg path', 'fill', styles['slider-pro_fg_button-style'].hover_icon_color) }}
+{{ style.css(slideContentButton, 'background-color', styles['slider-pro_fg_button-style'].btn_bg_color) }}
+{{ style.css(slideContentButton ~ ':hover', 'background-color', styles['slider-pro_fg_button-style'].btn_hover_bg_color) }}
+
+{{ style.typography(slideContentButton, styles['slider-pro_fg_button-style'].button_font) }}
+{{ style.padding(slideContentButton, styles['slider-pro_fg_button-style'].button_padding) }}
+{{ style.margin(slideContentButton, styles['slider-pro_fg_button-style'].button_margin) }}
+{{ style.border(slideContentButton, styles['slider-pro_fg_button-style'].button_border) }}
+
+
+{# Arrow Color #}
+{{ style.css(arrowSelector, 'color', styles['slider-pro_fg_arrow-style'].arrow_color) }}
+{{ style.css(arrowHoverSelector ~ ':hover *', 'color', styles['slider-pro_fg_arrow-style'].arrow_hover_color) }}
+{{ style.responsiveCss(arrowSelector, styles['slider-pro_fg_arrow-style'].arrow_size, 'width', styles['slider-pro_fg_arrow-style'].arrow_size.unit) }}
+{{ style.responsiveCss(arrowSelector, styles['slider-pro_fg_arrow-style'].arrow_size, 'height', styles['slider-pro_fg_arrow-style'].arrow_size.unit) }}
+{{ style.padding(arrowNavSpace, styles['slider-pro_fg_arrow-style'].arrow_nav_spacing) }}
+{{ style.margin(arrowSpace, styles['slider-pro_fg_arrow-style'].arrow_spacing) }}
+{{ style.background(arrowSelector, styles['slider-pro_fg_arrow-style'].arrow_nav_bg) }}
+
+
+{# Arrow Border and Padding #}
+{{ style.border(arrowSelector, styles['slider-pro_fg_arrow-style'].arrow_border) }}
+{{ style.padding(arrowSelector, styles['slider-pro_fg_arrow-style'].arrow_padding) }}
+
+{# Dot Color #}
+{{ style.css(dotItemSelector, 'background-color', styles['slider-pro_fg_dot-style'].dot_color) }}
+{{ style.css(dotActiveItemSelector, 'background-color', styles['slider-pro_fg_dot-style'].dot_active_color) }}
+{{ style.css(dotNav, 'background-color', styles['slider-pro_fg_dot-style'].dot_bg) }}
+{{ style.responsiveCss(dotItemSelector, styles['slider-pro_fg_dot-style'].dot_width, 'width', styles['slider-pro_fg_dot-style'].dot_width.unit) }}
+{{ style.responsiveCss(dotItemSelector, styles['slider-pro_fg_dot-style'].dot_width, 'height', styles['slider-pro_fg_dot-style'].dot_width.unit) }}
+{{ style.responsiveCss(dotSelector, styles['slider-pro_fg_dot-style'].dot_spacing, 'padding-left', styles['slider-pro_fg_dot-style'].dot_spacing.unit) }}
+{{ style.padding(dotNav, styles['slider-pro_fg_dot-style'].dot_padding) }}
+{{ style.border(dotNav, styles['slider-pro_fg_dot-style'].dot_border) }}
+{{ style.css(dotSelector ~ ':first-child', 'padding-left', '0') }}
+
+{# Bar Nav #}
+{{ style.css(barNavHrSelector, 'display', 'flex') }}
+{{ style.css(barNavHrSelector, 'flex-wrap', 'wrap') }}
+{{ style.css(barNavHrSelector, 'margin', '0') }}
+{{ style.css(barNavHrSelector, 'padding', '0') }}
+{{ style.css(barNavHrSelector, 'list-style', 'none') }}
+{{ style.css(barNavHrSelector, 'margin-left', '-12px') }}
+
+{{ style.css(barNavigationHr, 'padding-left', '12px') }}
+{{ style.css(barNavigationHr ~ ':first-child', 'padding-left', '0') }}
+{{ style.css(barNavigationHr ~ ' a', 'background-color', 'rgba(238, 238, 238, 1)') }}
+{{ style.css(barNavigationHr ~ ' a', 'text-indent', '100%') }}
+{{ style.css(barNavigationHr ~ ' a', 'overflow', 'hidden') }}
+{{ style.css(barNavigationHr ~ ' a', 'display', 'block') }}
+{{ style.css(barNavigationHr ~ ' a', 'box-sizing', 'border-box') }}
+{{ style.css(barNavigationHr ~ ' a', 'white-space', 'nowrap') }}
+
+{{ style.css(barNavVerSelector, 'display', 'inline') }}
+{{ style.css(barNavVerSelector, 'list-style', 'none') }}
+{{ style.css(barNavigationVer ~ ' a', 'background-color', 'rgba(238, 238, 238, 1)') }}
+{{ style.css(barNavigationVer ~ ' a', 'text-indent', '100%') }}
+{{ style.css(barNavigationVer ~ ' a', 'overflow', 'hidden') }}
+{{ style.css(barNavigationVer ~ ' a', 'display', 'block') }}
+{{ style.css(barNavigationVer ~ ' a', 'box-sizing', 'border-box') }}
+{{ style.css(barNavigationVer ~ ' a', 'white-space', 'nowrap') }}
+{{ style.css(barNavigationVer ~ ':first-child', 'padding-top', '0') }}
+{{ style.css(barNavigationVer, 'padding-top', '12px') }}
+
+{{ style.css(barNavigationHr ~ ' a', 'background-color', styles['slider-pro_fg_bar-style'].bar_color) }}
+{{ style.css(barNavigationVer ~ ' a', 'background-color', styles['slider-pro_fg_bar-style'].bar_color) }}
+{{ style.css(barNavigationActiveSelector ~ ' a', 'background-color', styles['slider-pro_fg_bar-style'].bar_active_color) }}
+{{ style.responsiveCss(barNavigationHr ~ ' a', styles['slider-pro_fg_bar-style'].bar_width, 'width', styles['slider-pro_fg_bar-style'].bar_width.unit) }}
+{{ style.responsiveCss(barNavigationHr ~ ' a', styles['slider-pro_fg_bar-style'].bar_height, 'height', styles['slider-pro_fg_bar-style'].bar_height.unit) }}
+{{ style.responsiveCss(barNavigationVer ~ ' a', styles['slider-pro_fg_bar-style'].bar_width, 'height', styles['slider-pro_fg_bar-style'].bar_width.unit) }}
+{{ style.responsiveCss(barNavigationVer ~ ' a', styles['slider-pro_fg_bar-style'].bar_height, 'width', styles['slider-pro_fg_bar-style'].bar_height.unit) }}
+{{ style.responsiveCss(barNavigationActiveSelector ~ ' a', styles['slider-pro_fg_bar-style'].barActive_width, 'width', styles['slider-pro_fg_bar-style'].barActive_width.unit) }}
+{{ style.responsiveCss(barNavigationActiveSelector ~ ' a', styles['slider-pro_fg_bar-style'].barActive_height, 'height', styles['slider-pro_fg_bar-style'].barActive_height.unit) }}
+
+
+{# navigation #}
+{{ style.responsiveCss(navigationThumbSelector, styles['slider-pro_fg_dot-style'].thumb_width, 'width', styles['slider-pro_fg_dot-style'].thumb_width.unit) }}
+{{ style.responsiveCss(navigationThumbSelector, styles['slider-pro_fg_dot-style'].thumb_height, 'height', styles['slider-pro_fg_dot-style'].thumb_height.unit) }}
+
+{{ style.load(id) }}

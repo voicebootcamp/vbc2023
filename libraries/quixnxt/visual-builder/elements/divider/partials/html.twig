@@ -1,0 +1,39 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set divider = general.divider_fields_group.type %}
+{% set src = general.divider_image_fields_group.image %}
+{% set altText = general.divider_image_fields_group.alt_text %}
+{% set classes = classNames('qx-element qx-element-divider-separator-v2', visibilityClass(visibility), class ) %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+      {% if divider == 'border' %}
+        <span class="qx-divider-separator"></span>
+      {% else %}
+        {% if src.source %}
+          {% if src.type == "svg" %}
+            {{ icon(src.source) }}
+          {% elseif src.type == "image" %}
+            {{ image(src.source, altText, '', '', src) }}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+
+      {% if src.type == "svg" %}
+          {{ addIconStyle('#' ~ id, src) }}
+      {% endif %}
+  {% endblock %}
+{% endembed %}

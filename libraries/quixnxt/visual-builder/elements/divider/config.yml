@@ -1,0 +1,102 @@
+name: Divider
+slug: divider
+groups: general
+helpId: 5d1fefbd2c7d3a5cd38ec1ce
+form:
+  general:
+    - name : divider_fields_group
+      label: Divider
+      type: fields-group
+      status: open
+      schema:
+        - name: type
+          type: select
+          value: border
+          options:
+            border: Border
+            image : Image
+
+    - name : divider_image_fields_group
+      label: Image
+      type: fields-group
+      depends :
+        type : image
+      schema:
+        - name: image
+          type: media
+          showstyle: true
+
+        - name: alt_text
+          label : Alt Text
+          type: text
+          help : Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            image: '*'
+
+  styles:
+    - name : divider_style_option
+      label: Common
+      type: fields-group
+      status: open
+      schema:
+        - name: border_style
+          type: select
+          value: solid
+          options:
+            solid: Solid
+            double : Double
+            dotted : Dotted
+            dashed : Dashed
+
+        - name: border_weight
+          type: slider
+          label: Border Weight
+          responsive: false
+          min: 1
+          max: 100
+          value: 5
+
+        - name  : border_color
+          label: Border Color
+          type  : color
+          value: '#000000'
+
+        - name : border_alignment
+          type : choose
+          label: Border Alignment
+          responsive : true
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+          value:
+            desktop: center
+            tablet: center
+            phone: center          
+
+        - name : border_width
+          type : slider
+          label: Width
+          max: 100
+          units: %
+          defaultUnit: %
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+
+        - name : border_gap
+          type : slider
+          label: Gap
+          min: 2
+          max: 100
+          value:
+            desktop: 15
+            tablet: 15
+            phone: 15      

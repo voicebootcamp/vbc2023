@@ -1,0 +1,31 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set borderStyle = styles.divider_style_option.border_style %}
+{% set borderWeight = styles.divider_style_option.border_weight %}
+{% set borderColor = styles.divider_style_option.border_color %}
+{% set borderWidth = styles.divider_style_option.border_width %}
+{% set borderGap = styles.divider_style_option.border_gap %}
+{% set borderAlignment = styles.divider_style_option.border_alignment %}
+
+{% set seperator = id ~ ' .qx-divider-separator' %}
+
+{# Alignment #}
+{{ style.alignment(id, borderAlignment) }}
+
+{# Border #}
+{% if borderWeight.value %}
+    {% set borderWeight = borderWeight.value %}
+{% endif %}
+{{ style.css(seperator, 'display', 'inline-block') }}
+{{ style.css(seperator, 'border-color', borderColor) }}
+{{ style.css(seperator, 'border-top-style', borderStyle) }}
+{{ style.css(seperator, 'border-top-width', borderWeight ~ 'px') }}
+{{ style.width(seperator, borderWidth) }}
+
+{# Gap #}
+{{ style.desktop(seperator, 'padding-top:' ~ borderGap.desktop ~ 'px') }}
+{{ style.tablet(seperator, 'padding-top:' ~ borderGap.tablet ~ 'px') }}
+{{ style.phone(seperator, 'padding-top:' ~ borderGap.phone ~ 'px') }}
+
+{{ style.load(id) }}

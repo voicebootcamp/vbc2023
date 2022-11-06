@@ -1,0 +1,150 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set elementMode = general.call_to_action_fg_element_mode.element_mode %}
+
+{# Image postion #}
+{% set imagePosition = general.call_to_action_fg_element_mode.image_position %}
+{% set src = general.call_to_action_fg_element_mode.image %}
+{% set altText = general.call_to_action_fg_element_mode.alt_text %}
+
+{# content #}
+{% set graphicsSrc = general.call_to_action_fg_content.graphics_image %}
+{% set title = general.call_to_action_fg_content.title %}
+{% set tag = general.call_to_action_fg_additional.title_html_tag %}
+{% set subtitle = general.call_to_action_fg_content.subtitle %}
+{% set subtitleTag = general.call_to_action_fg_additional.html_subtitle_tag %}
+{% set description = general.call_to_action_fg_content.description %}
+{% set ctaVerticalPosition = general.call_to_action_fg_additional.cta_vertical_position %}
+
+{# button #}
+{% set button = general.call_to_action_fg_button.button %}
+{% set link = general.call_to_action_fg_button.link %}
+{% set button_type = general.call_to_action_fg_button.button_type %}
+{% set btnClass = 'qx-btn qx-btn-' ~ button_type %}
+
+{# Wrapper Class #}
+{% set wrapperClassesForCallToAction = classNames('qx-element-call-to-action_wrapper qx-animation-toggle',
+    elementMode ? elementMode ~ '-mode': '',
+    {
+        'qx-d-md-flex qx-flex-md-row' : imagePosition == 'left',
+        'qx-d-md-flex qx-flex-md-row-reverse' : imagePosition == 'right',
+        'qx-d-md-flex qx-flex-md-column-reverse' : imagePosition == 'down',
+        'lazyload' : elementMode == 'cover'
+    }) %}
+
+{# Content Class #}
+{% set contentClassesForCallToAction = classNames('qx-element-call-to-action_content',
+    ctaVerticalPosition ? ctaVerticalPosition ~ ' qx-d-flex qx-flex-column': ''
+) %}
+
+{% set classes = classNames('qx-element qx-element-call-to-action-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {# Call to action Markup start #}
+        <div class="{{ wrapperClassesForCallToAction }}"
+                {% if elementMode == 'cover' and src.source %} {{ lazyBackground([], src.source) }} {% endif %}
+        >
+            {# call-to-action image #}
+            {% if elementMode == "classic" %}
+                {% if src.source %}
+                    <figure class="qx-element-call-to-action_image">
+                        {% if src.type == "svg" %}
+                            {{ icon(src.source) }}
+                        {% elseif src.type == "image" %}
+                            {{ image( src.source, altText, '', '', src) | link(link) }}
+                        {% else %}
+                            {{ image(src.source, altText, '', '', src) | link(link) }}
+                        {% endif %}
+                    </figure>
+                {% endif %}
+            {% endif %}
+
+            <div class="{{ contentClassesForCallToAction }}">
+                {% if graphicsSrc.source %}
+                    <figure class="qx-element-call-to-action_graphics">
+                        {% if graphicsSrc.type == "svg" %}
+                            {{ icon(graphicsSrc.source) }}
+                        {% elseif graphicsSrc.type == "image" %}
+                            {{ image( graphicsSrc.source, altText, '', '', graphicsSrc) | link(link) }}
+                        {% else %}
+                            {{ image(graphicsSrc.source, altText, '', '', graphicsSrc) | link(link) }}
+                        {% endif %}
+                    </figure>
+                {% endif %}
+                {# call-to-action title #}
+                {% if title %}
+                    {% if mode == 'builder' %} {# inlineEditor #}
+                        <div class="qx-element-call-to-action_title">
+                            {{ ('<span ' ~ inlineEditor('general.call_to_action_fg_content.title') ~ '>' ~ title ~ '</span>') | raw | wrap(tag) }}
+                        </div>
+                    {% else %}
+                        <div class="qx-element-call-to-action_title">
+                            {{ title | wrap(tag) }}
+                        </div>
+                    {% endif %}
+
+                {% endif %}
+
+                {# call-to-action subtitle #}
+                {% if subtitle %}
+                    <div class="qx-element-call-to-action_subtitle">
+                        {% if mode == 'builder' %} {# inlineEditor #}
+                            {{ ('<span ' ~ inlineEditor('general.call_to_action_fg_content.subtitle') ~ '>' ~ subtitle ~ '</span>') | raw | wrap(subtitleTag) }}
+                        {% else %}
+                            {{ subtitle | wrap(subtitleTag) }}
+                        {% endif %}
+
+                    </div>
+                {% endif %}
+
+                {# call-to-action content #}
+                {% if description %}
+                    {% if mode == 'builder' %} {# #}
+                        <div class="qx-element-call-to-action_description" {{ inlineEditor('general.call_to_action_fg_content.description') }}>
+                            {{ description|raw }}
+                        </div>
+                    {% else %}
+                        <div class="qx-element-call-to-action_description">
+                            {{ description|raw }}
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {# call-to-action button #}
+                {% if button %}
+                    <div class="qx-element-call-to-action_button">
+                        {{ button | link( link, btnClass ) }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+        {% if elementMode == 'cover' and src.source %}
+            <style type="text/css">
+                {{ '#' ~ id }}
+                .qx-element-call-to-action_wrapper.cover-mode {
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    transition: all 0.5s ease;
+                }
+            </style>
+        {% endif %}
+
+        {% if graphicsSrc.type == "svg" %}
+            {{ addIconStyle('#' ~ id ~ ' .qx-element-call-to-action_graphics', graphicsSrc) }}
+        {% endif %}
+    {% endblock %}
+{% endembed %}

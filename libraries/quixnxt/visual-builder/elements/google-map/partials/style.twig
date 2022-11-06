@@ -1,0 +1,7 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set iframe = id ~ ' #googleMaps' %}
+
+{{ style.css(iframe, 'width', '100%') }}
+{{ style.load(id) }}

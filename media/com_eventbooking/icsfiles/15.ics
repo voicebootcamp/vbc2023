@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Events Booking
+BEGIN:VEVENT
+UID:62f4b18a2994f
+SUMMARY:CCET – TROUBLESHOOTING CISCO CONTACT CENTER ENTERPRISE
+DESCRIPTION:
+ 
+ 
+ 
+ 
+ This Troubleshooting Cisco Contact Center Enterp
+ rise course is focused on Day 2 support of a PCCE deployment by Tier 3 sup
+ port personnel.
+ 
+ 
+ The course identifies processes and tools used to 
+ identify and diagnose common deployment issues so that support personnel c
+ an then select optimal methods to resolve those issues.
+ 
+ 
+ 
+ 
+ 
+DTSTART:20221017T093000Z
+DTEND:20221021T173000Z
+DTSTAMP:20220728T020901Z
+ORGANIZER;CN=Faisal H. Khan:MAILTO:fkhan@voicebootcamp.com
+END:VEVENT
+END:VCALENDAR

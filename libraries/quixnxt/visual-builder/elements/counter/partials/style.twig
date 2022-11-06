@@ -1,0 +1,23 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set numberColor = styles.counter_fg_number_style.number_color %}
+{% set titleColor = styles.counter_fg_title_style.title_color %}
+{% set numberTypo = styles.counter_fg_number_style.number_typo %}
+{% set titleTypo = styles.counter_fg_title_style.title_typo %}
+{% set numberPadding = styles.counter_fg_number_style.number_padding %}
+{% set titlePadding = styles.counter_fg_title_style.title_padding %}
+
+{# Color #}
+{{ style.css(id ~ ' .counter-count', 'color', numberColor) }}
+{{ style.css(id ~ ' .counter-title', 'color', titleColor) }}
+
+{# Typography #}
+{{ style.typography(id ~ ' .counter-count', numberTypo) }}
+{{ style.typography(id ~ ' .counter-title', titleTypo) }}
+
+{# Padding #}
+{{ style.padding(id ~ ' .counter-count span', numberPadding) }}
+{{ style.padding(id ~ ' .counter-title', titlePadding) }}
+
+{{ style.load(id) }}

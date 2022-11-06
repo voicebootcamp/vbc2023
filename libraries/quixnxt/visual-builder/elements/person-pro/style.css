@@ -1,0 +1,17 @@
+
+.qx-element-person-pro .qx-element-person-pro__image .overlay {opacity: 0;}
+.qx-element-person-pro .qx-element-person-pro__description {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    padding: 20px 50px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    text-align: left;
+}
+.qx-element-person-pro:hover .qx-element-person-pro__description {
+    opacity: 1;
+    left: 0;
+}

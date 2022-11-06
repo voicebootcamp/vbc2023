@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - Userprofile</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2022 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>3.1.2</version>
+    <description>This plugin is used to Add Subscribers to Userprofile when they subscribe for a subscription plan.
+    </description>
+    <files>
+        <filename plugin="userprofile">userprofile.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="update_profile_data_when_admin_update_subscription"
+                        type="radio"
+                        label="Update User Profile When Admin Update A Subscription"
+                        description="If set to Yes, the system will update user profile data when admin update a subscription record from backend"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

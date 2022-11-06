@@ -1,0 +1,74 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Image Style #}
+{% set imageSpacing = styles.personpro_fg_image_style.image_spacing %}
+
+{# Width > img #}
+{% set imgWidth = styles.personpro_fg_image_style.img_width %}
+{% set imgBorderRadius = styles.personpro_fg_image_style.img_border_radius %}
+{% set overlayColor = styles.personpro_fg_image_style.overlay_color %}
+
+{# Name Style #}
+{% set nameSpacing = styles.personpro_fg_name_style.name_spacing %}
+{% set nameColor = styles.personpro_fg_name_style.name_color %}
+{% set nameFont = styles.personpro_fg_name_style.name_font %}
+
+{# Position Style #}
+{% set positionColor = styles.personpro_fg_position_style.position_color %}
+{% set positionFont = styles.personpro_fg_position_style.position_font %}
+
+{# Description Style #}
+{% set descriptionColor = styles.personpro_fg_description_style.description_color %}
+{% set descriptionFont = styles.personpro_fg_description_style.description_font %}
+
+{# Content #}
+{% set contentAlignment = styles.personpro_fg_panel.content_alignment %}
+{% set contentPadding = styles.personpro_fg_panel.content_padding %}
+
+{# Selectors #}
+{% set wrapperSelector = id ~ ' .qx-element-person-pro__wrapper' %}
+{% set imageSelector = id ~ ' .qx-element-person-pro__image' %}
+{% set imagePositionLeft = id ~ ' .image-position-left .qx-element-person-pro__image' %}
+{% set imagePositionRight = id ~ ' .image-position-right .qx-element-person-pro__image' %}
+{% set imagePositionCenter = id ~ ' .image-position-center .qx-element-person-pro__image' %}
+{% set flexSelector = id ~ ' .qx-element-person-pro__image, ' ~ id ~' .qx-element-person-pro__profile' %}
+{% set nameSelector = id ~ ' .qx-element-person-pro__name' %}
+{% set positionSelector = id ~ ' .qx-element-person-pro__position' %}
+{% set descriptionSelector = id ~ ' .qx-element-person-pro__description' %}
+{% set profileSelector = id ~ ' .qx-element-person-pro__profile' %}
+
+{# Image Style #}
+{{ style.responsiveCss(imagePositionLeft, imageSpacing, 'margin-right', imageSpacing.unit) }}
+{{ style.responsiveCss(imagePositionRight, imageSpacing, 'margin-left', imageSpacing.unit) }}
+{{ style.css(imageSelector , 'margin-bottom', '0px') }}
+{{ style.css(flexSelector , 'flex', '1 0 0') }}
+{{ style.responsiveCss(imagePositionCenter, imageSpacing, 'margin-bottom', imageSpacing.unit) }}
+
+{# Width > img #}
+{{ style.width(imageSelector ~ ' *', imgWidth) }}
+{{ style.borderRadius(imageSelector ~ ' *', imgBorderRadius) }}
+{{ style.borderRadius(imageSelector ~ '::before', imgBorderRadius) }}
+{{ style.css(imageSelector ~ ' .overlay', 'background-color', overlayColor) }}
+{{ style.css(imageSelector ~ ' .overlay', 'opacity', '0') }}
+{{ style.css(imageSelector, 'position', 'relative') }}
+
+{# Name Style #}
+{{ style.responsiveCss(nameSelector ~ ' *', nameSpacing, 'margin-bottom', nameSpacing.unit) }}
+{{ style.css(nameSelector ~ ' *', 'color', nameColor) }}
+{{ style.typography(nameSelector ~ ' *', nameFont) }}
+
+{# Position Style #}
+{{ style.css(positionSelector, 'color', positionColor) }}
+{{ style.typography(positionSelector, positionFont) }}
+
+{# Description Style #}
+{{ style.css(descriptionSelector, 'color', descriptionColor) }}
+{{ style.typography(descriptionSelector, descriptionFont) }}
+
+{# Content #}
+{{ style.alignment(wrapperSelector, contentAlignment) }}
+{{ style.padding(profileSelector, contentPadding) }}
+
+{{ style.load(id) }}

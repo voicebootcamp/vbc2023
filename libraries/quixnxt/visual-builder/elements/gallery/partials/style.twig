@@ -1,0 +1,80 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Overlay #}
+{% set overlayTitleColor = styles.overlay_style.overlay_title_color %}
+{% set overlayTitleHoverColor = styles.overlay_style.overlay_title_hover_color %}
+{% set overlayCaptionColor = styles.overlay_style.overlay_caption_color %}
+{% set overlayCaptionHoverColor = styles.overlay_style.overlay_caption_hover_color %}
+{% set overlayAlignment = styles.overlay_typo_style.overlay_alignment %}
+{% set overlayBackground = styles.overlay_style.overlay_bg %}
+{% set overlayTitleTypo = styles.overlay_typo_style.overlay_title_typo %}
+{% set overlayCaptionTypo = styles.overlay_typo_style.overlay_caption_typo %}
+
+{# image adjustment #}
+{% set imagePositionStyle = styles.image_style.image_position_style %}
+{% set imageFitStyle = styles.image_style.image_fit_style %}
+
+{# Media #}
+{% set imageWidth = styles.image_style.image_width %}
+{% set imageHeight = styles.image_style.image_height %}
+{% set imageHorder = styles.image_style.image_border %}
+
+{# Filter #}
+{% set filterText = styles.filter_style.filter_text %}
+{% set filterTextHover = styles.filter_style.filter_text_hover %}
+{% set filterBackgroundActive = styles.filter_style.filter_bg_active %}
+{% set filterBackground = styles.filter_style.filter_bg %}
+{% set filterBorder = styles.filter_style.filter_bd %}
+{% set filterPadding = styles.filter_style.filter_padding %}
+{% set filterMargin = styles.filter_style.filter_margin %}
+{% set filterItemTypo = styles.filter_style.filter_item_typo %}
+
+{# Selectors #}
+{% set filterSelector = id ~ ' ul.qx-subnav li a' %}
+{% set filterActiveSelector = id ~ ' ul.qx-subnav li.qx-active a' %}
+{% set overlayTitle = id ~ ' ul.qx-gallery-media-wrapper li .qx-overlay .qx-gallery-title' %}
+{% set overlayCaption = id ~ ' ul.qx-gallery-media-wrapper li .qx-overlay .qx-gallery-caption' %}
+{% set overlayWrapper = id ~ ' ul.qx-gallery-media-wrapper li .qx-overlay' %}
+{% set overlayContentWrapper = id ~ ' ul.qx-gallery-media-wrapper li .qx-overlay .qx-overlay-content-wrapper' %}
+
+{{ style.css(id ~ ' .qx-element-gallery__wrapper a', 'display', 'block') }}
+{{ style.css(id ~ ' .qx-element-gallery__wrapper ul.qx-subnav li', 'padding-left', '0') }}
+{{ style.css(id ~ ' ul.qx-subnav li a', 'margin', '0 5px') }}
+
+{# Filter #}
+{{ style.css(filterSelector, 'color', filterText) }}
+{{ style.css(filterSelector ~ ':hover', 'color', filterTextHover) }}
+{{ style.css(filterActiveSelector, 'color', filterTextHover) }}
+{{ style.css(filterActiveSelector, 'background-color', filterBackgroundActive) }}
+{{ style.background(filterSelector, filterBackground) }}
+{{ style.border(filterSelector, filterBorder) }}
+{{ style.padding(filterSelector, filterPadding) }}
+{{ style.margin(filterSelector, filterMargin) }}
+{{ style.typography(filterSelector, filterItemTypo) }}
+
+{# Media #}
+{{ style.width(id ~ ' figure.qx-element-gallery__media img', imageWidth) }}
+{{ style.height(id ~ ' figure.qx-element-gallery__media img', imageHeight) }}
+{{ style.css(id ~ ' figure.qx-element-gallery__media', 'overflow', 'hidden') }}
+{{ style.css(id ~ ' figure.qx-element-gallery__media', 'display', 'block') }}
+{{ style.border(id ~ ' figure.qx-element-gallery__media', imageHorder) }}
+
+{# image adjustment #}
+{{ style.css(id ~ ' figure.qx-element-gallery__media img', 'object-position', imagePositionStyle) }}
+{{ style.css(id ~ ' figure.qx-element-gallery__media img', 'object-fit', imageFitStyle) }}
+
+{# Overlay #}
+{{ style.css(overlayTitle, 'color', overlayTitleColor) }}
+{{ style.css(overlayTitle ~ ':hover', 'color', overlayTitleHoverColor) }}
+{{ style.css(overlayCaption, 'color', overlayCaptionColor) }}
+{{ style.css(overlayCaption ~ ':hover', 'color', overlayCaptionHoverColor) }}
+
+{{ style.alignment(overlayContentWrapper, overlayAlignment) }}
+
+{{ style.background(overlayWrapper, overlayBackground) }}
+{{ style.typography(overlayTitle, overlayTitleTypo) }}
+{{ style.typography(overlayCaption, overlayCaptionTypo) }}
+
+{{ style.load(id) }}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+            name="username"
+            type="text"
+            default=""
+            size="30"
+            label="COM_QUIX_CONFIG_USER_NAME_LABEL"
+            description ="COM_QUIX_CONFIG_USER_NAME_DESC"
+            required="true"
+        />
+
+        <field
+            name="key"
+            type="text"
+            default=""
+            size="30"
+            class="input-large"
+            label="COM_QUIX_CONFIG_USER_KEY_LABEL"
+            description ="COM_QUIX_CONFIG_USER_KEY_DESC"
+            required="true"
+        />
+
+        <field
+            name="activated"
+            type="hidden"
+            value="0"
+        />
+	</fieldset>
+</form>

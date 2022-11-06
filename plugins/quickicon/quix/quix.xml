@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="quickicon" method="upgrade">
+	<name>plg_quickicon_quix</name>
+	<author>ThemeXpert</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) 2005 - 2018 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@themexpert.com</authorEmail>
+	<authorUrl>www.themexpert.com</authorUrl>
+	<version>4.3.1</version>
+	<description>PLG_QUICKICON_QUIX_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="quix">quix.php</filename>
+		<filename>update.js</filename>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_quickicon_quix.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_quickicon_quix.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="context"
+					type="text"
+					label="PLG_QUICKICON_QUIX_GROUP_LABEL"
+					description="PLG_QUICKICON_QUIX_GROUP_DESC"
+					default="mod_quickicon"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

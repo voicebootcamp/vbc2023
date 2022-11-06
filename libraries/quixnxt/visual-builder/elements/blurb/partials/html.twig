@@ -1,0 +1,89 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set tag = general.blurb_fg_text.html_tag %}
+{% set link = general.blurb_fg_links.link %}
+{% set src = general.blurb_fg_image.image %}
+{% set altText = general.blurb_fg_image.alt_text %}
+{% set imagePosition = general.blurb_fg_layout.img_position|default('top') %}
+{% set imgAlignment = general.blurb_fg_layout.img_alignment %}
+{% set caption = general.blurb_fg_image.caption %}
+{% set imgContentVerticalAlign = general.blurb_fg_layout.img_content_v_align %}
+{% set title = general.blurb_fg_text.title %}
+{% set content = general.blurb_fg_text.content %}
+
+{% set wrapperClasses = classNames('qx-element-blurb_wrapper',
+    imgContentVerticalAlign ? imgContentVerticalAlign: "",
+    {
+        'qx-d-md-flex qx-flex-md-row' : (imgAlignment == 'left'),
+        'qx-d-md-flex qx-flex-md-row-reverse' : (imgAlignment == 'right'),
+    }, class) %}
+{% set classes = classNames('qx-element qx-element-blurb-v2', visibilityClass(visibility), class) %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay.value ~ animationDelay.unit,
+    "background" : background
+} %}
+    {% block element %}
+        <div class="{{ wrapperClasses }} position-{{ imgAlignment }}">
+
+            {% set imageHtml = "" %}
+            {% if src.source %}
+                {% set imageHtml = '<figure class="qx-element-blurb__media qx-display-inline-block type-' ~ src.type ~ '">' %}
+
+                {% if src.type == "svg" %}
+                    {% set imageHtml = imageHtml ~ icon(src.source) | link(link) %}
+                {% elseif src.type == "image" %}
+                    {% set imageHtml = imageHtml ~ image( src.source, altText, '', '', src) | link(link) %}
+                {% endif %}
+
+            {% if caption %}
+              {% set imageHtml = imageHtml ~ '<figcaption class="qx-figure-caption qx-display-inline-block">' ~ caption ~ '</figcaption>' %}
+            {% endif %}
+
+                {% set imageHtml = imageHtml ~ '</figure>' %}
+            {% endif %}
+
+            {% if imagePosition == "top" or imgAlignment != 'center' %}
+                {{ imageHtml|raw }}
+            {% endif %}
+
+            <div class="qx-element-blurb__content qx-width-1-1" data="{{ imgAlignment }}">
+                {% if mode == 'builder' %} {#inlineEditor#}
+                    <div class="qx-element-blurb__title">
+                        {{ ('<span ' ~ inlineEditor('general.blurb_fg_text.title') ~ '>' ~ title ~ '</span>') | raw | wrap(tag) | link(link) }}
+                    </div>
+                {% else %}
+                    <div class="qx-element-blurb__title">
+                        {{ title | wrap(tag) | link(link) }}
+                    </div>
+                {% endif %}
+
+                {% if imagePosition == "bottom" and imgAlignment == 'center' %}
+                    {{ imageHtml|raw }}
+                {% endif %}
+
+                {% if mode == 'builder' %}
+                    <div class="qx-element-blurb__body" {{ inlineEditor('general.blurb_fg_text.content') }}>
+                        {{ content|raw }}
+                    </div>
+                {% else %}
+                    <div class="qx-element-blurb__body">
+                        {{ content|raw }}
+                    </div>
+                {% endif %}
+            </div>
+            {% if src.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' .qx-element-blurb__media', src) }}
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endembed %}

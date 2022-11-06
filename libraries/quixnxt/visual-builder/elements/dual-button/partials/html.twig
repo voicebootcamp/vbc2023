@@ -1,0 +1,148 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set btnClass = '' %}
+
+{# Primary Button #}
+{% set iconPri = '' %}
+{% set srcPri = general.primary_button_fields_group.primary_icon %}
+{% set textPri = general.primary_button_fields_group.primary_text %}
+{% set linkPri = general.primary_button_fields_group.primary_link %}
+{% set iconAlignmentPri = general.primary_button_fields_group.primary_button_icon_alignment %}
+{% set enableSSPri = general.primary_button_fields_group.primary_enable_smoothscroll|default(false) %}
+{% set scrollOffsetPri = general.primary_button_fields_group.primary_scroll_offset %}
+{% set SSTagsPri = "" %}
+{% if enableSSPri %}
+    {% if scrollOffsetPri != "" %}
+        {% set SSTagsPri = ' data-qx-scroll="offset:' ~ scrollOffsetPri ~ ' "' %}
+    {% else %}
+        {% set SSTagsPri = ' data-qx-scroll ' %}
+    {% endif %}
+{% endif %}
+{% set textAlignmentPri = general.primary_button_fields_group.primary_text_alignment %}
+
+{# Secondary Button #}
+{% set iconSec = '' %}
+{% set srcSec = general.secondary_button_fields_group.secondary_icon %}
+{% set textSec = general.secondary_button_fields_group.secondary_text %}
+{% set linkSec = general.secondary_button_fields_group.secondary_link %}
+{% set iconAlignmentSec = general.secondary_button_fields_group.secondary_button_icon_alignment %}
+{% set enableSSSec = general.secondary_button_fields_group.secondary_enable_smoothscroll|default(false) %}
+{% set scrollOffsetSec = general.secondary_button_fields_group.secondary_scroll_offset %}
+{% set SSTagsSec = "" %}
+{% if enableSSSec %}
+    {% if scrollOffsetSec != "" %}
+        {% set SSTagsSec = ' data-qx-scroll="offset:' ~ scrollOffsetSec ~ ' "' %}
+    {% else %}
+        {% set SSTagsSec = ' data-qx-scroll ' %}
+    {% endif %}
+{% endif %}
+{% set textAlignmentSec = general.secondary_button_fields_group.secondary_text_alignment %}
+
+
+{# Connector #}
+{% set iconConn = '' %}
+{% set srcConn = general.connector_button_fields_group.connector_icon %}
+{% set enable_connector = general.connector_button_fields_group.enable_connector %}
+{% set connectorText = general.connector_button_fields_group.connector_text %}
+
+
+{# Layout #}
+{% set chooseLayout = general.layout_button_fields_group.choose_button_layout %}
+{% set layoutClass = 'qx-element-dual-button-' ~ chooseLayout %}
+{% if chooseLayout == 'horizontal' %}
+    {% set btnClass = 'qx-btn qx-display-block' %}
+{% elseif chooseLayout == 'vertical' %}
+    {% set btnClass = 'qx-btn qx-display-inline-block' %}
+{% endif %}
+
+{% set layoutAlignment = general.layout_button_fields_group.button_layout_alignment %}
+{% set layoutAlign = chooseLayout ~ '-alignDesktop-' ~ layoutAlignment.desktop ~ ' ' ~ chooseLayout ~ '-alignTablet-' ~ layoutAlignment.tablet ~ ' ' ~ chooseLayout ~ '-alignPhone-' ~ layoutAlignment.phone %}
+
+{%
+  set btnPriWrapper = classNames('qx-element-dual-button-wrapper',
+  iconAlignmentPri == 'left' ? 'qx-flex qx-flex-row' : "",
+  iconAlignmentPri == 'right' ? 'qx-flex qx-flex-row-reverse' : "")
+%}
+{%
+  set btnSecWrapper = classNames('qx-element-dual-button-wrapper',
+  iconAlignmentSec == 'left' ? 'qx-flex qx-flex-row' : "",
+  iconAlignmentSec == 'right' ? 'qx-flex qx-flex-row-reverse' : "")
+%}
+
+{% set classes = classNames('qx-element qx-element-dual-button', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        <div class="qx-flex {{ layoutClass }} {{ layoutAlign }}">
+            {{ chooseLayout == 'vertical' ? '<div class="qx-child-width-1-1 qx-display-inline-block">' : '' }}
+            <div class="btn-wrapper btn-first">
+            {# Start Primary Button #}
+            {% if srcPri.source %}
+                {% if srcPri.type == "svg" %}
+                    {% set iconPri = icon(srcPri.source)|raw %}
+                {% endif %}
+            {% endif %}
+
+            {{ ( '<div class=" ' ~ btnPriWrapper ~ ' ">' ~ iconPri ~ ' ' ~ '<span>' ~ textPri ~ '</span></div>') | link(linkPri, btnClass, SSTagsPri) }}
+
+            {# Start Connector #}
+            {% if enable_connector == true %}
+                <div class="connector-wrapper">
+                {% if srcConn.source %}
+                    {% if srcConn.type == "svg" %}
+                        {% set iconConn = icon(srcConn.source)|raw %}
+                    {% endif %}
+                {% endif %}
+
+                {% if srcConn.source %}
+                    {{ iconConn }}
+                {% else %}
+                    <div class="connector-text">{{ connectorText }}</div>
+                {% endif %}
+                </div>
+            {% endif %}
+            {# End Connector #}
+            </div>
+            {# End Primary Button #}
+
+            {# Start Secondary Button #}
+            <div class="btn-wrapper btn-second">
+
+            {% if srcSec.source %}
+                {% if srcSec.type == "svg" %}
+                    {% set iconSec = icon(srcSec.source)|raw %}
+                {% endif %}
+            {% endif %}
+
+            {{ ( '<div class=" ' ~ btnSecWrapper ~ ' ">' ~ iconSec ~ ' ' ~ '<span>' ~ textSec ~ '</span></div>') | link(linkSec, btnClass, SSTagsSec) }}
+
+            </div>
+            {# End Secondary Button #}
+            {{ chooseLayout == 'vertical' ? '</div>' : '' }}
+
+            {% if srcPri.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' .btn-first .qx-element-dual-button-wrapper', srcPri) }}
+            {% endif %}
+
+            {% if srcConn.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' .connector-wrapper', srcConn) }}
+            {% endif %}
+
+            {% if srcSec.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' .btn-second .qx-element-dual-button-wrapper', srcSec) }}
+            {% endif %}
+
+        </div>
+    {% endblock %}
+{% endembed %}

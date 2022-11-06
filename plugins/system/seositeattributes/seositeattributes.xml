@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="system" method="upgrade">
+	<name>System - SEO Site Attributes for Joomla</name>
+	<creationDate>07-11-2016</creationDate>
+	<author>ThemeXpert</author>
+	<authorEmail>support@themexpert.com</authorEmail>
+	<authorUrl>https://www.themexpert.com</authorUrl>
+	<copyright>ThemeXpert</copyright>
+	<license>GNU/GPLv3 www.gnu.org/licenses/gpl-3.0.html</license>
+	<version>4.3.1</version>
+
+	<description>PLG_SYSTEM_SEOSITEATTRIBUTES_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="seositeattributes">seositeattributes.php</filename>
+		<filename>index.html</filename>
+	</files>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_seositeattributes.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_seositeattributes.sys.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+
+			<fieldset name="basic">
+
+				<field name="type" type="list" default="Organization"
+					label="PLG_SEOSITEATTRIBUTES_TYPE_LABEL" description="PLG_SEOSITEATTRIBUTES_TYPE_DESC">
+					<option value="Organization">Organization</option>
+					<option value="Person">Person</option>
+                    <option value="LocalBusiness">Local Business</option>
+                    <option value="custom">Custom</option>
+				</field>
+
+				<field showon="type:custom" name="customtype" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_CUSTOMTYPE_LABEL" description="PLG_SEOSITEATTRIBUTES_CUSTOMTYPE_DESC">
+				</field>
+
+				<field name="name" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_NAME_LABEL" description="PLG_SEOSITEATTRIBUTES_NAME_DESC" />
+
+				<field name="url" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_URL_LABEL" description="PLG_SEOSITEATTRIBUTES_URL_DESC" />
+
+				<field name="logo" type="media" directory="images" default=""
+					label="PLG_SEOSITEATTRIBUTES_LOGO_LABEL" description="PLG_SEOSITEATTRIBUTES_LOGO_DESC" />
+
+				<field name="sameAsFacebook" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_FACEBOOK_LABEL" description="PLG_SEOSITEATTRIBUTES_FACEBOOK_DESC" />
+
+				<field name="sameAsTwitter" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_TWITTER_LABEL" description="PLG_SEOSITEATTRIBUTES_TWITTER_DESC" />
+
+				<field name="sameAsGPlus" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_GPLUS_LABEL" description="PLG_SEOSITEATTRIBUTES_GPLUS_DESC" />
+
+				<field name="sameAsInstagram" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_INSTAGRAM_LABEL" description="PLG_SEOSITEATTRIBUTES_INSTAGRAM_DESC" />
+
+				<field name="sameAsYoutube" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_YOUTUBE_LABEL" description="PLG_SEOSITEATTRIBUTES_YOUTUBE_DESC" />
+
+				<field name="sameAsLinkedIn" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_LINKEDIN_LABEL" description="PLG_SEOSITEATTRIBUTES_LINKEDIN_DESC" />
+
+				<field name="sameAsMyspace" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_MYSPACE_LABEL" description="PLG_SEOSITEATTRIBUTES_MYSPACE_DESC" />
+
+				<field name="sameAsPinterest" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_PINTEREST_LABEL" description="PLG_SEOSITEATTRIBUTES_PINTEREST_DESC" />
+
+				<field name="sameAsSoundCloud" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_SOUNDCLOUD_LABEL" description="PLG_SEOSITEATTRIBUTES_SOUNDCLOUD_DESC" />
+
+				<field name="sameAsTumblr" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_TUMBLR_LABEL" description="PLG_SEOSITEATTRIBUTES_TUMBLR_DESC" />
+
+				<field name="spacer216" type="spacer" default="" label="PLG_SEOSITEATTRIBUTES_CORPORATE_CONTACT_SPACER_LABEL" description="" />
+
+				<field name="telephone" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_TELEPHONE_LABEL" description="PLG_SEOSITEATTRIBUTES_TELEPHONE_DESC" />
+
+				<field name="contactType" type="list" default="customer support"
+					label="PLG_SEOSITEATTRIBUTES_CONTACTTYPE_LABEL" description="PLG_SEOSITEATTRIBUTES_CONTACTTYPE_DESC">
+					<option value="customer support">Customer support</option>
+					<option value="technical support">Technical support</option>
+					<option value="billing support">Billing support</option>
+					<option value="bill payment">Bill payment</option>
+					<option value="sales">Sales</option>
+					<option value="reservations">Reservations</option>
+					<option value="credit card support">Credit card support</option>
+					<option value="emergency">Emergency</option>
+					<option value="baggage tracking">Baggage tracking</option>
+					<option value="roadside assistance">Roadside assistance</option>
+					<option value="package tracking">Package tracking</option>
+				</field>
+
+				<field name="areaServed" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_AREASERVED_LABEL" description="PLG_SEOSITEATTRIBUTES_AREASERVED_DESC" />
+
+				<field name="contactOption" type="list" default=""
+					label="PLG_SEOSITEATTRIBUTES_CONTACTOPTION_LABEL" description="PLG_SEOSITEATTRIBUTES_CONTACTOPTION_DESC">
+					<option value="">Default</option>
+					<option value="TollFree">Toll Free</option>
+					<option value="HearingImpairedSupported">Hearing Impaired Supported</option>
+				</field>
+
+				<field name="availableLanguage" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_AVAILABLELANGUAGE_LABEL" description="PLG_SEOSITEATTRIBUTES_AVAILABLELANGUAGE_DESC" />
+
+                <field name="spacer217" type="spacer" default="" label="PLG_SEOSITEATTRIBUTES_LOCAL_BUSINESS_SPACER_LABEL" description="" />
+
+				<field name="streetAddress" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_STREETADDRESS_LABEL" description="PLG_SEOSITEATTRIBUTES_STREETADDRESS_DESC" />
+
+				<field name="addressLocality" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_ADDRESSLOCALITY_LABEL" description="PLG_SEOSITEATTRIBUTES_ADDRESSLOCALITY_DESC" />
+
+				<field name="addressRegion" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_ADDRESSREGION_LABEL" description="PLG_SEOSITEATTRIBUTES_ADDRESSREGION_DESC" />
+
+				<field name="postalCode" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_POSTALCODE_LABEL" description="PLG_SEOSITEATTRIBUTES_POSTALCODE_DESC" />
+
+				<field name="addressCountry" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_ADDRESSCOUNTRY_LABEL" description="PLG_SEOSITEATTRIBUTES_ADDRESSCOUNTRY_DESC" />
+
+				<field name="latitude" showon="type:LocalBusiness,custom" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_LATITUDE_LABEL" description="PLG_SEOSITEATTRIBUTES_LATITUDE_DESC" />
+
+				<field name="longitude" showon="type:LocalBusiness,custom" type="text" default=""
+					label="PLG_SEOSITEATTRIBUTES_LONGITUDE_LABEL" description="PLG_SEOSITEATTRIBUTES_LONGITUDE_DESC" />
+
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>

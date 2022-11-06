@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="finder" method="upgrade">
+	<name>plg_finder_quix</name>
+	<author>ThemeXpert</author>
+	<creationDate>09-10-2022</creationDate>
+	<copyright>(C) 2005 - ##YEAR## Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see	LICENSE.txt</license>
+	<authorEmail>info@themexpert.com</authorEmail>
+	<authorUrl>www.themexpert.com</authorUrl>
+	<version>4.3.1</version>
+	<description>PLG_FINDER_QUIX_XML_DESCRIPTION</description>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_finder_quix.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_finder_quix.sys.ini</language>
+	</languages>
+
+	<files>
+		<filename plugin="quix">quix.php</filename>
+	</files>
+	
+</extension>

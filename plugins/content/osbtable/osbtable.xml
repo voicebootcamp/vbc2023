@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="content" method="upgrade">
+	<name>OSB Table Plugin</name>
+	<author>Ossolution Team</author>
+	<creationDate>May 2015</creationDate>
+	<copyright>Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>2.3.6</version>
+	<description>This plugin is used to display booking table within a Joomla article. The code format is: {osbtable sid:Service_ID|eid:Employee_ID|cid:Category_ID|vid:Venue_ID}. For example: {osbtable sid:1|eid:2|cid:3|vid:4} or {osbtable sid:1|eid:2|cid:3} or {osbtable sid:1|eid:2} or {osbtable sid:1} ..etc</description>
+	<files>
+		<filename plugin="osbtable">osbtable.php</filename>
+	</files>	
+</extension>

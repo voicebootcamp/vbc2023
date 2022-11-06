@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.1" method="upgrade">
+	<name>com_jmedia</name>
+	<author>ThemeXpert</author>
+	<creationDate>##JMEDIA_CREATIONDATE##</creationDate>
+	<copyright>(C) 2005 - 2019 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>##JMEDIA_VERSION##</version>
+	<description>COM_JMEDIA_XML_DESCRIPTION</description>
+
+	<files folder="site">
+		<filename>jmedia.php</filename>
+	</files>
+	
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB.com_jmedia.ini</language>
+	</languages>
+	
+	<media folder="media" destination="com_jmedia">
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>json</folder>
+	</media>
+	
+	<administration>
+		<menu img="class:jmedia">com_jmedia</menu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>jmedia.php</filename>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>layouts</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB.com_jmedia.ini</language>
+			<language tag="en-GB">language/en-GB.com_jmedia.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
+

@@ -1,0 +1,14 @@
+{% set id = advanced.identifier.id %}
+{% set pauseOnHover = general['height-fg_behaviour'].pause_on_hover|default('false') %}
+{% set autoplay = general['height-fg_behaviour'].auto_play|default('false') %}
+{% set autoplaySpeed = general['height-fg_behaviour'].autoplay_speed|default('300') %}
+
+setTimeout(function() {
+  var option = {
+    autoplay: {{ autoplay }},
+    pauseOnHover: {{ pauseOnHover }},
+    autoplayInterval: {{ autoplaySpeed }},
+    finite: {{ general['height-fg_behaviour'].infinite_loop|default('false') ? 'false' : 'true' }}
+  };
+  qxUIkit.slider("#media-carousel-{{ id }}", option);
+}, 700);

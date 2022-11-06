@@ -1,0 +1,117 @@
+{% macro getDynamicMenu(menuLayout, menuSubIndicator, verticalSubmenuIndicator) %}
+    {{ '<?php foreach($items as $index => $item): ?>'|raw }}
+
+    {% if menuLayout == 'horizontal' %}
+        {{ '<?php $class = "' ~ menuSubIndicator ~ verticalSubmenuIndicator ~ '"; ?>'|raw }}
+    {% elseif menuLayout == 'vertical' %}
+        {{ '<?php $class = \'\'; ?>'|raw }}
+    {% endif %}
+
+
+<li class="{{ '<?php echo $class; ?> <?php echo $item->class; ?>'|raw }}">
+    {{ '<?php echo $item->render; ?>'|raw }}
+
+    {% if menuLayout == 'horizontal' %}
+        {{ '<?php if($item->deeper): ?>'|raw }}
+        <div class="qx-navbar-dropdown">
+            <ul class="qx-nav qx-navbar-dropdown-nav" style="display: block;">
+                {{ '<?php elseif($item->shallower): ?>'|raw }}
+                </li>
+            </ul>
+        </div> {# fix it item.level_diff #}
+        {{ '<?php else: ?>'|raw }}
+        </li>
+        {{ '<?php endif; ?>'|raw }}
+    {% elseif menuLayout == 'vertical' %}
+        {{ '<?php if($item->deeper): ?>'|raw }}
+        <ul class="qx-nav-sub" style="display: block;">
+            {{ '<?php elseif($item->shallower): ?>'|raw }}
+            </li>
+        </ul> {# fix it item.level_diff #}
+        {{ '<?php else: ?>'|raw }}
+        </li>
+        {{ '<?php endif; ?>'|raw }}
+    {% endif %}
+    {{ '<?php endforeach; ?>'|raw }}
+{% endmacro %}
+
+{% macro getStaticMenu(items, menuLayout, menuSubIndicator, verticalSubmenuIndicator) %}
+    {% for index, item in items %}
+
+        {% if menuLayout == 'horizontal' and item.parent %}
+            {% set class = menuSubIndicator ~ verticalSubmenuIndicator %}
+        {% endif %}
+
+    <li class="{{ class ~ ' ' ~ item.class }}">
+        {{ item.render |raw }}
+
+        {% if menuLayout == 'horizontal' %}
+            {% if item.deeper %}
+                <div class="qx-navbar-dropdown">
+                <ul class="qx-nav qx-navbar-dropdown-nav" style="display: block;">
+            {% elseif item.shallower %}
+                </li>
+                </ul></div> {# fix it item.level_diff #}
+            {% else %}
+                </li>
+            {% endif %}
+        {% elseif menuLayout == 'vertical' %}
+            {% if item.deeper %}
+                <ul class="qx-nav-sub" style="display: block;">
+            {% elseif item.shallower %}
+                </li>
+                </ul> {# fix it item.level_diff #}
+            {% else %}
+                </li>
+            {% endif %}
+        {% endif %}
+        {# </li> // no need as have in condition #}
+    {% endfor %}
+{% endmacro %}
+
+{% macro dynamicMobileMenu(menuLayout, menuSubIndicator, verticalSubmenuIndicator) %}
+    {{ '<?php foreach($items as $index => $item): ?>'|raw }}
+    {% if menuLayout and item.parent %}
+        {{ '<?php $class = ' ~ menuSubIndicator ~ verticalSubmenuIndicator ~ '; ?>'|raw }}
+    {% else %}
+        {{ '<?php $class = \'\'; ?>'|raw }}
+    {% endif %}
+
+<li class="{{ '<?php echo $class; ?> <?php echo $item->class; ?>'|raw }}">
+    {{ '<?php echo $item->render; ?>'|raw }}
+    {% if menuLayout %}
+        {{ '<?php if($item->deeper): ?>'|raw }}
+        <ul class="qx-nav-sub" style="display: block;">
+            {{ '<?php elseif($item->shallower): ?>'|raw }}
+            </li>
+        </ul> {# fix it item.level_diff #}
+        {{ '<?php else: ?>'|raw }}
+        </li>
+        {{ '<?php endif; ?>'|raw }}
+    {% endif %}
+    {{ '<?php endforeach; ?>'|raw }}
+{% endmacro %}
+
+{% macro staticMobileMenu(items, menuLayout, menuSubIndicator, verticalSubmenuIndicator) %}
+    {% for index, item in items %}
+
+        {% if menuLayout and item.parent %}
+            {% set class = menuSubIndicator ~ verticalSubmenuIndicator %}
+        {% endif %}
+
+    <li class="{{ class ~ ' ' ~ item.class }}">
+        {{ item.render |raw }}
+
+        {% if menuLayout %}
+            {% if item.deeper %}
+                <ul class="qx-nav-sub" style="display: block;">
+            {% elseif item.shallower %}
+                </li>
+                </ul> {# fix it item.level_diff #}
+            {% else %}
+                </li>
+            {% endif %}
+        {% endif %}
+        {# </li> // no need as have in condition #}
+    {% endfor %}
+{% endmacro %}

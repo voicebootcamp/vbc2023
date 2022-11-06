@@ -1,0 +1,25 @@
+{% set id = field('id') %}
+{% set class = field('class') %}
+
+{% set tag = field('html_tag') %}
+
+{% set classes = classNames('qx-element qx-element-article-title', visibilityClass(node.visibility), class) %}
+{% set animation = field("animation") %}
+{% set animationRepeat = field("animation_repeat") %}
+{% set animationDelay = field('animation_delay').value %}
+{% set background = field('background') %}
+
+{% set itemData = ElementApiCall('article-title', {}) %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {{ itemData.title|default('Your article title goes here')|wrap('span') | wrap(tag) }}
+    {% endblock %}
+{% endembed %}

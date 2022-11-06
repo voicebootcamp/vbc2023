@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>AA User IP and Location</name>
+	<author>Syed Ashik Mahmud</author>
+	<creationDate>03-05-2021</creationDate>
+	<copyright>Copyright (C) 2005 - 2018 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@aaextensions.com</authorEmail>
+	<authorUrl>https://aaextensions.com</authorUrl>
+	<version>1.0.1</version>
+	<description>
+	
+	 <![CDATA[
+		<div style="border: 1px solid #dddddd; border-radius: 5px; padding: 5px 15px 5px 15px; background-color: #eeeeee; text-align: left; margin-bottom: 18px;">
+			<h3 style="text-transform: uppercase;">Extension info : </h3>
+			<p style="font-weight: normal;">AA User IP and Location is a light module to simply display the visitor’s IP address and location information along with their ISP provider anywhere. </p>
+			<p style="font-weight: normal;">Send all your support requests to <a href="mailto:ashik685@gmail.com" target="_blank" title="Write us email">ashik685@gmail.com</a> or post them on <a href="https://aaextensions.com" target="_blank" title="Visit support site">Support</a>.</p>
+			<p style="font-weight: bold;"><a href="https://aaextensions.com" target="_blank" title="More extensions">Check our Other Developed Extensions</a> - Syed Ashik Mahmud, CEO , AA Extensions.</p>	
+
+			<div style="border-top: 1px dotted #CCCCCC; margin-top: 10px; padding-top: 10px; overflow: hidden;">
+			    <span style="float: left; font-weight: bold; margin-right: 20px; padding-top: 5px;">It works fine any template. I have tested several templates.</span>
+			</div>
+		</div>
+	]]>		
+	
+	</description>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_aa_uipl.ini</language>
+	</languages>
+
+
+	<files>
+		<filename module="mod_aa_uipl">mod_aa_uipl.php</filename>
+		<folder>assets</folder>
+		<folder>elements</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+		<filename>index.html</filename>
+	</files>
+
+	<config>
+
+		<fields name="params">
+
+			<fieldset name="aa_uipl_settings" label="MOD_UIPL_SETTINGS">
+
+				<field
+						name="note_uipl"
+						type="note"
+						class="alert"
+						label="MOD_UIPL_INFO_NOTE"
+						description="MOD_UIPL_INFO_NOTE_DESC"
+				/>
+
+				<field
+						name="uipl_ip"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SIP"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="uipl_country"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SCOUNTRY"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+
+				<field
+						name="uipl_countrycode"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SCOUNTRYCODE"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="uipl_region"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SREGION"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="uipl_city"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SCITY"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+
+				<field
+						name="uipl_countrycode"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SCOUNTRYCODE"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+
+				<field
+						name="uipl_latitude"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SLATITUDE"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+
+				<field
+						name="uipl_longitude"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SLONGITUDE"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="uipl_timezone"
+						type="list"
+						default="1"
+						label="MOD_UIPL_STIMEZONE"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="uipl_isp"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SISP"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="uipl_countryflag"
+						type="list"
+						default="1"
+						label="MOD_UIPL_SCOUNTRY_FLAG"
+						description=""
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field
+						name="uipl_fwidth"
+						type="text"
+						default="50"
+						label="MOD_UIPL_FWIDTH"
+						description=""
+						filter="integer"
+				/>
+
+				<field
+						name="uipl_cwidth"
+						type="text"
+						default="1250"
+						label="MOD_UIPL_CWIDTH"
+						description=""
+						filter="integer"
+				/>
+
+
+			 </fieldset>
+
+
+			<fieldset name="aa_uipl_typography" label="MOD_UIPL_TYPOGRAPHY" addfieldpath="/modules/mod_aa_uipl/elements">
+
+				<field
+						name="uipl_colorsettings"
+						type="note"
+						label="MOD_UIPL_COLORSETTINGS"
+						description=""
+				/>
+
+				<field
+						name="uipl_bcolor"
+						type="color"
+						default="#2f3542"
+					    label="MOD_UIPL_BCOLOR"
+					    description=""
+				/>
+
+				<field
+						name="uipl_fcolor"
+						type="color"
+						default="#fff"
+						label="MOD_UIPL_FCOLOR"
+						description=""
+				/>
+
+				<field
+						name="uipl_customsettings"
+						type="note"
+						label="MOD_UIPL_CUSTOMSETTINGS"
+						description=""
+				/>
+
+				<field
+					   name="custom_css"
+					   type="csseditor"
+					   default=""
+					   label="MOD_UIPL_CUSTOM_CSS"
+					   description=""
+					   rows="10" cols="30"
+					   class="input-xlarge"
+					   filter="raw"
+				/>
+
+				<field
+					   name="authorinfobox"
+					   type="aainfobtn"
+				/>
+
+
+
+			</fieldset>
+
+
+			<fieldset name="advanced">
+
+
+				<field
+						name="moduleclass_sfx"
+						type="textarea"
+						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+						description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+						rows="3"
+				/>
+
+				<field
+						name="cache"
+						type="list"
+						label="COM_MODULES_FIELD_CACHING_LABEL"
+						description="COM_MODULES_FIELD_CACHING_DESC"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+						name="cache_time"
+						type="number"
+						label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+						description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+						default="900"
+						filter="integer"
+				/>
+
+				<field
+						name="cachemode"
+						type="hidden"
+						default="itemid"
+				>
+					<option value="itemid"></option>
+				</field>
+			</fieldset>
+
+    		</fields>
+
+	</config>
+
+	<updateservers>
+		<!-- Note: No spaces or linebreaks allowed between the server tags -->
+		<server type="extension" priority="1" name="AA User IP and Location Module Updates">https://aaextensions.com/updateserver/mod_aa_uipl/update.xml</server>
+	</updateservers>
+
+
+</extension>

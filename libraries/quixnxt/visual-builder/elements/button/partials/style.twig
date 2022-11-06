@@ -1,0 +1,46 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set imgSelector = id ~ ' .qx-element-button-wrapper' %}
+{% set iconSpacingLeft = id ~ ' .iconSpacing-left i,' ~ id ~ ' .iconSpacing-left svg' %}
+{% set iconSpacingRight = id ~ ' .iconSpacing-right i,' ~ id ~ ' .iconSpacing-right svg' %}
+{% set btnBackground = styles.button_bg_fields_group.btn_background %}
+{% set textColor = styles.button_color_fields_group.text_color %}
+{% set hoverTextColor = styles.button_color_fields_group.hover_text_color %}
+{% set hoverIconColor = styles.button_color_fields_group.hover_icon_color %}
+{% set font = styles.button_typo_fields_group.font %}
+{% set nalignment = styles.button_spacing_fields_group.nalignment %}
+{% set btnPadding = styles.button_spacing_fields_group.btn_padding %}
+{% set iconSpacing = prepareResponsiveValue(styles.button_spacing_fields_group.icon_spacing) %}
+{% set btnBorder = styles.button_border_group.btn_border %}
+
+{# Background > .qx-btn #}
+{{ style.background (id ~ ' .qx-btn', btnBackground) }}
+
+{# Text Color #}
+{{ style.css( id ~ ' .qx-btn', 'color', textColor) }}
+
+{# Hover Text color #}
+{{ style.css( id ~ ' .qx-btn:hover', 'color', hoverTextColor) }}
+{{ style.css( id ~ ' .qx-btn:hover i', 'color', hoverIconColor) }}
+{{ style.css( id ~ ' .qx-btn:hover svg path', 'fill', hoverIconColor) }}
+
+{# Typography #}
+{{ style.typography(id ~ ' *', font) }}
+
+{# Alignment #}
+{{ style.alignment(id, nalignment) }}
+
+{# padding #}
+{{ style.padding(id ~ ' .qx-btn', btnPadding) }}
+
+{# Spacing #}
+{{ style.responsiveCss(iconSpacingLeft, iconSpacing, 'margin-right', iconSpacing.unit) }}
+{{ style.phone(iconSpacingLeft, 'margin-right:' ~ iconSpacing.phone ~ iconSpacing.unit) }}
+{{ style.responsiveCss(iconSpacingRight, iconSpacing, 'margin-left', iconSpacing.unit) }}
+{{ style.phone(iconSpacingRight, 'margin-left:' ~ iconSpacing.phone ~ iconSpacing.unit) }}
+
+{# Border #}
+{{ style.border(id ~ " .qx-btn", btnBorder) }}
+
+{{ style.load(id) }}

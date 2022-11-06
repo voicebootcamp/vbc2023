@@ -1,0 +1,24 @@
+.eb-slider-container .eb-event-wrapper {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 8px 5px #dddfe2;
+    position: relative;
+    overflow: hidden !important;
+    margin: 10px 0;
+}
+
+.eb-slider-container .eb-event-wrapper img {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.eb-slider-container .eb-event-wrapper > h2, .eb-slider-container .eb-event-wrapper > div {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.eb-slider-container .eb-event-price {
+    padding: 5px;
+    font-weight: 700;
+}

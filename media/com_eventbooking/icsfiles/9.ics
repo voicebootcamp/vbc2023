@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Events Booking
+BEGIN:VEVENT
+UID:62f2418ad966d
+SUMMARY:UCCXD - DEPLOYING CISCO UNIFIED CONTACT CENTER EXPRESS V6.0
+DESCRIPTION:
+ Learn about the Cisco Unified Contact Center Express (Unifie
+ d CCX) product and its associated client applications and scripting tools.
+ 
+ 
+ 
+ In this course\, you'll gain an understanding of Cisco’s Unifie
+ d Contact Center Express (Unified CCX) product and all of its associated c
+ lient applications and scripting tools. You will learn about all of the Un
+ ified CCX components\, servers\, deployment options\, and clients. You wil
+ l learn how to perform capacity planning\, choose the correct product feat
+ ures\, and install the product.
+ 
+LOCATION:705 Progress Ave. Suite 110\, Scarborough\, Ontario\, M1H 2X1\, Ca
+ nada
+DTSTART:20220905T093000Z
+DTEND:20220909T173000Z
+DTSTAMP:20220725T000607Z
+ORGANIZER;CN=Faisal H. Khan:MAILTO:fkhan@voicebootcamp.com
+GEO:43.776204;-79.248689
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=705 Progress Ave. Suite 110
+ \, Scarborough\, Ontario\, M1H 2X1\, Canada;X-APPLE-RADIUS=72;X-TITLE=Toro
+ nto\, Canada & Online Class:43.776204;-79.248689
+END:VEVENT
+END:VCALENDAR

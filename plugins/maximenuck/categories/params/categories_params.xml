@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="editionfieldset" label="">
+			<field
+				name="categoriesspacer"
+				type="maximenuckspacer"
+				label="PLG_MAXIMENUCK_CATEGORIES_LABEL"
+				style="title"
+				showon="source:categories"
+				/>
+			<field 
+				name="categories_catid" 
+				type="category" 
+				extension="com_content"
+				multiple="false" 
+				size="5"
+				label="JCATEGORY"
+				description="MAXIMENUCK_CATEGORIES_CATEGORY_FIELD_CATEGORY_DESC"
+				icon="folder_explore.png"
+				showon="source:categories"
+			>
+				<option value="">JOPTION_ALL_CATEGORIES</option>
+			</field>
+
+			<field 
+				name="categories_show_articles" 
+				type="maximenuckradio"
+				default="1"
+				label="MAXIMENUCK_CATEGORIES_SHOWARTICLES_LABEL"
+				description="MAXIMENUCK_CATEGORIES_SHOWARTICLES_DESC"
+				class="btn-group"
+				icon="folder_table.png"
+				showon="source:categories"
+			>
+				<option value="1">JYES
+				</option>
+				<option value="0">JNO
+				</option>
+			</field>
+
+			<field 
+				name="categories_levels" 
+				type="maximenucktext" 
+				default="0"
+				label="MAXIMENUCK_CATEGORIES_CATEGORY_FIELD_CATDEPTH_LABEL"
+				description="MAXIMENUCK_CATEGORIES_CATEGORY_FIELD_CATDEPTH_DESC" 
+				icon="application_side_tree.png" 
+				showon="source:categories"
+				/>
+
+		</fieldset>
+	</fields>
+</form>

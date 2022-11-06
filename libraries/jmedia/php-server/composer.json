@@ -1,0 +1,37 @@
+{
+  "name": "reactfilemanager/php-server",
+  "description": "File Manager API",
+  "version": "1.0.0",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rocky",
+      "email": "wpkpda@gmail.com"
+    },
+    {
+      "name": "Abu Huraira Bin Aman",
+      "email": "shams.bd71@gmail.com"
+    }
+  ],
+  "require": {
+    "symfony/filesystem": "^5.0",
+    "symfony/finder": "^5.0",
+    "symfony/http-foundation": "^5.0",
+    "symfony/mime": "^5.0",
+    "ext-json": "*",
+    "symfony/cache": "^5.0",
+    "ext-gd": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ThemeXpert\\FileManager\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^5.0"
+  }
+}

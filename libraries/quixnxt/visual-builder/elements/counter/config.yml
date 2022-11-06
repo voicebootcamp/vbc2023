@@ -1,0 +1,102 @@
+name: Counter
+slug: counter
+groups: pro
+helpId: 5d1feaba04286369ad8d5ed4
+form:
+  general:
+    - name : counter_fg_element_mode
+      label: Counter
+      type: fields-group
+      status: open
+      schema:
+        - name: count_start
+          label: Start
+          type: text
+          value: 1
+
+        - name: count_end
+          label: End
+          type: text
+          value: 100
+
+        - name: counter_prefix
+          label: Number Prefix
+          type: text
+          value: 
+
+        - name: suffix
+          label: Number Suffix
+          type: text
+          value: 
+
+        - name: title
+          label: Title
+          type: text
+          value: 'Cool Number'
+
+        - name: duration
+          label: Duration
+          type: text
+          value: 3000
+
+        - name: onLoad
+          label: OnLoad Counting
+          help: After loading counting will start
+          type: switch
+          value: false
+          
+        - name : alignment
+          label: Alignment
+          type : choose
+          value:
+            desktop: center
+            tablet: center
+            phone: center     
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right          
+
+  styles:
+    - name: counter_fg_number_style
+      label: Number
+      status: open
+      type: fields-group
+      schema:
+        - name: number_color
+          label: Color
+          type: color
+
+        - name: number_typo
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: number_padding
+          label: Padding
+          type: dimensions
+          units: %, px, em, rem, vh       
+
+    - name: counter_fg_title_style
+      label: Title
+      type: fields-group
+      schema:
+        - name: title_color
+          label: Color
+          type: color
+
+        - name: title_typo
+          label: Typography
+          type: typography
+          popover: true
+  
+        - name: title_padding
+          label: Padding
+          type: dimensions
+          units: %, px, em, rem, vh

@@ -1,0 +1,58 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set lottieAlignment = styles.lottie_common_fg_style.lottie_alignment %}
+
+{# Animation #}
+{% set lottieWidth = styles.lottie_common_fg_style.lottie_width %}
+{% set lottieHeight = styles.lottie_common_fg_style.lottie_height %}
+{% set lottieBackground = styles.lottie_common_fg_style.lottie_background %}
+{% set lottieBorder = styles.lottie_common_fg_style.lottie_border %}
+{% set lottieMargin = styles.lottie_common_fg_style.lottie_margin %}
+{% set lottiePadding = styles.lottie_common_fg_style.lottie_padding %}
+
+{# Caption #}
+{% set lottieCaptionAlignment = styles.lottie_caption_fg_style.lottie_caption_alignment %}
+{% set lottieCaptionColor = styles.lottie_caption_fg_style.lottie_caption_color %}
+{% set lottieCaptionTypography = styles.lottie_caption_fg_style.lottie_caption_typography %}
+{% set lottieCaptionBackground = styles.lottie_caption_fg_style.lottie_caption_background %}
+{% set lottieCaptionBorder = styles.lottie_caption_fg_style.lottie_caption_border %}
+{% set lottieCaptionMargin = styles.lottie_caption_fg_style.lottie_caption_margin %}
+{% set lottieCaptionPadding = styles.lottie_caption_fg_style.lottie_caption_padding %}
+
+{# Selector #}
+{% set lottieCommon = id ~ ' figure' %}
+{% set lottiePlayer = id ~ ' figure lottie-player' %}
+{% set caption = id ~ ' figure figcaption' %}
+
+{# Animation #}
+{{ style.width(lottieCommon, lottieWidth) }}
+{{ style.height(lottieCommon, lottieHeight) }}
+{{ style.background(lottiePlayer, lottieBackground) }}
+{{ style.border(lottiePlayer, lottieBorder) }}
+{{ style.margin(lottieCommon, lottieMargin) }}
+{{ style.padding(lottieCommon, lottiePadding) }}
+
+{# Alignment #}
+{% if lottieAlignment.value == 'left' %}
+    {{ style.css(id, 'display', 'flex') }}
+    {{ style.css(id, 'justify-content', 'flex-start') }}
+{% elseif lottieAlignment.value == 'center' %}
+    {{ style.css(id, 'display', 'flex') }}
+    {{ style.css(id, 'justify-content', 'center') }}
+{% elseif lottieAlignment.value == 'right' %}
+    {{ style.css(id, 'display', 'flex') }}
+    {{ style.css(id, 'justify-content', 'flex-end') }}
+{% endif %}
+
+{# Caption #}
+{{ style.alignment(caption, lottieCaptionAlignment) }}
+{{ style.css(caption, 'color', lottieCaptionColor) }}
+{{ style.css(id ~ ' figure', 'display', 'block') }}
+{{ style.typography(caption, lottieCaptionTypography) }}
+{{ style.background(caption, lottieCaptionBackground) }}
+{{ style.border(caption, lottieCaptionBorder) }}
+{{ style.margin(caption, lottieCaptionMargin) }}
+{{ style.padding(caption, lottieCaptionPadding) }}
+
+{{ style.load(id) }}

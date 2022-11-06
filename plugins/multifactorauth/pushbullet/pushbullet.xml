@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--~
+  ~ @package   AkeebaLoginGuard
+  ~ @copyright Copyright (c)2016-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license   GNU General Public License version 3, or later
+  -->
+
+<extension version="4.0.0" type="plugin" group="multifactorauth" method="upgrade">
+    <name>PLG_MULTIFACTORAUTH_PUSHBULLET</name>
+    <author>Nicholas K. Dionysopoulos</author>
+    <authorEmail>nicholas@dionysopoulos.me</authorEmail>
+    <authorUrl>https://www.akeeba.com</authorUrl>
+    <copyright>Copyright (c)2016-2022 Nicholas K. Dionysopoulos</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>2022-08-16</creationDate>
+    <version>7.0.0</version>
+    <description>PLG_MULTIFACTORAUTH_PUSHBULLET_DESCRIPTION</description>
+
+    <namespace path="src">Joomla\Plugin\Multifactorauth\Pushbullet</namespace>
+
+    <files>
+        <folder>services</folder>
+        <folder plugin="pushbullet">src</folder>
+        <folder>tmpl</folder>
+    </files>
+
+    <media folder="media" destination="plg_multifactorauth_pushbullet">
+        <folder>images</folder>
+    </media>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/plg_multifactorauth_pushbullet.ini</language>
+        <language tag="en-GB">en-GB/plg_multifactorauth_pushbullet.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="access_token"
+                        type="text"
+                        label="PLG_MULTIFACTORAUTH_PUSHBULLET_CONFIG_TOKEN_LABEL"
+                        description="PLG_MULTIFACTORAUTH_PUSHBULLET_CONFIG_TOKEN_DESC"
+                        default=""
+                />
+
+                <field
+                        name="client_id"
+                        type="text"
+                        label="PLG_MULTIFACTORAUTH_PUSHBULLET_CONFIG_CLIENTID_LABEL"
+                        description="PLG_MULTIFACTORAUTH_PUSHBULLET_CONFIG_CLIENTID_DESC"
+                        default=""
+                />
+
+                <field
+                        name="secret"
+                        type="password"
+                        label="PLG_MULTIFACTORAUTH_PUSHBULLET_CONFIG_SECRET_LABEL"
+                        description="PLG_MULTIFACTORAUTH_PUSHBULLET_CONFIG_SECRET_DESC"
+                        default=""
+                />
+
+                <field
+                        name="helpurl"
+                        type="text"
+                        label="PLG_MULTIFACTORAUTH_PUSHBULLET_CONFIG_HELPURL_LABEL"
+                        description="PLG_MULTIFACTORAUTH_PUSHBULLET_CONFIG_HELPURL_DESC"
+                        default=""
+                        filter="url"
+                />
+            </fieldset>
+        </fields>
+    </config>
+
+</extension>

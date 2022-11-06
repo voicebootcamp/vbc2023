@@ -1,0 +1,136 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Cover Mode #}
+{% set backgroundOverlayColor = styles.call_to_action_background_style.background_overlay_color %}
+{% set backgroundOverlayHoverColor = styles.call_to_action_background_style.background_overlay_hover_color %}
+{% set bgBlendMode = styles.call_to_action_background_style.bg_blend_mode %}
+{% set bgBlendModeHover = styles.call_to_action_background_style.bg_blend_mode_hover %}
+
+{# Element style #}
+{% set height = styles.call_to_action_fg_element_style.height %}
+{% set elementMinHeight = styles.call_to_action_fg_element_style.element_min_height %}
+{% set elementAlignment = styles.call_to_action_fg_element_style.element_alignment %}
+{% set elementPadding = styles.call_to_action_fg_element_style.element_padding %}
+
+{# Image #}
+{% set imageWidthDesktop = styles.call_to_action_image_style.image_width.desktop %}
+{% set imageMinHeight = styles.call_to_action_image_style.image_min_height %}
+{% set imageWidth = styles.call_to_action_image_style.image_width %}
+{% set imageAlignment = styles.call_to_action_image_style.image_alignment %}
+
+{# Graphics image and icon #}
+{% set graphicsWidth = styles.call_to_action_graphics_style.graphics_width %}
+{% set graphicsBorderRadius = styles.call_to_action_graphics_style.graphics_border_radius %}
+{% set graphicsSpacing = styles.call_to_action_graphics_style.graphics_spacing %}
+
+{# Title Style #}
+{% set titleColor = styles.call_to_action_title_style.title_color %}
+{% set titleHoverColor = styles.call_to_action_title_style.title_hover_color %}
+{% set titleSpacing = styles.call_to_action_title_style.title_spacing %}
+{% set titleFont = styles.call_to_action_title_style.title_font %}
+
+{# Subtitle Style #}
+{% set subtitleColor = styles.call_to_action_subtitle_style.subtitle_color %}
+{% set subtitleHoverColor = styles.call_to_action_subtitle_style.subtitle_hover_color %}
+{% set subtitleSpacing = styles.call_to_action_subtitle_style.subtitle_spacing %}
+{% set subtitleFont = styles.call_to_action_subtitle_style.subtitle_font %}
+
+{# Description Style #}
+{% set descriptionColor = styles.call_to_action_description_style.description_color %}
+{% set descriptionHoverColor = styles.call_to_action_description_style.description_hover_color %}
+{% set descriptionSpacing = styles.call_to_action_description_style.description_spacing %}
+{% set descriptionFont = styles.call_to_action_description_style.description_font %}
+
+{# Button #}
+{% set buttonTextColor = styles.call_to_action_button_style.button_text_color %}
+{% set buttonHoverTextColor = styles.call_to_action_button_style.button_hover_text_color %}
+{% set buttonBG = styles.call_to_action_button_style.button_bg %}
+{% set buttonBorder = styles.call_to_action_button_style.button_border_new %}
+{% set buttonFont = styles.call_to_action_button_style.button_font %}
+{% set buttonPadding = styles.call_to_action_button_style.button_padding %}
+
+{# Selectors #}
+{% set coverMode = id ~ ' .qx-element-call-to-action_wrapper.cover-mode ' %}
+{% set classicMode = id ~ ' .qx-element-call-to-action_wrapper.classic-mode ' %}
+{% set elementSelector = id ~ ' .qx-element-call-to-action_wrapper' %}
+{% set coverMode = id ~ ' .qx-element-call-to-action_wrapper.cover-mode ' %}
+{% set contentSelector = id ~ ' .qx-element-call-to-action_content' %}
+{% set flexSelector = id ~ ' .qx-element-call-to-action_image,' ~ id ~ '.qx-element-call-to-action_content ' %}
+{% set imageSelector = id ~ ' .qx-element-call-to-action_image' %}
+{% set graphicsSelector = id ~ ' .qx-element-call-to-action_graphics' %}
+{% set titleSelector = id ~ ' .qx-element-call-to-action_title' %}
+{% set subtitleSelector = id ~ ' .qx-element-call-to-action_subtitle' %}
+{% set descriptionSelector = id ~ ' .qx-element-call-to-action_description' %}
+{% set buttonSelector = id ~ ' .qx-element-call-to-action_button' %}
+
+{# Cover Mode #}
+{{ style.css(coverMode, 'background-color', backgroundOverlayColor) }}
+{{ style.css(coverMode ~ ':hover' , 'background-color', backgroundOverlayHoverColor) }}
+{{ style.css(coverMode , 'background-blend-mode', bgBlendMode) }}
+{{ style.css(coverMode ~ ':hover' , 'background-blend-mode', bgBlendModeHover) }}
+
+{# Element style #}
+{% set heightType = height %}
+{% if heightType == 'custom' %}
+  {{ style.minHeight(contentSelector, elementMinHeight) }}
+{% endif %}
+
+{{ style.alignment(contentSelector, elementAlignment) }}
+{{ style.css(contentSelector , 'width', '100%') }}
+{#{{ style.css(contentSelector , 'padding', '0px') }}#}
+{#{{ style.css( id ~ ' .cover-mode .qx-element-call-to-action_content' , 'padding', '100px ') }}#}
+{{ style.padding(classicMode ~ ' .qx-element-call-to-action_content', elementPadding) }}
+{{ style.padding(coverMode ~ ' .qx-element-call-to-action_content', elementPadding) }}
+{{ style.css(coverMode ~ ' .qx-element-call-to-action_content', 'width', '100%') }}
+
+{# Image #}
+{% set minWidth = imageWidthDesktop %}
+{% if not minWidth %}
+  {{ style.css(flexSelector , 'min-width', '50%' ) }}
+{% else %}
+  {{ style.css(flexSelector , 'width', '100%' ) }}
+{% endif %}
+
+{{ style.css(flexSelector, 'margin-bottom', '0' ) }}
+{{ style.css(imageSelector , 'display', 'block') }}
+{{ style.css(imageSelector , 'width', '100%') }}
+{{ style.css(imageSelector ~ ' img' , 'min-height', '100%') }}
+{{ style.css(imageSelector ~ ' img' , 'object-fit', 'cover') }}
+{{ style.width(imageSelector ~ ' img' , imageWidth, '%') }}
+{{ style.minHeight(imageSelector ~ ' img', imageMinHeight) }}
+{{ style.alignment(imageSelector, imageAlignment) }}
+
+{# Graphics image and icon #}
+{{ style.width(graphicsSelector ~ ' *', graphicsWidth, '%') }}
+{{ style.borderRadius(graphicsSelector ~ ' *', graphicsBorderRadius) }}
+{{ style.responsiveCss(graphicsSelector, graphicsSpacing, 'margin-bottom', 'px') }}
+
+{# Title Style #}
+{{ style.css(titleSelector ~ ' *', 'color', titleColor) }}
+{{ style.css(elementSelector ~ ':hover .qx-element-call-to-action_title *', 'color', titleHoverColor) }}
+{{ style.responsiveCss(titleSelector ~ ' *', titleSpacing, 'margin-bottom', 'px') }}
+{{ style.typography(titleSelector ~ ' *', titleFont) }}
+
+{# Subtitle Style #}
+{{ style.css(subtitleSelector ~ ' *', 'color', subtitleColor) }}
+{{ style.css(elementSelector ~ ':hover .qx-element-call-to-action_subtitle *', 'color', subtitleHoverColor) }}
+{{ style.responsiveCss(subtitleSelector ~ ' *' , subtitleSpacing, 'margin-bottom', 'px') }}
+{{ style.typography(subtitleSelector ~ ' *', subtitleFont) }}
+
+{# Description Style #}
+{{ style.css(descriptionSelector, 'color', descriptionColor) }}
+{{ style.css(elementSelector ~ ':hover .qx-element-call-to-action_description' , 'color', descriptionHoverColor) }}
+{{ style.responsiveCss(descriptionSelector , descriptionSpacing, 'margin-bottom', 'px') }}
+{{ style.typography(descriptionSelector ~ ' , ' ~ descriptionSelector ~ ' *' , descriptionFont) }}
+
+{# Button #}
+{{ style.css(buttonSelector ~ ' *', 'color', buttonTextColor) }}
+{{ style.css(buttonSelector ~ ' *:hover', 'color', buttonHoverTextColor) }}
+{{ style.background(buttonSelector ~ ' .qx-btn', buttonBG) }}
+{{ style.border(buttonSelector ~ ' *', buttonBorder) }}
+{{ style.typography(buttonSelector ~ ' *' , buttonFont) }}
+{{ style.padding(buttonSelector ~ ' a ', buttonPadding) }}
+
+{{ style.load(id) }}

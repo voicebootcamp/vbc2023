@@ -1,0 +1,135 @@
+{% set id = '#' ~ advanced.identifier.id %}
+{% set css = '' %}
+{% set backgroundOverlay = '.' ~ advanced.identifier.id ~ '-background-overlay.qx-background-overlay' %}
+{% set topDivider = id ~ ' .qx-shape-top' %}
+{% set topDividerSvg = topDivider ~ ' svg' %}
+{% set bottomDivider = id ~ ' .qx-shape-bottom' %}
+{% set bottomDividerSvg = bottomDivider ~ ' svg' %}
+{% set containerType = general.layout_fields_group.container_type %}
+{% set heightType = general.layout_fields_group.height %}
+{% set containerClass = ( containerType == 'boxed' ) ? ' .qx-container' : ' .qx-container-fluid' %}
+
+ {# margin #}
+{{ style.margin(id, styles.spacing_fields_group.margin) }}
+
+ {# padding #}
+{{ style.padding(id, styles.spacing_fields_group.padding) }}
+
+ {# Z-Index #}
+{{ style.css(id, 'z-index', styles.spacing_fields_group.zindex) }}
+
+ {# background #}
+{{ style.background(id, styles.background_fields_group.background) }}
+
+{# background overlay #}
+{{ style.background(backgroundOverlay, styles.background_overlay_fields_group.background_overlay, id) }}
+
+{# border + box shadow #}
+{{ style.border (id, styles.border_fields_group.border) }}
+
+
+ {# position #}
+{% if styles.positioning_fields_group.global_position_width == "full-width" %}
+  {{ style.css(id, 'width', '100%') }}
+  {{ style.css(id, 'max-width', '100%') }}
+
+{% elseif styles.positioning_fields_group.global_position_width == "inline" %}
+  {{ style.css(id, 'width', 'auto') }}
+  {{ style.css(id, 'max-width', '100%') }}
+{% elseif styles.positioning_fields_group.global_position_width == "custom" %}
+  {{ style.responsiveCss(id, styles.positioning_fields_group.custom_width, 'width', styles.positioning_fields_group.custom_width.unit) }}
+  {{ style.responsiveCss(id, styles.positioning_fields_group.custom_width, 'max-width', styles.positioning_fields_group.custom_width.unit) }}
+{% endif %}
+
+{% if styles.positioning_fields_group.global_position != "default" %}
+  {{ style.css(id, 'position', styles.positioning_fields_group.global_position) }}
+  {% if styles.positioning_fields_group.horizontal == "left" %}
+    {{ style.responsiveCss(id, styles.positioning_fields_group.horizontal_offset, 'left', styles.positioning_fields_group.horizontal_offset.unit) }}
+
+  {% elseif styles.positioning_fields_group.horizontal == "right" %}
+    {{ style.responsiveCss(id, styles.positioning_fields_group.horizontal_offset, 'right', styles.positioning_fields_group.horizontal_offset.unit) }}
+  {% endif %}
+
+  {% if styles.positioning_fields_group.vertical == "top" %}
+    {{ style.responsiveCss(id, styles.positioning_fields_group.vertical_offset, 'top', styles.positioning_fields_group.vertical_offset.unit) }}
+
+  {% elseif styles.positioning_fields_group.vertical == "bottom" %}
+    {{ style.responsiveCss(id, styles.positioning_fields_group.vertical_offset, 'bottom', styles.positioning_fields_group.vertical_offset.unit) }}
+  {% endif %}
+{% endif %}
+
+{% if styles.positioning_fields_group.global_position == "default" %}
+  {{ style.css(id, 'position', 'relative') }}
+  {{ style.css(id, 'left', 'auto') }}
+  {{ style.css(id, 'right', 'auto') }}
+  {{ style.css(id, 'top', 'auto') }}
+  {{ style.css(id, 'bottom', 'auto') }}
+{% endif %}
+
+{# Custom height #}
+{% if heightType == 'custom' %}
+  {{ style.minHeight(id ~ containerClass, general.layout_fields_group.custom_height) }}
+{% endif %}
+
+{# custom width #}
+{% if containerType == 'custom' %}
+  {{ style.responsiveCss(id ~ containerClass, general.layout_fields_group.container_width, 'width', general.layout_fields_group.container_width.unit) }}
+{% endif %}
+
+{# Top Divider #}
+{% set topDividerStyle = styles.divider_top_fields_group.top_divider_style %}
+
+{% if topDividerStyle != 'none' %}
+
+  {# shape color #}
+  {{ style.css(topDivider ~ " path.qx-shape-fill", 'fill', styles.divider_top_fields_group.top_divider_color) }}
+
+  {# Width #}
+  {{ style.width(topDividerSvg, styles.divider_top_fields_group.top_divider_width, '%') }}
+
+  {# Height #}
+  {{ style.height(topDividerSvg, styles.divider_top_fields_group.top_divider_height) }}
+
+  {# Flip control #}
+  {% if styles.divider_top_fields_group.top_divider_flip %}
+    {{ style.css( topDivider, 'transform', 'scaleX(-1)') }}
+  {% endif %}
+
+  {# Bring To front #}
+  {% set shapeFront = styles.divider_top_fields_group.top_divider_front %}
+  {% if shapeFront %}
+    {{ style.css(topDivider, "z-index", 2) }}
+  {% endif %}
+{% endif %}
+
+{# Bottom Divider #}
+{% set bottomDividerStyle = styles.divider_bottom_fields_group.bottom_divider_style %}
+
+{% if bottomDividerStyle != 'none' %}
+  {# shape color #}
+  {{ style.css( bottomDivider ~ " path.qx-shape-fill", 'fill', styles.divider_bottom_fields_group.bottom_divider_color) }}
+
+  {# Width #}
+  {{ style.width(bottomDividerSvg, styles.divider_bottom_fields_group.bottom_divider_width, '%') }}
+
+  {# Height #}
+  {{ style.height(bottomDividerSvg, styles.divider_bottom_fields_group.bottom_divider_height) }}
+
+  {# Flip control #}
+  {% if styles.divider_bottom_fields_group.bottom_divider_flip %}
+    {{ style.css( bottomDivider, 'transform', 'scaleX(-1) rotate(180deg)') }}
+  {% endif %}
+
+  {# Bring To front #}
+  {% set shapeBack = styles.divider_bottom_fields_group.bottom_divider_front %}
+  {% if shapeBack %}
+    {{ style.css(bottomDivider, "z-index", 2) }}
+  {% endif %}
+
+{% endif %}
+
+{% set rawCss = styles.custom_css_group.custom_css.code | removeLines %}
+
+{# custom css #}
+{{ style.raw (rawCss) }}
+{{ style.load(id) }}

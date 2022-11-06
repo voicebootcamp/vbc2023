@@ -1,0 +1,91 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{# person image #}
+{% set src = general.personpro_fg_image.image %}
+{% set altText = general.personpro_fg_image.alt_text %}
+{% set link = general.personpro_fg_image.link %}
+
+{# person details #}
+{% set name = general.personpro_fg_details.pname %}
+{% set tag = general.personpro_fg_details.html_tag %}
+{% set proPosition = general.personpro_fg_details.position|default('') %}
+{% set description = general.personpro_fg_details.description %}
+
+{# Image postion #}
+{% set wrapperClassesForPersonPro = classNames('qx-element-person-pro__wrapper qx-overlay-container qx-animation-toggle',
+  general.personpro_fg_details.personpro_content_v_align ? general.personpro_fg_details.personpro_content_v_align : '',
+  {
+    'qx-d-md-flex qx-flex-md-row image-position-left' : (general.personpro_fg_details.personpro_image_alignment == 'left'),
+    'qx-d-md-flex qx-flex-md-row-reverse image-position-right' : (general.personpro_fg_details.personpro_image_alignment == 'right'),
+    'image-position-center' : (general.personpro_fg_details.personpro_image_alignment == 'center'),
+  }
+) %}
+
+{# Overlay #}
+{% set overlayAnimation = general.personpro_fg_overlay.overlay_animation %}
+{% set contentAnimation = general.personpro_fg_overlay.content_animation %}
+
+{% set classes = classNames('qx-element qx-element-person-pro', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+      <div class="{{ wrapperClassesForPersonPro }}">
+        {# person image #}
+        {% if src.source %}
+        {% set html = '<figure class="qx-element-person-pro__image qx-d-inline-block qx-inline-clip">' %}
+          {% set html = html ~ '<div class="overlay qx-overlay-default qx-position-cover ' ~ overlayAnimation ~ '"></div>' %}
+            {% if src.type == "svg" %}
+              {% set html = html ~ icon(src.source) | raw %}
+            {% else %}
+              {% set html = html ~ image( src.source, altText, '', '', src) %}
+            {% endif %}
+
+
+          {# person content #}
+          {% if description %}
+            {% set html = html ~ '<div class="qx-element-person-pro__description qx-overlay ' ~ contentAnimation ~ '">' %}
+              {% set html = html ~ description|raw %}
+            {% set html = html ~ '</div>' %}
+          {% endif %}
+
+        {% set html = html ~ '</figure>' %}
+        {{ (html | raw) | link(link) }}
+        {% endif %}
+
+        <div class="qx-element-person-pro__profile">
+
+          {# person name #}
+          {% if name %}
+            <div class="qx-element-person-pro__name">
+              {{ name | wrap(tag) }}
+            </div>
+          {% endif %}
+
+          {# person position #}
+          {% if proPosition %}
+            <div class="qx-element-person-pro__position">
+              {{ proPosition|raw }}
+            </div>
+          {% endif %}
+
+        </div>
+
+        {% if src.type == "svg" %}
+            {{ addIconStyle('#' ~ id ~ ' figure.qx-element-person-pro__image', src) }}
+        {% endif %}
+
+      </div>
+  {% endblock %}
+{% endembed %}

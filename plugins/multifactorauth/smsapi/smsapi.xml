@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--~
+  ~ @package   AkeebaLoginGuard
+  ~ @copyright Copyright (c)2016-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license   GNU General Public License version 3, or later
+  -->
+
+<extension version="4.0.0" type="plugin" group="multifactorauth" method="upgrade">
+    <name>PLG_MULTIFACTORAUTH_SMSAPI</name>
+    <author>Nicholas K. Dionysopoulos</author>
+    <authorEmail>nicholas@dionysopoulos.me</authorEmail>
+    <authorUrl>https://www.akeeba.com</authorUrl>
+    <copyright>Copyright (c)2016-2022 Nicholas K. Dionysopoulos</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>2022-08-16</creationDate>
+    <version>7.0.0</version>
+    <description>PLG_MULTIFACTORAUTH_SMSAPI_DESCRIPTION</description>
+
+    <namespace path="src">Joomla\Plugin\Multifactorauth\Smsapi</namespace>
+
+    <files>
+        <folder>services</folder>
+        <folder plugin="smsapi">src</folder>
+        <folder>tmpl</folder>
+    </files>
+
+    <media folder="media" destination="plg_multifactorauth_smsapi">
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>images</folder>
+
+        <filename>joomla.asset.json</filename>
+    </media>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/plg_multifactorauth_smsapi.ini</language>
+        <language tag="en-GB">en-GB/plg_multifactorauth_smsapi.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="authMethod"
+                        type="list"
+                        label="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_AUTHMETHOD_LABEL"
+                        description="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_AUTHMETHOD_DESC"
+                        default="token"
+                >
+                    <option value="token">PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_AUTHMETHOD_TOKEN</option>
+                    <option value="password">PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_AUTHMETHOD_PASSWORD</option>
+                </field>
+
+
+                <field
+                        name="username"
+                        type="text"
+                        label="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_USERNAME_LABEL"
+                        description="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_USERNAME_DESC"
+                        default=""
+                        showon="authMethod:password"
+                />
+
+                <field
+                        name="password"
+                        type="text"
+                        label="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_PASSWORD_LABEL"
+                        description="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_PASSWORD_DESC"
+                        default=""
+                        showon="authMethod:password"
+                />
+
+                <field
+                        name="token"
+                        type="text"
+                        label="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_TOKEN_LABEL"
+                        description="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_TOKEN_DESC"
+                        default=""
+                        showon="authMethod:token"
+                />
+
+                <field
+                        name="from"
+                        type="text"
+                        label="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_FROM_LABEL"
+                        description="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_FROM_DESC"
+                        default="" />
+
+                <field
+                        name="transliterate"
+                        type="radio"
+                        layout="joomla.form.field.radio.switcher"
+                        label="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_TRANSLITERATE_LABEL"
+                        description="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_TRANSLITERATE_DESC"
+                        default="1"
+                >
+                    <option value="0">JNo</option>
+                    <option value="1">JYes</option>
+                </field>
+
+                <field
+                        name="helpurl"
+                        type="text"
+                        label="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_HELPURL_LABEL"
+                        description="PLG_MULTIFACTORAUTH_SMSAPI_CONFIG_HELPURL_DESC"
+                        default=""
+                        filter="url"
+                />
+            </fieldset>
+        </fields>
+    </config>
+
+</extension>

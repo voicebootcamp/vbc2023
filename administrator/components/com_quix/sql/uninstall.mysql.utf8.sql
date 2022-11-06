@@ -1,0 +1,4 @@
+-- DROP TABLE IF EXISTS `#__quix`;
+-- DROP TABLE IF EXISTS `#__quix_collections`;
+-- DROP TABLE IF EXISTS `#__quix_collection_map`;
+-- DROP TABLE IF EXISTS `#__quix_elements`;

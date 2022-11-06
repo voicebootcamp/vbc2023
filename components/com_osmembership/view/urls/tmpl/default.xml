@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="My Pages">
+		<message>
+			Display list of pages which subscriber can access to. These pages are setup using URLs restriction method
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="basic">
+			<field type="editor" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of page." />
+		</fieldset>
+	</fields>
+</metadata>

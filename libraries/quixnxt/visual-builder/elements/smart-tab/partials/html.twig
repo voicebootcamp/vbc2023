@@ -1,0 +1,89 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set classes = classNames('qx-element qx-element-smart-tab-v2', visibilityClass(visibility), class) %}
+
+{# Smart Tab #}
+{% set tab_group = general.items %}
+{% set tabLayout = general.options.tab_layout %}
+{% set tabAlign = general.options.tab_alignment %}
+
+{% set iconAlignment = general.options.icon_alignment %}
+{% set textAlignment = general.options.text_alignment %}
+
+{# Wrapper Class #}
+{% set wrapperClasses = classNames('qx-element-smart-tab-v2__wrapper', class) %}
+{%
+  set wrapperContentClasses = classNames(
+    'toggler',
+    general.options.content_v_align ? general.options.content_v_align : "",
+    iconAlignment == 'top' ? 'qx-flex qx-flex-column' : "",
+    iconAlignment == 'left' ? 'qx-flex qx-flex-row' : "",
+    iconAlignment == 'right' ? 'qx-flex qx-flex-row-reverse' : "",
+    tabLayout ? 'qx-width-1-1' : '',
+    textAlignment,
+    'iconAlign-' ~ iconAlignment
+  )
+%}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+  {% block element %}
+
+    <div class="{{ wrapperClasses }}">
+      {% if tab_group %}
+      <ul class="qx-tab {{tabLayout ? 'qx-tab-left' : tabAlign }}">
+        {% for index, fields in tab_group %}
+          {% set data = fieldsGroup(tab_group, index) %}
+          {% set triggerid = data.triggerid %}
+          {% set icon = data.icon %}
+
+          <li class="qx-element-smart-tab-item">
+            <a class="{{ wrapperContentClasses }}" href="#{{triggerid}}">
+
+                {% set iconHTML = "" %}
+                {% if icon.source and icon.type == "svg" %}
+                  {% set iconHTML = '<figure class="qx-element-smart-tab-media qx-d-inline-block">' %}
+                      {% set iconHTML = iconHTML ~ icon(icon.source) | raw %}
+                  {% set iconHTML = iconHTML ~ '</figure>' %}
+                {% endif %}
+
+                {{ iconHTML|raw }}
+
+               {% if data.title or data.subtitle %}
+                <div class="qx-element-smart-tab-content">
+                  {% if data.title %}
+                    <h3 class="qx-smart-tab-title">
+                      {{ data.title }}
+                    </h3>
+                  {% endif %}
+                  {% if data.subtitle %}
+                    <div class="qx-smart-tab-subtitle">
+                      {{ data.subtitle }}
+                    </div>
+                  {% endif %}
+                </div>
+                {% endif %}
+            </a>
+
+            {% if icon.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' .qx-element-smart-tab-item figure.qx-element-smart-tab-media', icon) }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+
+  {% endblock %}
+{% endembed %}

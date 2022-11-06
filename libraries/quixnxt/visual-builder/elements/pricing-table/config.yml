@@ -1,0 +1,512 @@
+name: Pricing Table
+slug: pricing-table
+groups: pro
+helpId: 5dc83edf04286364bc91915b
+form:
+  general:
+    - name: features
+      type: group-repeater
+      schema:
+        - name: title
+          type: text
+          value: Text
+          label: Feature Item
+
+        - name: tooltip
+          type: text
+          label: Tooltip Text
+
+        - name: icon
+          type: media
+          filters: icon
+          showstyle: true
+
+      value:
+        - title : 1 User Account
+          icon :
+        - title : 5 GB SSD Hosting
+          icon :
+        - title : Dedicated Support
+          icon :
+
+    - name : pricing_header
+      label: Header
+      type: fields-group
+      schema:
+        - name: header_title
+          label: Title
+          type: text
+          value: Basic
+          help: show header title
+
+        - name: currency
+          lable: Currency
+          type: text
+          value: $
+
+        - name: price
+          label: Price Amount
+          type: text
+          value: 10
+
+        - name: oldprice
+          label: Old Price
+          type: text
+
+        - name: duration
+          label: Duration
+          type: text
+          value: /mo
+
+        - name : duration_newline
+          label: Duration Display In New Line
+          type : switch
+          value: false
+
+        - name: divider_for_img
+          type: divider
+          label: Image & Icon
+
+        - name: image
+          type: media
+
+    - name: pricing_footer
+      label: Button
+      type: fields-group
+      schema:
+        - name: button
+          label: Button Text
+          type: text
+          value: Order Now
+
+        - name: button_type
+          lable: Button Type
+          type: select
+          value: primary
+          options:
+            primary: Primary
+            secondary: Secondary
+            success : Success
+            danger : Danger
+            warning : Warning
+            info : Info
+            light : Light
+            dark: Dark
+            link : Link
+
+        - name : link
+          label : Link
+          type : link
+          value:
+            url: '#'
+            target: ''
+            nofollow: false
+
+    - name : pricing_badge
+      label: Badge & Tooltip
+      type: fields-group
+      schema:
+        - name: enable_badge
+          label: Display Badge
+          type: switch
+          value: false
+
+        - name: pricing_badge_title
+          label: Title
+          type: text
+          value: Recommended
+          depends:
+            enable_badge: true
+
+        - name: badge_alignment
+          label: Badge Position
+          type: select
+          value: left
+          depends:
+            enable_badge: true
+          options:
+            left: Top Left
+            top: Top Center
+            right : Top Right
+            rotateleft : Corner Left
+            rotateright : Corner Right
+
+        - name : tooltip_alignment
+          label: Tooltip Position
+          responsive: false
+          type : choose
+          options:
+            left :
+              label: Left
+            right :
+              label : Right
+            top :
+              label : Top
+            bottom :
+              label : Bottom
+          value: right
+
+  styles:
+    - name : pricing_style
+      label : Panel
+      type: fields-group
+      schema:
+        - name : content_alignment
+          label: Position
+          type : choose
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: content_padding
+          label: Padding
+          type: dimensions
+          units: %, px, em, rem, vh
+          value:
+            desktop:
+              top: 55
+              bottom: 70
+              left: 60
+              right: 60
+            tablet:
+              top: 45
+              bottom: 60
+              left: 40
+              right: 40
+            phone:
+              top: 35
+              bottom: 50
+              left: 20
+              right: 20
+
+    - name : header_style
+      label : Header
+      type: fields-group
+      schema:
+        - name: header_padding
+          label: Padding
+          type: dimensions
+          units: %, px, em, rem, vh
+
+        - name: header_bg
+          type: background
+          label: Background
+          popover: true
+
+        - name: header_border
+          type: border
+          label: Border
+          popover: true
+
+    - name: pricing_title_style
+      label: Title
+      type: fields-group
+      schema:
+        - name: title_color
+          label: Color
+          type: color
+
+        - name  : title_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 10
+            phone : 10
+
+        - name: title_padding
+          label: Padding
+          type: dimensions
+          units: %, px, em, rem, vh
+
+        - name: title_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name: pricing_price_style
+      label: Price
+      type: fields-group
+      schema:
+        - name: price_color
+          label: Color
+          type: color
+
+        - name  : price_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 10
+            phone : 10
+
+        - name: price_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: old_price_divider
+          type: divider
+          label: Old Price
+
+        - name: old_price_color
+          label: Old Price Color
+          type: color
+
+        - name: old_price_fs
+          label: Old Price Font Size
+          type: slider
+          units: px
+
+        - name: currency_divider
+          type: divider
+          label: Currency
+
+        - name: currency_color
+          label: Currency Color
+          type: color
+
+        - name: currency_fs
+          label: Currency Font Size
+          type: slider
+          units: px
+
+        - name: duration_divider
+          type: divider
+          label: Duration
+
+        - name: duration_color
+          label: Duration Color
+          type: color
+
+        - name: duration_fs
+          label: Duration Font Size
+          type: slider
+          units: px
+
+    - name    : pricing_image_style
+      label   : Image & Icon
+      type    : fields-group
+      schema  :
+        - name  : image_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 30
+            tablet : 30
+            phone : 20
+
+        - name  : image_width
+          label : Image Width
+          type: slider
+          units: %, px
+          defaultUnit: %
+          max : 200
+          value:
+            desktop : 100
+            tablet : 100
+            phone : 100
+
+        - name: image_padding
+          label: Padding
+          type: dimensions
+          units: %, px
+          help: Padding apply on image/icon only
+
+        - name: image_bg
+          type: background
+          label: Background
+          popover: true
+
+        - name: icon_color
+          type: color
+          label: Icon Color
+
+        - name: image_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: pricing_features_style
+      label: Features
+      type: fields-group
+      schema:
+        - name  : feature_spacing
+          label : Item Spacing
+          type: slider
+          units: px
+          defaultUnit: px
+          max : 100
+          value:
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+        - name: feature_item_padding
+          label: Wrap Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 5
+              bottom: 20
+              left: 0
+              right: 0
+            tablet:
+              top: 0
+              bottom: 15
+              left: 0
+              right: 0
+            phone:
+              top: 0
+              bottom: 15
+              left: 0
+              right: 0
+
+        - name  : feature_icon_space
+          label : Icon Space
+          type: slider
+          units: px
+          defaultUnit: px
+          max : 100
+          value:
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+        - name: features_color
+          label: Text Color
+          type: color
+
+        - name: features_icon_color
+          label: Icon Gobal Color
+          type: color
+
+        - name: features_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: features_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: pricing_badge_style
+      label: Badge
+      type: fields-group
+      depends:
+          enable_badge: true
+      schema:
+        - name: badge_text_color
+          label: Text Color
+          type: color
+
+        - name: badge_padding
+          label : Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 12
+              bottom: 12
+              left: 50
+              right: 50
+            tablet:
+              top: 10
+              bottom: 10
+              left: 35
+              right: 35
+            phone:
+              top: 10
+              bottom: 10
+              left: 30
+              right: 30
+
+        - name: badge_margin
+          label : Margin
+          type: dimensions
+          units: px
+          defaultUnit: px
+
+        - name: badge_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: badge_bg
+          label: Background
+          type: background
+          popover: true
+
+        - name: badge_border
+          type: border
+          label: Border
+          popover: true
+
+    - name: pricing_button_style
+      label: Button
+      type: fields-group
+      schema:
+        - name: button_text_color
+          label: Text Color
+          type: color
+
+        - name: button_hover_text_color
+          label: Hover Color
+          type: color
+
+        - name: button_padding
+          label : Button Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 15
+              bottom: 15
+              left: 45
+              right: 45
+            tablet:
+              top: 10
+              bottom: 10
+              left: 30
+              right: 30
+            phone:
+              top: 10
+              bottom: 10
+              left: 25
+              right: 25
+
+        - name: button_margin
+          label : Button Margin
+          type: dimensions
+          units: px
+          defaultUnit: px
+
+        - name: button_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: button_bg
+          label: Background
+          type: background
+          popover: true
+
+        - name: btn_border
+          type: border
+          label: Border
+          popover: true

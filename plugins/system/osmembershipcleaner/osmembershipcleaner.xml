@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System Membership Pro Cleaner</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2022 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>3.1.2</version>
+    <description>This plugin check and delete subscribers who choose to use online payment method for their subscription
+        but doesn't make payment
+    </description>
+    <files>
+        <filename plugin="osmembershipcleaner">osmembershipcleaner.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="cache_time" label="Cache Time (Hours)" type="number" min="0" max="100" step="1"
+                       default="24"/>
+                <field name="last_run" label="Last Run Time" type="text" readonly="true" size="30"
+                       description="Store Last Run Time of the plugin"/>
+                <field name="number_days" label="Number Days" type="text" size="30" default="30"
+                       description="Number days before the pending subscriptions will be deleted if payment is not received."/>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

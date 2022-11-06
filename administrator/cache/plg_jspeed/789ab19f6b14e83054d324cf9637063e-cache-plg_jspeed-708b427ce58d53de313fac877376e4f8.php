@@ -1,0 +1,1 @@
+<?php die("Access Denied"); ?>#x#a:2:{s:6:"result";s:99:"try{template="lingoall";}catch(e){console.error('Error in script declaration; Error:'+e.message);};";s:6:"output";s:0:"";}

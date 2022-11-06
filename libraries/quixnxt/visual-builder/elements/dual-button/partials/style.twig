@@ -1,0 +1,120 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Background  #}
+{% set btnPrimaryBgColor = styles.button_primary_fields_group.btn_primary_bg_color %}
+{% set btnSecondaryBgColor = styles.button_secondary_fields_group.btn_secondary_bg_color %}
+{% set btnConnectorBgColor = styles.button_connector_fields_group.btn_connector_bg_color %}
+
+{# Text Color #}
+{% set btnPrimaryTextColor = styles.button_primary_fields_group.btn_primary_text_color %}
+{% set btnSecondaryTextColor = styles.button_secondary_fields_group.btn_secondary_text_color %}
+{% set btnConnectorTextColor = styles.button_connector_fields_group.btn_connector_text_color %}
+
+{# Hover Text color #}
+{% set btnPrimaryTextHoverColor = styles.button_primary_fields_group.btn_primary_text_hover_color %}
+{% set btnSecondaryTextHoverColor = styles.button_secondary_fields_group.btn_secondary_text_hover_color %}
+{% set btnConnectorTextHoverColor = styles.button_connector_fields_group.btn_connector_text_hover_color %}
+
+{# Typography #}
+{% set btnTypography = styles.button_common_fields_group.btn_typography %}
+{% set btnPrimaryTypo = styles.button_primary_fields_group.btn_primary_typo %}
+{% set btnSecondaryTypo = styles.button_secondary_fields_group.btn_secondary_typo %}
+{% set btnConnectorTypo = styles.button_connector_fields_group.btn_connector_typo %}
+
+{# Padding  #}
+{% set btnPadding = styles.button_common_fields_group.btn_padding %}
+
+{# Space between button #}
+{% set btnDualSpacing = styles.button_common_fields_group.btn_space %}
+
+{# Primary Button Icon Style #}
+{% set iconPriSpacing = styles.button_primary_fields_group.icon_primary_spacing %}
+{% set iconPrimaryHoverColor = styles.button_primary_fields_group.icon_primary_hover_color %}
+
+{# Secondary Button IconSpacing #}
+{% set iconSecSpacing = styles.button_secondary_fields_group.icon_secondary_spacing %}
+{% set iconSecondaryHoverColor = styles.button_secondary_fields_group.icon_secondary_hover_color %}
+
+{# Width/Height #}
+{% set btnConnWidthHeight = styles.button_connector_fields_group.btn_connector_width_height %}
+
+{# Border #}
+{% set btnPrimaryBorder = styles.button_primary_fields_group.btn_primary_border %}
+{% set btnSecondaryBorder = styles.button_secondary_fields_group.btn_secondary_border %}
+{% set btnConnectorBorder = styles.button_connector_fields_group.btn_connector_border %}
+
+{# Selectors #}
+{% set btnFirst = ' .btn-first a' %}
+{% set btnSecond = ' .btn-second a' %}
+{% set connectorWrapperSelector = ' .connector-wrapper' %}
+{% set connectorSelector = ' .connector-wrapper .connector-text' %}
+{% set connectorIcon = ' .connector-wrapper i' %}
+{% set btnWrapper = ' .qx-element-dual-button-wrapper' %}
+{% set iconPriSelector = id ~ ' .btn-first a svg,' ~ id ~ ' .btn-first a i' %}
+{% set iconPriLeftSelector = id ~ ' .btn-first a .qx-flex-row svg,' ~ id ~ ' .btn-first a .qx-flex-row i' %}
+{% set iconPriRightSelector = id ~ ' .btn-first a .qx-flex-row-reverse svg,' ~ id ~ ' .btn-first a .qx-flex-row-reverse i' %}
+{% set iconPriHovSelector = id ~ ' .btn-first a:hover svg,' ~ id ~ ' .btn-first a:hover i' %}
+{% set iconSecSelector = id ~ ' .btn-second a svg,' ~ id ~ ' .btn-second a i' %}
+{% set iconSecLeftSelector = id ~ ' .btn-second a .qx-flex-row svg,' ~ id ~ ' .btn-second a .qx-flex-row i' %}
+{% set iconSecRightSelector = id ~ ' .btn-second a .qx-flex-row-reverse svg,' ~ id ~ ' .btn-second a .qx-flex-row-reverse i' %}
+{% set iconSecHovSelector = id ~ ' .btn-second a:hover svg,' ~ id ~ ' .btn-second a:hover i' %}
+{% set iconConnSelector = id ~ connectorWrapperSelector ~ ' svg,' ~ id ~ connectorWrapperSelector ~ ' i' %}
+{% set hrLayout = id ~ ' .qx-element-dual-button-horizontal' %}
+{% set vrLayout = id ~ ' .qx-element-dual-button-vertical' %}
+
+{# Background  #}
+{{ style.background(id ~ btnFirst, btnPrimaryBgColor) }}
+{{ style.background(id ~ btnSecond, btnSecondaryBgColor) }}
+{{ style.background(id ~ connectorSelector, btnConnectorBgColor) }}
+
+{# Text Color #}
+{{ style.css(id ~ btnFirst ~ ' span', 'color', btnPrimaryTextColor) }}
+{{ style.css(id ~ btnSecond ~ ' span', 'color', btnSecondaryTextColor) }}
+{{ style.css(id ~ connectorSelector, 'color', btnConnectorTextColor) }}
+
+{# Hover Text color #}
+{{ style.css(id ~ btnFirst ~ ":hover span", 'color', btnPrimaryTextHoverColor) }}
+{{ style.css(id ~ btnSecond ~ ":hover span", 'color', btnSecondaryTextHoverColor) }}
+{{ style.css(id ~ connectorSelector ~ ":hover", 'color', btnConnectorTextHoverColor) }}
+{{ style.css(iconConnSelector ~ ":hover", 'color', btnConnectorTextHoverColor) }}
+
+{# Typography #}
+{{ style.typography(id ~ ' .qx-btn', btnTypography) }}
+{{ style.typography(id ~ btnFirst, btnPrimaryTypo) }}
+{{ style.typography(id ~ btnSecond, btnSecondaryTypo) }}
+{{ style.typography(id ~ connectorSelector, btnConnectorTypo) }}
+
+{# Padding  #}
+{{ style.padding(id ~ ' .qx-btn', btnPadding) }}
+
+{# Space between button #}
+{{ style.responsiveCss(hrLayout ~ btnFirst, btnDualSpacing, 'margin-right', btnDualSpacing.unit) }}
+{{ style.responsiveCss(hrLayout ~ btnSecond, btnDualSpacing, 'margin-left', btnDualSpacing.unit) }}
+{{ style.responsiveCss(vrLayout ~ btnFirst, btnDualSpacing, 'margin-bottom', btnDualSpacing.unit) }}
+{{ style.responsiveCss(vrLayout ~ btnSecond, btnDualSpacing, 'margin-top', btnDualSpacing.unit) }}
+
+{# Primary Button Icon Style #}
+{{ style.responsiveCss(iconPriLeftSelector, iconPriSpacing, 'margin-right', iconPriSpacing.unit) }}
+{{ style.responsiveCss(iconPriRightSelector, iconPriSpacing, 'margin-left', iconPriSpacing.unit) }}
+{{ style.css(iconPriHovSelector, 'color', iconPrimaryHoverColor) }}
+
+{# Secondary Button IconSpacing #}
+{{ style.responsiveCss(iconSecLeftSelector, iconSecSpacing, 'margin-right', iconSecSpacing.unit) }}
+{{ style.responsiveCss(iconSecRightSelector, iconSecSpacing, 'margin-left', iconSecSpacing.unit) }}
+{{ style.css(iconSecHovSelector, 'color', iconSecondaryHoverColor) }}
+
+{# Width/Height #}
+{{ style.width(connectorWrapperSelector, btnConnWidthHeight) }}
+{{ style.height(connectorWrapperSelector, btnConnWidthHeight) }}
+{{ style.responsiveCss(connectorWrapperSelector, btnConnWidthHeight, 'line-height', btnConnWidthHeight.unit) }}
+
+{# Connector #}{{ style.css(iconConnSelector, 'line-height', 'inherit') }}
+
+{# Border #}
+{{ style.border(id ~ btnFirst, btnPrimaryBorder) }}
+{{ style.border(id ~ btnSecond, btnSecondaryBorder) }}
+{{ style.border(id ~ connectorSelector, btnConnectorBorder) }}
+
+{{ style.load(id) }}

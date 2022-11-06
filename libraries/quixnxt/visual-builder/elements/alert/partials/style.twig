@@ -1,0 +1,24 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set nalignment = styles.alert_fg_alignment_style.nalignment %}
+{% set headingFont = styles.alert_fg_heading_style.heading_font %}
+{% set headingColor = styles.alert_fg_heading_style.heading_color %}
+{% set contentFont = styles.alert_fg_content_style.content_font %}
+{% set contentColor = styles.alert_fg_content_style.content_color %}
+
+{% set headingSelector = id ~ ' .qx-alert-heading' %}
+{% set contentSelector = id ~ ' .qx-alert__content' %}
+
+{# Alignment #}
+{{ style.alignment(id, nalignment) }}
+
+{# Typography #}
+{{ style.typography(headingSelector, headingFont) }}
+{{ style.css( headingSelector, 'color', headingColor) }}
+
+{# Content #}
+{{ style.typography(contentSelector, contentFont) }}
+{{ style.css( contentSelector, 'color', contentColor) }}
+
+{{ style.load(id) }}

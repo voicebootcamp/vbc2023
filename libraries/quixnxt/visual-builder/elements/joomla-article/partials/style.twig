@@ -1,0 +1,90 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Icon #}
+{% set iconBtnSpacing = styles.articles_button_options.icon_spacing %}
+
+{# Width #}
+{% set imageSize = styles.articles_common.image_size %}
+
+{# Alignment #}
+{% set alignment = styles.articles_common.alignment %}
+
+{# Title #}
+{% set titleFont = styles.articles_options.title_font %}
+{% set titleColor = styles.articles_options.title_color %}
+{% set titleMargin = styles.articles_options.title_margin %}
+
+{# Meta #}
+{% set metaFont = styles.articles_meta_options.meta_font %}
+{% set metaColor = styles.articles_meta_options.meta_color %}
+{% set metaIconColor = styles.articles_meta_options.metaIcon_color %}
+{% set metaIconSize = styles.articles_meta_options.metaIcon_size %}
+{% set metaSpacing = styles.articles_meta_options.meta_spacing %}
+{% set metaMargin = styles.articles_meta_options.meta_margin %}
+
+{# Intro Text #}
+{% set introtextFont = styles.articles_body_options.introtext_font %}
+{% set introtextColor = styles.articles_body_options.introtext_color %}
+{% set introtextMargin = styles.articles_body_options.introtext_margin %}
+
+{# Button #}
+{% set readmoreFont = styles.articles_button_options.readmore_font %}
+{% set readmoreColor = styles.articles_button_options.readmore_color %}
+{% set readmoreHoverColor = styles.articles_button_options.readmoreHover_color %}
+{% set iconHoverColor = styles.articles_button_options.iconHover_color %}
+{% set readmorePadding = styles.articles_button_options.readmore_padding %}
+{% set readmoreBackground = styles.articles_button_options.readmore_bg %}
+{% set readmoreBorder = styles.articles_button_options.readmore_border %}
+
+{# Selector #}
+{% set img = id ~ ' img' %}
+{% set titleSelector = id ~ ' .qx-title' %}
+{% set metaSelector = id ~ ' .qx-post-meta' %}
+{% set introSelector = id ~ ' .article-body' %}
+{% set btnSelector = id ~ ' .qx-btn' %}
+{% set iconBtnLeftSelector = id ~ ' a.qx-btn.iconAlignleft svg,' ~ id ~ ' a.qx-btn.iconAlignleft i' %}
+{% set iconBtnRightSelector = id ~ ' a.qx-btn.iconAlignright svg,' ~ id ~ ' a.qx-btn.iconAlignright i' %}
+{% set iconBtnHoverSelector = id ~ ' a.qx-btn' %}
+
+{# Width > img #}
+{{ style.width(img, imageSize) }}
+
+{# Alignment #}
+{{ style.alignment(id, alignment) }}
+
+{# Title #}
+{{ style.typography(titleSelector, titleFont) }}
+{{ style.css(titleSelector, 'color', titleColor) }}
+{{ style.css(titleSelector ~ ' a', 'color', titleColor) }}
+{{ style.margin(titleSelector, titleMargin) }}
+
+{# Meta #}
+{{ style.typography(metaSelector, metaFont) }}
+{{ style.css(metaSelector ~ ' *', 'color', metaColor) }}
+{{ style.css(metaSelector ~ ' i', 'color', metaIconColor) }}
+{{ style.css(metaSelector ~ ' i', 'font-size', metaIconSize ~ 'px' ) }}
+{{ style.css(metaSelector ~ ' span', 'margin-right', metaSpacing ~ 'px' ) }}
+{{ style.margin(metaSelector, metaMargin) }}
+
+{# Intro Text #}
+{{ style.typography(introSelector, introtextFont) }}
+{{ style.css(introSelector, 'color', introtextColor) }}
+{{ style.margin(introSelector, introtextMargin) }}
+
+{# For Icon Spacing #}
+{{ style.css(iconBtnLeftSelector, 'margin-right', iconBtnSpacing ~  'px') }}
+{{ style.css(iconBtnRightSelector, 'margin-left', iconBtnSpacing ~  'px') }}
+
+{# Button #}
+{{ style.typography(btnSelector, readmoreFont) }}
+{{ style.css(btnSelector, 'color', readmoreColor) }}
+{{ style.css(btnSelector ~ ':hover', 'color', readmoreHoverColor) }}
+{{ style.css(iconBtnHoverSelector ~ ':hover i', 'color', iconHoverColor) }}
+{{ style.css(iconBtnHoverSelector ~ ':hover', 'text-decoration', 'none') }}
+{{ style.padding(btnSelector, readmorePadding) }}
+{{ style.background(btnSelector, readmoreBackground) }}
+{{ style.border(btnSelector, readmoreBorder) }}
+
+{{ style.load(id) }}

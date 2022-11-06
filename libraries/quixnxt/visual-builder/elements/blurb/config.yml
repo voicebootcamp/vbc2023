@@ -1,0 +1,222 @@
+name: Blurb
+slug: blurb
+groups: general
+helpId: 5d1fef6804286369ad8d5ef8
+form:
+  general:
+    - name: blurb_fg_text
+      label: Text
+      type: fields-group
+      status: open
+      schema:
+        - name: title
+          type: text
+          value: This is the heading
+
+        - name: content
+          type: editor
+          value: Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: html_tag
+          label: Title HTML Tag
+          type: select
+          value: h3
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+            div: div
+            span: span
+            p: p
+
+    - name: blurb_fg_links
+      label: Link
+      type: fields-group
+      schema:
+        - name: link
+          label: Link Url
+          type: link
+
+    - name: blurb_fg_image
+      label: Image & Icon
+      type: fields-group
+      schema:
+        - name: image
+          type: media
+          value: "media/quixnxt/images/placeholder.png"
+
+        - name: alt_text
+          label: Alt Text
+          type: text
+          help: Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            image: "*"
+
+        - name: caption
+          type: text
+          depends:
+            image: "*"
+
+    - name: blurb_fg_layout
+      label: Layout
+      type: fields-group
+      schema:
+        - name: img_alignment
+          label: Layout
+          type: choose
+          responsive: false
+          value: center
+          options:
+            left:
+              label: Left
+              icon: qxuicon-arrow-to-left
+            center:
+              label: Top
+              icon: qxuicon-arrow-to-top
+            right:
+              label: Right
+              icon: qxuicon-arrow-to-right
+
+        - name: img_position
+          label: Image position for center alignment
+          type: choose
+          responsive: false
+          value: top
+          options:
+            top:
+              label: Top
+              icon: qxuicon-arrow-to-top
+            bottom:
+              label: Bottom
+              icon: qxuicon-arrow-to-bottom
+          depends:
+            img_alignment: center
+
+        - name: img_content_v_align
+          label: Content Position
+          type: choose
+          responsive: false
+          value: qx-align-items-center
+          options:
+            qx-align-items-start:
+              label: Top
+              icon: qxuicon-arrow-to-top
+            qx-align-items-center:
+              label: Middle
+              icon: qxuicon-minus
+            qx-align-items-end:
+              label: Bottom
+              icon: qxuicon-arrow-to-bottom
+          depends:
+            img_alignment: ["left", "right"]
+
+  styles:
+    - name: blurb_fg_image_style
+      label: Image & Icon
+      type: fields-group
+      status: open
+      schema:
+        - name: image_spacing
+          label: Spacing
+          type: slider
+          max: 100
+          value:
+            desktop: 30
+            tablet: 30
+            phone: 20
+
+        - name: image_width
+          label: Image Width
+          type: slider
+          units: %, px
+          defaultUnit: %
+          max: 2000
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+
+        - name: image_padding
+          label: Padding
+          type: dimensions
+          units: %, px
+          help: Padding apply on image/icon only
+
+        - name: image_bg
+          type: background
+          label: Icon Background Color
+          popover: true
+
+        - name: image_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: blurb_fg_content
+      label: Content
+      type: fields-group
+      schema:
+        - name: content_alignment
+          label: Alignment
+          type: choose
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            right:
+              label: Right
+              icon: qxuicon-align-right
+            justify:
+              label: Justify
+              icon: qxuicon-align-justify
+
+        - name: content_padding
+          label: Padding
+          type: dimensions
+          units: %, px, em, rem, vh
+          help: Padding apply on content area
+
+    - name: blurb_fg_title
+      label: Title
+      type: fields-group
+      schema:
+        - name: title_spacing
+          label: Spacing
+          type: slider
+          max: 100
+          value:
+            desktop: 20
+            tablet: 20
+            phone: 10
+
+        - name: title_color
+          label: Color
+          type: color
+
+        - name: title_hover_color
+          label: Title Hover Color
+          type: color
+
+        - name: title_font
+          type: typography
+          label: Typography
+          popover: true
+
+    - name: blurb_fg_body
+      label: Body Text
+      type: fields-group
+      schema:
+        - name: body_color
+          label: Color
+          type: color
+
+        - name: body_font
+          type: typography
+          label: Typography
+          popover: true

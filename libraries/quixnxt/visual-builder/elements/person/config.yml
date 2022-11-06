@@ -1,0 +1,219 @@
+name: Person
+slug: person
+groups: general
+helpId: 5d1ff03d04286369ad8d5f07
+form:
+  general:
+    - name : person_fg_image
+      label: Image
+      type: fields-group
+      status: open
+      schema:
+        - name: image
+          type: media
+          showstyle: true
+          value: 'media/quixnxt/images/placeholder.png'
+
+        - name: alt_text
+          label : Alt Text
+          type: text
+          help : Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            image: '*'
+
+        - name: link
+          label: Link
+          type: link
+
+    - name : person_fg_details
+      label: Details
+      type: fields-group
+      schema:
+        - name: pname
+          label: Name
+          type: text
+          value: Jenny Doe
+
+        - name: position
+          label: Designation
+          type: text
+          value: Designer
+
+        - name: enable_description
+          label: Enable Description
+          type: switch
+          value: false
+
+        - name: description
+          label: Description
+          type: editor
+          depends:
+            enable_description: true
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: html_tag
+          label: Name HTML Tag
+          type: select
+          value: h3
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+
+        - name : person_image_alignment
+          label: Image Position
+          type : choose
+          responsive: false
+          value: center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-arrow-to-left
+            center :
+              label : Top
+              icon : qxuicon-arrow-to-top
+            right :
+              label : Right
+              icon : qxuicon-arrow-to-right             
+
+        - name : person_content_v_align
+          label: Content Position
+          type : choose
+          responsive: false
+          value: qx-align-items-start
+          help: Works when image position set left or right. Set image position left or right to see its action.
+          options:
+            qx-align-items-start :
+              label: Top
+              icon : qxuicon-arrow-to-top
+            qx-align-items-center :
+              label : Middle
+              icon : qxuicon-minus
+            qx-align-items-end :
+              label : Bottom
+              icon : qxuicon-arrow-to-bottom                
+
+  styles:
+    - name: person_fg_panel
+      label: Common
+      type: fields-group
+      status: open
+      schema:
+        - name : content_alignment
+          label: Alignment
+          type : choose
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+            justify :
+              label : Justify
+              icon : qxuicon-align-justify
+
+        - name: content_padding
+          label: Content Padding
+          type: dimensions
+          units: %, px, em, rem, vh
+          defaultUnit: px
+
+    - name: person_fg_image_style
+      label: Image
+      type: fields-group
+      schema:
+        - name  : image_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 10
+
+        - name : img_width
+          label : Image Width
+          type: slider
+          units: %, px
+          defaultUnit: %
+          max: 2000
+          min: 0
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+
+        - name: img_padding
+          label: Padding
+          type: dimensions
+          units: %, px, em, rem, vh
+          defaultUnit: px
+
+        - name: img_background
+          type: background
+          label: Background Color
+          popover: true
+
+        - name: img_border
+          type: border
+          label: Border
+          popover: true
+
+    - name: person_fg_name_style
+      label: Name
+      type: fields-group
+      schema:
+        - name: name_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          value: 10
+
+        - name: name_color
+          label: Color
+          type: color
+
+        - name: name_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name: person_fg_position_style
+      label: Position
+      type: fields-group
+      schema:
+        - name: position_spacing
+          label: Spacing
+          type: slider
+          responsive: true
+          max : 100
+          value: 10
+
+        - name: position_color
+          label: Color
+          type: color
+
+        - name: position_font
+          label: Typography
+          type: typography
+          popover: true
+
+    - name: person_fg_description_style
+      label: Description
+      type: fields-group
+      schema:
+        - name: description_color
+          label: Color
+          type: color
+
+        - name: description_font
+          label: Typography
+          type: typography
+          popover: true

@@ -1,0 +1,67 @@
+<?php
+
+namespace QuixNxt\Image\Scaler;
+
+use Intervention\Image\Image;
+use Symfony\Component\Finder\SplFileInfo;
+use QuixNxt\Image\Config\DefaultConfigurator;
+
+interface Scaler
+{
+    /**
+     * Scaler constructor.
+     *
+     * @param DefaultConfigurator $configurator
+     */
+    public function __construct(DefaultConfigurator $configurator);
+
+    /**
+     * @param SplFileInfo $sourceFile
+     * @param Image       $imageObject
+     *
+     * @return array
+     */
+    public function scale(SplFileInfo $sourceFile, Image $imageObject) : array;
+
+    /**
+     * @param $minFileSize
+     *
+     * @return mixed
+     */
+    public function setMinFileSize($minFileSize);
+
+    /**
+     * @param $minWidth
+     *
+     * @return mixed
+     */
+    public function setMinWidth($minWidth);
+
+    /**
+     * @param $maxFileSize
+     *
+     * @return mixed
+     */
+    public function setMaxFileSize($maxFileSize);
+
+    /**
+     * @param $maxWidth
+     *
+     * @return mixed
+     */
+    public function setMaxWidth($maxWidth);
+
+    /**
+     * @param $stepModifier
+     *
+     * @return mixed
+     */
+    public function setStepModifier($stepModifier);
+
+    /**
+     * @param $includeSource
+     *
+     * @return mixed
+     */
+    public function setIncludeSource(bool $includeSource) : Scaler;
+}

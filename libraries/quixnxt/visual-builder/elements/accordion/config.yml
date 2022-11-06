@@ -1,0 +1,251 @@
+name: Accordion
+slug: accordion
+groups: general
+helpId: 5d1fef1d04286369ad8d5ef6
+form:
+  general:
+    - name : accordion_fg_element_mode
+      label: Accordion
+      type: group-repeater
+      schema:
+        - name: title
+          label: Title
+          type: text
+          value: Title goes here
+
+        - name: description
+          label: Description
+          type: editor
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+
+        - name: icon_divider
+          type: divider
+          label: Tab Icon
+
+        - name: icon
+          label: Icon
+          type: media
+          showstyle: true
+          filters: icon
+
+      value:
+        - title: Accordion Item 1
+          description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+          icon: 'media/quixnxt/images/placeholder.png'
+
+        - title: Accordion Item 2
+          description: Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          icon: 'media/quixnxt/images/placeholder.png'
+
+    - name: accordion_fg_behaviour
+      label: Behaviour
+      type: fields-group
+      schema:
+        - name: faqpage
+          label: FAQ rich markup
+          help: Only use FAQPage if your page has a list of questions with answers
+          type: switch
+          value: false
+
+        - name: multiple
+          label: Allow Multiple Open Items
+          type: switch
+          value: false
+
+        - name: collapsible
+          label: Allow All Items To Be Closed
+          type: switch
+          value: true
+
+        - name: close_first
+          label: Close First Item
+          type: switch
+          value: false
+          help: Enable to close the first item
+
+        - name: prepare_content
+          type: switch
+          value: false
+          help: Optionally prepare the content with the Joomla Content Plugins.            
+
+    - name : accordion_fg_icon
+      label: Icon
+      type: fields-group
+      schema:
+        - name: global_icon
+          label: Icon
+          type: media
+          showstyle: true
+          filters: icon
+
+        - name : icon_nalignment
+          label: Alignment
+          type : choose
+          responsive: false
+          value: left
+          options:
+            left :
+              label: Left
+              icon : qxuicon-arrow-to-left
+            right :
+              label : Right
+              icon : qxuicon-arrow-to-right
+
+  styles:
+    - name: accordion_fg_style
+      label: Items
+      status: open
+      type: fields-group
+      schema:
+        - name: accordion_item_margin
+          label: Margin
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 0
+              bottom: 10
+              left: 0
+              right: 0
+            tablet:
+              top: 0
+              bottom: 20
+              left: 0
+              right: 0
+            phone:
+              top: 0
+              bottom: 20
+              left: 0
+              right: 0
+
+        - name: accordion_border
+          label: Border
+          type: border
+          popover: true
+
+
+    - name : accordion_fg_title_style
+      label: Title
+      type: fields-group
+      schema:
+        - name: title_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: title_color_divider
+          type: divider
+          label: Color
+
+        - name: title_color
+          label: Color
+          type: color
+
+        - name: title_bg_color
+          label: Background Color
+          type: color
+          value: rgba(247, 252, 255, 1)
+
+        - name: title_active_color_divider
+          type: divider
+          label: Active Color
+          value: rgba(239, 239, 251, 1)
+
+        - name: title_active_color
+          label: Active Color
+          type: color
+
+        - name: title_active_bg_color
+          label: Active Background Color
+          type: color
+          value: rgba(238, 246, 251, 1)
+
+        - name: item_active_bd_color
+          label: Active Border Color
+          type: color
+          value: rgba(0, 0, 0, 0.1)
+
+        - name: title_padding
+          label : Title Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+            tablet:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+            phone:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+
+    - name : accordion_fg_content_style
+      label : Content
+      type: fields-group
+      schema:
+        - name: content_font
+          label: Typography
+          type: typography
+          popover: true
+
+        - name: content_color_divider
+          type: divider
+          label: Color
+
+        - name: content_color
+          label: Color
+          type: color
+
+        - name: content_bg_color
+          label: Background Color
+          type: color
+
+        - name: content_padding
+          label : Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+          value:
+            desktop:
+              top: 20
+              bottom: 20
+              left: 15
+              right: 15
+            tablet:
+              top: 20
+              bottom: 20
+              left: 10
+              right: 10
+            phone:
+              top: 20
+              bottom: 20
+              left: 10
+              right: 10
+
+    - name : accordion_fg_icon_style
+      label: Icon
+      type: fields-group
+      schema:
+        - name: icon_active_color
+          label: Active Color
+          type: color
+
+        - name  : icon_spacing
+          label : Spacing
+          type: slider
+          max : 100
+          units: px
+          defaultUnit: px
+          value:
+            desktop : 15
+            tablet : 15
+            phone : 10

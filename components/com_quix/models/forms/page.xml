@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field name="id" type="hidden" label="COM_QUIX_FORM_LBL_PAGE_ID" description="JGLOBAL_FIELD_ID_DESC" class="inputbox" id="id" size="10" default="0" readonly="true" />
+        <field name="title" type="text" label="COM_QUIX_FORM_LBL_PAGE_TITLE" description="COM_QUIX_FORM_DESC_PAGE_TITLE" required="true" class="input-xxlarge input-large-text" />
+        <field name="data" type="hidden" filter="raw" />
+        <field name="type" type="hidden" filter="raw" />
+        <field name="access" type="accesslevel" label="COM_QUIX_FORM_LBL_PAGE_ACCESS" description="COM_QUIX_FORM_DESC_PAGE_ACCESS" />
+        <field name="language" type="language" label="COM_QUIX_FORM_LBL_PAGE_LANGUAGE" description="COM_QUIX_FORM_DESC_PAGE_LANGUAGE" default="*" client="site">
+            <option value="*">JALL</option>
+        </field>
+        <field name="created_by" type="createdby" default="" label="COM_QUIX_FORM_LBL_PAGE_CREATED_BY" description="COM_QUIX_FORM_DESC_PAGE_CREATED_BY" />
+        <field name="state" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1" default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+            <option value="2">JARCHIVED</option>
+            <option value="-2">JTRASHED</option>
+        </field>
+    </fieldset>
+    <fields name="metadata" label="COM_QUIX_FORM_LBL_PAGE_METADATA" description="COM_QUIX_FORM_DESC_PAGE_METADATA">
+        <field type="spacer" name="metaspacer" class="text" label="COM_QUIX_FORM_DESC_PAGE_METADATA" />
+        <field name="addog" type="hidden" default="true" />
+        <field name="addtw" type="hidden" default="true" />
+        <field type="hidden" name="title" class="text" label="COM_QUIX_FORM_LBL_PAGE_METADATA_TITLE" description="COM_QUIX_FORM_LBL_PAGE_METADATA_TITLE_PLACEHOLDER" />
+        <field name="focus_keywords" type="hidden" />
+        <field name="seo_score" type="hidden" />
+        <field name="image_intro" type="hidden" label="COM_QUIX_FORM_LBL_PAGE_METADATA_IMAGE" description="COM_QUIX_FORM_DESC_PAGE_METADATA_IMAGE" />
+        <field type="hidden" name="desc" class="text" label="COM_QUIX_FORM_LBL_PAGE_METADATA_DESC" />
+        <field type="hidden" name="twitter_username" class="text" label="COM_QUIX_FORM_LBL_PAGE_METADATA_TWITTER_USERNAME" description="COM_QUIX_FORM_LBL_PAGE_METADATA_TWITTER_USERNAME_PLACEHOLDER" />
+        <field type="hidden" name="fb_appid" class="text" label="COM_QUIX_FORM_LBL_PAGE_METADATA_FB_APPID" description="COM_QUIX_FORM_LBL_PAGE_METADATA_FB_APPID_PLACEHOLDER" />
+        <field type="hidden" name="enable_amp" class="text" label="COM_QUIX_FORM_LBL_PAGE_ENABLE_AMP_LABEL" description="COM_QUIX_FORM_LBL_PAGE_ENABLE_AMP_APPID_DESC" default="" />
+        <field type="hidden" name="icons" class="hidden" />
+    </fields>
+    <fieldset name="accesscontrol">
+        <field name="asset_id" type="hidden" filter="unset" />
+        <field name="rules" type="rules" label="JFIELD_RULES_LABEL" translate_label="false" filter="rules" validate="rules" class="inputbox" component="com_quix" section="page" />
+    </fieldset>
+
+    <fields name="params" label="COM_QUIX_FORM_LBL_PAGE_PARAMS" description="COM_QUIX_FORM_DESC_PAGE_PARAMS">
+        <field type="spacer" name="codespacer" class="text" label="COM_QUIX_FORM_LABEL_PAGE_PARAMS" />
+        <field name="enable_confetti" type="list" class="btn-group btn-yes-no" label="COM_QUIX_FORM_LBL_PAGE_PARAMS_CONFETTI" description="COM_QUIX_FORM_LBL_PAGE_PARAMS_CONFETTI_DESC" default="0">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>
+        <field name="code" type="hidden" editor="codemirror|none" buttons="no" label="COM_QUIX_FORM_LBL_PAGE_PARAMS_EDITOR" description="COM_QUIX_FORM_DESC_PAGE_CODE" height="500px" rows="20" cols="80" filter="raw" />
+        <field name="codecss" type="hidden" filter="raw" />
+        <field name="codejs" type="hidden" filter="raw" />
+        <field name="style" type="hidden" filter="raw" />
+        <field name="image_optimized" type="hidden" default="false" filter="raw" />
+        <field name="enabled_image_optimization" default="true" type="hidden" filter="raw" />
+        <field name="enabled_webp_support" default="true" type="hidden" filter="raw" />
+    </fields>
+
+    <field name="menutype" type="menu" label="COM_MENUS_ITEM_FIELD_ASSIGNED_LABEL" description="COM_MENUS_ITEM_FIELD_ASSIGNED_DESC" clientid="0" size="1">
+        <option value="">COM_QUIX_SELECT_MENU</option>
+    </field>
+    <field
+        name="templatestyle"
+        type="templatestyle"
+        description="COM_ADMIN_USER_FIELD_BACKEND_TEMPLATE_DESC"
+        label="COM_ADMIN_USER_FIELD_BACKEND_TEMPLATE_LABEL"
+        >
+        <option value="">JOPTION_USE_DEFAULT</option>
+    </field>
+    <field
+        name="conditions"
+        type="hidden"
+        filter="raw"
+    />
+    <field
+        name="editor"
+        type="editor"
+        value="editor"
+        readonly="true"
+        editor="none"
+    />
+
+</form>

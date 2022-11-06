@@ -1,0 +1,33 @@
+@media (max-width: 767px) {
+    .qx-element-counter-v2 .counter-wrapper.phone-left {
+        align-items: flex-start;
+    }
+    .qx-element-counter-v2 .counter-wrapper.phone-center {
+        align-items: center;
+    }
+    .qx-element-counter-v2 .counter-wrapper.phone-right {
+        align-items: flex-end;
+    }
+}
+@media (min-width: 640px) {
+    .qx-element-counter-v2 .counter-wrapper.tablet-left {
+        align-items: flex-start;
+    }
+    .qx-element-counter-v2 .counter-wrapper.tablet-center {
+        align-items: center;
+    }
+    .qx-element-counter-v2 .counter-wrapper.tablet-right {
+        align-items: flex-end;
+    }
+}
+@media (min-width: 960px) {
+    .qx-element-counter-v2 .counter-wrapper.desktop-left {
+        align-items: flex-start;
+    }
+    .qx-element-counter-v2 .counter-wrapper.desktop-center {
+        align-items: center;
+    }
+    .qx-element-counter-v2 .counter-wrapper.desktop-right {
+        align-items: flex-end;
+    }    
+}

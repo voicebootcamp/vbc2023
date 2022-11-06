@@ -1,0 +1,3 @@
+|ID| li.maximenuck.level1.parent > a:after{ content: "+"; border:none; }
+|ID| li.maximenuck.level2.parent > a:after{ content: "+"; border:none; }
+|ID| li.maximenuck.level2.parent:hover > a:after{ content: "+"; border:none; }

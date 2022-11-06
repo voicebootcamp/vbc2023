@@ -1,0 +1,168 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Alignment #}
+{% set imgAlignment = styles.image_alignment_style.img_alignment %}
+{% set contentAlignment = styles.content_fg_style.content_alignment %}
+
+{# padding #}
+{% set imageSpacing = styles['media-img_mood_style'].image_spacing %}
+
+{# Content Style #}
+{% set contentBackgroundColor = styles.content_fg_style.content_bg %}
+{% set contentPadding = styles.content_fg_style.content_padding %}
+{% set contentMargin = styles.content_fg_style.content_margin %}
+{% set contentBorder = styles.content_fg_style.content_border %}
+
+{# image #}
+{% set overlayColor = styles['media-carousel-fg_style'].overlay_color %}
+{% set imgWidth = styles.image_alignment_style.img_width %}
+{% set imgHeight = styles.image_alignment_style.img_height %}
+{% set imgBorder = styles.image_alignment_style.img_border %}
+{% set imageMood = styles['media-img_mood_style'].image_mood %}
+
+{# title #}
+{% set titleColor = styles['image-title-fg_style'].title_color %}
+{% set titleFont = styles['image-title-fg_style'].title_font %}
+
+{# Caption #}
+{% set captionColor = styles['image-caption-fg_style'].caption_color %}
+{% set captionFont = styles['image-caption-fg_style'].caption_font %}
+
+{# Navigation #}
+{% set arrowColor = styles['navigation-fg_style'].arrow_color %}
+{% set arrowSize = styles['navigation-fg_style'].arrow_size %}
+{% set dotColor = styles['navigation-fg_style'].dot_color %}
+{% set dotActiveColor = styles['navigation-fg_style'].dot_active_color %}
+{% set dotWidth = styles['navigation-fg_style'].dot_width %}
+{% set dotSpacing = styles['navigation-fg_style'].dot_spacing %}
+{% set dotMargin = styles['navigation-fg_style'].dot_margin %}
+
+{# Bar Nav #}
+{% set barColor = styles['media_carousel_fg_bar-style'].bar_color %}
+{% set barActiveColor = styles['media_carousel_fg_bar-style'].bar_active_color %}
+{% set barWidth = styles['media_carousel_fg_bar-style'].bar_width %}
+{% set barHeight = styles['media_carousel_fg_bar-style'].bar_height %}
+{% set barActiveWidth = styles['media_carousel_fg_bar-style'].barActive_width %}
+{% set barActiveHeight = styles['media_carousel_fg_bar-style'].barActive_height %}
+
+{# Selectors #}
+{% set wrapperSelector = id ~ ' .qx-element-media-carousel__wrapper' %}
+{% set carouselItemWrapper = wrapperSelector ~ ' .qx-slider-items' %}
+{% set colSelector = wrapperSelector ~ ' .qx-slider-items li' %}
+{% set imgSelector = id ~ ' .qx-slider-items li img' %}
+{% set overlaySelector = id ~ ' .qx-overlay-default' %}
+{% set defContent = id ~ ' .qx-card-wrap' %}
+{% set defContentBody = id ~ ' .qx-card-wrap-body' %}
+{% set defContentImg = id ~ ' figure' %}
+{% set titleWrapper = id ~ ' .qx-panel-wrapper .qx-panel' %}
+{% set titleSelector = id ~ ' .qx-media-carousel-title' %}
+{% set captionSelector = id ~ ' .qx-media-carousel-caption' %}
+{% set arrowSelector = id ~ ' .qx-icon *' %}
+{% set dotSelector = id ~ ' .qx-dotnav li' %}
+{% set dotItemSelector = id ~ ' .qx-dotnav li *' %}
+{% set dotActiveItemSelector = id ~ ' .qx-dotnav li.qx-active *' %}
+
+{% set barNavSelector = id ~ ' .bar-navigation .qx-barnav' %}
+{% set barNavigationActiveSelector = id ~ ' .bar-navigation .qx-barnav li.qx-active' %}
+{% set barNavHrSelector = id ~ ' .bar-navigation .qx-barnav-horizontal' %}
+{% set barNavigationHr = id ~ ' .bar-navigation .qx-barnav-horizontal li' %}
+{% set barNavVerSelector = id ~ ' .bar-navigation .qx-barnav-vertical' %}
+{% set barNavigationVer = id ~ ' .bar-navigation .qx-barnav-vertical li' %}
+{% set barNavigation = id ~ ' .bar-navigation .qx-barnav li' %}
+
+{% set gridGap = "-" ~ imageSpacing.desktop  ~ imageSpacing.unit %}
+
+{# Alignment #}
+{{ style.alignment(defContentImg, imgAlignment) }}
+{{ style.alignment(defContent, contentAlignment) }}
+
+{# padding #}
+{{ style.css(id ~ ' .qx-panel-wrapper', 'position', 'relative') }}
+{{ style.css(id ~ ' .qx-panel-wrapper', 'overflow', 'hidden') }}
+{{ style.css(carouselItemWrapper, "margin-left", gridGap) }}
+{{ style.responsiveCss(colSelector, imageSpacing, 'padding-left', imageSpacing.unit) }}
+
+{# Content Style #}
+{{ style.background(defContentBody, contentBackgroundColor) }}
+{{ style.padding(defContentBody, contentPadding) }}
+{{ style.margin(defContent, contentMargin) }}
+{{ style.border(defContent, contentBorder) }}
+
+{# image #}
+{{ style.css(defContentImg, 'display', 'block') }}
+{{ style.css(defContentImg, 'max-width', '100%') }}
+{{ style.css(overlaySelector, 'background', overlayColor) }}
+{{ style.responsiveCss(defContentImg ~ ' img', imgWidth, 'width', imgWidth.unit) }}
+{{ style.responsiveCss(defContentImg ~ ' img', imgHeight, 'height', imgHeight.unit) }}
+{{ style.border(defContentImg ~ ' img', imgBorder) }}
+{{ style.css(imgSelector, 'object-fit', imageMood) }}
+
+{# default width #}
+{{ style.css( colSelector, 'min-width', '1px') }}
+
+{# title #}
+{{ style.css(titleWrapper, 'z-index', 2) }}
+{{ style.css(titleSelector, 'color', titleColor) }}
+{{ style.typography(titleSelector, titleFont) }}
+
+{# Caption #}
+{{ style.css(captionSelector, 'color', captionColor) }}
+{{ style.typography(captionSelector, captionFont) }}
+
+{# border + box shadow #}
+{{ style.css(imgSelector, 'overflow', 'hidden') }}
+
+{# Navigation #}
+{{ style.css(arrowSelector, 'color', arrowColor) }}
+{{ style.responsiveCss(arrowSelector, arrowSize, 'width', arrowSize.unit) }}
+{{ style.responsiveCss(arrowSelector, arrowSize, 'height', arrowSize.unit) }}
+{{ style.css(dotItemSelector, 'background-color', dotColor) }}
+{{ style.css(dotActiveItemSelector, 'background-color', dotActiveColor) }}
+{{ style.responsiveCss(dotItemSelector, dotWidth, 'width', dotWidth.unit) }}
+{{ style.responsiveCss(dotItemSelector, dotWidth, 'height', dotWidth.unit) }}
+{{ style.responsiveCss(dotSelector, dotSpacing, 'padding-left', dotSpacing.unit) }}
+{{ style.responsiveCss(dotSelector, dotMargin, 'margin-top', dotMargin.unit) }}
+
+{# Bar Nav #}
+{{ style.css(barNavHrSelector, 'display', 'flex') }}
+{{ style.css(barNavHrSelector, 'flex-wrap', 'wrap') }}
+{{ style.css(barNavHrSelector, 'margin', '0') }}
+{{ style.css(barNavHrSelector, 'padding', '0') }}
+{{ style.css(barNavHrSelector, 'list-style', 'none')}}
+{{ style.css(barNavHrSelector, 'margin-left', '-12px') }}
+
+{{ style.css(barNavigationHr, 'padding-left', '12px') }}
+{{ style.css(barNavigationHr ~ ':first-child', 'padding-left', '0') }}
+{{ style.css(barNavigationHr ~ ' a', 'background-color', 'rgba(238, 238, 238, 1)') }}
+{{ style.css(barNavigationHr ~ ' a', 'text-indent', '100%') }}
+{{ style.css(barNavigationHr ~ ' a', 'overflow', 'hidden') }}
+{{ style.css(barNavigationHr ~ ' a', 'display', 'block') }}
+{{ style.css(barNavigationHr ~ ' a', 'box-sizing', 'border-box') }}
+{{ style.css(barNavigationHr ~ ' a', 'white-space', 'nowrap') }}
+
+{{ style.css(barNavVerSelector, 'display', 'inline') }}
+{{ style.css(barNavVerSelector, 'list-style', 'none') }}
+{{ style.css(barNavigationVer ~ ' a', 'background-color', 'rgba(238, 238, 238, 1)') }}
+{{ style.css(barNavigationVer ~ ' a', 'text-indent', '100%') }}
+{{ style.css(barNavigationVer ~ ' a', 'overflow', 'hidden') }}
+{{ style.css(barNavigationVer ~ ' a', 'display', 'block') }}
+{{ style.css(barNavigationVer ~ ' a', 'box-sizing', 'border-box') }}
+{{ style.css(barNavigationVer ~ ' a', 'white-space', 'nowrap') }}
+{{ style.css(barNavigationVer ~ ':first-child', 'padding-top', '0') }}
+{{ style.css(barNavigationVer, 'padding-top', '12px') }}
+
+{{ style.css(barNavigationHr ~ ' a', 'background-color', barColor) }}
+{{ style.css(barNavigationVer ~ ' a', 'background-color', barColor) }}
+{{ style.css(barNavigationActiveSelector ~ ' a', 'background-color', barActiveColor) }}
+{{ style.responsiveCss(barNavigationHr ~ ' a', barWidth, 'width', barWidth.unit) }}
+{{ style.responsiveCss(barNavigationHr ~ ' a', barHeight, 'height', barHeight.unit) }}
+{{ style.responsiveCss(barNavigationVer ~ ' a', barWidth, 'height', barWidth.unit) }}
+{{ style.responsiveCss(barNavigationVer ~ ' a', barHeight, 'width', barHeight.unit) }}
+{{ style.responsiveCss(barNavigationActiveSelector ~ ' a', barActiveWidth, 'width', barActiveWidth.unit) }}
+{{ style.responsiveCss(barNavigationActiveSelector ~ ' a', barActiveHeight, 'height', barActiveHeight.unit) }}
+
+{{ style.css(wrapperSelector, 'position', 'relative') }}
+
+{{ style.load(id) }}

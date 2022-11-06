@@ -1,0 +1,65 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set src = general.button_fields_group.icon %}
+{% set text = general.button_fields_group.text %}
+{% set link = general.button_link_fields_group.link %}
+{% set type = general.button_fields_group.type %}
+{% set iconAlignment = general.button_fields_group.icon_alignment %}
+{% set outline = general.button_fields_group.outline %}
+{% set btnClass = 'qx-btn qx-btn-' ~ type %}
+{% set icon = '' %}
+{% set text = general.button_fields_group.text| raw %}
+
+{% set enableSS = general.button_link_fields_group.enable_smoothscroll|default(false) %}
+{% set scroll_offset = general.button_link_fields_group.scroll_offset %}
+{% set SSTags = "" %}
+{% if enableSS %}
+    {% if scroll_offset != "" %}
+        {% set SSTags = ' data-qx-scroll="offset:' ~ scroll_offset ~ ' "' %}
+    {% else %}
+        {% set SSTags = ' data-qx-scroll ' %}
+    {% endif %}
+{% endif %}
+{% set textAlignment = general.button_fields_group.text_alignment %}
+
+{% set classes = classNames('qx-element qx-element-button-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {% if outline %}
+          {% set btnClass = 'qx-btn qx-btn-outline-' ~ type %}
+        {% endif %}
+
+        {% if general.button_fields_group.full_width %}
+            {% set btnClass = btnClass ~ ' qx-btn-block' %}
+        {% endif %}
+
+        {% if src.source %}
+            {% if src.type == "svg" %}
+                {% set icon = icon(src.source) %}
+            {% endif %}
+        {% endif %}
+
+        {% if iconAlignment == 'left' %}
+            {{ ( '<div class="qx-element-button-wrapper iconSpacing-' ~ iconAlignment ~ ' qx-align-items-center qx-justify-content-' ~ textAlignment ~ '">' ~ icon ~ ' ' ~ '<span>' ~ text ~ '</span></div>') | link(link, btnClass, SSTags) }}
+        {% else %}
+            {{ ('<div class="qx-element-button-wrapper iconSpacing-' ~ iconAlignment ~ ' qx-align-items-center qx-justify-content-' ~ textAlignment ~ '">' ~ '<span>' ~ text ~ '</span>' ~ ' ' ~ icon ~ '</div>') | link(link, btnClass, SSTags) }}
+        {% endif %}
+
+        {% if src.type == "svg" %}
+            {{ addIconStyle('#' ~ id ~ ' .qx-element-button-wrapper', src) }}
+        {% endif %}
+
+    {% endblock %}
+{% endembed %}

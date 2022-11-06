@@ -1,0 +1,92 @@
+/*
+==================
+Submenu Indicator 
+==================
+*/
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav > li.qx-parent.classic > a::after,
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav > li.qx-parent.chevron > a::after,
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav > li.qx-parent.angle > a::after {
+    right: 0;
+    position: absolute;
+    padding-right: 5px;
+}
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav > li.deeper > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav li.deeper,
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav > li.deeper > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav li.deeper a {
+    position: relative;
+}
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav > li.deeper > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav li.deeper a {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav > li.deeper > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav li.deeper > a::after {transform: rotate(-90deg);}
+
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li.deeper.classic > a::after,
+.qx-element-joomla-menu ul.qx-nav.qx-flex-column > li.deeper.classic > a::after,
+.qx-element-joomla-menu ul.qx-nav.qx-flex-column > li.deeper.classic > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav > li.deeper.classic > a::after,
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li.deeper.classic > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav li.deeper.classic > a::after {
+    content: '';
+    width: 1.5em;
+    height: 1em;
+    float: right;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjYXJldC1kb3duIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY2FyZXQtZG93biBmYS13LTEwIiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDMyMCA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTMxLjMgMTkyaDI1Ny4zYzE3LjggMCAyNi43IDIxLjUgMTQuMSAzNC4xTDE3NC4xIDM1NC44Yy03LjggNy44LTIwLjUgNy44LTI4LjMgMEwxNy4yIDIyNi4xQzQuNiAyMTMuNSAxMy41IDE5MiAzMS4zIDE5MnoiPjwvcGF0aD48L3N2Zz4=);
+}
+
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li.deeper.chevron > a::after,
+.qx-element-joomla-menu ul.qx-nav.qx-flex-column > li.deeper.chevron > a::after,
+.qx-element-joomla-menu ul.qx-nav.qx-flex-column > li.deeper > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav > li.deeper.chevron > a::after,
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li.deeper > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav li.deeper.chevron > a::after {
+    content: '';
+    width: 1.5em;
+    height: 1em;
+    float: right;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjaGV2cm9uLWRvd24iIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1jaGV2cm9uLWRvd24gZmEtdy0xNCIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik0yMDcuMDI5IDM4MS40NzZMMTIuNjg2IDE4Ny4xMzJjLTkuMzczLTkuMzczLTkuMzczLTI0LjU2OSAwLTMzLjk0MWwyMi42NjctMjIuNjY3YzkuMzU3LTkuMzU3IDI0LjUyMi05LjM3NSAzMy45MDEtLjA0TDIyNCAyODQuNTA1bDE1NC43NDUtMTU0LjAyMWM5LjM3OS05LjMzNSAyNC41NDQtOS4zMTcgMzMuOTAxLjA0bDIyLjY2NyAyMi42NjdjOS4zNzMgOS4zNzMgOS4zNzMgMjQuNTY5IDAgMzMuOTQxTDI0MC45NzEgMzgxLjQ3NmMtOS4zNzMgOS4zNzItMjQuNTY5IDkuMzcyLTMzLjk0MiAweiI+PC9wYXRoPjwvc3ZnPg==);
+}
+
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li.deeper.angle > a::after,
+.qx-element-joomla-menu ul.qx-nav.qx-flex-column > li.deeper.angle > a::after,
+.qx-element-joomla-menu ul.qx-nav.qx-flex-column > li.deeper > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav > li.deeper.angle > a::after,
+.qx-element-joomla-menu nav.qx-navbar ul.qx-navbar-nav.qx-flex-row > li.deeper > .qx-navbar-dropdown > ul.qx-navbar-dropdown-nav li.deeper.angle > a::after {
+    content: '';
+    width: 1.5em;
+    height: 1em;
+    float: right;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJhbmdsZS1kb3duIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtYW5nbGUtZG93biBmYS13LTEwIiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDMyMCA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTE0MyAzNTIuM0w3IDIxNi4zYy05LjQtOS40LTkuNC0yNC42IDAtMzMuOWwyMi42LTIyLjZjOS40LTkuNCAyNC42LTkuNCAzMy45IDBsOTYuNCA5Ni40IDk2LjQtOTYuNGM5LjQtOS40IDI0LjYtOS40IDMzLjkgMGwyMi42IDIyLjZjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlsLTEzNiAxMzZjLTkuMiA5LjQtMjQuNCA5LjQtMzMuOCAweiI+PC9wYXRoPjwvc3ZnPg==);
+}
+
+.qx-element-joomla-menu ul.qx-nav.qx-flex-column > li.qx-parent > a::after,
+.qx-joomla-menu-toggle ul.qx-nav.qx-flex-column > li.qx-parent > a::after,
+.qx-joomla-menu-offcanvas .qx-offcanvas-bar ul.qx-nav.qx-flex-column > li.qx-parent > a::after {
+    content: '';
+    width: 1.5em;
+    height: 1.5em;
+    float: right;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJhbmdsZS1sZWZ0IiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtYW5nbGUtbGVmdCBmYS13LTgiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMjU2IDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMzEuNyAyMzlsMTM2LTEzNmM5LjQtOS40IDI0LjYtOS40IDMzLjkgMGwyMi42IDIyLjZjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlMMTI3LjkgMjU2bDk2LjQgOTYuNGM5LjQgOS40IDkuNCAyNC42IDAgMzMuOUwyMDEuNyA0MDljLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC0xMzYtMTM2Yy05LjUtOS40LTkuNS0yNC42LS4xLTM0eiI+PC9wYXRoPjwvc3ZnPg==);
+}
+
+.qx-element-joomla-menu ul.qx-nav.qx-flex-column > li.qx-parent.qx-open > a::after,
+.qx-joomla-menu-toggle ul.qx-nav.qx-flex-column > li.qx-parent.qx-open > a::after,
+.qx-joomla-menu-offcanvas .qx-offcanvas-bar ul.qx-nav.qx-flex-column > li.qx-parent.qx-open > a::after {
+    content: '';
+    width: 1.5em;
+    height: 1.5em;
+    float: right;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJhbmdsZS1kb3duIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtYW5nbGUtZG93biBmYS13LTEwIiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDMyMCA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTE0MyAzNTIuM0w3IDIxNi4zYy05LjQtOS40LTkuNC0yNC42IDAtMzMuOWwyMi42LTIyLjZjOS40LTkuNCAyNC42LTkuNCAzMy45IDBsOTYuNCA5Ni40IDk2LjQtOTYuNGM5LjQtOS40IDI0LjYtOS40IDMzLjkgMGwyMi42IDIyLjZjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlsLTEzNiAxMzZjLTkuMiA5LjQtMjQuNCA5LjQtMzMuOCAweiI+PC9wYXRoPjwvc3ZnPg==);
+}
+
+.qx-joomla-menu-offcanvas .qx-offcanvas-bar ul.qx-nav.qx-flex-column > li.qx-parent > a::after {
+    color: #000000;
+    position: absolute;
+    right: 0;
+}

@@ -1,0 +1,2 @@
+﻿id,plan,code,coupon_type,subscription_type,discount,times,used,max_usage_per_user,valid_from,valid_to,note,published
+35,"Existing Client - VoiceBootcamp XVAST Client",XXX,0,subscribe,100.00,1,0,1,2022-08-01,2022-08-31,"Existing Client",1

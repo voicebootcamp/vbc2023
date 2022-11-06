@@ -1,0 +1,97 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{% set imgAlignment = styles.blurb_fg_image_style.image_alignment.value %}
+
+{# Image #}
+{% set imageSpacing = prepareResponsiveValue(styles.blurb_fg_image_style.image_spacing) %}
+{% set imgWidth = styles.blurb_fg_image_style.image_width %}
+{% set imageBorder = styles.blurb_fg_image_style.image_border %}
+{% set imageBG = styles.blurb_fg_image_style.image_bg %}
+{% set imagePadding = styles.blurb_fg_image_style.image_padding %}
+
+{# Title #}
+{% set titleSpacing = prepareResponsiveValue(styles.blurb_fg_title.title_spacing) %}
+{% set titleColor = styles.blurb_fg_title.title_color %}
+{% set titleHoverColor = styles.blurb_fg_title.title_hover_color %}
+{% set titleFont = styles.blurb_fg_title.title_font %}
+
+{# Body #}
+{% set bodyColor = styles.blurb_fg_body.body_color %}
+{% set bodyFont = styles.blurb_fg_body.body_font %}
+
+{# Content #}
+{% set contentAlignment = styles.blurb_fg_content.content_alignment %}
+{% set contentPadding = styles.blurb_fg_content.content_padding %}
+
+{# Selectors #}
+{% set wrapperSelector = id ~ ' .qx-element-blurb_wrapper' %}
+{% set imgSelector = id ~ ' .qx-element-blurb__media' %}
+{% set imgSelectorLeft = id ~ ' .position-left .qx-element-blurb__media' %}
+{% set imgSelectorRight = id ~ ' .position-right .qx-element-blurb__media' %}
+{% set imgSelectorCenter = id ~ ' .position-center .qx-element-blurb__media' %}
+{% set contentSelector = id ~ ' .qx-element-blurb__content' %}
+{% set titleSelector = id ~ ' .qx-element-blurb__title' %}
+{% set bodySelector = id ~ ' .qx-element-blurb__body' %}
+
+{# Image alignment new #}
+{{ style.responsiveCss(imgSelectorLeft, imageSpacing, 'margin-right', imageSpacing.unit) }}
+{{ style.phone(imgSelectorLeft, 'margin-bottom:' ~ imageSpacing.phone ~ imageSpacing.unit) }}
+
+{{ style.responsiveCss(imgSelectorRight, imageSpacing, 'margin-left', imageSpacing.unit) }}
+{{ style.phone(imgSelectorRight, 'margin-bottom:' ~ imageSpacing.phone ~ imageSpacing.unit) }}
+
+{# Image alignment old #}
+{% if imgAlignment == 'left' %}
+
+    {{ style.responsiveCss(imgSelector, imageSpacing, 'margin-right', imageSpacing.unit) }}
+    {{ style.phone(imgSelector, 'margin-bottom:' ~ imageSpacing.phone ~ imageSpacing.unit) }}
+
+{% elseif imgAlignment == 'right' %}
+
+    {{ style.responsiveCss(imgSelector, imageSpacing, 'margin-left', imageSpacing.unit) }}
+    {{ style.phone(imgSelector, 'margin-bottom:' ~ imageSpacing.phone ~ imageSpacing.unit) }}
+
+{% else %}
+    {{ style.responsiveCss(imgSelectorCenter, imageSpacing, 'margin-bottom', imageSpacing.unit) }}
+{% endif %}
+
+
+{# Image #}
+{{ style.width(imgSelector, imgWidth) }}
+{{ style.background(imgSelector, imageBG) }}
+{{ style.css(imgSelector ~ ' svg,' ~ imgSelector ~ ' i', 'display', 'block') }}
+{{ style.css(imgSelector ~ ' svg,' ~ imgSelector ~ ' i', 'margin', 'auto') }}
+
+{#{{ style.border(imgSelector, imageBorder) }}#}
+{#{{ style.padding(imgSelector, imagePadding) }}#}
+
+
+{# new #}
+{#type-svg#}
+{{ style.padding(imgSelector ~ '.type-svg', imagePadding) }}
+{{ style.border(imgSelector ~ '.type-svg', imageBorder) }}
+
+{#type-image#}
+{{ style.padding(imgSelector ~ '.type-image img', imagePadding) }}
+{{ style.border(imgSelector ~ '.type-image img', imageBorder) }}
+{#type-video#}
+
+
+
+{# Title #}
+{{ style.responsiveCss(titleSelector, titleSpacing, 'margin-bottom', titleSpacing.unit) }}
+{{ style.css(titleSelector ~ ' *', 'color', titleColor) }}
+{{ style.css(titleSelector ~ ' *:hover', 'color', titleHoverColor) }}
+{{ style.typography(titleSelector ~ ' *', titleFont) }}
+
+{# Body #}
+{{ style.css(bodySelector ~ ',' ~ bodySelector ~ ' *', 'color', bodyColor) }}
+{{ style.typography(bodySelector ~ ',' ~ bodySelector ~ ' *', bodyFont) }}
+
+{# Content #}
+{{ style.alignment(wrapperSelector, contentAlignment) }}
+{{ style.padding(contentSelector, contentPadding) }}
+
+{{ style.load(id) }}

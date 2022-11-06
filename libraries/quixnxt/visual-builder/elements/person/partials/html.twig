@@ -1,0 +1,86 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{# person image #}
+{% set src = general.person_fg_image.image %}
+{% set altText = general.person_fg_image.alt_text %}
+{% set link = general.person_fg_image.link %}
+
+{# person details #}
+{% set name = general.person_fg_details.pname %}
+{% set tag = general.person_fg_details.html_tag %}
+{% set position = general.person_fg_details.position|default('') %}
+{% set enableDes = general.person_fg_details.enable_description|default(false) %}
+{% set description = general.person_fg_details.description %}
+
+{% set personContentVerticleAlign = general.person_fg_details.person_content_v_align %}
+{% set personImageAlignment = general.person_fg_details.person_image_alignment %}
+
+{# Image postion #}
+{% set wrapperClassesForPerson = classNames('qx-element-person__wrapper',
+    personContentVerticleAlign ? personContentVerticleAlign : '',
+    {
+        'qx-d-md-flex qx-flex-md-row image-position-left' : (personImageAlignment == 'left'),
+        'qx-d-md-flex qx-flex-md-row-reverse image-position-right' : (personImageAlignment == 'right'),
+        'image-position-center' : (personImageAlignment == 'center'),
+    }) %}
+
+{% set classes = classNames('qx-element qx-element-person-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        <div class="{{ wrapperClassesForPerson }}">
+            {# person image #}
+            {% if src.source %}
+                <figure class="qx-element-person__image qx-d-inline-block">
+                    {% if src.type == "svg" %}
+                        {{ icon(src.source) | raw }}
+                    {% else %}
+                        {{ image( src.source, altText, '', '', src) | link(link) }}
+                    {% endif %}
+                </figure>
+            {% endif %}
+
+            <div class="qx-element-person__profile">
+
+                {# person name #}
+                {% if name %}
+                    <div class="qx-element-person__name">
+                        {{ name | wrap(tag) }}
+                    </div>
+                {% endif %}
+
+                {# person position #}
+                {% if position %}
+                    <div class="qx-element-person__position">
+                        {{ position|raw }}
+                    </div>
+                {% endif %}
+
+                {# person content #}
+                {% if enableDes %}
+                    <div class="qx-element-person__description">
+                        {{ description|raw }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+            {% if src.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' figure.qx-element-person__image', src) }}
+            {% endif %}
+
+        </div>
+    {% endblock %}
+{% endembed %}

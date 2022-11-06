@@ -1,0 +1,159 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set link = general['media-carousel_fg_element'].0.link %}
+{% set src = general['media-carousel_fg_element'].0.image %}
+{% set altText = general['media-carousel_fg_element'].0.alt_text %}
+{% set fieldsGroup = general['media-carousel-fg_element'] %}
+
+{% set column = general['media-carousel-fg_options'].column %}
+{% set imageSet = general['height-fg_behaviour'].set %}
+
+{% set showOverlay = general['media-carousel-fg_options'].overlay %}
+{% set overlayAnimation = general['media-carousel-fg_options'].overlay_animation %}
+{% set showTitle = general['media-carousel-fg_options'].show_title %}
+{% set showCaption = general['media-carousel-fg_options'].show_caption %}
+
+{% set arrow = general['media-carousel-navigation_style'].arrow %}
+{% set showArrowNav = general['media-carousel-navigation_style'].show_arrow_navigation %}
+{% set showDotNav = general['media-carousel-navigation_style'].show_dot_navigation %}
+{% set autoPlay = general['height-fg_behaviour'].auto_play %}
+
+{# Bar Nav #}
+{% set barNavigation = general['media-carousel-navigation_style'].bar_navigation %}
+{% set barVertical = general['media-carousel-navigation_style'].bar_vertical %}
+{% set barNavPosition = general['media-carousel-navigation_style'].barNav_position %}
+{% set barNavMargin = general['media-carousel-navigation_style'].barNav_margin %}
+{% if barNavMargin != 'none' %}
+    {% set barNavMarginClass = 'qx-position-' ~ barNavMargin %}
+{% else %}
+    {% set barNavMarginClass = 'qx-position-none' %}
+{% endif %}
+{% set barNavPosClass = 'qx-position-' ~ barNavPosition ~ ' ' ~ barNavMarginClass %}
+
+
+{% set classes = classNames('qx-element qx-element-media-carousel', visibilityClass(visibility), class) %}
+{% set wrapperClasses = classNames('qx-element-media-carousel__wrapper qx-position-relative qx-visible-toggle', class) %}
+
+{% set sliderClasses = classNames('qx-slider-items',
+  column ? 'qx-child-width-1-' ~ column ~ ' qx-child-width-1-' ~ column ~ '@m' : ''
+) %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+      <div
+        id="media-carousel-{{id}}"
+        class="{{ wrapperClasses }} "
+        qx-slider="sets: {{imageSet ? imageSet : 'false'}}"
+      >
+        <div class="qx-slider-container qx-light">
+          <ul
+            qx-height-match="target: > li; row: false"
+            class="qx-slider-items qx-child-width-1-1 qx-child-width-1-2@s qx-child-width-1-{{column}}@m qx-grid"
+          >
+            {% if fieldsGroup %}
+              {% for index, fields in fieldsGroup %}
+
+                {% set data = fieldsGroup(fieldsGroup, index ) %}
+                {% set count = index + 1 %}
+                {% set src = data.image %}
+                {% set altText = data.alt_text %}
+                {% set title = data.title %}
+                {% set link = data.link %}
+                {% set caption = data.caption %}
+
+                {% set image = "" %}
+                {% set overlayHtml = "" %}
+                {% set mediaFigure = "" %}
+                {% if src.source %}
+                  {% set image = '<figure>' ~ image(src.source, altText, '', '', src) ~ '</figure>' %}
+                {% endif %}
+
+                  <li class="qx-transition-toggle">
+                    {% if showOverlay == 'text' %}
+                      <div class="qx-panel-wrapper qx-flex-center">
+
+                          {% set overlayHtml = '<div class="qx-panel qx-position-cover qx-overlay qx-overlay-default qx-transition-' ~ overlayAnimation ~ ' "><div class="qx-position-cover qx-overlay qx-flex-column qx-flex qx-flex-center qx-flex-middle qx-transition-' ~ overlayAnimation ~ '">'  %}
+
+                          {% if showTitle %}
+                            {% set overlayHtml = overlayHtml ~ '<h3 class="qx-media-carousel-title">' ~ title ~ '</h3>'  %}
+                          {% endif %}
+
+                          {% if showCaption %}
+                            {% set overlayHtml = overlayHtml ~ '<p class="qx-media-carousel-caption">' ~ caption ~ '</p>'  %}
+                          {% endif %}
+
+                          {% set overlayHtml = overlayHtml ~ '</div></div>'  %}
+
+                        {{ (image ~ overlayHtml) | link(link) }}
+
+                      </div>
+                    {% else %}
+                      {% if showTitle or showCaption %}
+
+                        {% set overlayHtml = '<div class="qx-card-wrap"><div class="qx-card-wrap-body">'  %}
+                            {% if showTitle %}
+                              {% set overlayHtml = overlayHtml ~ '<h3 class="qx-media-carousel-title">' ~ title ~ '</h3>'  %}
+                            {% endif %}
+
+                            {% if showCaption %}
+                              {% set overlayHtml = overlayHtml ~ '<p class="qx-media-carousel-caption">' ~ caption ~ '</p>'  %}
+                            {% endif %}
+                        {% set overlayHtml = overlayHtml ~ '</div></div>'  %}
+                      {% endif %}
+                      {{ (image ~ overlayHtml) | link(link) }}
+                    {% endif %}
+
+                  </li>
+
+              {% endfor %}
+            {% endif %}
+          </ul>
+
+        </div>
+        {# Arrow Navigation #}
+        {% if showArrowNav %}
+          <div class="qx-visible@s">
+            <a class="qx-position-center-left{{arrow == 'out' ? '-out' : ' qx-hidden-hover'}} qx-position-small" href="#" qx-slidenav-previous qx-slider-item="previous"></a>
+            <a class="qx-position-center-right{{arrow == 'out' ? '-out' : ' qx-hidden-hover'}} qx-position-small" href="#" qx-slidenav-next qx-slider-item="next"></a>
+          </div>
+        {% endif %}
+
+        {# Dot Navigation #}
+        {% if showDotNav %}
+          <ul class="qx-slider-nav qx-dotnav qx-flex-center qx-margin"></ul>
+        {% endif %}
+
+
+        {# Start Bar Nav #}
+        {% if barNavigation == true %}
+                <div class="bar-navigation {{barNavPosClass}}">
+                    <ul class="qx-slider-nav qx-barnav {{barVertical ? 'qx-barnav-vertical' : 'qx-barnav-horizontal'}}" style="margin:0;padding:0;">
+                    {% if fieldsGroup %}
+                        {% for index, fields in fieldsGroup %}
+                            {% set data = fieldsGroup(fieldsGroup, index) %}
+                            {% set title = data.title %}
+                            <li qx-slider-item="{{index}}">
+                                <a href="#">{title}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    </ul>
+                </div>
+        {% endif %}
+        {# End Bar Nav #}
+      </div>
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,78 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set name = general.testimonial_fg_text.tname %}
+{% set content = general.testimonial_fg_text.content %}
+{% set position = general.testimonial_fg_text.position %}
+{% set src = general.testimonial_fg_media.image %}
+{% set altText = general.testimonial_fg_media.alt_text %}
+{% set imgAlignment = general.testimonial_fg_media.image_alignment %}
+
+{% set wrapperClasses = classNames('qx-element-testimonial__wrapper', {
+	'qx-d-inline-flex  qx-flex-column-reverse' : (imgAlignment == 'top'),
+	'qx-d-inline-flex  qx-align-items-center qx-flex-row' : (imgAlignment == 'right'),
+	'qx-d-inline-flex  qx-align-items-center qx-flex-row-reverse' : (imgAlignment == 'left')
+},'imageAlign-' ~ imgAlignment
+) %}
+
+{% set classes = classNames('qx-element qx-element-testimonial-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        <div class="{{ wrapperClasses }}">
+            {% if content %}
+                <div class="qx-testimonial-content">
+                    <p class="qx-testimonial__quote">{{ content|raw }}</p>
+
+                    {% if imgAlignment == "top" or imgAlignment == "left" or imgAlignment == "right" %}
+                    <div class="qx-testimonial__author">
+                        {% if name %}
+                            <div class="qx-testimonial__name">{{ name }}</div>
+                        {% endif %}
+                        {% if position %}
+                        <div class="qx-testimonial__position">{{ position }}</div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <div class="qx-element-testimonial__media">
+                {% if src.source %}
+                    {% if src.type == "svg" %}
+                        {{ icon(src.source) | raw }}
+                    {% else %}
+                        {{ image( src.source, altText, '', '', src)  }}
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            {% if imgAlignment == "bottom" %}
+            <div class="qx-testimonial__author">
+                {% if name %}
+                    <div class="qx-testimonial__name">{{ name }}</div>
+                {% endif %}
+                {% if position %}
+                <div class="qx-testimonial__position">{{ position }}</div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if src.type == "svg" %}
+                {{ addIconStyle('#' ~ id ~ ' .qx-element-testimonial__media', src) }}
+            {% endif %}
+
+        </div>
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="system" method="upgrade">
+	<name>PLG_SYSTEM_LIMITACTIVELOGINS</name>
+	<author>Web357 (Yiannis Christodoulou)</author>
+	<creationDate>31-Mar-2022</creationDate>
+	<copyright>Copyright (©) 2014-2022 Web357. All rights reserved.</copyright>
+	<license>GNU/GPLv3, http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>support@web357.com</authorEmail>
+	<authorUrl>https:/www.web357.com</authorUrl>
+	<version>1.1.2</version>
+	<variant>pro</variant>
+	<description>By default on a Joomla website, the Users can sign in using one account from unlimited devices/browsers at a time. This is not good for websites that have restricted content for subscribers. With this plugin, you can easily set a limit for the number of active logins that a user can have.</description>
+
+	<files>
+		<folder>language</folder>
+		<filename plugin="limitactivelogins">limitactivelogins.php</filename>
+		<filename>index.html</filename>
+		<filename>script.install.helper.php</filename>
+	</files>
+	
+	<scriptfile>script.install.php</scriptfile>
+	
+	<updateservers><server type="extension" priority="1" name="Limit Active Logins (pro version)"><![CDATA[https://updates.web357.com/limitactivelogins/limitactivelogins_pro.xml]]></server></updateservers>
+
+</extension>

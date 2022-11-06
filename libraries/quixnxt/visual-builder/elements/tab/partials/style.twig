@@ -1,0 +1,87 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set verticalTabWrapper = id ~ ' .qx-tab-vertical' %}
+{% set verticalTabSelector = id ~ ' .qx-tab-leftside.qx-tab' %}
+{% set tabSelector = id ~ ' .qx-tab' %}
+
+{% set horizontalTabItemSelector = id ~ ' .qx-tab-horizontal .qx-element-tab-item' %}
+{% set verticalTabItemSelector = id ~ ' .qx-tab-vertical .qx-element-tab-item' %}
+{% set verticalTabActiveItemSelector = id ~ ' .qx-tab-vertical .qx-active.qx-element-tab-item' %}
+
+{% set tabItemSelector = id ~ ' .qx-tab-horizontal .qx-element-tab-item' %}
+{% set activeTabItemSelector = id ~ ' .qx-tab-horizontal .qx-active.qx-element-tab-item' %}
+
+{% set iconSelector = id ~ ' .qx-tab-title i,' ~ id ~ ' .qx-tab-title svg' %}
+{% set activeIconSelector = id ~ ' .qx-active .qx-tab-title i,' ~ id ~ ' .qx-active .qx-tab-title svg' %}
+{% set titleSelectorWrapper = id ~ ' .qx-tab-title' %}
+{% set horizontalTitleSelectorWrapper = id ~ ' .qx-tab-horizontal .qx-tab-title' %}
+{% set activeTitleSelectorWrapper = id ~ ' .qx-active .qx-tab-title' %}
+
+{% set contentWrapperSelector  = id ~ ' .qx-switcher' %}
+{% set contentVerticalWrapperSelector  = id ~ ' .qx-tab-vertical .qx-switcher' %}
+{% set contentSelector  = id ~ ' .qx-tab-content' %}
+
+{# tab #}
+{{ style.css(tabSelector, 'margin-left', '0px') }}
+{{ style.css(tabSelector, 'margin-bottom', '0px') }}
+{{ style.css(verticalTabWrapper, 'display', 'grid') }}
+{{ style.css(verticalTabWrapper, 'grid-template-columns', '0.7fr 2fr') }}
+{{ style.phone( verticalTabWrapper, style._prop('grid-template-columns', '1fr 2fr')) }}
+{{ style.css(verticalTabWrapper ~ ' .qx-tab-content', 'height', '100%') }}
+{{ style.css(verticalTabWrapper ~ ' .qx-element-tab-item', 'border-right-style', 'solid') }}
+{{ style.css(horizontalTabItemSelector, 'border-bottom-style', 'solid') }}
+
+{# tab Item #}
+{{ style.css(tabItemSelector, 'padding-left', '0px') }}
+{{ style.css(tabItemSelector ~ ':focus', 'outline', 'none') }}
+{{ style.css(tabItemSelector ~ ' *:focus', 'outline', 'none') }}
+{{ style.css(tabItemSelector, 'border-bottom-color', 'transparent') }}
+{{ style.responsiveCss(tabItemSelector, styles.tab_fg_style.item_border_width, 'border-width', styles.tab_fg_style.item_border_width.unit) }}
+{{ style.responsiveCss(activeTabItemSelector, styles.tab_fg_style.item_border_width, 'border-width', styles.tab_fg_style.item_border_width.unit) }}
+{{ style.css(activeTabItemSelector ~ ' , ' ~ contentWrapperSelector, 'border-color', styles.tab_fg_style.tab_border_color) }}
+
+{{ style.css(verticalTabItemSelector, 'width', '100%') }}
+{{ style.css(verticalTabItemSelector, 'border-color', 'transparent') }}
+{{ style.responsiveCss(verticalTabItemSelector ~ ' ,' ~ verticalTabActiveItemSelector, styles.tab_fg_style.item_border_width, 'border-width', styles.tab_fg_style.item_border_width.unit) }}
+{{ style.css(verticalTabActiveItemSelector, 'border-color', styles.tab_fg_style.tab_border_color) }}
+
+{{ style.css(titleSelectorWrapper ~ ' *', 'color', styles.tab_fg_title_style.title_color) }}
+{{ style.css(titleSelectorWrapper, 'background-color', styles.tab_fg_title_style.title_bg_color) }}
+{{ style.padding(titleSelectorWrapper, styles.tab_fg_title_style.title_padding) }}
+{{ style.typography(titleSelectorWrapper ~ ' *', styles.tab_fg_title_style.title_font) }}
+{{ style.css(activeTitleSelectorWrapper ~ ' *', 'color', styles.tab_fg_title_style.title_active_color) }}
+{{ style.css(activeTitleSelectorWrapper, 'background-color', styles.tab_fg_title_style.title_active_bg_color) }}
+
+{{ style.css(titleSelectorWrapper, 'display', 'flex') }}
+{{ style.css(titleSelectorWrapper, 'align-items', 'center') }}
+
+{# content #}
+{{ style.css(contentSelector, 'margin-top', '0px') }}
+{{ style.css(contentSelector, 'color', styles.tab_fg_content_style.content_color) }}
+{{ style.css(contentSelector, 'background-color', styles.tab_fg_style.tab_bg_color) }}
+{{ style.padding(contentSelector, styles.tab_fg_content_style.content_padding) }}
+{{ style.typography( contentSelector, styles.tab_fg_content_style.content_font) }}
+{{ style.responsiveCss(contentWrapperSelector, styles.tab_fg_icon_style.icon_spacing, 'margin-top', styles.tab_fg_icon_style.icon_spacing.unit) }}
+
+{# Horizontal style #}
+{{ style.css(contentWrapperSelector, 'border-bottom', 'none') }}
+{{ style.css(contentVerticalWrapperSelector, 'border-bottom', 'none') }}
+
+{{ style.css(contentWrapperSelector, 'border-top-style', 'solid' ) }}
+{{ style.responsiveCss(contentWrapperSelector, styles.tab_fg_style.item_border_width, 'border-top-width', styles.tab_fg_style.item_border_width.unit) }}
+
+{{ style.css(contentVerticalWrapperSelector, 'border-top', 'none') }}
+{{ style.css(contentVerticalWrapperSelector, 'border-left-style', 'solid') }}
+{{ style.responsiveCss(contentVerticalWrapperSelector, styles.tab_fg_style.item_border_width, 'border-left-width', styles.tab_fg_style.item_border_width.unit) }}
+
+{{ style.css('#' ~ advanced.identifier.id ~ ' li.qx-tab-content figure img', 'width', '120px') }}
+
+{# icon #}
+{{ style.css(iconSelector, 'display', 'flex') }}
+{{ style.css(activeIconSelector ~ ' path', 'fill', styles.tab_fg_icon_style.icon_active_color) }}
+{{ style.desktop(iconSelector, 'margin-right:' ~ styles.tab_fg_icon_style.icon_spacing.desktop ~ styles.tab_fg_icon_style.icon_spacing.unit) }}
+{{ style.tablet(iconSelector, 'margin-right:' ~ styles.tab_fg_icon_style.icon_spacing.tablet ~ styles.tab_fg_icon_style.icon_spacing.unit) }}
+{{ style.phone(iconSelector, 'margin-right:' ~ styles.tab_fg_icon_style.icon_spacing.phone ~ styles.tab_fg_icon_style.icon_spacing.unit) }}
+
+{{ style.load(id) }}

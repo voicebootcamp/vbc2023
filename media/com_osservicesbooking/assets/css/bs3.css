@@ -1,0 +1,113 @@
+.input-mini{width:60px !important}
+.input-small{width:90px !important}
+.input-medium{width:150px !important}
+.input-large{width:210px}
+.input-xlarge{width:270px}
+.input-xxlarge{width:530px}
+
+#osbcontainer {
+	padding-left:0px !important;
+	margin-left:0px !important;
+}
+
+#calendardivleft{
+	padding-left:0px !important;
+	padding-right:0px !important;
+}
+
+#calendardivleft .row{
+	padding-left:0px !important;
+	padding-right:0px !important;
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
+
+#calendardivleft .row .col-md-12{
+	padding-left:0px !important;
+	padding-right:0px !important;
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
+
+.calendardetails .row{
+	padding-left:0px !important;
+	padding-right:0px !important;
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
+
+#calendarView_div select, #bookingForm input[type="text"], #bookingForm select, .bookingformdiv select, #calendardivleft select{
+	display:inline-block !important;
+}
+
+#maindivright{
+	padding-left:0px !important;
+	padding-right:0px !important;
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
+
+.vbstepsbarcont{
+	padding-left:0px !important;
+	padding-right:0px !important;
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
+
+.bookingformdiv .col-md-12{
+	padding-left:0px !important;
+}
+
+.information_box{
+}
+
+
+.repeatform , .nslotform, .addtocartform, .otherinformationform{
+	margin-left:20px;
+}
+
+.employeetabs .makebooking{
+	margin-left:10px;
+}
+
+.timeslots{
+	width:49.8%;
+}
+
+.timeslotrow{
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.loginform{
+	margin-left:10px;
+}
+
+#date1, #date2{
+	display:inline-block;
+}
+
+
+
+@media all and (min-width:569px){
+  .tab-content{
+		padding:0 !important;
+		border:0 !important;
+	}
+}
+
+
+@media all and (max-width: 500px) {
+	.tab-content{
+		margin-left:10px !important;
+		border:0 !important;
+	}
+
+	.btn{
+		display:inherit !important;
+	}
+
+	#calendardivleft{
+		margin-left:10px;
+	}
+}

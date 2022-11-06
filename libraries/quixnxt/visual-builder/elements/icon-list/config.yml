@@ -1,0 +1,126 @@
+name: Icon List
+slug: icon-list
+groups: general
+helpId: 5d1ff0032c7d3a5cd38ec1d1
+form:
+  general:
+    - name: icon_list
+      type: group-repeater
+      schema:
+
+        - name: title
+          type: text
+          value: Text
+          Label: List Item
+
+        - name: link
+          type: link
+
+        - name: icon
+          type: media
+          filters: icon
+          showstyle: true
+
+      value:
+        - title : List 1
+        - title : List 2
+        - title : List 3
+
+    - name : iconlist_fg_layout
+      label: Layout and Icon
+      type: fields-group
+      schema:
+        - name: common_icon
+          type: media
+          filters: icon
+          showstyle: true
+
+        - name: choose_layout
+          label: Layout
+          type: choose
+          value:
+            desktop: vertical
+            tablet: vertical
+            phone: vertical
+          options:
+            vertical:
+              label: Vertical
+            horizontal:
+              label: Horizontal
+
+        - name : alignment
+          type : choose
+          label: Position
+          value:
+            desktop: left
+            tablet: center
+            phone: center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right :
+              label : Right
+              icon : qxuicon-align-right
+
+  styles:
+    - name: spacing_setting
+      label: Common
+      type: fields-group
+      schema:
+        - name  : item_spacing
+          label : Item Spacing
+          type: slider
+          units: px
+          defaultUnit: px
+          max : 100
+          value:
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+        - name: item_padding
+          label: Item Padding
+          type: dimensions
+          units: px
+          defaultUnit: px           
+
+        - name  : text_indent
+          label : Text Indent
+          type: slider
+          units: px
+          defaultUnit: px
+          max : 100
+          value:
+            desktop : 5
+            tablet : 5
+            phone : 5
+
+        - name: typo_for_text
+          label: Typography
+          type: typography
+          popover: true    
+          
+        - name: border_for_icon
+          label: Border
+          type: border
+          popover: true     
+
+    - name: color_setting
+      label: Color
+      type: fields-group
+      schema:
+        - name  : icon_hover
+          label : Icon Hover Color
+          type: color
+
+        - name  : text_color
+          label : Text Color
+          type: color
+
+        - name  : text_hover
+          label : Text Hover Color
+          type: color

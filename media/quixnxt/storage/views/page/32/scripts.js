@@ -1,0 +1,1 @@
+(function(){var v="#video-qx-video-3ubip";if(typeof Plyr === 'function'){new Plyr(v)}else{window.PlyrQueue=window.PlyrQueue||[];window.PlyrQueue.push(v)}})();

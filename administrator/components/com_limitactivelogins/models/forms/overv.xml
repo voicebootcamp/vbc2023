@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset name="description" label="About Limit Active Logins" addfieldpath="/plugins/system/web357framework/elements">
+
+		<!-- Description -->
+		<field type="header" name="W357FRM_HEADER_DESCRIPTION" label="W357FRM_HEADER_DESCRIPTION" />
+		<field name="description" id="description" type="description" extension_type="component" extension_name="limitactivelogins" real_name="Limit Active Logins" plugin_type="" label="" addfieldpath="/plugins/system/web357framework/elements" />
+
+		<!-- Version Check -->
+		<field type="header" name="W357FRM_HEADER_VERSION_CHECK" label="W357FRM_HEADER_VERSION_CHECK" />
+		<field name="info" id="info" type="info" extension_type="component" extension_name="com_limitactivelogins" real_name="Limit Active Logins" plugin_type="" label="" addfieldpath="/plugins/system/web357framework/elements" url_slug="limit-active-logins-extension-for-joomla" />
+		
+		<!-- JED Review -->
+		<field name="jedreview" id="jedreview" type="jedreview" extension_type="component" extension_name="com_limitactivelogins" real_name="Limit Active Logins" plugin_type="" label="" addfieldpath="/plugins/system/web357framework/elements" />
+	
+	</fieldset>
+
+</form>

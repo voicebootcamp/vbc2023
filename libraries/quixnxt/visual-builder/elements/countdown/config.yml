@@ -1,0 +1,183 @@
+name: Countdown
+slug: countdown
+groups: pro
+helpId: 5d671c6904286350aeeb2e99
+form:
+  general:
+    - name : date_time
+      label: Countdown
+      type: fields-group
+      status: open
+      schema:
+        - name: countdown_date
+          label : Due Date & Time
+          type: date
+        
+        - name: days
+          label : Show Days
+          type: switch
+          value: true
+
+        - name: hours
+          label : Show Hours
+          type: switch
+          value: true
+
+        - name: minutes
+          label : Show Minutes
+          type: switch
+          value: true
+
+        - name: seconds
+          label : Show Seconds
+          type: switch
+          value: true
+    
+    - name : options
+      label: Additional Settings
+      type: fields-group
+      schema:
+
+        - name: mobile_grid
+          label : Mobile Grid
+          type: slider
+          responsive: false
+          units:
+          defaultUnit:
+          min: 1
+          max: 6
+          value: 2
+
+        - name: show_label
+          label : Show Label
+          type: switch
+          value: true
+
+        - name: show_separator
+          label : Show Separator
+          type: switch
+          value: false
+
+        - name: separator_sign
+          label : Separator Sign
+          type: text
+
+        - name: custom_label
+          label : Custom Label
+          type: switch
+          value: false
+        
+        - name: cdays
+          label : Days
+          type: text
+          value: Days
+          depends:
+            custom_label: true
+
+        - name: chours
+          label : Hours
+          type: text
+          value: Hours
+          depends:
+            custom_label: true
+        - name: cminutes
+          label : Minutes
+          type: text
+          value: Minutes
+          depends:
+            custom_label: true
+        - name: cseconds
+          label : Seconds
+          type: text
+          value: Seconds
+          depends:
+            custom_label: true
+  
+  styles:
+    - name : boxes
+      label: Common
+      type: fields-group
+      status: open
+      schema:
+        - name: view
+          label : View
+          type: select
+          value: block
+          options:
+            block: Block
+            inline: Inline
+
+        - name: box_background
+          type: background
+          opacity: true
+          parallax: false
+          tab: normal
+          popover: true
+        
+        - name: box_padding
+          type: dimensions         
+
+        - name: box_margin
+          type: dimensions         
+
+    - name : content
+      label: Content
+      type: fields-group
+      schema:
+        - name: digit_divider
+          label: Digits
+          type: divider
+
+        - name: digit_color
+          label: Color
+          type: color
+
+        - name: digit_typo
+          type: typography
+          label: Typography
+          popover: true
+
+        - name: label_divider
+          label: Label
+          type: divider
+
+        - name: label_color
+          label: Color
+          type: color
+
+        - name: label_typo
+          type: typography
+          label: Typography
+          popover: true
+    
+    - name : separator
+      label: Separator
+      type: fields-group
+      schema:
+
+        - name: separator_color
+          label: Color
+          type: color
+
+        - name: separator_linehight
+          type: slider
+          label: Line Hight
+          responsive: false
+          units:
+          defaultUnit:
+          min: 1
+          max: 10
+
+        - name: separator_padding
+          type: dimensions
+          label: Padding          
+
+        - name: separator_margin
+          type: dimensions
+          label: Margin           
+
+        - name: separator_background
+          type: background
+          label: Background
+          tab: normal
+          popover: true

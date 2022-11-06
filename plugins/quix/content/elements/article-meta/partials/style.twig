@@ -1,0 +1,16 @@
+{% include 'global.twig' %}
+
+var id = "#{{ field("id") }}";
+
+// typography
+style.typography(id, {{ field('font') | json_encode() }});
+
+// Alignment
+style.alignment(id, {{ field('alignment') | json_encode() }});
+
+// Text Color
+style.css( id, 'color', {{ field('text_color') | json_encode() }});
+
+{% if renderer %}
+  style.load(id);
+{% endif %}

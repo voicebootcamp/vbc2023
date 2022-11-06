@@ -1,0 +1,44 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set labelColor = styles.content.label_color %}
+{% set digitColor = styles.content.digit_color %}
+{% set labelTypo = styles.content.label_typo %}
+{% set digitTypo = styles.content.digit_typo %}
+{% set boxBackground = styles.boxes.box_background %}
+{% set boxPadding = styles.boxes.box_padding %}
+{% set boxMargin = styles.boxes.box_margin %}
+{% set separatorColor = styles.separator.separator_color %}
+{% set separatorLineHight = styles.separator.separator_linehight %}
+{% set separatorPadding = styles.separator.separator_padding %}
+{% set separatorMargin = styles.separator.separator_margin %}
+{% set separatorBackground = styles.separator.separator_background %}
+
+{% if styles.boxes.view == 'inline' %}
+    {{ style.css(id ~ ' .qx-countdown-label,' ~ id ~ ' .qx-countdown-number', 'display', 'inline-block') }}
+{% else %}
+    {{ style.css(id ~ ' .qx-countdown-label,' ~ id ~ ' .qx-countdown-number', 'display', 'block') }}
+{% endif %}
+
+{# Color #}
+{{ style.css(id ~ ' .qx-countdown-label', 'color', labelColor) }}
+{{ style.css(id ~ ' .qx-countdown-number', 'color', digitColor) }}
+
+{# Typography #}
+{{ style.typography(id ~ ' .qx-countdown-label',labelTypo) }}
+{{ style.typography(id ~ ' .qx-countdown-number', digitTypo) }}
+
+
+{# Boxes #}
+{{ style.background(id ~ ' .qx-countdown-item', boxBackground) }}
+{{ style.padding(id ~ ' .qx-countdown-item', boxPadding) }}
+{{ style.margin(id ~ ' .qx-countdown-item', boxMargin) }}
+
+{# Separator #}
+{{ style.css(id ~ ' .qx-countdown-separator', 'color', separatorColor) }}
+{{ style.css(id ~ ' .qx-countdown-separator', 'line-height', separatorLineHight) }}
+{{ style.padding(id ~ ' .qx-countdown-separator', separatorPadding) }}
+{{ style.margin(id ~ ' .qx-countdown-separator', separatorMargin) }}
+{{ style.background(id ~ ' .qx-countdown-separator', separatorBackground) }}
+
+{{ style.load(id) }}

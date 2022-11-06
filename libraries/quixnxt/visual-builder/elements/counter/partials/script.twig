@@ -1,0 +1,34 @@
+{% set onLoad = general.counter_fg_element_mode.onLoad|default(false) %}
+{% set id = advanced.identifier.id %}
+{% set countStart = general.counter_fg_element_mode.count_start %}
+{% set countEnd = general.counter_fg_element_mode.count_end %}
+{% set duration = general.counter_fg_element_mode.duration %}
+
+
+jQuery(function($){
+	var counterLoad = function() {
+		{% if onLoad %}
+		jQuery(document).ready(function(){
+			jQuery("#{{ id }} #counter-mount").jQuerySimpleCounter({
+				start: parseInt("{{ countStart | default(0) }}"),
+				end: parseInt("{{ countEnd | default(100) }}"),
+				duration: parseInt("{{ duration | default(3000) }}")
+			});
+		});
+		{% else %}
+		qxUIkit.util.on("#{{ id }} .counter-count", 'inview show', function () {
+			jQuery("#{{ id }} #counter-mount").jQuerySimpleCounter({
+				start: parseInt("{{ countStart | default(0) }}"),
+				end: parseInt("{{ countEnd | default(100) }}"),
+				duration: parseInt("{{ duration | default(3000) }}")
+			});
+		});
+		{% endif %}
+	};
+
+    {% if mode == 'preview' %}
+        counterLoad();
+    {% else %}
+        $.get('{{ elementUrl ~ "/counter.js" }}').done(counterLoad);
+    {% endif %}
+});

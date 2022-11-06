@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Join Group">
+		<message>
+			Display Form which allows users to join group member of a Group. Should be a hidden menu item as this is used to create SEF Link For Group Membership Only
+		</message>
+	</layout>
+</metadata>

@@ -1,0 +1,343 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{# repeater fields #}
+{% set fieldsGroup = general['slider-pro_fg_element'] %}
+
+{# alignment #}
+{% set verticalPosition = general['slider-pro_fg_alignment'].vertical_position %}
+{% set horizontalPosition = general['slider-pro_fg_alignment'].horizontal_position %}
+{% set textAlign = general['slider-pro_fg_alignment'].text_alignment %}
+
+{# display #}
+{% set showTitle = general['slider-pro_fg_display'].show_title %}
+{% set showContent = general['slider-pro_fg_display'].show_content %}
+{% set showButton = general['slider-pro_fg_display'].show_button %}
+
+{# overlay & animation #}
+{% set sliderAnimation = general['slider-pro_fg_animation'].slide_animation|default('slide') %}
+{% set kenBurnsEff = general['slider-pro_fg_animation'].slide_kenburns|default(false) %}
+{% set kenBurnsRev = general['slider-pro_fg_animation'].slide_kenburns_reverse|default(false) %}
+{% set autoplay = general['slider-pro_fg_settings'].autoplay|default('false') %}
+{% set autoplaySpeed = general['slider-pro_fg_settings'].autoplay_speed|default('5000') %}
+{% set pauseOnHover = general['slider-pro_fg_settings'].pause_on_hover|default('false') %}
+{% set infiniteLoop = general['slider-pro_fg_settings'].infinite_loop|default('true') %}
+
+{# Enable Overlay #}
+{% set enaOverlay = general['slider-pro_fg_overlay'].enable_overlay|default(false) %}
+{% set overlayBackgroundColor = general['slider-pro_fg_overlay'].overlay_bg_color %}
+
+{# Content Transition #}
+{% set contentTransition = general['slider-pro_fg_transitions'].content_transitions|default(false) %}
+{% if contentTransition %}
+    {% set conTranEff = general['slider-pro_fg_transitions'].transitions_effect %}
+{% endif %}
+
+{# Content Parallax #}
+{% set forHeading = general['slider-pro_fg_transitions'].for_heading|default(false) %}
+{% if forHeading %}
+    {% set headingEff = general['slider-pro_fg_transitions'].heading_effect %}
+    {% set headingEffIn = general['slider-pro_fg_transitions'].heading_paraIN %}
+    {% set headingEffOut = general['slider-pro_fg_transitions'].heading_ParaOut %}
+{% endif %}
+
+{% set fordesc = general['slider-pro_fg_transitions'].for_desc|default(false) %}
+{% if fordesc %}
+    {% set descEff = general['slider-pro_fg_transitions'].desc_effect %}
+    {% set descEffIn = general['slider-pro_fg_transitions'].desc_paraIN %}
+    {% set descEffOut = general['slider-pro_fg_transitions'].desc_ParaOut %}
+{% endif %}
+
+{% set forbutton = general['slider-pro_fg_transitions'].for_button|default(false) %}
+{% if forbutton %}
+    {% set buttonEff = general['slider-pro_fg_transitions'].button_effect %}
+    {% set buttonEffIn = general['slider-pro_fg_transitions'].button_paraIN %}
+    {% set buttonEffOut = general['slider-pro_fg_transitions'].button_ParaOut %}
+{% endif %}
+
+
+{# height #}
+{% set heightOption = general['slider-pro_fg_height'].height_option %}
+
+
+{# navigation #}
+{% set navigationMargin = general['slider-pro_fg_navigation'].navigation_margin %}
+{% if navigationMargin != 'none' %}
+    {% set navigationMarginClass = 'qx-position-' ~ navigationMargin %}
+{% else %}
+    {% set navigationMarginClass = 'qx-position-none' %}
+{% endif %}
+
+{% set slideNav = general['slider-pro_fg_navigation'].slide_nav %}
+{% set navigation = general['slider-pro_fg_navigation'].navigation %}
+{% set outsidePosition = general['slider-pro_fg_navigation'].navigation_outside_position %}
+{% set insidePosition = general['slider-pro_fg_navigation'].navigation_inside_position %}
+
+{% if slideNav != 'none' %}
+{% set slideNavClass = 'qx-position-' ~ slideNav ~ ' ' ~ navigationMarginClass %}
+{% endif %}
+
+{% if navigation == 'dot-inside' %}
+{% set dotNavigationClass = 'qx-position-' ~ insidePosition ~ ' ' ~ navigationMarginClass %}
+{% else %}
+{% set dotNavigationClass = 'qx-flex qx-flex-' ~ outsidePosition ~ ' ' ~ navigationMarginClass  %}
+{% endif %}
+
+{% if navigation == 'thumb-inside' %}
+{% set thumbNavigationClass = 'qx-position-' ~ insidePosition ~ ' ' ~ navigationMarginClass %}
+{% else %}
+{% set thumbNavigationClass = 'qx-flex qx-flex-' ~ outsidePosition ~ ' ' ~ navigationMarginClass %}
+{% endif %}
+
+{# Bar Nav #}
+{% set barNavVertical = general['slider-pro_fg_navigation'].bar_vertical %}
+{% set barNavPosition = general['slider-pro_fg_navigation'].barNav_position %}
+{% set barNavMargin = general['slider-pro_fg_navigation'].barNav_margin %}
+{% if barNavMargin != 'none' %}
+    {% set barNavMarginClass = 'qx-position-' ~ barNavMargin %}
+{% else %}
+    {% set barNavMarginClass = 'qx-position-none' %}
+{% endif %}
+{% set barNavPosClass = 'qx-position-' ~ barNavPosition ~ ' ' ~ barNavMarginClass %}
+
+{# Icon #}
+{% set enableIcon = general['slider-pro_fg_display'].enable_icon %}
+{% set src = general['slider-pro_fg_display'].icon %}
+{% set icon = '' %}
+{% set iconAlignment = general['slider-pro_fg_display'].icon_alignment | default({'value' : 'left'}) %}
+{% if src.source %}
+    {% if src.type == "svg" %}
+        {% set icon = icon(src.source) %}
+    {% endif %}
+{% elseif src.source %}
+    {% set icon = image(src.source, '', '', '', src) %}
+{% endif %}
+
+{# behaviours #}
+{% set classes = classNames('qx-element qx-slider-pro-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {% if fieldsGroup %}
+        <div class="qx-position-relative qx-visible-toggle slider-height-{{heightOption}}"
+        qx-slideshow="animation: {{sliderAnimation}};autoplay: {{autoplay}};autoplayInterval: {{autoplaySpeed}};pauseOnHover: {{pauseOnHover}};finite: {{infiniteLoop ? 'false' : 'true'}};"
+        id="slider-{{ id }}">
+
+            {% if heightOption == 'default' %}
+                <ul qx-height-match="target: > li > img ; row: false" class="qx-slideshow-items">
+            {% elseif (heightOption == 'custom') %}
+                <ul class="qx-slideshow-items custom-height">
+            {% else %}
+                {# apply these on update; offset-top: true; offset-bottom: true #}
+                <ul qx-height-viewport="" class="qx-slideshow-items">
+            {% endif %}
+
+
+                {% for index, fields in fieldsGroup %}
+                    {% set data = fieldsGroup(fieldsGroup, index) %}
+                    {# ---------------------------------------------------------------
+                        Don't forget to change key of data when you update config.yml
+                    -------------------------------------------------------------------#}
+
+                    {# title #}
+                    {% set title = data.title %}
+                    {% set description = data.description %}
+                    {% set background = data.background %}
+                    {% set backgroundOverlay = data.overlay_bg_color %}
+                    {% set buttonText = data.button_text %}
+                    {% set buttonLink = data.link %}
+
+                    {% set verticalPosition =  verticalPosition %}
+                    {% set horizontalPosition =  horizontalPosition %}
+
+                    {% set contentPosition = 'qx-position-' ~ verticalPosition ~ '-' ~ horizontalPosition %}
+                    {% if contentPosition == 'qx-position-center-center' %}
+                        {% set contentPosition = 'qx-position-center' %}
+                    {% endif %}
+                    {% set contentAlignment = 'qx-text-' ~ textAlign %}
+                    {% set contentAlignClasses =  contentPosition ~ ' ' ~ contentAlignment %}
+
+                    {% if buttonLink.nofollow %}
+                        {% set nofollow = "nofollow" %}
+                    {% else %}
+                        {% set nofollow = ""%}
+                    {% endif %}
+
+                    {% set buttonClasses = 'qx-btn qx-slider-btn iconAlign-' ~ iconAlignment ~ ' qx-flex qx-flex-middle qx-flex-inline' %}
+                    {# --------------------------------------------------------------- #}
+                    <li class="qx-col-md-12 slider-pro-item" id="{{ id }}-{{ index }}">
+                        {% if background.source %}
+                            {% if background.type == "svg" %}
+                                {{ icon(background.source, title, '', '', true) }}
+                            {% elseif kenBurnsEff %}
+                                <div class="{{kenBurnsEff ? 'qx-animation-kenburns' : ''}} {{kenBurnsRev ? 'qx-animation-reverse' : ''}}">
+                                    {{ image(background.source, title, '', '', background, false) }}
+                                </div>
+                            {% else %}
+                                {{ image( background.source, title, '', '', background, false) }}
+                            {% endif %}
+                        {% endif %}
+
+                        {% if enaOverlay %}
+                            <div class="qx-overlay-primary qx-position-cover"></div>
+                        {% endif %}
+                        <div class="{{contentAlignClasses}} slider-content-wrapper">
+                            <div class="qx-transition-toggle slide-content {{conTranEff}}">
+                                {% if forHeading %}
+                                    {% if showTitle %}
+                                        <h2 qx-slider-parallax="{{headingEff}}: {{headingEffIn}},{{headingEffOut}}">{{ title | raw }}</h2>
+                                    {% endif %}
+                                {% else %}
+                                    {% if showTitle %}
+                                        <h2>{{ title | raw }}</h2>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% if fordesc and showContent %}
+                                    <p qx-slider-parallax="{{descEff}}: {{descEffIn}},{{descEffOut}}">{{ description|raw }}</p>
+                                {% elseif showContent %}
+                                    <p>{{ description|raw }}</p>
+                                {% endif %}
+
+                                {% if forbutton %}
+                                    {% if showButton %}
+                                        {% if buttonText %}
+                                            <div qx-slider-parallax="{{buttonEff}}: {{buttonEffIn}},{{buttonEffOut}}">
+                                                {% if enableIcon == true %}
+                                                    {% if iconAlignment == 'left' %}
+                                                        {{ ( '' ~ icon ~ ' ' ~ '<span>' ~ buttonText ~ '</span>') | link(buttonLink, buttonClasses) }}
+                                                    {% else %}
+                                                        {{ ('' ~ '<span>' ~ buttonText ~ '</span>' ~ ' ' ~ icon ~ '') | link(buttonLink, buttonClasses) }}
+                                                    {% endif %}
+                                                {% else %}
+                                                    {{ buttonText | link(buttonLink, buttonClasses) }}
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% else %}
+                                    {% if showButton %}
+                                        {% if buttonText %}
+                                            {% if enableIcon %}
+                                                {% if iconAlignment == 'left' %}
+                                                    {{ ( '' ~ icon ~ ' ' ~ '<span>' ~ buttonText ~ '</span>') | link(buttonLink, buttonClasses) }}
+                                                {% else %}
+                                                    {{ ('' ~ '<span>' ~ buttonText ~ '</span>' ~ ' ' ~ icon ~ '') | link(buttonLink, buttonClasses) }}
+                                                {% endif %}
+                                            {% else %}
+                                                {{ buttonText | link(buttonLink, buttonClasses) }}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% if src.properties %}
+                            {{ addIconStyle('#' ~ id ~ ' .slider-content-wrapper .qx-slider-btn', src) }}
+                        {% endif %}
+
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {% if slideNav != 'none' %}
+                {% if slideNav != "default" %}
+                    <div class="qx-slidenav-container {{slideNavClass}}">
+                        <a class="qx-hidden-hover" href="#" qx-slidenav-previous qx-slideshow-item="previous"></a>
+                        <a class="qx-hidden-hover" href="#" qx-slidenav-next qx-slideshow-item="next"></a>
+                    </div>
+                {% elseif slideNav == "default" %}
+                    <div class="qx-slidenav-container">
+                        <a class="qx-position-center-left qx-slidenav-previous qx-position-small qx-hidden-hover" href="#" qx-slidenav-previous qx-slideshow-item="previous"></a>
+                        <a class="qx-position-center-right qx-slidenav-next qx-position-small qx-hidden-hover" href="#" qx-slidenav-next qx-slideshow-item="next"></a>
+                    </div>
+                {% endif %}
+
+            {% endif %}
+
+            {% if navigation != 'none' %}
+                {% if navigation == 'dot-inside' or navigation == 'dot-outside' %}
+                <div class="{{dotNavigationClass}} qx-visible@s">
+                    <ul class="qx-dotnav">
+                    {% if fieldsGroup %}
+                        {% for index, fields in fieldsGroup %}
+                            {% set data = fieldsGroup(fieldsGroup, index) %}
+                            {% set title = data.title %}
+                            <li qx-slideshow-item="{{index}}">
+                                <a href="#">{{title}}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if navigation == 'thumb-inside' or navigation == 'thumb-outside' %}
+                <div class="{{thumbNavigationClass}} qx-visible@s">
+                    <ul class="qx-thumbnav ">
+
+                    {% if fieldsGroup %}
+                        {% for index, fields in fieldsGroup %}
+                        {% set data = fieldsGroup(fieldsGroup, index) %}
+                        {% set slideThumb = data.thumb_image %}
+
+                        <li qx-slideshow-item="{{index}}">
+                            <a href="#">
+                                {% if slideThumb.source %}
+                                    {% if slideThumb.type == "svg" %}
+                                        {{ icon(slideThumb.source) }}
+                                    {% else %}
+                                        {{ image( slideThumb.source, title, '', '', background) }}
+                                    {% endif %}
+                                {% elseif slideThumb.url %}
+                                    {{ image(slideThumb.source, title, '', '', background) }}
+                                {% endif %}
+                            </a>
+                        </li>
+
+                        {% endfor %}
+                    {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            {% endif %}
+
+            {# Start Bar Nav #}
+            {% if navigation == 'bar-nav' %}
+                    <div class="bar-navigation {{barNavPosClass}} qx-visible@s">
+                        <ul class="qx-barnav {{barNavVertical ? 'qx-barnav-vertical' : 'qx-barnav-horizontal'}}" style="margin:0;padding:0;">
+                        {% if fieldsGroup %}
+                            {% for index, fields in fieldsGroup %}
+                                {% set data = fieldsGroup(fieldsGroup, index) %}
+                                {% set title = data.title %}
+                                <li qx-slideshow-item="{{index}}">
+                                    <a href="#">{{title}}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                        </ul>
+                    </div>
+            {% endif %}
+            {# End Bar Nav #}
+
+            {% if enaOverlay %}
+            <style type="text/css">
+                {{ '#' ~ id }} .qx-overlay-primary {background-color:  {{ overlayBackgroundColor }};}
+            </style>
+            {% endif %}
+
+        </div>
+        {% endif %}
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <extension type="package" version="2.19.2" method="upgrade">
+	 <name>OS Services Booking Package</name>
+	  <packagename>osservicesbooking</packagename>
+	  <creationDate>December 2011</creationDate>
+	  <author>Dang Thuc Dam</author>
+	  <authorEmail>damdt@joomservices.com</authorEmail>
+	  <authorUrl>http://www.joomdonation.com</authorUrl>
+	  <copyright>Copyright (C) 2012 - 2022 Ossolution Team</copyright>
+	  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	  <version>2.19.2</version>
+	  <description>OS Services Booking package</description>
+	  <scriptfile>script.php</scriptfile>
+	  <files folder="packages">
+	   <file type="component" id="osservicesbooking">com_osservicesbooking.zip</file>
+	   <file type="module" id="osservicesbooking" client="site">mod_osbsearch.zip</file>
+	   <file type="module" id="osservicesbooking" client="site">mod_osbcart.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="content">plg_osbtable.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="installer">plg_installer_osservicesbooking.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="system">plg_system_osbcrontask.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="system">plg_system_osbgcalendarsync.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="system">plug_system_osbcleaner.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="osservicesbooking">plg_osb_clickatell.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="osservicesbooking">plg_osb_clicksend.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="osservicesbooking">plg_osb_eztexting.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="osservicesbooking">plg_osb_smshosting.zip</file>
+	   <file type="plugin" id="osservicesbooking" group="osservicesbooking">plg_osb_textlocal.zip</file>
+	   <file type="library" id="osservicesbooking">lib_omnipay.zip</file>
+	   <file type="library" id="osservicesbooking">lib_osgcalendar.zip</file>
+	  </files>
+	  <updateservers>	
+		<server type="extension" priority="1" name="OS Services Booking Extension">https://www.joomdonation.com/updates/osservicesbooking.xml</server>
+	  </updateservers>
+ </extension>

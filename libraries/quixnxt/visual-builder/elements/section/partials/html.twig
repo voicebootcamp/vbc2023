@@ -1,0 +1,98 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set layout = general.layout_fields_group %}
+{% set container = general.layout_fields_group.container_type %}
+{% set bg_overlay = styles.background_overlay_fields_group.background_overlay %}
+{% set background = styles.background_fields_group.background %}
+
+{% set classes = classNames('qx-section', visibilityClassNode(visibility), {
+    'qx-section--stretch' : general.layout_fields_group.section_stretch,
+    'qx-section-height-full' : (general.layout_fields_group.height == 'full'),
+    'qx-section-height-custom' : (general.layout_fields_group.height == 'custom'),
+    'qx-section-has-divider' : ( styles.divider_top_fields_group.top_divider_style != 'none' ) or ( styles.divider_bottom_fields_group.bottom_divider_style != 'none' ),
+    'qx-cover-container' : background.state.normal.type == 'video',
+    'lazyload lazyload-bg' : ifElementHasBackground(background)
+}, class) %}
+
+{% set containerClass = classNames({
+    'qx-container' : container == 'boxed',
+    'qx-container-fluid' : container != 'boxed',
+}, general.layout_fields_group.v_align) %}
+
+{% set overlayClass = classNames(id ~ "-background-overlay", "qx-background-overlay", {
+    'lazyload lazyload-bg blur-up' : ifElementHasBackground(bg_overlay)
+}) %}
+
+
+
+{% set sectionID = "id='" ~ id ~ "'" %}
+{% set sectionClasses = "class='" ~ classes ~ "'" %}
+
+{% set parallax = '' %}
+{% if background.state.normal.properties.parallax_method == "js" %}
+    {% set parallaxInfo = "" %}
+    {% if background.state.normal.properties.js_parallax_y %}
+        {% set parallaxInfo = parallaxInfo ~ 'bgy:' ~  background.state.normal.properties.js_parallax_y ~ ';' %}
+    {% endif %}
+    {% if background.state.normal.properties.js_parallax_x %}
+        {% set parallaxInfo = parallaxInfo ~ 'bgx:' ~  background.state.normal.properties.js_parallax_x ~ ';' %}
+    {% endif %}
+    {% set parallax = ' data-qx-parallax="' ~ parallaxInfo ~ '"' %}
+{% endif %}
+
+{# sticky #}
+{% set sticky = '' %}
+{% set position = styles.positioning_fields_group.global_position %}
+{% if position == 'sticky' %}
+    {% set stickyValue = '' %}
+    {% set sticky_animation = styles.positioning_fields_group.sticky_animation|default('') %}
+    {% set stickyValue = stickyValue ~ (sticky_animation ? "animation:" ~ sticky_animation ~ ";" : '') %}
+
+    {% set sticky_bottom = styles.positioning_fields_group.sticky_bottom|default('') %}
+    {% set stickyValue = stickyValue ~ (sticky_bottom ? "bottom:" ~ sticky_bottom ~ ";" : '') %}
+
+    {% set sticky_show_on_up = styles.positioning_fields_group.sticky_show_on_up|default(false) %}
+    {% set stickyValue = stickyValue ~ (sticky_show_on_up ? "show-on-up:" ~ sticky_show_on_up ~ ";" : '') %}
+
+    {% set sticky_media = styles.positioning_fields_group.sticky_media|default('') %}
+    {% set stickyValue = stickyValue ~ (sticky_media ? "media:" ~ sticky_media ~ ";" : '') %}
+
+    {% set sticky_offset = styles.positioning_fields_group.sticky_offset|default('') %}
+    {% set stickyValue = stickyValue ~ (sticky_offset.value ? "offset:" ~ sticky_offset.value ~ ";" : '') %}
+
+    {# {% set sticky = ' qx-sticky="bottom: ' ~ sticky_bottom ? sticky_bottom : ~ ';animation: ' ~ sticky_animation ~ ';show-on-up: ' ~ sticky_show_on_up ~ ';media: ' ~ sticky_media ~ '"' %} #}
+    {% set sticky = ' qx-sticky="' ~ stickyValue ~ '"' %}
+{% endif %}
+
+ {# dynamic tag #}
+{{ "<" ~ general.layout_fields_group.html_tag ~ " " ~ sectionID ~ " " ~ sectionClasses ~ sticky ~ parallax ~ lazyBackground(background) ~ " >" }}
+
+    {% if (background.state.normal.type == 'video' ) %}
+        <video class="qx-background-video" src="{{ imageUrl(background.state.normal.properties.url.source) }}"
+               autoplay="" loop="" muted="" playsinline="" qx-cover=""
+               qx-video="automute: true;autoplay: inview"></video>
+    {% endif %}
+
+  {% if (bg_overlay and ( getOpacity(bg_overlay, 'normal') or getOpacity(bg_overlay, 'hover') ) ) %}
+      <div class="{{ overlayClass }}" {{ lazyBackground(bg_overlay) }}></div>
+  {% endif %}
+
+  {% if(styles.divider_top_fields_group.top_divider_style != 'none') %}
+      {% set topDividerFile = "/images/shapes/" ~ styles.divider_top_fields_group.top_divider_style ~ ".svg" %}
+      <div class="qx-shape qx-shape-top">
+          {{ mediaFile( topDividerFile ) }}
+      </div>
+  {% endif %}
+
+  {% if(styles.divider_bottom_fields_group.bottom_divider_style != 'none') %}
+      {% set bottomDividerFile = "/images/shapes/" ~ styles.divider_bottom_fields_group.bottom_divider_style ~ ".svg" %}
+      <div class="qx-shape qx-shape-bottom">
+          {{ mediaFile( bottomDividerFile ) }}
+      </div>
+  {% endif %}
+
+<div class="{{ containerClass }}">
+    {{ renderer.render( node['children'], null, 'frontend' ) | raw }}
+</div>
+
+{{ "</" ~ general.layout_fields_group.html_tag ~ ">" }}

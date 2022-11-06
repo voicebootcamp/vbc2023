@@ -1,0 +1,82 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Accordion #}
+{% set itemActiveBdColor = styles.accordion_fg_title_style.item_active_bd_color %}
+{% set accordionBorder = styles.accordion_fg_style.accordion_border %}
+{% set accordionItemMargin = styles.accordion_fg_style.accordion_item_margin %}
+
+{# Title #}
+{% set titleColor = styles.accordion_fg_title_style.title_color %}
+{% set titleBgColor = styles.accordion_fg_title_style.title_bg_color %}
+{% set titleActiveColor = styles.accordion_fg_title_style.title_active_color %}
+{% set titleActiveBgColor = styles.accordion_fg_title_style.title_active_bg_color %}
+{% set titlePadding = styles.accordion_fg_title_style.title_padding %}
+{% set titleFont =  styles.accordion_fg_title_style.title_font %}
+
+{# Content #}
+{% set contentColor = styles.accordion_fg_content_style.content_color %}
+{% set contentBgColor = styles.accordion_fg_content_style.content_bg_color %}
+{% set contentPadding = styles.accordion_fg_content_style.content_padding %}
+{% set contentFont = styles.accordion_fg_content_style.content_font %}
+
+{# Icon #}
+{% set iconSpacing = styles.accordion_fg_icon_style.icon_spacing %}
+{% set iconActiveColor = styles.accordion_fg_icon_style.icon_active_color %}
+
+{# Selectors #}
+{% set accordionSelector = id ~ ' .qx-accordion' %}
+{% set accordionItemSelector = id ~ ' .qx-element-accordion-item' %}
+{% set accordionItemActiveSelector = id ~ ' li.qx-open.qx-element-accordion-item' %}
+{% set iconSelector = id ~ ' .qx-accordion_icon' %}
+{% set activeIconSelector = id ~ ' li.qx-open .qx-accordion_icon' %}
+{% set accordionIconRightSelector = id ~ ' .qx-icon-alignment-right .qx-accordion-title' %}
+{% set titleSelectorWrapper = id ~ ' .qx-accordion-title' %}
+{% set titleWrapper = id ~ ' .wrap-accordion-title *' %}
+{% set activeTitleSelectorWrapper = id ~ ' .qx-open .qx-accordion-title' %}
+{% set activeTitleWrapper = id ~ ' .qx-open .wrap-accordion-title *' %}
+{% set contentSelector  = id ~ ' .qx-accordion-content' %}
+
+{# Accordion #}
+{{ style.css(accordionSelector, 'margin', '0px !important' )}}
+{{ style.css(accordionItemSelector, 'border', 'solid 1px #eee' )}}
+{{ style.css(accordionItemSelector, 'overflow', 'hidden' )}}
+{{ style.css(accordionItemActiveSelector, 'border-color', itemActiveBdColor) }}
+{{ style.border(accordionItemSelector, accordionBorder) }}
+{{ style.margin(accordionItemSelector, accordionItemMargin) }}
+
+{# Title #}
+{{ style.css(titleSelectorWrapper ~ ' *', 'margin-bottom', '0px') }}
+{{ style.css(titleSelectorWrapper ~ ' *', 'margin-top', '0px') }}
+{{ style.css(titleSelectorWrapper, 'display', 'flex') }}
+{{ style.css(titleSelectorWrapper, 'align-items', 'center') }}
+{{ style.css(accordionIconRightSelector, 'flex-direction', 'row-reverse') }}
+{{ style.css(accordionIconRightSelector, 'justify-content', 'space-between') }}
+{{ style.css(titleSelectorWrapper, 'width', '100%') }}
+{{ style.css(titleSelectorWrapper, 'color', titleColor) }}
+{{ style.css(titleWrapper, 'color', titleColor) }}
+{{ style.css(titleSelectorWrapper, 'background-color', titleBgColor) }}
+{{ style.css(activeTitleSelectorWrapper, 'color', titleActiveColor) }}
+{{ style.css(activeTitleWrapper, 'color', titleActiveColor) }}
+{{ style.css(activeTitleSelectorWrapper, 'background-color', titleActiveBgColor) }}
+{{ style.padding(titleSelectorWrapper, titlePadding) }}
+{{ style.typography( titleSelectorWrapper ~ ' *', titleFont) }}
+{{ style.css(titleSelectorWrapper ~ '.has-icon::before', 'content', 'initial') }}
+
+
+{# Content #}
+{{ style.css(contentSelector, 'margin-top', '0px') }}
+{{ style.css(contentSelector, 'color', contentColor) }}
+{{ style.css(contentSelector, 'background-color', contentBgColor) }}
+{{ style.padding(contentSelector, contentPadding) }}
+{{ style.typography( contentSelector ~ ' *', contentFont) }}
+
+{# Icon #}
+{{ style.responsiveCss(id ~ ' .wrap-accordion-title', iconSpacing, 'margin-left', 'px') }}
+{{ style.css(id ~ ' .wrap-accordion-title', 'ddd', 'ddd') }}
+{{ style.css(activeIconSelector ~ ' path', 'fill', iconActiveColor) }}
+{{ style.css(activeIconSelector ~ ' i', 'color', iconActiveColor) }}
+{{ style.css(iconSelector, 'display', 'flex') }}
+
+{{ style.load(id) }}

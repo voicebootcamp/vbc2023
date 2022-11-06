@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.9.15" client="site" method="upgrade">
+    <name>mod_jmediagallery</name>
+    <author>ThemeXpert</author>
+	<creationDate>Feb 2020</creationDate>
+	<copyright>Copyright (C) 2005 - 2020 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@temexpert.com</authorEmail>
+	<authorUrl>www.themexpert.com</authorUrl>
+    <version>1.0.0</version>
+    <description>MOD_JMEDIAGALLERY_DESCRIPTION</description>
+    <files>
+        <filename module="mod_jmediagallery">mod_jmediagallery.php</filename>
+        <filename>mod_jmediagallery.xml</filename>
+        <filename>helper.php</filename>
+        <folder>tmpl</folder>
+        <folder>assets</folder>
+    </files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB.mod_jmediagallery.ini</language>
+		<language tag="en-GB">en-GB.mod_jmediagallery.sys.ini</language>
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="imageFolder"
+                    type="folderlist"
+                    default=""
+                    label="MOD_JMEDIAGALLERY_FOLDER_LABEL"
+                    description="MOD_JMEDIAGALLERY_FOLDER_DESC"
+                    directory="images"
+                    hide_none="true"
+                    exclude="_thumb"
+                />
+				<field
+					name="recurseSubFolder"
+					type="radio"
+					label="MOD_JMEDIAGALLERY_SUBFOLDER_RECURSIVE_LABEL"
+					description="MOD_JMEDIAGALLERY_SUBFOLDER_RECURSIVE_DES"
+					class="btn-group btn-group-yesno"
+					default="0"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="enableFilter"
+					type="radio"
+					label="MOD_JMEDIAGALLERY_ENABLE_FILTER_LABEL"
+					description="MOD_JMEDIAGALLERY_ENABLE_FILTER_DES"
+					class="btn-group btn-group-yesno"
+					default="0"
+                    showon="recurseSubFolder:1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="loadBootstrap"
+					type="radio"
+					label="MOD_JMEDIAGALLERY_LOAD_BOOTSTRAP_LABEL"
+					description="MOD_JMEDIAGALLERY_LOAD_BOOTSTRAP_DES"
+					class="btn-group btn-group-yesno"
+					default="1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="changeColumn"
+					type="radio"
+					label="MOD_JMEDIAGALLERY_COLUMN_LAYOUT_LABEL"
+					description="MOD_JMEDIAGALLERY_COLUMN_LAYOUT_DES"
+					class="btn-group btn-group-yesno"
+					default="col-md-4"
+				>
+					<option value="col-md-6">2</option>
+					<option value="col-md-4">3</option>
+					<option value="col-md-3">4</option>
+				</field>
+            </fieldset>
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+					rows="3"
+				/>
+			</fieldset>
+        </fields>
+    </config>
+</extension>

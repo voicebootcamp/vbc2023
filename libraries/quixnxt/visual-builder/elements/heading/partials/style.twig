@@ -1,0 +1,25 @@
+{% include 'global.twig' %}
+{% set tag = general.heading_fields_group.html_tag %}
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Typography #}
+{{ style.typography(id ~ ' ' ~ tag, styles.heading_typo_fields_group.font) }}
+
+{# Alignment #}
+{{ style.alignment(id, styles.opt_fields_group.nalignment) }}
+
+{# Text Color #}
+{{ style.css( id ~ ' ' ~ tag, 'color', styles.opt_fields_group.text_color) }}
+
+{% if styles.opt_fields_group.enable_bg|default(false) %}
+	{# Text bg #}
+	{{ style.css (id ~ ' ' ~ tag, 'background-color', '#222') }}
+	{{ style.background (id ~ ' ' ~ tag, styles.opt_fields_group.text_bg) }}
+
+	{# Text background init #}
+	{{ style.css (id ~ ' ' ~ tag ~ ',' ~ id ~ ' ' ~ tag ~ ':hover', 'background-clip', 'text')}}
+	{{ style.css (id ~ ' ' ~ tag ~ ',' ~ id ~ ' ' ~ tag ~ ':hover', '-webkit-background-clip', 'text')}}
+	{{ style.css (id ~ ' ' ~ tag ~ ',' ~ id ~ ' ' ~ tag ~ ':hover', 'color', 'transparent')}}
+{% endif %}
+
+{{ style.load(id) }}

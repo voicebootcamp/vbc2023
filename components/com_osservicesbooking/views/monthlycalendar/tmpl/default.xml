@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Administrator: Monthly Calendar">
+		<message>
+			<![CDATA[Administrator: Monthly Calendar.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Administrator: Monthly Calendar</name>
+		<description>Administrator: Monthly Calendar at Front-end</description>
+	</state>
+</metadata>

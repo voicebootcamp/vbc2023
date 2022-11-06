@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="content" method="upgrade">
+
+	<name>Content - Quix Content Plugin</name>
+	<author>ThemeXpert</author>
+	<creationDate>09-10-2022</creationDate>
+	<copyright>Copyright (C) 2013 themexpert.com. All rights reserved.</copyright>
+	<license>GNU/GPL</license>
+	<authorEmail>info@themexpert.com</authorEmail>
+	<authorUrl>www.themexpert.com</authorUrl>
+	<version>4.3.1</version>
+	<description>Thank you for installing Quix Content Plugin.</description>
+	<scriptfile>installer.php</scriptfile>
+
+	<files>
+		<filename plugin="quix">quix.php</filename>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_content_quix.ini</language>
+	</languages>
+
+	<config>
+
+		<fields name="params">
+
+			<fieldset name="basic">
+
+			</fieldset>
+
+		</fields>
+
+	</config>
+
+</extension>

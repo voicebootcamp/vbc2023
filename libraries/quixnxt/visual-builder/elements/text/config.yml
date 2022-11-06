@@ -1,0 +1,56 @@
+name: Text
+slug: text
+groups: general
+helpId: 5d1ff0d204286369ad8d5f0e
+form:
+  general:
+    - name : text_fields_group
+      label: Text
+      type: fields-group
+      status: open
+      schema:
+        - name: content
+          type: editor
+          value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+        
+        - name: prepare_content
+          type: switch
+          value: false
+          help: Optionally prepare the content with the Joomla Content Plugins.
+  styles:
+    - name    : text_fields_group
+      label   : Text Style
+      type    : fields-group
+      status  : open
+      schema  :
+        - name : alignment
+          type : choose
+          responsive : true
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+            justify : 
+              label : Justify
+              icon : qxuicon-align-justify
+        
+        - name  : text_color
+          label : Text Color
+          type  : color
+
+    - name : typo_fields_group
+      label: Typography
+      type: fields-group
+      schema :
+        - name: font
+          type: typography
+          label: Typography
+          popover: true
+
+      

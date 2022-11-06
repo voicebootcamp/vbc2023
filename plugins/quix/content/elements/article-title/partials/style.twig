@@ -1,0 +1,27 @@
+{% include 'global.twig' %}
+{% set tag = field('html_tag') %}
+var id = "#{{ field("id") }}";
+
+// typography
+style.typography(id + ' {{tag}}', {{ field('font') | json_encode() }});
+
+// Alignment
+style.alignment(id, {{ field('alignment') | json_encode() }});
+style.alignment(id, {{ field('nalignment') | json_encode() }});
+
+// Text Color
+style.css( id + ' {{tag}}', 'color', {{ field('text_color') | json_encode() }});
+{% if field("enable_bg")|default(false) %}
+	// text bg
+	style.css (id + ' {{tag}}', 'background-color', '#222')
+	style.background (id + ' {{tag}}', {{ field("text_bg") | json_encode() }})
+
+	// text background init
+	style.css (id + ' {{tag}},' + id + ' {{tag}}:hover', 'background-clip', 'text')
+	style.css (id + ' {{tag}},' + id + ' {{tag}}:hover', '-webkit-background-clip', 'text')
+	style.css (id + ' {{tag}},' + id + ' {{tag}}:hover', 'color', 'transparent')
+{% endif %}
+
+{% if renderer %}
+    style.load(id);
+{% endif %}

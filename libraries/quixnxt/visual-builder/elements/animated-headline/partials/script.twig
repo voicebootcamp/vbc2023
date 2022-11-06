@@ -1,0 +1,10 @@
+jQuery(function($){
+    var f = function(){
+        new jQuery.initQuixHeadline("#{{ advanced.identifier.id }}");
+    };
+    {% if mode == 'preview' %}
+        f();
+    {% else %}
+        $.get('{{ elementUrl ~ "/script.js" }}').done(f);
+    {% endif %}
+});

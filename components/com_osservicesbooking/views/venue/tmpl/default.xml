@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="List All Venues">
+		<message>
+			<![CDATA[List All Venues.]]>
+		</message>
+	</layout>
+	<state>
+		<name>List All Venues</name>
+		<description>List All Venues of Services Booking component</description>
+	</state>
+	<fields name="params">
+		<fieldset name="basic" label="Basic Setting">
+			<field name="introtext" type="editor" default="" label="Intro Text" description="Please enter Intro Text, it will be shown at top of Services listing" />
+		</fieldset>
+	</fields>
+</metadata>

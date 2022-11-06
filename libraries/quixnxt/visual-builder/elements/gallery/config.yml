@@ -1,0 +1,410 @@
+name: Gallery
+slug: gallery
+groups: pro
+helpId: 5d1feaf82c7d3a5cd38ec1b8
+form:
+  general:
+    - name: images
+      label: Images
+      type: group-repeater
+      schema:
+        - name: title
+          value: Sample Image
+
+        - name: image
+          type: media
+          showstyle: true
+          filters: image
+          value: "media/quixnxt/images/placeholder.png"
+
+        - name: alt_text
+          label: Alt Text
+          type: text
+          help: Google focuses on alt text when trying to understand what an image is about. So it's valuable for SEO, in addition to being useful for users.
+          depends:
+            image: "*"
+
+        - name: caption
+          type: text
+          depends:
+            image: "*"
+
+        - name: tag
+          type: text
+          help: Use comma to add more tags
+
+      value:
+        - title: Item 1
+          image: "media/quixnxt/images/placeholder.png"
+          caption: This is a caption
+        - title: Item 2
+          image: "media/quixnxt/images/placeholder.png"
+          caption: This is a caption
+        - title: Item 3
+          image: "media/quixnxt/images/placeholder.png"
+          caption: This is a caption
+        - title: Item 4
+          image: "media/quixnxt/images/placeholder.png"
+          caption: This is a caption
+
+    - name: gallery_fg_columns
+      label: Layout
+      type: fields-group
+      schema:
+        - name: enable_layout
+          label: Enable Responsive Grid (New)
+          type: hidden
+          value: false
+
+        - name: layout
+          label: Layout
+          type: choose
+          value:
+            desktop: qx-child-width-1-4
+            tablet: qx-child-width-1-2
+            phone: qx-child-width-1-1
+          responsive: true
+          options:
+            qx-child-width-1-1:
+              label: 1-1
+            qx-child-width-1-2:
+              label: 1-2
+            qx-child-width-1-3:
+              label: 1-3
+            qx-child-width-1-4:
+              label: 1-4
+            qx-child-width-1-5:
+              label: 1-5
+            qx-child-width-1-6:
+              label: 1-6
+
+        - name: enable_masonry
+          label: Enable Masonry?
+          help: Use different size images
+          type: switch
+          responsive: false
+          value: false
+
+        - name: standard_grid
+          label: Standard Grid
+          type: select
+          value: qx-grid-medium
+          options:
+            qx-grid-large: Large
+            qx-grid-medium: Medium
+            qx-grid-small: Small
+            qx-grid-stack: Stack
+            qx-grid-collapse: Collapse
+
+        - name: gallery_alignment
+          label: Gallery Alignment
+          type: select
+          value: qx-flex-center
+          options:
+            qx-flex-left: Left
+            qx-flex-center: Center
+            qx-flex-right: Right
+            qx-flex-space-between: Between
+            qx-flex-space-around: Around
+
+    - name: gallery_fg_filter
+      label: Filter
+      type: fields-group
+      schema:
+        - name: show_filter
+          label: Enable Filter Navigation
+          type: switch
+          value: false
+
+        - name: show_filter_all
+          label: Hide Filter All
+          type: switch
+          value: false
+          depends:
+            show_filter: true
+
+        - name: filter_all_text
+          label: Filter All
+          type: text
+          value: All
+          depends:
+            show_filter_all: true
+
+        - name: default_filter
+          label: Default Filter
+          help: Which tag should be selected by default
+          type: text
+          depends:
+            show_filter: true
+
+        - name: filter_alignment
+          label: Filter Alignment
+          type: select
+          value: qx-flex-center
+          depends:
+            show_filter: true
+          options:
+            qx-flex-left: Left
+            qx-flex-center: Center
+            qx-flex-right: Right
+            qx-flex-space-between: Between
+            qx-flex-space-around: Around
+
+    - name: gallery_fg_lightbox
+      label: Lightbox
+      type: fields-group
+      schema:
+        - name: lightbox
+          label: Enable Lightbox Gallery
+          type: switch
+          value: false
+
+        - name: lightbox-style
+          label: Lightbox Style
+          type: select
+          value: slide
+          depends:
+            lightbox: true
+          options:
+            slide: Slide
+            fade: Fade
+            scale: Scale
+
+        - name: caption
+          label: Show Caption In Lightbox
+          type: switch
+          value: false
+          depends:
+            lightbox: true
+
+    - name: gallery_fg_overlay
+      label: Overlay
+      type: fields-group
+      schema:
+        - name: show_overlay
+          label: Show Overlay
+          type: switch
+          value: false
+
+        - name: show_overlay_title
+          label: Show Title
+          type: switch
+          value: false
+          depends:
+            show_overlay: true
+
+        - name: show_overlay_caption
+          label: Show Caption
+          type: switch
+          value: false
+          depends:
+            show_overlay: true
+
+        - name: show_overlay_onlyhover
+          label: Show on hover
+          type: switch
+          value: false
+          depends:
+            show_overlay: true
+
+        - name: overlay_style
+          label: Overlay Style
+          type: select
+          value: default
+          options:
+            default: Default
+            primary: Primary
+            none: none
+          depends:
+            show_overlay: true
+
+        - name: overlay_position
+          label: Overlay Position
+          type: select
+          value: qx-position-center
+          options:
+            qx-position-center: Center
+            qx-position-top: Top
+            qx-position-left: Left
+            qx-position-right: Right
+            qx-position-bottom: Bottom
+          depends:
+            show_overlay: true
+
+  styles:
+    - name: image_style
+      label: Image
+      type: fields-group
+      schema:
+        - name: image_fit_style
+          label: Image Adjustment
+          type: select
+          value: cover
+          options:
+            contain: Large
+            cover: Cover
+            fill: Fill
+            inherit: Inherit
+            initial: Initial
+            none: None
+            scale-down: Scale-down
+            unset: Unset
+
+        - name: image_position_style
+          label: Image Position
+          type: select
+          value: center
+          options:
+            inherit: Inherit
+            initial: Initial
+            top: Top
+            center: Center
+            bottom: Bottom
+            left: Left
+            right: Right
+            unser: Unset
+
+        - name: image_width
+          label: Image Width
+          type: slider
+          defaultUnit: %
+          units: %, px
+          max: 1000
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+
+        - name: image_height
+          label: Image height
+          type: slider
+          defaultUnit: px
+          units: %, px
+          max: 1000
+
+        - name: image_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: filter_style
+      label: Filter Style
+      type: fields-group
+      depends:
+        show_filter: true
+      schema:
+        - name: filter_text
+          label: Text Color
+          type: color
+
+        - name: filter_text_hover
+          label: Hover Color
+          type: color
+
+        - name: filter_bg_active
+          label: Background Active Color
+          type: color
+
+        - name: filter_item_typo
+          label: Filter Typography
+          type: typography
+          popover: true
+
+        - name: filter_bg
+          type: background
+          label: Background
+          popover: true
+
+        - name: filter_bd
+          type: border
+          label: border
+          popover: true
+
+        - name: filter_padding
+          label: Padding
+          type: dimensions
+
+        - name: filter_margin
+          label: Margin
+          type: dimensions
+
+    - name: filter_typo_style
+      label: Filter Typography
+      type: fields-group
+      depends:
+        show_filter: true
+      schema:
+        - name: filter_typo_divider
+          label: Typography
+          type: divider
+
+        - name: filter_typo
+          label: Filter Typography
+          type: typography
+          popover: true
+
+    - name: overlay_style
+      label: Overlay Style
+      type: fields-group
+      depends:
+        show_overlay: true
+      schema:
+        - name: overlay_title_color
+          type: color
+          label: Title Color
+
+        - name: overlay_title_hover_color
+          label: Title Hover color
+          type: color
+
+        - name: overlay_caption_color
+          label: Caption Color
+          type: color
+
+        - name: overlay_caption_hover_color
+          label: Caption Hover Color
+          type: color
+
+        - name: overlay_bg_d
+          label: Overlay Background
+          type: divider
+
+        - name: overlay_bg
+          type: background
+          lable: Background
+          popover: true
+
+    - name: overlay_typo_style
+      label: Overlay Typography
+      type: fields-group
+
+      depends:
+        show_overlay: true
+      schema:
+        - name: overlay_alignment
+          label: Text Alignment
+          type: choose
+          value:
+            desktop: center
+            tablet: center
+            phone: center
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            right:
+              label: Right
+              icon: qxuicon-align-right
+
+        - name: overlay_title_typo
+          type: typography
+          label: Title Typography
+          popover: true
+
+        - name: overlay_caption_typo
+          type: typography
+          label: Caption Typography
+          popover: true

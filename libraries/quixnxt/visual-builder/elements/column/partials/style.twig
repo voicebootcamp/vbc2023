@@ -1,0 +1,38 @@
+{% set id = '#' ~ advanced.identifier.id %}
+{% set wrapper = '#' ~ advanced.identifier.id ~ ' > .qx-col-wrap' %}
+{% set css = '' %}
+{% set backgroundOverlay = id ~ '.' ~ advanced.identifier.id ~ '-background-overlay' %}
+{% set elementBuilderSelector = id ~ ' .qx-fb-elements .qx-fb-element+.qx-fb-element' %}
+{% set elementSelector = id ~ ' .qx-element-wrap+.qx-element-wrap' %}
+{% set width = general.layout_fields_group.col_width %}
+
+{# margin #}
+{{ style.margin(wrapper, advanced.spacing_fields_group.margin) }}
+
+{# padding #}
+{{ style.padding(wrapper, advanced.spacing_fields_group.padding) }}
+
+{# Z-Index #}
+{{ style.css(id, 'z-index', advanced.spacing_fields_group.zindex) }}
+
+{# background #}
+{{ style.background (wrapper, advanced.background_fields_group.background) }}
+
+{# background overlay #}
+{{ style.background(backgroundOverlay, styles.background_overlay_fields_group.background_overlay, id) }}
+
+{# border + box shadow #}
+{{ style.border (wrapper, advanced.border_fields_group.border) }}
+
+{{ style.responsiveCss(elementBuilderSelector, general.layout_fields_group.element_spacing, 'margin-top', 'px') }}
+{{ style.responsiveCss(elementSelector, general.layout_fields_group.element_spacing, 'margin-top', 'px') }}
+
+
+{# custom css #}
+{% set rawStyle = replaceAll(advanced.custom_css_group.custom_css.code, 'selector', id) %}
+{{ style.raw(rawStyle) }}
+
+{# width #}
+{{ style.width(id, width) }}
+
+{{ style.load(id) }}

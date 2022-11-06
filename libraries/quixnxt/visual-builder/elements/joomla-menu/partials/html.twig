@@ -1,0 +1,156 @@
+{% if not renderer %}
+    {% import _self as menuMacro %}
+{% endif %}
+
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{# Main Menu #}
+{% set menuLayout = general.menu_core.menu_layout %}
+{% set menuAlignment = general.menu_core.menu_alignment %}
+{% if menuLayout == 'horizontal' %}
+    {% set menuSubIndicator = general.menu_core.menu_sub_indicator %}
+{% else %}
+    {% set menuSubIndicator = '' %}
+{% endif %}
+
+{% if menuLayout == 'vertical' %}
+    {% set verticalSubmenuIndicator = 'qx-parent ' %}
+    {% set verticalSubmenuIndicator = verticalSubmenuIndicator ~ general.menu_core.menu_sub_indicator %}
+{% else %}
+    {% set verticalSubmenuIndicator = '' %}
+{% endif %}
+
+{% set mainWrapper = classNames(
+    menuLayout == 'horizontal' ? 'qx-navbar-nav qx-flex-wrap qx-flex-row' : '', 'qx-flex-' ~ menuAlignment
+) %}
+
+{# Dropdown Menu #}
+{% set dropdownMenuOpen = general.dropdown_menu_core.dropdown_menu_open %}
+{% set dropdownDropbar = general.dropdown_menu_core.dropdown_dropbar | default('false') %}
+{% if dropdownDropbar %}
+    {% set dropdownDropbarMode = general.dropdown_menu_core.dropdown_dropbar_mode %}
+{% else %}
+    {% set dropdownDropbarMode = '' %}
+{% endif %}
+
+{# Mobile Menu #}
+{% set mobileMenuBreakpoint = general.mobile_dropdown_menu_core.mobile_dropdown_breakpoint %}
+{% set mobileDropdownType = general.mobile_dropdown_menu_core.mobile_dropdown_type %}
+{% set mobileDropdownAlign = general.mobile_dropdown_menu_core.mobile_dropdown_align %}
+{% set mobileOffcanvasRight = general.mobile_dropdown_menu_core.mobile_offcanvas_right %}
+{% set mobileOffcanvasEffect = general.mobile_dropdown_menu_core.mobile_offcanvas_effect %}
+
+{# {% set module_id = field('module_id') %} #}
+{% set classes = classNames('qx-element qx-element-joomla-menu', visibilityClass(visibility), class ) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% set menuType = general.menu_core.menu_type %}
+{% if isDynamic %}
+    {{ '<?php include JPATH_LIBRARIES.\'/quixnxt/visual-builder/elements/joomla-menu/helper.php\'; ?>'|raw }}
+    {{ '<?php $items = \\QuixJoomlaMenuElement::getAjax([\'menutype\' => \'' ~ menuType ~ '\'])[\'list\']; ?>'|raw }}
+{% else %}
+    {% set menuInfo = ElementApiCall('joomla-menu', { 'menutype' : menuType}) %}
+    {% set items = menuInfo.list %}
+{% endif %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {% if renderer %}
+            {% import 'joomla-menu/partials/macro.twig' as menuMacro %}
+        {% endif %}
+
+        {% if menuLayout == 'horizontal' %}
+            <nav class="qx-visible@{{mobileMenuBreakpoint}} qx-navbar" qx-navbar="mode: {{ dropdownMenuOpen }}; dropbar: {{ dropdownDropbar }}; dropbar-mode: {{ dropdownDropbarMode }}" >
+        {% endif %}
+
+        {% if menuLayout == 'horizontal' %}
+        <div class="qx-navbar-{{ menuAlignment }}">
+        <ul class="{{ mainWrapper }}">
+        {% elseif menuLayout == 'vertical' %}
+        <div class="qx-visible@{{mobileMenuBreakpoint}}">
+        <ul class="qx-nav qx-flex qx-flex-column qx-parent-icon" qx-nav>
+        {% endif %}
+        {% if isDynamic %}
+            {{ menuMacro.getDynamicMenu(menuLayout, menuSubIndicator, verticalSubmenuIndicator) }}
+        {% else %}
+            {{ menuMacro.getStaticMenu(items, menuLayout, menuSubIndicator, verticalSubmenuIndicator) }}
+        {% endif %}
+        </ul>
+        </div>
+
+        {% if menuLayout == 'horizontal' %}
+            </nav>
+        {% endif %}
+
+        {% if dropdownDropbar %}
+            <div class="qx-navbar-dropbar"></div>
+        {% endif %}
+
+        {# Toggle Menu #}
+        {% if mobileDropdownType == 'toggle' %} 
+            <div class="qx-hidden@{{mobileMenuBreakpoint}}">
+                <div class="qx-flex qx-flex-{{ mobileDropdownAlign }}">
+                    <button class="qx-button qx-button-default" type="button"
+                            qx-toggle="target: #{{ id }}-toggle; animation: qx-animation-fade">
+                        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="9" width="20" height="2"></rect>
+                            <rect y="3" width="20" height="2"></rect>
+                            <rect y="15" width="20" height="2"></rect>
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="{{ id }}-toggle" class="qx-joomla-menu-toggle" hidden>
+                    <div class="qx-flex qx-flex-{{ mobileDropdownAlign }}">
+                        <ul class="qx-nav qx-flex-column qx-parent-icon qx-nav-{{ menuAlignment }}" qx-nav>
+                            {% if isDynamic %}
+                                {{ menuMacro.dynamicMobileMenu(menuLayout, menuSubIndicator, verticalSubmenuIndicator) }}
+                            {% else %}
+                                {{ menuMacro.staticMobileMenu(items, menuLayout, menuSubIndicator, verticalSubmenuIndicator) }}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        {% elseif mobileDropdownType == 'offcanvas' %}
+            <div class="qx-hidden@{{mobileMenuBreakpoint}}">
+                <div class="qx-flex qx-flex-{{ mobileDropdownAlign }}">
+                    <button class="qx-button qx-button-default" type="button" qx-toggle="target: #{{ id }}-offcanvas">
+                        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="9" width="20" height="2"></rect>
+                            <rect y="3" width="20" height="2"></rect>
+                            <rect y="15" width="20" height="2"></rect>
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="{{ id }}-offcanvas" class="qx-joomla-menu-offcanvas"
+                     qx-offcanvas="flip:{{ mobileOffcanvasRight }}; mode: {{ mobileOffcanvasEffect }}">
+                    <div class="qx-offcanvas-bar">
+                        <button class="qx-offcanvas-close" type="button" qx-close></button>
+                        <ul class="qx-nav qx-flex qx-flex-column qx-parent-icon qx-nav-{{ menuAlignment }}" qx-nav>
+                            {% if isDynamic %}
+                                {{ menuMacro.dynamicMobileMenu(menuLayout, menuSubIndicator, verticalSubmenuIndicator) }}
+                            {% else %}
+                                {{ menuMacro.staticMobileMenu(items, menuLayout, menuSubIndicator, verticalSubmenuIndicator) }}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+    {% endblock %}
+{% endembed %}

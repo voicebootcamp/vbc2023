@@ -1,0 +1,131 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Form group (Common column gap) #}
+{% set columnGap = styles.form_body.column_gap %}
+
+{# Form #}
+{% set rowsGap = styles.form_body.rows_gap %}
+
+{# Label #}
+{% set labelColor = styles.form_field_level.label_color %}
+{% set labelTypography = styles.form_field_level.label_typography %}
+{% set labelSpacing = styles.form_field_level.label_spacing %}
+
+{# Form input #}
+{% set fieldColor = styles.form_field.field_color %}
+{% set fieldBGcolor = styles.form_field.field_bgcolor %}
+{% set fieldBordercolor = styles.form_field.field_bordercolor %}
+{% set fieldTypography = styles.form_field.field_typography %}
+{% set fieldBorderwidth = styles.form_field.field_borderwidth %}
+{% set fieldPadding = styles.form_field.field_padding %}
+{% set fheight = styles.form_field.fheight %}
+
+{# Form submit #}
+{% set buttonColor = styles.form_button.button_color %}
+{% set buttonHoverColor = styles.form_button.button_hover_color %}
+{% set buttonBG = styles.form_button.button_bg %}
+{% set buttonBorder = styles.form_button.button_border %}
+{% set buttonPadding = styles.form_button.button_padding %}
+{% set buttonTypography = styles.form_button.button_typography %}
+
+{# Selectors #}
+{% set formGroup = id ~ ' .qx-form-group' %}
+{% set formGroupLabel = id ~ ' .qx-form-group label:first-child' %}
+{% set formInput = id ~ ' .qx-form-control' %}
+{% set formAllInput = id ~ ' .form-wrapper .qx-form-control' %}
+{% set formText = id ~ ' .form-text' %}
+{% set formCheck = id ~ ' .qx-form-check .qx-form-check-input' %}
+{% set formCheckInline = id ~ ' .qx-form-check.qx-form-check-inline .qx-form-check-input' %}
+{% set formSubmit = id ~ ' .form-submit' %}
+{% set formSubmitButton = id ~ ' .form-submit button' %}
+{% set submitSelector = id ~ ' .form-submit' %}
+
+ {% set img = general.form_submit.icon %}
+
+
+{# Form group (Common column gap) #}
+{{ style.css(formGroup, 'padding-right', 'calc((' ~ columnGap ~ 'px' ~ ') / 2)') }}
+{{ style.css(formGroup, 'padding-left', 'calc((' ~ columnGap ~ 'px' ~ ') /2)') }}
+
+ {#width, grid elm.css( formGroup, 'width', {{ '100%' | json_encode() }});#}
+ style.css( formGroup + ',' + formSubmit, 'float', 'left');
+ style.css( formGroup + ',' + formSubmit, 'width', '100%');
+
+{% set fieldsGroup = general.form_fields %}
+{% set formID = advanced.identifier.id %}
+{% if fieldsGroup %}
+  {% for index, fields in fieldsGroup %}
+    {% set data = fieldsGroup(fieldsGroup, index ) %}
+
+    {% set rawName = data.title|raw|lower|replace({'-': '', ' ': ''}) %}
+    {% set fieldid = [formID, index, rawName]|join %}
+
+    {% if data.type == 'textarea' %}
+      {% set heightTextarea = data.height|default("{value: '120', unit: 'px'}") %}
+      {% if heightTextarea is not iterable %}
+          {% set heightTextarea =  {value: heightTextarea, unit: 'px'} %}
+      {% endif %}
+      {{ style.css(formGroup ~ '.qx-form-group-' ~ index ~ ' textarea', 'height', heightTextarea.value ~ heightTextarea.unit) }}
+    {% endif %}
+
+    {{ style.responsiveCss(formGroup ~ '.qx-form-group-' ~ index, data.column_width, 'width', data.column_width.unit) }}
+
+  {% endfor %}
+{% endif %}
+
+{# SVG #}
+{% if img.source %}
+  {% if img.type == 'svg' %}
+    {{ style.css(submitSelector ~ ' path', 'fill', img.properties.color) }}
+    {{ style.css(submitSelector ~ ' svg', 'width', img.properties.size ~  'px') }}
+
+{#      {{ style.css(submitSelector ~ ' svg', 'height', img.properties.size.value ~  img.properties.size.unit) }}#}
+{#      {{ style.css(submitSelector ~ ' svg,' ~ submitSelector ~ ' i', 'margin-right', '10px') }}#}
+
+    {{ style.css(submitSelector ~ ' i', 'color', img.properties.color) }}
+    {{ style.css(submitSelector ~ ' i', 'font-size', img.properties.size ~ 'px') }}
+  {% endif %}
+{% endif %}
+
+{# for all input of the form #}
+ style.css( ".qx.quix .qx-element.qx-element-form-v2 input, .app-mount .qx-element.qx-element-form-v2 input", 'height', 'auto');
+
+{# Form #}
+{{ style.responsiveCss(formGroup, rowsGap, 'margin-bottom', rowsGap.unit) }}
+
+{# Label #}
+{{ style.css(formGroupLabel, 'font-size', '20px') }}
+{{ style.css(formGroupLabel, 'color', labelColor) }}
+{{ style.typography(formGroupLabel, labelTypography) }}
+{{ style.responsiveCss(formGroupLabel, labelSpacing, 'margin-bottom', labelSpacing.unit) }}
+{{ style.responsiveCss(formAllInput, fheight, 'height', fheight.unit) }}
+
+
+{# Form input #}
+{{ style.css(formAllInput, 'font-size', '16px') }}
+{{ style.css(formAllInput, 'color', fieldColor) }}
+{{ style.css(formAllInput, 'background-color', fieldBGcolor) }}
+{{ style.css(formAllInput, 'border-color', fieldBordercolor) }}
+{{ style.typography(formAllInput, fieldTypography) }}
+{{ style.responsiveCss(formAllInput, fieldBorderwidth, 'border-width', fieldBorderwidth.unit) }}
+{{ style.padding(formAllInput, fieldPadding) }}
+
+{# radio and checkbox #}
+{{ style.css(formCheck, 'margin-left', '-20px') }}
+{{ style.css(formCheckInline, 'margin-left', '0px') }}
+
+{# Form submit #}
+{{ style.responsiveCss(id ~ ' .form-submit', styles.form_button.submit_column, 'width', styles.form_button.submit_column.unit) }}
+{{ style.css(id ~ ' .form-submit .qx-btn-block span', 'justify-content', general.form_submit.submit_block_alignment) }}
+
+ {{ style.alignment(submitSelector, general.form_submit.submit_alignment) }}
+{{ style.css(submitSelector ~ ' button', 'color', buttonColor) }}
+{{ style.css(submitSelector ~ ' button:hover', 'color', buttonHoverColor) }}
+{{ style.background(submitSelector ~ ' button', buttonBG) }}
+{{ style.border(submitSelector ~ ' button', buttonBorder) }}
+{{ style.padding(submitSelector ~ ' button', buttonPadding) }}
+{{ style.typography(submitSelector ~ ' button', buttonTypography) }}
+
+{{ style.load(id) }}

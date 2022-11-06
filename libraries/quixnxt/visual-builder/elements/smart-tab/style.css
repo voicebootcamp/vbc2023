@@ -1,0 +1,11 @@
+.qx-element-smart-tab-v2 .qx-tab-left .qx-element-smart-tab-item {
+    width: 100%;
+}
+.qx-element-smart-tab-v2 .qx-element-smart-tab-item {
+    display: flex;
+    align-items: center;
+}
+.qx-element-smart-tab-v2 .qx-element-smart-tab-item a.qx-flex-row,
+.qx-element-smart-tab-v2 .qx-element-smart-tab-item a.qx-flex-row-reverse {
+    display: inherit;
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "plg_multifactorauth_smsapi",
+  "version": "7.0.0",
+  "description": "SMSAPI.com integration with Joomla Multi-Factor Authentication",
+  "license": "GPL-3.0-or-later",
+  "assets": [
+    {
+      "name": "plg_multifactorauth_smsapi.telinput",
+      "description": "Telephone Number Input control CSS",
+      "type": "style",
+      "uri": "plg_multifactorauth_smsapi/intlTelInput.min.css"
+    },
+    {
+      "name": "plg_multifactorauth_smsapi.setup",
+      "description": "SMS method setup JS",
+      "type": "script",
+      "uri": "plg_multifactorauth_smsapi/setup.min.js",
+      "dependencies": [
+        "plg_multifactorauth_smsapi.telinput"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "plg_multifactorauth_smsapi.telinput",
+      "description": "Telephone Number Input control main JS",
+      "type": "script",
+      "uri": "plg_multifactorauth_smsapi/intlTelInput.min.js",
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "plg_multifactorauth_smsapi.setup",
+      "description": "Setup the SMS method",
+      "type": "preset",
+      "dependencies": [
+        "plg_multifactorauth_smsapi.telinput#style",
+        "plg_multifactorauth_smsapi.setup#script"
+      ]
+    }
+  ]
+}

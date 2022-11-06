@@ -1,0 +1,163 @@
+{% macro getLabel(id, label, name, req, reqmark) %}
+    {% if label and name  and req and reqmark %}
+        <label for="{{ id }}">{{ name }} <strong>*</strong></label>
+    {% elseif label and name %}
+        <label for="{{ id }}">{{ name }}</label>
+    {% endif %}
+{% endmacro %}
+
+{% macro getHelp(id, desc) %}
+    {% if desc %}
+        <small id="{{ id }}Help" class="form-text text-muted">{{ desc }}</small>
+    {% endif %}
+{% endmacro %}
+
+{% macro getSubmit(id, info, useReCaptchar) %}
+    {% set src = info[4] %}
+    {% set enableCaptcha = info[6] %}
+    {# [submit_text, submit_size, submit_column, submit_alignment, icon] #}
+    {% set btnClass = classNames('qx-btn qx-btn-primary qx-btn-' ~ info[1], (info[5] ? 'qx-btn-block' : '')) %}
+    <div class="qx-form-group form-submit">
+        {% if enableCaptcha and useReCaptchar %}
+        <button disabled class="{{ btnClass }} qx-disabled" type="submit">
+            {% else %}
+                <button class="{{ btnClass }}" type="submit">
+            {% endif %}
+                <span class="qx-flex qx-flex-middle">
+                    {% if src.source and  src.type == "svg" %}
+                        {{ icon(src.source)|raw }}
+                        {{ addIconStyle('#' ~ id ~ ' .form-submit button', src) }}
+                    {% endif %}
+                    {{ info[0]|raw }}
+                </span>
+            </button>
+    </div>
+{% endmacro %}
+
+{% macro getInput(index, id, attributes, data) %}
+    {% if data.item_label is defined %}
+        {% set itemLabel = data.item_label %}
+    {% else %}
+        {% set itemLabel = data.title %}
+    {% endif %}
+
+    {% set name = itemLabel %}
+    {% set rawName = data.title|raw|replace({'-': '', ' ': ''})|lower %}
+    {% set id = [id, index, rawName]|join %}
+
+    {% set label = attributes[0] %}
+    {% set size = attributes[1] %}
+    {% set reqmark = attributes[2] %}
+    {% set isRequired = data.required ? "true" : "false" %}
+    <div id="{{ id }}" class="qx-form-group qx-form-group-{{ index }}">
+
+        {% if rawName == '' %}
+            <p class="qx-alert qx-alert-warning">
+                You must use a name for field!
+            </p>
+        {% else %}
+
+            {% if data.type != 'hidden' and data.type != 'html' %}
+                {% set labelHtml = _self.getLabel(id, label, name, data.required, reqmark) %}
+                {{ labelHtml | raw }}
+            {% endif %}
+
+            {% if data.type == 'radio' or data.type == 'checkbox' %}
+
+                {% set optionsList = data.options|split('\n') %}
+                {% for index2, item in optionsList %}
+                    {% set optionid = id %}
+                    <div class="qx-form-check{{ (data.inline ? ' qx-form-check-inline' : '') }}">
+                        {% if data.type == 'radio' %}
+                            <input class="qx-form-check-input qx-{{ data.type|default('checkbox') }}" type="{{ data.type|default('checkbox') }}"
+                                   name="jform[{{ rawName }}]" id="{{ optionid ~ index2 }}" value="{{ item }}"
+                                   required="{{ isRequired }}">
+                        {% else %}
+                            <input class="qx-form-check-input qx-{{ data.type|default('checkbox') }}" type="{{ data.type|default('checkbox') }}"
+                                   name="jform[{{ rawName }}][]" id="{{ optionid ~ index2 }}" value="{{ item }}"
+                                   required="{{ isRequired }}">
+                        {% endif %}
+
+                        <label class="qx-form-check-label" for="{{ optionid ~ index2 }}">
+                            {{ item }}
+                        </label>
+                    </div>
+                {% endfor %}
+            {% elseif data.type == 'acceptance' and data.acceptance_checked %}
+                <div class="qx-form-check qx-form-check-inline">
+
+                    {% set acceptanceText = data.acceptance|raw %}
+
+                    <input class="qx-form-check-input qx-checkbox" type="checkbox" name="jform[{{ rawName }}]" id="{{ id }}"
+                           checked="{{ data.acceptance_checked|default(false) }}" required="{{ isRequired }}">
+
+
+                    <label class="qx-form-check-label" for="{{ id }}">
+                        {{ acceptanceText|raw }}
+                    </label>
+                </div>
+
+            {% elseif data.type == 'acceptance' %}
+                <div class="qx-form-check">
+
+                    {% set acceptanceText = data.acceptance|raw %}
+
+                    <input class="form-check-input qx-checkbox" type="checkbox" name="jform[{{ rawName }}]" id="{{ id }}"
+                           required="{{ isRequired }}">
+
+
+                    <label class="form-check-label" for="{{ id }}">
+                        {{ acceptanceText|raw }}
+                    </label>
+                </div>
+
+            {% elseif data.type == 'html' %}
+                <div class="qx-form-html">
+
+                    {{ data.html|raw }}
+
+                </div>
+
+            {% elseif data.type == 'select' and data.multiple %}
+                <select id="{{ id }}" class="qx-form-control qx-select" multiple required="{{ isRequired }}"
+                        name="jform[{{ rawName }}]">
+                    {% set optionsList = data.options|split('\n') %}
+                    {% for item in optionsList %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            {% elseif data.type == 'select' %}
+                <select id="{{ id }}" class="qx-form-control qx-select" required="{{ isRequired }}" name="jform[{{ rawName }}]">
+                    {% set optionsList = data.options|split('\n') %}
+                    {% for item in optionsList %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            {% elseif data.type == 'textarea' %}
+                <textarea name="jform[{{ rawName }}]"
+                          class="qx-textarea qx-form-control qx-form-control-{{ data.size|default('md') }}" id="{{ id }}"
+                          rows="{{ data.row|default(10) }}" aria-describedby="{{ id }}"
+                          placeholder="{{ data.placeholder|e }}" required="{{ isRequired }}"
+                          ></textarea>
+            {% elseif data.multiple %}
+                <input type="{{ data.type|default('text') }}" name="jform[{{ rawName }}]"
+                       class="qx-input qx-form-control qx-form-control-{{ data.size|default('md') }}" id="{{ id }}"
+                       aria-describedby="{{ id }}" placeholder="{{ data.placeholder|e }}"
+                       value="{{ data.type == 'hidden' ? data.hidden_value : '' }}" required="{{ isRequired }}"
+                       multiple />
+            {% else %}
+                <input type="{{ data.type|default('text') }}" name="jform[{{ rawName }}]"
+                       class="qx-input qx-form-control qx-form-control-{{ data.size|default('md') }}" id="{{ id }}"
+                       aria-describedby="{{ id }}" placeholder="{{ data.placeholder|e }}"
+                       value="{{ data.type == 'hidden' ? data.hidden_value : '' }}" required="{{ isRequired }}" />
+            {% endif %}
+
+            {% if data.type != 'hidden' %}
+                {% set helpHtml = _self.getHelp(id, data.desc) %}
+                {{ helpHtml | raw }}
+            {% endif %}
+
+        {% endif %}
+
+    </div>
+{% endmacro %}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--~
+  ~ @package   AkeebaLoginGuard
+  ~ @copyright Copyright (c)2016-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @license   GNU General Public License version 3, or later
+  -->
+
+<extension version="4.0.0" type="package" method="upgrade">
+    <name>pkg_loginguard</name>
+
+    <author>Akeeba Ltd</author>
+    <creationDate>2022-08-16</creationDate>
+    <packagename>loginguard</packagename>
+    <version>7.0.0</version>
+    <url>https://www.akeeba.com</url>
+    <packager>Akeeba Ltd</packager>
+    <packagerurl>https://www.akeeba.com</packagerurl>
+    <copyright>Copyright (c)2016-2022 Nicholas K. Dionysopoulos / Akeeba Ltd</copyright>
+    <license>GNU GPL v3 or later</license>
+    <description>PKG_LOGINGUARD_XML_DESCRIPTION</description>
+
+    <!-- List of extensions to install -->
+    <files>
+        <!-- Plugins: multifactorauth -->
+        <file type="plugin" group="multifactorauth" id="pushbullet">plg_multifactorauth_pushbullet.zip</file>
+        <file type="plugin" group="multifactorauth" id="smsapi">plg_multifactorauth_smsapi.zip</file>
+    </files>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/pkg_loginguard.sys.ini</language>
+    </languages>
+
+    <!-- Installation script -->
+    <scriptfile>script.loginguard.php</scriptfile>
+
+    <!-- Update servers -->
+    <updateservers>
+        <server type="extension" priority="1" name="Akeeba LoginGuard Updates">https://cdn.akeeba.com/updates/pkgloginguard.xml</server>
+    </updateservers>
+</extension>

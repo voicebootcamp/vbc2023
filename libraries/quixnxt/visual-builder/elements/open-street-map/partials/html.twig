@@ -1,0 +1,47 @@
+
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set views = general.configuration.views %}
+{% set lat = general.configuration.latitude|default('23.77319') %}
+{% set lon = general.configuration.longitude|default('90.36692') %}
+
+{% set height = general.configuration.height %}
+{% if height.value %}
+    {% set height = height.value %}
+{% endif %}
+
+{% set classes = classNames('qx-element qx-element-map', visibilityClass(visibility), class ) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        <div class="open-map-container">
+
+            <iframe
+                id="openMaps-{{id}}"
+                height={{height}}
+                width="100%"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+                src="https://www.openstreetmap.org/export/embed.html?bbox={{lon}}%2C{{lat}}%2C{{lon}}%2C{{lat}}&amp;layer={{views}}"marker="{{lat}}%2C{{lon}}"
+                >
+            </iframe>
+            <br/>
+            <small>
+                <a href="https://www.openstreetmap.org/#map=12/{{lat}}/{{lon}}&amp;layers=C" target="_blank">View Larger Map</a>
+            </small>
+        </div>
+    {% endblock %}
+{% endembed %}

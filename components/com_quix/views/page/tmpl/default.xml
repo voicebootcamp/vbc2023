@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_QUIX_TITLE_ITEM_VIEW_PAGE" option="View">
+        <message>
+                        <![CDATA[COM_QUIX_TITLE_ITEM_VIEW_PAGE_DESC]]>
+        </message>
+    </layout>
+    <!-- Add fields to the request variables for the layout. -->
+    <fields name="request">
+        <fieldset name="request"
+            addfieldpath="/administrator/components/com_quix/models/fields"
+         >
+            <field 
+                name="id" type="modal_page"
+                label="COM_QUIX_ITEM_ID_SELECT_LABEL"
+                required="true"
+                edit="true"
+                clear="false"
+                description=""
+            />
+        </fieldset>
+    </fields>
+
+    
+</metadata>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="template" client="site" method="upgrade">
+    <name>Atom</name>
+    <version>1.0.0</version>
+    <creationDate>02/07/2021</creationDate>
+    <author>ThemeXpert</author>
+    <authorEmail>info@themexpert.com</authorEmail>
+    <copyright>Copyright (C) 2005 - 2020 ThemeXpert, Inc. All rights reserved.</copyright>
+    <description>TPL_ATOM_XML_DESCRIPTION</description>
+
+    <files>
+        <folder>blocks</folder>
+        <folder>css</folder>
+        <folder>html</folder>
+        <folder>images</folder>
+        <folder>js</folder>
+        <folder>language</folder>
+        <filename>AtomHelper.php</filename>
+        <filename>component.php</filename>
+        <filename>error.php</filename>
+        <filename>favicon.ico</filename>
+        <filename>index.php</filename>
+        <filename>offline.php</filename>
+        <filename>template_preview.png</filename>
+        <filename>template_thumbnail.png</filename>
+        <filename>templateDetails.xml</filename>
+    </files>
+
+    <positions>
+        <position>position-1</position>
+        <position>left-sidebar</position>
+        <position>right-sidebar</position>
+        <position>footer</position>
+        <position>debug</position>
+    </positions>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.tpl_atom.ini</language>
+        <language tag="en-GB">en-GB/en-GB.tpl_atom.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="logo_type" type="radio"
+                        label="Logo Type"
+                        description=""
+                        class="btn-group"
+                        default="svg"
+                >
+                    <option value="image">Image</option>
+                    <option value="svg">SVG</option>
+                </field>
+
+                <field
+                        name="logoFile"
+                        type="media"
+                        label="TPL_ATOM_LOGO_LABEL"
+                        description="TPL_ATOM_LOGO_DESC"
+                        class=""
+                        default=""
+                        showon="logo_type:image"
+                />
+                <field
+                        name="logoSvg"
+                        type="textarea"
+                        editor="codemirror"
+                        filter="raw"
+                        label="Logo SVG"
+                        description=""
+                        class="form-input"
+                        showon="logo_type:svg"
+                />
+                <field
+                        name="sitetitle"
+                        type="text"
+                        label="JGLOBAL_TITLE"
+                        description="JFIELD_ALT_PAGE_TITLE_LABEL"
+                        default=""
+                        filter="string"
+                />
+                <field
+                        name="primaryColor"
+                        type="color"
+                        default=""
+                        format="rgba"
+                        label="TPL_ATOM_PRIMARYCOLOR_LABEL"
+                />
+                <field
+                        name="secondaryColor"
+                        type="color"
+                        default=""
+                        format="rgba"
+                        label="TPL_ATOM_SECONDARYCOLOR_LABEL"
+                />
+                <field
+                        name="layout"
+                        type="list"
+                        label="TPL_ATOM_LAYOUT_LABEL"
+                        description="TPL_ATOM_LAYOUT_DESC"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="0">TPL_ATOM_FULLWIDTH</option>
+                    <option value="1">TPL_ATOM_BOXED</option>
+                </field>
+                <field
+                        name="layoutWidth"
+                        type="text"
+                        default="80"
+                        label="TPL_ATOM_BOXEDLAYOUTWIDTH_LABEL"
+                        description="TPL_ATOM_BOXEDLAYOUTWIDTH_DESC"
+                        filter="integer"
+                        showon="layout:1"
+                />
+                <field
+                        name="layoutBackgroundcolor"
+                        type="color"
+                        default="#fff"
+                        format="rgba"
+                        label="TPL_ATOM_BACKGROUNDCOLOR_LABEL"
+                        description="TPL_ATOM_BACKGROUNDCOLOR_DESC"
+                        showon="layout:1"
+                />
+            </fieldset>
+            <fieldset name="options">
+
+                <field
+                        name="custom_js"
+                        type="editor"
+                        editor="codemirror"
+                        label="Custom JS"
+                        description=""
+                />
+
+                <field
+                        name="custom_css"
+                        type="editor"
+                        editor="codemirror"
+                        label="Custom CSS"
+                        description=""
+                />
+
+
+            </fieldset>
+            <fieldset name="advanced">
+
+                <field
+                        name="hide_nav"
+                        type="radio"
+                        label="Hide Header"
+                        description="Hide header if you are using header from quix."
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="hide_footer"
+                        type="radio"
+                        label="Hide Footer"
+                        description="Hide footer if you are using footer from quix."
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="http2_push"
+                        type="radio"
+                        label="Add Http2 pre-connect."
+                        description=""
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="reduceHttp"
+                        type="radio"
+                        label="Reduce Http Requests"
+                        description=""
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+
+            </fieldset>
+        </fields>
+    </config>
+</extension>

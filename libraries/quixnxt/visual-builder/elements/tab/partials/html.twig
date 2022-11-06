@@ -1,0 +1,162 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set classes = classNames('qx-element qx-element-tab-v2', visibilityClass(visibility), class) %}
+
+{# accordion content #}
+{% set tabGroup = general.tab_fg_element_mode %}
+{% set tag = general.tab_fg_Aditional.title_html_tag %}
+{% set tabAlign = general.tab_fg_Aditional.tab_alignment %}
+{% set titleAlign = general.tab_fg_Aditional.title_alignment | default('left') %}
+{% set globalIcon = general.tag_fg_icon.global_icon %}
+{% set mediaPosition = general.tab_fg_Aditional.media_position %}
+{% set imageAlignment = general.tab_fg_Aditional.image_alignment %}
+
+{% set mediaPosition = '' %}
+{% if mediaPosition %}
+    {% set mediaPosition = classNames(
+        'qx-text-' ~ imageAlignment
+    ) %}
+{% else %}
+    {% set contentAlign = general.tab_fg_Aditional.content_alignment %}
+{% endif %}
+
+{# Wrapper Class #}
+{% set wrapperClassesForAccordion = classNames('qx-element-tab__wrapper',
+    {
+        'qx-tab-vertical' : tabAlign == 'vertical',
+    }) %}
+
+{# tab Class #}
+{% set tabClass2 = classNames('qx-tab',
+    {
+        'qx-tab-left' : tabAlign == 'vertical',
+        'qx-tab-horizontal' : tabAlign == 'horizontal',
+    }, 'qx-flex-' ~ titleAlign
+) %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+
+        {# Call to action Markup start #}
+        <div class="{{ wrapperClassesForAccordion }}">
+            {% if tabGroup %}
+                <ul qx-tab class="{{ tabClass2 }}">
+                    {% for index, fields in tabGroup %}
+                        {% set data = fieldsGroup(tabGroup, index) %}
+                        {% if (index == 0) %}
+                            <li aria-expanded="true" class="qx-active qx-element-tab-item">
+                                <a class="qx-tab-title {{ (tabAlign == 'horizontal' ? 'qx-flex-' ~ titleAlign : '') }}"
+                                   href="#">
+                                    {% if globalIcon.type == "svg" %}
+                                        {{ icon(globalIcon.source) }}
+                                    {% endif %}
+
+                                    {{ data.title | wrap(tag) }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li aria-expanded="false" class="qx-element-tab-item">
+                                <a class="qx-tab-title {{ (tabAlign == 'horizontal' ? 'qx-flex-' ~ titleAlign : '') }}"
+                                   href="#">
+                                    {% if globalIcon.type == "svg" %}
+                                        {{ icon(globalIcon.source) }}
+                                    {% endif %}
+
+                                    {{ data.title | wrap(tag) }}
+                                </a>
+
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if globalIcon.type == "svg" %}
+                        {{ addIconStyle('#' ~ id ~ ' li.qx-element-tab-item', globalIcon) }}
+                    {% endif %}
+                </ul>
+
+                <ul class="qx-switcher qx-text-{{ contentAlign }}">
+                    {% for index, fields in tabGroup %}
+                        {% set data = fieldsGroup(tabGroup, index) %}
+                        {% set src = data.image %}
+                        {% set altText = data.alt_text %}
+                        {% set caption = data.caption %}
+                        {% set imgWidth = data.img_width %}
+
+                        {% if (index == 0) %}
+                            <li class="qx-active qx-tab-content item{{ index }}">
+                                <div class="qx-media {{ mediaPosition ? 'qx-display-inline-block' : '' }} {{ mediaPosition }}">
+                                    {% if src.source %}
+                                        <figure class="qx-element-tab__media qx-mr-2">
+                                            {% if src.type == "svg" %}
+                                                {{ icon(src.source) }}
+                                            {% else %}
+                                                {{ image( src.source, altText, '', '', src) }}
+                                            {% endif %}
+                                        </figure>
+                                    {% endif %}
+                                    <div class="qx-media-body">
+                                        <div class="qx-element-tab__body">
+                                            {{ data.description|raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if src.type == "svg" %}
+                                    {{ addIconStyle('#' ~ id ~ ' li.qx-tab-content.item0', src) }}
+                                {% elseif src.type == "image" %}
+                                    <style type="text/css">
+                                        {{ '#' ~ id }}
+                                        li.qx-tab-content.item0 figure.qx-element-tab__media img {
+                                            width: {{ imgWidth ~ 'px' }};
+                                        }
+                                    </style>
+                                {% endif %}
+                            </li>
+                        {% else %}
+                            <li class="qx-tab-content item{{ index }}">
+                                <div class="qx-media {{ mediaPosition ? 'qx-display-inline-block' : '' }} {{ mediaPosition }}">
+                                    {% if src.source %}
+                                        <figure class="qx-element-tab__media qx-mr-2">
+                                            {% if src.type == "svg" %}
+                                                {{ icon(src.source) }}
+                                            {% else %}
+                                                {{ image( src.source, altText, '', '', src) }}
+                                            {% endif %}
+                                        </figure>
+                                    {% endif %}
+                                    <div class="qx-media-body">
+                                        <div class="qx-element-tab__body">
+                                            {{ data.description|raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if src.type == "svg" %}
+                                    {{ addIconStyle('#' ~ id ~ ' li.qx-tab-content.item' ~ index, src) }}
+                                {% elseif src.type == "image" %}
+                                    <style type="text/css">
+                                        {{ '#' ~ id }}
+                                        li.qx-tab-content.item{{ index }} figure.qx-element-tab__media img {
+                                            width: {{ imgWidth ~ 'px' }};
+                                        }
+                                    </style>
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        {# end action Markup #}
+    {% endblock %}
+{% endembed %}

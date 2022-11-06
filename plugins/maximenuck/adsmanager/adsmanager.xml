@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3" type="plugin" group="maximenuck" method="upgrade">
+	<name>Maximenu CK - Adsmanager</name>
+	<creationDate>January 2020</creationDate>
+	<copyright>Copyright (C) 2020. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<author>Cedric Keiflin</author>
+	<authorEmail>ced1870@gmail.com</authorEmail>
+	<authorUrl>https://www.joomlack.fr</authorUrl>
+	<version>9.1.21</version>
+	<description>Loader of Adsmanager items for Maximenu CK</description>
+	<files>
+		<filename plugin="adsmanager">adsmanager.php</filename>
+		<folder>elements</folder>
+		<folder>helper</folder>
+		<folder>language</folder>
+		<folder>params</folder>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_maximenuck_adsmanager.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_maximenuck_adsmanager.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.plg_maximenuck_adsmanager.sys.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.plg_maximenuck_adsmanager.ini</language>
+	</languages>
+</extension>

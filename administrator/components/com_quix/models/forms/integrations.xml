@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset
+        name="quix"
+        label="JGLOBAL_QUIX"
+        description="COM_QUIX_CONFIG_QUIX_SETTINGS_DESC">
+
+        <!--
+        <field name="component_support" type="spacer" label="COM_QUIX_CONFIG_SPACER_COMPONENT_SUPPORT_LABEL" />
+
+        <field name="component_support_banner" type="spacer" label="COM_QUIX_CONFIG_COMPONENT_SUPPORT_BANNER_LABEL" />
+        -->
+
+        <field name="enable_com_content"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_CONTENT_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_CONTENT_DESC"
+            default="1"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_mod_custom"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_MOD_CUSTOM_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_MOD_CUSTOM_DESC"
+            default="1"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_com_k2"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_K2_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_K2_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_com_easyblog"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_EASYBLOG_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_EASYBLOG_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_com_digicom"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_DIGICOM_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_DIGICOM_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_com_virtuemart"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_VIRTUEMART_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_VIRTUEMART_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_com_judirectory"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_JUDIRECTORY_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_JUDIRECTORY_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_com_zoo"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_ZOO_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_ZOO_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_com_hikashop"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_HIKASHOP_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_HIKASHOP_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_com_j2store"
+            type="radio" class="btn-group btn-yes-no"
+            label="COM_QUIX_CONFIG_ENABLE_COM_J2STORE_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_COM_J2STORE_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="enable_custom_context"
+            type="radio" class="btn-group"
+            label="COM_QUIX_CONFIG_ENABLE_CUSTOM_CONTEXT_LABEL"
+            description="COM_QUIX_CONFIG_ENABLE_CUSTOM_CONTEXT_DESC"
+            default="0"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="custom_context" showon="enable_custom_context:1"
+            type="text" class="input-xxlarge"
+            label="COM_QUIX_CONFIG_CUSTOM_CONTEXT_LABEL"
+            description="COM_QUIX_CONFIG_CUSTOM_CONTEXT_DESC"
+            hint="ex: com_content.article,com_quix.page,com_digicom.product"
+        />
+
+
+    </fieldset>
+</form>

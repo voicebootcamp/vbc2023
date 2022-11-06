@@ -1,0 +1,286 @@
+advanced:
+  - name: spacing_fields_group
+    label: Element Style
+    type: fields-group
+    status: open
+    schema:
+      - name: margin
+        type: dimensions
+        units: %, px, em, rem, vh
+
+      - name: padding
+        type: dimensions
+        units: %, px, em, rem, vh
+
+      - name: zindex
+        label: Z-Index
+        type: slider
+        value: 0
+        min: -999
+        max: 999
+        step: 1
+        units: false
+        responsive: false
+
+  - name: background_fields_group
+    label: Background
+    type: fields-group
+    schema:
+      - name: background
+        type: background
+
+  - name: border_fields_group
+    label: Border & Box Shadow
+    type: fields-group
+    schema:
+      - name: border
+        type: border
+
+  - name: positioning_fields_group
+    label: Positioning
+    type: fields-group
+    schema:
+      - name: global_position
+        label: Position
+        type: select
+        value: default
+        options:
+          default: Default
+          absolute: Absolute
+          fixed: Fixed
+          sticky: Sticky
+
+      - name: horizontal
+        label: Horizontal Orientation
+        responsive: false
+        type: choose
+        value: right
+        depends:
+          global_position: [ absolute, fixed ]
+        options:
+          left:
+            label: Left
+            icon: qxuicon-arrow-to-left
+          right:
+            label: Right
+            icon: qxuicon-arrow-to-right
+
+      - name: horizontal_offset
+        label: Offset
+        type: slider
+        value:
+          desktop: 0
+          tablet: 0
+          phone: 0
+        min: -999
+        max: 999
+        step: 1
+        responsive: true
+        units: px, %, vw, vh
+        defaultUnit: px
+        depends:
+          global_position: [ absolute, fixed ]
+
+      - name: vertical
+        label: Vertical Orientation
+        responsive: false
+        type: choose
+        value: top
+        options:
+          top:
+            label: Top
+            icon: qxuicon-arrow-to-top
+          bottom:
+            label: Bottom
+            icon: qxuicon-arrow-to-bottom
+        depends:
+          global_position: [ absolute, fixed ]
+
+      - name: vertical_offset
+        label: Offset
+        type: slider
+        value:
+          desktop: 0
+          tablet: 0
+          phone: 0
+        min: -999
+        max: 999
+        step: 1
+        responsive: true
+        units: px, %, vw, vh
+        defaultUnit: px
+        depends:
+          global_position: [ absolute, fixed ]
+
+      - name: global_position_width
+        label: Width
+        type: select
+        value: default
+        options:
+          default: Default
+          full-width: Full Width (100%)
+          inline: Inline (auto)
+          custom: Custom
+
+      - name: custom_width
+        label: Custom Width
+        responsive: true
+        type: slider
+        value:
+          desktop: 100
+          tablet: 100
+          phone: 100
+        min: 0
+        max: 1000
+        step: 1
+        units: px, %, vh
+        defaultUnit: %
+        depends:
+          global_position_width: custom
+      # sticky start
+      - name: sticky_animation
+        label: Sticky Animation
+        help: Add an animation in order to have the sticky element reappear smoothly.
+        type: select
+        value: 0
+        options:
+          0: None
+          qx-animation-slide-top: Slide Top
+          qx-animation-slide-bottom: Slide Bottom
+          qx-animation-slide-left: Slide Left
+          qx-animation-slide-right: Slide Right
+        depends:
+          global_position: sticky
+
+      - name: sticky_bottom
+        label: Sticky Bottom
+        help: Bind the sticky behavior to a specific element, so that it disappears after scrolling past that point of the page.
+        type: text
+        value: footer
+        depends:
+          global_position: sticky
+
+      - name: sticky_show_on_up
+        label: Sticky on scroll up
+        help: You can make the sticky element show only when scrolling up to save space. Together with an animation, this makes for a very smooth experience.
+        type: switch
+        value: true
+        depends:
+          global_position: sticky
+
+      - name: sticky_media
+        label: Responsive
+        help: The element will be sticky from the specified viewport width and upwards, but not below. Only numbers allowed.
+        type: text
+        value: 640
+        depends:
+          global_position: sticky
+
+      - name: sticky_offset
+        label: Offset
+        help: You can position the element below the viewport edge.
+        type: slider
+        min: 0
+        max: 500
+        units: px
+        defaultUnit: px
+        responsive: false
+        value: 0
+        depends:
+          global_position: sticky
+      # sticky ends
+
+  - name: animation_fields_group
+    label: Animation
+    type: fields-group
+    schema:
+      - name: animation
+        label: Entrance Animation
+        type: select
+        value: none
+        options:
+          none: None
+          qx-animation-fade: Fade In
+          qx-animation-scale-up: Scale Up
+          qx-animation-scale-down: Scale Down
+          qx-animation-slide-top: Slide Top 
+          qx-animation-slide-bottom: Slide Bottom
+          qx-animation-slide-left: Slide Left
+          qx-animation-slide-right: Slide Right
+
+          qx-animation-slide-top-small: Slide Top Small
+          qx-animation-slide-bottom-small: Slide Bottom Small
+          qx-animation-slide-left-small: Slide Left Small
+          qx-animation-slide-right-small: Slide Right Small
+
+          qx-animation-slide-top-medium: Slide Top Medium
+          qx-animation-slide-bottom-medium: Slide Bottom Medium
+          qx-animation-slide-left-medium: Slide Left Medium
+          qx-animation-slide-right-medium: Slide Right Medium
+
+          qx-animation-kenburns: kenburns
+          qx-animation-shake: Shake
+
+
+          qx-animation-fade  qx-animation-reverse: Fade In Reverse
+          qx-animation-scale-up  qx-animation-reverse: Scale Up Reverse
+          qx-animation-scale-down  qx-animation-reverse: Scale Down Reverse
+          qx-animation-slide-top  qx-animation-reverse: Slide Top Reverse
+          qx-animation-slide-bottom  qx-animation-reverse: Slide Bottom Reverse
+          qx-animation-slide-left  qx-animation-reverse: Slide Left Reverse
+          qx-animation-slide-right  qx-animation-reverse: Slide Right Reverse
+
+          qx-animation-slide-top-small  qx-animation-reverse: Slide Top Small Reverse
+          qx-animation-slide-bottom-small  qx-animation-reverse: Slide Bottom Small Reverse
+          qx-animation-slide-left-small  qx-animation-reverse: Slide Left Small Reverse
+          qx-animation-slide-right-small  qx-animation-reverse: Slide Right Small Reverse
+
+          qx-animation-slide-top-medium  qx-animation-reverse: Slide Top Medium Reverse
+          qx-animation-slide-bottom-medium  qx-animation-reverse: Slide Bottom Medium Reverse
+          qx-animation-slide-left-medium  qx-animation-reverse: Slide Left Medium Reverse
+          qx-animation-slide-right-medium  qx-animation-reverse: Slide Right Medium Reverse
+
+          qx-animation-kenburns  qx-animation-reverse: kenburns Reverse
+          qx-animation-shake  qx-animation-reverse: Shake Reverse
+
+      - name: animation_repeat
+        label: Animation Repeat
+        type: switch
+        help: Applies animation every time the element is in view
+
+      - name: animation_delay
+        label: Animation Delay
+        type: slider
+        max: 10000
+        step: 100
+        units: ms
+        defaultUnit: ms
+        responsive: false
+        help: Delay time in ms
+
+  - name: custom_css_group
+    label: Custom CSS
+    type: fields-group
+    schema:
+      - name: custom_css
+        label: Css Code
+        type: code
+
+  - name: identifier
+    type: fields-group
+    schema:
+      - name: label
+        type: note
+
+      - name: id
+        label: Css ID
+        help: Add your custom ID WITHOUT the '#'. eg - my-id
+
+      - name: class
+        label: Css Class
+        help: Add your custom classes WITHOUT the dot and seperate by space. eg - first-class another-class
+
+      - name: acl
+        label: Access Control
+        help: Joomla Access Control List
+        type: acl

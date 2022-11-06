@@ -1,0 +1,13 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Height #}
+{{ style.height(id ~ ' .plyr,' ~ id ~ ' iframe,' ~ id ~ ' .plyr__video-wrapper', styles.custom_options.height) }}
+
+{# Width #}
+{{ style.width(id ~ ' .plyr', styles.custom_options.width) }}
+
+{{ style.css(id ~ ' .plyr', 'margin', '0 auto') }}
+
+{{ style.load(id) }}

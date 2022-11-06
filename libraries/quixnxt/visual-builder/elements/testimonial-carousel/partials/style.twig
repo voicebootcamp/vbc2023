@@ -1,0 +1,102 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{% set tcWrapperSelector = id ~ ' .qx-element-testimonial-carousel__wrapper' %}
+{% set sliderWrapperSelector = id ~ ' .qx-slider-items' %}
+{% set sliderItemSelector = id ~ ' .qx-slider-items li.qx-slider-item' %}
+{% set sliderItemWrapperSelector = id ~ ' .testimonial-carousel-slides .slider-wrapper' %}
+{% set mediaWrapper = id ~ ' .qx-testimonial__person_details' %}
+{% set mediaSelector = id ~ ' .qx-element-testimonial__media' %}
+{% set imgSelector = id ~ ' .qx-element-testimonial__media img' %}
+{% set imgSelectorMedia = id ~ ' .qx-element-testimonial__media img,' ~ id ~ ' .qx-element-testimonial__media i' %}
+{% set nameSelector = id ~ ' .qx-testimonial__name' %}
+{% set positionSelector = id ~ ' .qx-testimonial__position' %}
+{% set contentWrapper = id ~ ' .qx-testimonial__description' %}
+{% set contentSelector = id ~ ' .qx-testimonial__description p' %}
+{% set quoteSelector = id ~ ' .qx-testimonial__description i.qxif-quote-left, ' ~ id ~ ' .qx-testimonial__description svg' %}
+{% set arrowSelector = id ~ ' .qx-icon *' %}
+{% set arrowBgSelector = id ~ ' a.qx-icon' %}
+{% set dotSelector = id ~ ' .qx-dotnav li' %}
+{% set dotItemSelector = id ~ ' .qx-dotnav li *' %}
+{% set dotActiveItemSelector = id ~ ' .qx-dotnav li.qx-active *' %}
+{% set ratingSelector = id ~ ' .qx-element-testimonial-carousel__wrapper .qx-testimonial-rating' %}
+{% set gridGap = '-' ~ styles['testimonial-carousel_fg_testimonial'].item_gutter.desktop ~ styles['testimonial-carousel_fg_testimonial'].item_gutter.unit %}
+
+{# Testimonial #}
+{{ style.alignment(sliderItemWrapperSelector, styles['testimonial-carousel_fg_testimonial'].content_alignment) }}
+
+{{ style.css(sliderWrapperSelector, 'margin-left', gridGap) }}
+{{ style.responsiveCss(sliderItemSelector,  styles['testimonial-carousel_fg_testimonial'].item_gutter, 'padding-left', styles['testimonial-carousel_fg_testimonial'].item_gutter.unit) }}
+
+{{ style.background(sliderItemWrapperSelector, styles['testimonial-carousel_fg_testimonial'].testi_bg) }}
+{{ style.border(sliderItemWrapperSelector, styles['testimonial-carousel_fg_testimonial'].testi_border) }}
+{{ style.margin(sliderItemWrapperSelector, styles['testimonial-carousel_fg_testimonial'].testi_margin) }}
+{{ style.padding(sliderItemWrapperSelector, styles['testimonial-carousel_fg_testimonial'].slider_padding) }}
+
+{# Media #}
+{{ style.css(imgSelector, 'object-fit', 'cover') }}
+{{ style.border(imgSelector, styles['testimonial-carousel_fg_image'].image_border) }}
+
+{# Layouts #}
+{% if img_layout == 'inline' %}
+  {{ style.width(imgSelectorMedia, styles['testimonial-carousel_fg_image'].width) }}
+  {{ style.responsiveCss(mediaSelector, styles['testimonial-carousel_fg_image'].image_spacing, 'margin-right', styles['testimonial-carousel_fg_image'].image_spacing.unit) }}
+  {{ style.responsiveCss(contentSelector, styles['testimonial-carousel_fg_content'].content_spacing, 'margin-bottom', styles['testimonial-carousel_fg_content'].content_spacing.unit) }}
+{% elseif img_layout == 'left' %}
+  {{ style.width(imgSelectorMedia, styles['testimonial-carousel_fg_image'].width) }}
+  {{ style.responsiveCss(mediaWrapper, styles['testimonial-carousel_fg_image'].image_spacing, 'margin-right', styles['testimonial-carousel_fg_image'].image_spacing.unit) }}
+  {{ style.responsiveCss(contentSelector, styles['testimonial-carousel_fg_content'].content_spacing, 'margin-bottom', styles['testimonial-carousel_fg_content'].content_spacing.unit) }}
+{% elseif img_layout == 'right' %}
+  {{ style.width(imgSelectorMedia, styles['testimonial-carousel_fg_image'].width) }}
+  {{ style.responsiveCss(mediaWrapper, styles['testimonial-carousel_fg_image'].image_spacing, 'margin-left', styles['testimonial-carousel_fg_image'].image_spacing.unit) }}
+  {{ style.responsiveCss(contentSelector, styles['testimonial-carousel_fg_content'].content_spacing, 'margin-bottom', styles['testimonial-carousel_fg_content'].content_spacing.unit) }}
+{% else %}
+  {{ style.width(imgSelectorMedia, styles['testimonial-carousel_fg_image'].width) }}
+  {{ style.responsiveCss(mediaSelector, styles['testimonial-carousel_fg_image'].image_spacing, 'margin-bottom', styles['testimonial-carousel_fg_image'].image_spacing.unit) }}
+  {{ style.responsiveCss(contentSelector, styles['testimonial-carousel_fg_content'].content_spacing, 'margin-bottom', styles['testimonial-carousel_fg_content'].content_spacing.unit) }}
+{% endif %}
+
+{# Quote #}
+{{ style.css( quoteSelector, 'display', 'inline-block' ) }}
+{{ style.css( quoteSelector, 'color', styles['testimonial-carousel_fg_quote'].quote_color) }}
+{{ style.width( quoteSelector, styles['testimonial-carousel_fg_quote'].quote_size)}}
+{{ style.responsiveCss(quoteSelector, styles['testimonial-carousel_fg_quote'].quote_size, 'font-size', styles['testimonial-carousel_fg_quote'].quote_size.unit) }}
+{{ style.responsiveCss(quoteSelector, styles['testimonial-carousel_fg_quote'].quote_gap, 'margin-bottom', styles['testimonial-carousel_fg_quote'].quote_gap.unit) }}
+
+{# Name #}
+{{ style.css(nameSelector, 'margin-top', '0') }}
+{{ style.responsiveCss(nameSelector, styles['testimonial-carousel_fg_name'].name_spacing, 'margin-bottom', styles['testimonial-carousel_fg_name'].name_spacing.unit) }}
+{{ style.css(nameSelector, 'color', styles['testimonial-carousel_fg_name'].name_color) }}
+{{ style.typography(nameSelector, styles['testimonial-carousel_fg_name'].name_font) }}
+
+{# Position #}
+{{ style.css(positionSelector, 'margin-bottom', '0') }}
+{{ style.responsiveCss(positionSelector, styles['testimonial-carousel_fg_position'].position_spacing, 'margin-top', styles['testimonial-carousel_fg_position'].position_spacing.unit) }}
+{{ style.css(positionSelector, 'color', styles['testimonial-carousel_fg_position'].position_color) }}
+{{ style.typography(positionSelector, styles['testimonial-carousel_fg_position'].position_font) }}
+
+{# Content #}
+{{ style.css( contentSelector, 'color', styles['testimonial-carousel_fg_content'].content_color) }}
+{{ style.typography(contentSelector, styles['testimonial-carousel_fg_content'].content_font) }}
+
+{# Navigation #}
+{{ style.css(arrowSelector, 'color', styles['testimonial-carousel_fg_navigation_style'].arrow_color) }}
+{{ style.responsiveCss(arrowSelector, styles['testimonial-carousel_fg_navigation_style'].arrow_size, 'width', styles['testimonial-carousel_fg_navigation_style'].arrow_size.unit) }}
+{{ style.responsiveCss(arrowSelector, styles['testimonial-carousel_fg_navigation_style'].arrow_size, 'height', styles['testimonial-carousel_fg_navigation_style'].arrow_size.unit) }}
+
+{{ style.background(arrowBgSelector, styles['testimonial-carousel_fg_navigation_style'].arrow_bg) }}
+{{ style.border(arrowBgSelector, styles['testimonial-carousel_fg_navigation_style'].arrow_bd) }}
+{{ style.padding(arrowBgSelector, styles['testimonial-carousel_fg_navigation_style'].arrow_padding) }}
+{{ style.css(dotItemSelector, 'background-color', styles['testimonial-carousel_fg_navigation_style'].dot_color) }}
+{{ style.css(dotActiveItemSelector, 'background-color', styles['testimonial-carousel_fg_navigation_style'].dot_active_color) }}
+{{ style.responsiveCss(dotItemSelector, styles['testimonial-carousel_fg_navigation_style'].dot_width, 'width', styles['testimonial-carousel_fg_navigation_style'].dot_width.unit) }}
+{{ style.responsiveCss(dotItemSelector, styles['testimonial-carousel_fg_navigation_style'].dot_width, 'height', styles['testimonial-carousel_fg_navigation_style'].dot_width.unit) }}
+{{ style.responsiveCss(dotSelector, styles['testimonial-carousel_fg_navigation_style'].dot_spacing, 'padding-left', styles['testimonial-carousel_fg_navigation_style'].dot_spacing.unit) }}
+{{ style.responsiveCss(dotSelector, styles['testimonial-carousel_fg_navigation_style'].dot_margin, 'margin-top', styles['testimonial-carousel_fg_navigation_style'].dot_margin.unit) }}
+
+{# Rating #}
+{{ style.css( ratingSelector ~ ',' ~ ratingSelector ~ ' svg', 'color', styles['testimonial-carousel_fg_testimonial'].rating_color) }}
+{{ style.css( ratingSelector ~ ' svg', 'width', '24px') }}
+
+{{ style.load(id) }}

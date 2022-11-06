@@ -1,0 +1,376 @@
+.com_quix{
+  color: #626E7B;
+}
+.com_quix.view-integrations .container-main .btn-group .btn-success{
+    background: #00c853;
+    color: #fff;
+}
+
+.com_quix.view-integrations .container-main .btn-group .btn-danger{
+    background: rgb(148, 42, 37);
+}
+.com_quix.view-integrations .container-main .form-horizontal .control-group .spacer span{
+	display: block;
+}
+.com_quix.view-integrations .container-main .form-horizontal .control-label .spacer:parent{
+	float: none;
+}
+
+.com_quix.view-elements .container-main .success-message,
+.com_quix.view-integrations .container-main .success-message{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  line-height: 52px;
+  font-size: 20px;
+  color: #62e2aa;
+  top: 0;
+  left: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  z-index: 9999;
+}
+.text-uppercase{
+  text-transform: uppercase;
+}
+.qx-admin-box{
+  padding: 10px 20px;
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-bottom: 20px;
+    font-size: 14px;
+}
+.display-table{
+  display: table;
+  width: 100%;
+}
+.table-cell{
+  display: table-cell;
+    vertical-align: middle;
+}
+.table-content{
+  padding-right:20px;
+}
+
+/*new admin styes for sidebar*/
+.container-main .j-sidebar-container #sidebar{
+  padding: 12px 0 52px 20px;
+}
+
+.container-main .j-sidebar-container #submenu li a{
+  margin-bottom: 10px;
+  box-shadow: 0px 1px 5px #CCC;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.container-main .j-sidebar-container #submenu li:last-child a{
+  color: #ffc107!important;
+}
+
+.imagify-number-you-optimized {
+    margin-bottom: 1.35em;
+    overflow: hidden;
+}
+.imagify-number-you-optimized .well>p {
+    display: table;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+.imagify-number-you-optimized .number {
+    display: table-cell;
+    padding-right: 15px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: #000;
+}
+.imagify-number-you-optimized .text {
+    display: table-cell;
+    vertical-align: middle;
+    overflow: hidden;
+    font-size: 12px;
+    color: #626E7B;
+}
+
+.imagify-bars+.imagify-number-you-optimized {
+    border-bottom: 0;
+    padding-top: .85em;
+}
+.imagify-number-you-optimized {
+    margin-bottom: 1.35em;
+    overflow: hidden;
+}
+
+.imagify-number-you-optimized.percent .number{
+  color: #46b1ce;
+  display: block;
+  padding-right: 0px;
+}
+.imagify-number-you-optimized.percent .text{
+  display: block;
+}
+
+#askReview {
+    border-left: 50px solid #30c939;
+    position: relative;
+    padding: 15px;
+    font-size: 100%;
+}
+#askReview .table-icon.table-cell{
+  position: absolute;
+  left: -37px;
+  top: 40%;
+  padding: 0;
+}
+#askReview .table-icon.table-cell i{
+  font-size: 30px;
+  color: #fff;
+}
+#askReview .action-links{
+  margin: 20px 0px 0px 0px;
+}
+#askReview .action-links a{
+  margin-right: 20px;
+  font-size: 12px;
+  padding: 0 15px;
+}
+
+
+#dashboard_pages table.table tr td,
+#dashboard_pages table.table tr th{
+  height: auto;
+  line-height: 2;
+  padding: 10px;
+}
+
+#dashboard_pages .card-header{
+  padding: 0px;
+  border: none;
+}
+#dashboard_pages .card-header ul{
+  margin: 0px;
+}
+#dashboard_pages .card-header ul a{
+  border: none;
+  border-right: 1px solid #ddd;
+  border-radius: 0px;
+  margin: 0;
+  padding: 15px 20px;
+}
+
+#dashboard_pages table a.btn{
+  font-size: 10px;
+  line-height: 30px;
+  min-height: 30px;
+}
+@media (max-width: 1215px) {
+  .com_quix:not(.layout-edit) .card-title{
+    font-size: 15px;
+  }
+  .com_quix:not(.layout-edit) .media .media-body h3{
+    font-size: 13px;
+  }
+  .card{
+    font-size: 90%;
+  }
+}
+
+
+/* new for quix 3 */
+.admin.com_quix .j-sidebar-container .filter-select {
+  padding: 0;
+}
+.com_quix:not(.layout-edit) .subhead{
+  background: #ffffff;
+  box-shadow: none;
+  border-bottom: 1px solid #ddd;
+  min-height: 32px;
+  padding: 5px 0;
+}
+.com_quix:not(.layout-edit) .subhead.subhead-fixed {
+  box-shadow: 0 3px 2px -2px rgba(0,0,0,.1);
+}
+.admin.com_quix > .container-fluid.container-main{
+  top: 85px;
+  background: rgb(241 243 244);
+  padding: 30px 20px;
+  margin-top: -20px;
+}
+
+@media (max-width: 767px) {
+  .admin.com_quix > .container-fluid.container-main{
+    margin: -20px -20px 0;
+  }
+}
+
+.container-main .j-sidebar-container #submenu li a{
+  line-height: 30px;
+  background-color: transparent;
+  box-shadow: none;
+}
+.container-main .j-sidebar-container #submenu li a i{
+  line-height: 30px;
+  height: 30px;
+}
+.container-main .j-sidebar-container #submenu li.active a {
+  background-color: #dfe1e2;
+  color: #202124;
+  box-shadow: none;
+  font-weight: bold;
+}
+.container-main .j-sidebar-container #submenu li a:hover{
+  background-color: #e8eaed;
+  box-shadow: none;
+}
+.container-main .item-list{
+  background: #fff;
+  box-shadow: none;
+  padding: 0px;
+  border: 1px solid #ebecec;
+}
+.container-main .item-list table{
+  margin-bottom: 0px;
+}
+.container-main table.table tr td, .container-main table.table tr th{
+  height: 40px;
+  line-height: 40px;
+  padding: 0px 10px;
+}
+.admin.com_quix .table-striped tbody > tr:nth-child(odd) > td,
+.admin.com_quix .table-striped tbody > tr:nth-child(odd) > th{
+  background-color: transparent;
+}
+.qx-admin-box{
+  background: #fff;
+  box-shadow: none;
+  border: 1px solid #f3f3f3;
+}
+.com_quix:not(.layout-edit) .card{
+  background: #fff;
+  box-shadow: none;
+  border: 1px solid #f1f3f4;
+}
+.container-main .btn-group .btn{
+  background-color: rgb(241 243 244);
+}
+.com_quix:not(.layout-edit) .btn-toolbar .btn-wrapper{
+  margin-bottom: 0px;
+}
+.com_quix:not(.layout-edit) #toolbar.btn-toolbar{
+  margin: 0px;
+}
+.container-main #j-main-container #filter-bar input{
+  background: #ffffff;
+  border: 1px solid #ffffff;
+}
+.admin.com_quix .item-title .btn{
+  background: transparent;
+  padding: 0px;
+  min-width: auto;
+}
+.admin.com_quix .btn-primary {
+  color: #fff;
+  background-color: #1a73e8;
+  border-color: #1a73e8;
+  box-shadow: none;
+}
+#toolbar-custom{float: right;}
+#toolbar-publish,
+#toolbar-unpublish,
+#toolbar-checkin,
+#toolbar-trash{display:none;}
+#toolbar-checkin.in,
+#toolbar-publish.in,
+#toolbar-unpublish.in,
+#toolbar-trash.in{display:inline-block;}
+.subhead-collapse #toolbar-mysettings .btn,
+.subhead-collapse #toolbar-clearcache .btn{
+  color: #222;
+  background-color: #f3f3f3;
+}
+.subhead-collapse #toolbar-mysettings .btn:hover,
+.subhead-collapse #toolbar-clearcache .btn:hover{
+  color: #000;
+  background-color: #e6e6e6;
+}
+.com_quix .alert-danger{color:#222;}
+#toolbar-new .btn,
+.subhead-collapse #toolbar-new-visual .btn{
+  background-color: #2172e8;
+  color: #fff;
+}
+.subhead-collapse #toolbar-new-visual .btn:hover{
+  background-color:#064cb3;
+}
+.admin.com_quix .subhead-collapse .btn{
+  height: 30px!important;
+  line-height: 30px!important;
+}
+#toolbar-clearcache,
+#toolbar-schema,
+#toolbar-mysettings,
+#toolbar-options,
+#toolbar-custom{
+  margin-top: 2px;
+}
+.admin.com_quix #toolbar [class^="icon-"],
+.admin.com_quix #toolbar [class*=" icon-"]{
+  margin: 0 5px;
+  width: auto;
+}
+.com_quix:not(.layout-edit) .btn-toolbar #toolbar-collapse {
+  margin-top: 2px;
+}
+.com_quix:not(.layout-edit) .btn-toolbar #toolbar-collapse a {
+  position: relative;
+  height: 30px!important;
+}
+.com_quix:not(.layout-edit) .btn-toolbar #toolbar-collapse a:hover{
+  background: #dfe1e2;
+}
+.com_quix:not(.layout-edit) .btn-toolbar #toolbar-collapse a i{
+  position: absolute;
+  left: 5px;
+  top: 1px;
+}
+#filter-bar .chzn-container .chzn-single,
+#filter-bar .chzn-container .chzn-single span,
+#filter-bar input,
+#filter-bar .btn{
+  height: 30px!important;
+  line-height: 30px!important;
+  min-height: 30px!important;
+}
+#filter-bar .btn-group .btn{
+  background-color: rgb(223 225 226);
+}
+#filter-bar .chzn-container-single .chzn-single div{
+  background-color: #e4e3e3;
+}
+.com_quix .label{
+  border-radius: 2px;
+}
+.label.label-footer{
+  background-color: #ff679d;
+}
+.label.label-article{
+  background-color: rgb(2, 122, 2);
+}
+.label.label-header{
+  background: #3fa6e4c2;
+}
+.label.label-mainbody {
+  background: #6d52d7;
+}
+#jform_custom_context{
+  width: 90%;
+  height: 40px;
+  font-size: 14px;
+  padding: 20px;
+  font-weight: bold;
+}

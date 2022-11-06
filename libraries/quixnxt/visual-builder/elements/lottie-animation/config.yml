@@ -1,0 +1,234 @@
+name: Lottie Animation
+slug: lottie-animation
+helpId: 5ea010002c7d3a7e9aeb632d
+groups: pro
+form:
+  general:
+    - name : lottie_animation_file_source
+      label: Animation Source
+      type: fields-group
+      status: open
+      schema:
+        - name: lottie_desc
+          help: Display lightweight, scalable, and interactive Lottie animations on your websites. Visit <a href="https://lottiefiles.com/" target="_blank">LottieFiles</a> and get your desired animation.
+          type: divider
+
+        - name: lottie_file_source
+          label: JSON File Source
+          type: select
+          value: url
+          options:
+            url: URL
+            upload: Upload Files
+
+        - name: lottie_url
+          label: JSON URL
+          type: text
+          value: https://assets3.lottiefiles.com/packages/lf20_UJNc2t.json
+          depends:
+            lottie_file_source: url
+
+        - name: lottie_upload
+          label: Upload JSON File
+          type: media
+          filter: image
+          depends:
+            lottie_file_source: upload
+
+        - name: lottie_enableCaption
+          label: Display Caption
+          type: switch
+          value: false
+
+        - name: lottie_caption
+          lable: Caption
+          type: text
+          depends:
+            lottie_enableCaption: true
+
+    - name : lottie_animation_options
+      label: Animation Options
+      type: fields-group
+      status: close
+      schema:
+        - name: lottie_play_control
+          label: Control
+          type: choose
+          value: noControl
+          responsive: false
+          options:
+            controls:
+              label: Show
+            noControl:
+              label: Hide
+
+        - name: lottie_play_type
+          label: Play Type
+          type: choose
+          responsive: false
+          value: autoplay
+          options:
+            autoplay:
+              label: Auto Play
+            hover:
+              label: On Hover
+
+        - name: lottie_speed
+          label: Speed
+          type: slider
+          responsive: false
+          max: 4
+          min: 0.5
+          step: 0.5
+          value: 1
+          units: X
+          defaultUnit: X
+
+        - name: lottie_loop
+          label: Loop
+          type: choose
+          value: loop
+          responsive: false
+          options:
+            loop:
+              label: Yes
+            noLoop:
+              label: No
+
+        - name: lottie_play_mode
+          label: Play Mode
+          type: choose
+          responsive: false
+          value: bounce
+          options:
+            normal:
+              label: Normal
+            bounce:
+              label: Bounce
+
+#        - name: lottie_renderer_type
+#          label: Renderer Type
+#          type: choose
+#          responsive: false
+#          value: svg
+#          options:
+#            svg:
+#              label: SVG
+#            canvas:
+#              label: Canvas
+ 
+  styles:
+    - name    : lottie_common_fg_style
+      label   : Common
+      type    : fields-group
+      status  : open
+      schema  :
+        - name: lottie_width
+          label: Width
+          type: slider
+          units: %, px
+          defaultUnit: %
+          max: 500
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+
+        - name: lottie_height
+          label: Height
+          type: slider
+          units: %, px
+          defaultUnit: %
+          max: 500
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+
+        - name : lottie_alignment
+          label: Alignment
+          type : choose
+          responsive: false
+          value: center
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: lottie_background
+          type: background
+          label: Background
+          popover: true
+
+        - name: lottie_border
+          label: Border
+          type: border
+          popover: true
+
+        - name: lottie_margin
+          label : Margin
+          type: dimensions
+          units: %, px, em, rem, vh 
+
+        - name: lottie_padding
+          label : Padding
+          type: dimensions
+          units: %, px, em, rem, vh           
+
+    - name    : lottie_caption_fg_style
+      label   : Caption
+      type    : fields-group
+      status  : close
+      depends:
+        lottie_enableCaption: true
+      schema  :
+        - name : lottie_caption_alignment
+          label: Alignment
+          type : choose
+          responsive: true
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+
+        - name: lottie_caption_color
+          label: Color
+          type: color
+
+        - name: lottie_caption_typography
+          label: Typography
+          type: typography
+          popover: true
+          
+
+        - name: lottie_caption_background
+          type: background
+          label: Background
+          popover: true
+                        
+        - name: lottie_caption_border
+          label: Border
+          type: border
+          popover: true          
+
+        - name: lottie_caption_margin
+          label : Margin
+          type: dimensions
+          units: %, px, em, rem, vh 
+
+        - name: lottie_caption_padding
+          label : Padding
+          type: dimensions
+          units: %, px, em, rem, vh               

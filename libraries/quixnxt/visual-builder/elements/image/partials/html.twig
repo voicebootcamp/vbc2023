@@ -1,0 +1,54 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set src = general.image_fields_group.image %}
+{% set altText = general.image_fields_group.alt_text %}
+{% set link = general.image_links_fields_group.link %}
+{% set caption = general.image_fields_group.caption %}
+
+{% set responsiveClass = '' %}
+{% if general.image_fields_group.img_responsive %}
+    {% set responsiveClass = 'qx-img-fluid' %}
+{% endif %}
+
+{% set lightbox = general.image_fields_group.lightbox %}
+{% set imageLink = src.source %}
+
+{% set classes = classNames('qx-element qx-element-image-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+
+        {% if link.url == "" and lightbox and src.type != "svg" %}
+            <div qx-lightbox><a href="{{ imageUrl(imageLink) }}" caption="{{ caption }}">
+        {% endif %}
+        {% if src.source and src.type == "svg" %}
+            {{ icon(src.source) | raw | link(link) }}
+        {% elseif src.source %}
+            {{ image(src.source, altText, responsiveClass, '', src) | link(link) }}
+        {% endif %}
+
+        {% if link.url == "" and lightbox and src.type != "svg" %}
+            </a></div>
+        {% endif %}
+
+        {% if caption %}
+            <figcaption class="qx-figure-caption">{{ caption }}</figcaption>
+        {% endif %}
+
+        {% if src.type == "svg" %}
+            {{ addIconStyle('#' ~ id, src) }}
+        {% endif %}
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Signed-in devices" option="View">
+        <message>
+                <![CDATA[Show the signed-in devices of the User.]]>
+        </message>
+	</layout>
+</metadata>

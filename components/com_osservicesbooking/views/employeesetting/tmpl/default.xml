@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Employee setting: Allow employee to setup their work list">
+		<message>
+			<![CDATA[Employee setting: Allow employee to setup their work list.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Employee setting: Allow employee to setup their work list</name>
+		<description>Employee setting: Allow employee to setup their work list</description>
+	</state>
+</metadata>

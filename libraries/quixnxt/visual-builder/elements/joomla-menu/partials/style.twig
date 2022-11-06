@@ -1,0 +1,156 @@
+{% include 'global.twig' %}
+
+{% set offCanvasID = '#' ~ advanced.identifier.id ~ '-offcanvas' %}
+{% set toggleID = '#' ~ advanced.identifier.id ~ '-toggle' %}
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Typography #}
+{% set mainmenuTypo = styles.main_menu_options.mainmenu_typo %}
+{% set submenuTypo = styles.dropdown_menu_options.submenu_typo %}
+
+{# Main Menu Item #}
+{% set menuTextColor = styles.main_menu_options.menu_text_color %}
+{% set menuTextHoverColor = styles.main_menu_options.menu_text_hover_color %}
+{% set menuTextActiveColor = styles.main_menu_options.menu_text_active_color %}
+{% set menuBackgroundHoverColor = styles.main_menu_options.menu_bghover_color %}
+{% set menuBackgroundActiveColor = styles.main_menu_options.menu_bgactive_color %}
+{% set menuPadding = styles.main_menu_options.menu_padding %}
+{% set menuSpaceBetween = styles.main_menu_options.menu_space_between %}
+
+{# Submenu #}
+{% set dropdownTextColor = styles.dropdown_menu_options.dropdown_text_color %}
+{% set dropdownHoverColor = styles.dropdown_menu_options.dropdown_hover_color %}
+{% set dropdownActiveColor = styles.dropdown_menu_options.dropdown_active_color %}
+{% set dropdownItemHoverBackgroundColor = styles.dropdown_menu_options.dropdown_itemHoverbg_color %}
+{% set dropdownItemActiveBackgroundColor = styles.dropdown_menu_options.dropdown_itemActivebg_color %}
+{% set dropdownItemPadding = styles.dropdown_menu_options.dropdown_item_padding %}
+{% set dropdownDistance = styles.dropdown_menu_options.dropdown_distance %}
+{% set dropdownBackgroundColor = styles.dropdown_menu_options.dropdown_bg_color %}
+{% set dropdownItemBorder = styles.dropdown_menu_options.dropdown_item_border %}
+{% set dropdownBorder = styles.dropdown_menu_options.dropdown_border %}
+{% set dropdownPadding = styles.dropdown_menu_options.dropdown_padding %}
+{% set dropdownWidth = styles.dropdown_menu_options.dropdown_width %}
+
+{# Hamburger Icon #}
+{% set hamburgerIconColor = styles.mobile_menu_options.hamburger_icon_color %}
+{% set hamburgerBackground = styles.mobile_menu_options.hamburger_bg %}
+{% set hamburgerPadding = styles.mobile_menu_options.hamburger_padding %}
+{% set hamburgerBorder = styles.mobile_menu_options.hamburger_border %}
+
+{# Offcanvas Menu #}
+{% set offcanvasBackgroundColor = styles.mobile_menu_options.offcanvas_bg %}
+{% set offcanvasPadding = styles.mobile_menu_options.offcanvas_padding %}
+{% set offcanvasSpaceBetween = styles.mobile_menu_options.offcanvas_space_between %}
+{% set offcanvasItemTextColor = styles.mobile_menu_options.offcanvas_item_text_color %}
+{% set offcanvasItemTextHoverColor = styles.mobile_menu_options.offcanvas_item_text_hover_color %}
+{% set offcanvasItemIndicatorColor = styles.mobile_menu_options.offcanvas_item_indicator_color %}
+
+{# Selectors #}
+{% set mainMenuSelector = id ~ ' nav.qx-navbar' %}
+{% set menuLiSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav' ~ greaterThanSign() ~ ' li' %}
+{% set menuLinkSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav' ~ greaterThanSign() ~ ' li '  ~ greaterThanSign() ~  ' a' %}
+{% set menuLinkHeaderSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav' ~ greaterThanSign() ~ ' li a.qx-nav-header' %}
+{% set menuActiveLinkSelector = id ~ ' nav.qx-navbar .qx-navbar-nav' ~ greaterThanSign() ~ ' li.qx-active' ~ greaterThanSign() ~ ' a' %}
+
+{% set vrMenuLiSelector = id ~ ' ul.qx-nav.qx-flex-column' ~ greaterThanSign() ~ ' li' %}
+{% set vrMenuLinkSelector = id ~ ' ul.qx-nav.qx-flex-column' ~ greaterThanSign() ~ ' li a' %}
+{% set vrMenuActiveLinkSelector = id ~ ' ul.qx-nav.qx-flex-column' ~ greaterThanSign() ~ ' li.qx-active' ~ greaterThanSign() ~ ' a' %}
+
+{% set dropdownSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav' ~ greaterThanSign() ~ ' li .qx-navbar-dropdown' %}
+{% set dropdownHrSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav.qx-flex-row' ~ greaterThanSign() ~ ' li' ~ greaterThanSign() ~ ' .qx-navbar-dropdown' %}
+{% set dropdownSubmenusSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav.qx-flex-row' ~ greaterThanSign() ~ ' li' ~ greaterThanSign() ~ ' .qx-navbar-dropdown li.deeper .qx-navbar-dropdown' %}
+{% set dropdownLinkSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav' ~ greaterThanSign() ~ ' li' ~ greaterThanSign() ~ ' .qx-navbar-dropdown ul.qx-navbar-dropdown-nav li a' %}
+{% set dropdownLinkHeaderSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav' ~ greaterThanSign() ~ ' li' ~ greaterThanSign() ~ ' .qx-navbar-dropdown ul.qx-navbar-dropdown-nav li a.qx-nav-header' %}
+{% set dropdownActiveLinkSelector = id ~ ' nav.qx-navbar ul.qx-navbar-nav' ~ greaterThanSign() ~ ' li.deeper .qx-navbar-dropdown li.qx-active' ~ greaterThanSign() ~ ' a' %}
+
+{% set vrDropdownLinkSelector = id ~ ' ul.qx-nav.qx-flex-column' ~ greaterThanSign() ~ ' li' ~ greaterThanSign() ~ ' ul.qx-nav-sub li a' %}
+{% set vrDropdownLinkHeaderSelector = id ~ ' ul.qx-nav.qx-flex-column' ~ greaterThanSign() ~ ' li' ~ greaterThanSign() ~ ' ul.qx-nav-sub li a.qx-nav-header' %}
+{% set vrDropdownActiveLinkSelector = id ~ ' ul.qx-nav.qx-flex-column' ~ greaterThanSign() ~ ' li.deeper ul.qx-nav-sub li.qx-active' ~ greaterThanSign() ~ ' a' %}
+
+{% set dropBarSelector = id ~ ' .qx-navbar-dropbar' %}
+
+{% set toggleMenuLiSelector = toggleID ~ ' ul.qx-nav' ~ greaterThanSign() ~ ' li' %}
+{% set toggleMenuLinkSelector = toggleID ~ ' ul.qx-nav' ~ greaterThanSign() ~ ' li a' %}
+{% set toggleMenuActiveLinkSelector = toggleID ~ ' ul.qx-nav' ~ greaterThanSign() ~ ' li.qx-active' ~ greaterThanSign() ~ ' a' %}
+{% set toggleDropdownActiveLinkSelector = toggleID ~ ' ul.qx-nav' ~ greaterThanSign() ~ ' li.deeper .qx-nav-sub li.qx-active' ~ greaterThanSign() ~ ' a' %}
+
+{% set offCanvasMenu = offCanvasID ~ ' .qx-offcanvas-bar' %}
+{% set offCanvasMenuLiSelector = offCanvasID ~ ' .qx-offcanvas-bar ul.qx-nav' ~ greaterThanSign() ~ ' li' %}
+{% set offCanvasMenuLinkSelector = offCanvasID ~ ' .qx-offcanvas-bar ul.qx-nav' ~ greaterThanSign() ~ ' li a' %}
+{% set offCanvasMenuActiveLinkSelector = offCanvasID ~ ' .qx-offcanvas-bar ul.qx-nav' ~ greaterThanSign() ~ ' li.qx-active' ~ greaterThanSign() ~ ' a' %}
+{% set offCanvasDropdownLinkSelector = offCanvasID ~ ' .qx-offcanvas-bar ul.qx-nav' ~ greaterThanSign() ~ ' li.deeper .qx-nav-sub li' ~ greaterThanSign() ~ ' a' %}
+{% set offCanvasDropdownActiveLinkSelector = offCanvasID ~ ' .qx-offcanvas-bar ul.qx-nav' ~ greaterThanSign() ~ ' li.deeper .qx-nav-sub li.qx-active' ~ greaterThanSign() ~ ' a' %}
+
+{% set hamburgMenuSelector = '.responsive-menu-show .qx-button' %}
+
+{# Typography #}
+{{ style.typography(menuLinkSelector ~ ',' ~ vrMenuLinkSelector ~ ',' ~ offCanvasMenuLinkSelector ~ ',' ~ toggleMenuLinkSelector ~ ',' ~ offCanvasDropdownLinkSelector, mainmenuTypo) }}
+{{ style.typography(dropdownLinkSelector ~ ',' ~ vrDropdownLinkSelector ~ ',' ~ offCanvasDropdownLinkSelector, submenuTypo) }}
+{{ style.typography(hamburgMenuSelector, mainmenuTypo) }}
+
+{# menu link menu_height #}
+{{ style.css(menuLinkSelector, 'min-height', styles.main_menu_options.menu_height ~ 'px') }}
+
+{# Main Menu Item #}
+{{ style.css(menuLinkSelector ~ ',' ~ vrMenuLinkSelector ~ ',' ~ offCanvasMenuLinkSelector ~ ',' ~ toggleMenuLinkSelector ~ ',' ~ menuLinkHeaderSelector, 'color', menuTextColor) }}
+
+{{ style.css(menuLinkSelector ~ ':hover' ~ ',' ~ vrMenuLinkSelector ~ ':hover' ~ ',' ~ toggleMenuLinkSelector ~ ':hover' ~ ',' ~ offCanvasMenuLinkSelector ~ ':hover', 'color', menuTextHoverColor) }}
+
+{{ style.css(menuActiveLinkSelector ~ ',' ~ vrMenuActiveLinkSelector ~ ',' ~ offCanvasMenuActiveLinkSelector ~ ',' ~ toggleMenuActiveLinkSelector ~ ',' ~ dropdownActiveLinkSelector ~ ',' ~ toggleDropdownActiveLinkSelector ~ ',' ~ vrDropdownActiveLinkSelector ~ ',' ~ offCanvasDropdownActiveLinkSelector, 'color', menuTextActiveColor) }}
+
+{{ style.css(menuLinkSelector ~ ':hover' ~ ',' ~ vrMenuLinkSelector ~ ':hover' ~ ',' ~ toggleMenuLinkSelector ~ ':hover' ~ ',' ~ offCanvasMenuLinkSelector ~ ':hover', 'background-color', menuBackgroundHoverColor) }}
+
+{{ style.css(menuActiveLinkSelector ~ ',' ~ vrMenuActiveLinkSelector ~ ',' ~ offCanvasMenuActiveLinkSelector ~ ',' ~ toggleMenuActiveLinkSelector ~ ',' ~ dropdownActiveLinkSelector ~ ',' ~ toggleDropdownActiveLinkSelector ~ ',' ~ vrDropdownActiveLinkSelector ~ ',' ~ offCanvasDropdownActiveLinkSelector, 'background-color', menuBackgroundActiveColor) }}
+
+{{ style.padding(menuLinkSelector ~ ',' ~ vrMenuLinkSelector ~ ',' ~ offCanvasMenuLinkSelector ~ ',' ~ menuLinkHeaderSelector, menuPadding) }}
+
+{{ style.css(menuLiSelector ~ ':not(:last-child)' ~ ',' ~ vrMenuLiSelector ~ ':not(:last-child)', 'margin-right', menuSpaceBetween.value ~ menuSpaceBetween.unit) }}
+
+{# Submenu #}
+{{ style.css(dropdownLinkSelector ~ ',' ~ vrDropdownLinkSelector ~ ',' ~ dropdownLinkHeaderSelector ~ ',' ~ vrDropdownLinkHeaderSelector ~ ',' ~ offCanvasDropdownLinkSelector, 'color', dropdownTextColor) }}
+{{ style.css(dropdownLinkSelector ~ ':hover' ~ ',' ~ vrDropdownLinkSelector ~ ':hover' ~ ',' ~ offCanvasDropdownLinkSelector ~ ':hover', 'color', dropdownHoverColor) }}
+
+{{ style.css(dropdownActiveLinkSelector ~ ',' ~ toggleDropdownActiveLinkSelector ~ ',' ~ vrDropdownActiveLinkSelector ~ ',' ~ offCanvasDropdownActiveLinkSelector, 'color', dropdownActiveColor) }}
+{{ style.css(dropdownLinkSelector ~ ':hover'  ~ ',' ~ vrDropdownLinkSelector ~ ':hover', 'background-color', dropdownItemHoverBackgroundColor) }}
+{{ style.css(dropdownActiveLinkSelector ~ ',' ~ toggleDropdownActiveLinkSelector ~ ',' ~ vrDropdownActiveLinkSelector ~ ',' ~ offCanvasDropdownActiveLinkSelector, 'background-color', dropdownItemActiveBackgroundColor) }}
+
+{{ style.padding(dropdownLinkSelector ~ ',' ~ dropdownLinkHeaderSelector ~ ',' ~ vrDropdownLinkHeaderSelector ~ ',' ~ vrDropdownLinkSelector, dropdownItemPadding) }}
+
+{# i'm sad to implement this jora-tali #}
+{# suppose to implement it on prepareForm #}
+{% if dropdownWidth.value %}
+    {% set dropdownWidthValue = dropdownWidth.value %}
+    {% set dropdownWidthUnit = dropdownWidth.unit %}
+{% else %}
+    {% set dropdownWidthValue = dropdownWidth %}
+    {% set dropdownWidthUnit = 'px' %}
+{% endif %}
+{% set dropdownSubmenuDistance = dropdownWidthValue - 15 %}
+{{ style.css(dropdownSubmenusSelector, 'left', dropdownSubmenuDistance ~ 'px !important') }}
+{{ style.css(dropdownSelector, 'width', dropdownWidthValue ~ dropdownWidthUnit) }}
+
+{{ style.css(dropdownSubmenusSelector, 'top', '0 !important') }}
+{{ style.css(dropdownSubmenusSelector, 'margin-top', '0 !important') }}
+{{ style.css(dropdownSelector, 'background-color', dropdownBackgroundColor) }}
+{{ style.css(dropBarSelector, 'background-color', dropdownBackgroundColor) }}
+
+{{ style.border(dropdownLinkSelector ~ ',' ~ dropdownLinkHeaderSelector ~ ',' ~ vrDropdownLinkHeaderSelector ~ ',' ~ vrDropdownLinkSelector, dropdownItemBorder) }}
+{{ style.border(dropdownSelector, dropdownBorder) }}
+{{ style.padding(dropdownSelector, dropdownPadding) }}
+
+
+{# Hamburger Icon #}
+{{ style.css(hamburgMenuSelector, 'color', hamburgerIconColor) }}
+{{ style.css(hamburgMenuSelector, 'background-color', hamburgerBackground) }}
+{{ style.padding(hamburgMenuSelector, hamburgerPadding) }}
+{{ style.border(hamburgMenuSelector, hamburgerBorder) }}
+
+{# Offcanvas Menu #}
+{{ style.css(offCanvasMenu, 'background-color', offcanvasBackgroundColor) }}
+{{ style.padding(offCanvasMenu, offcanvasPadding) }}
+{{ style.css(offCanvasMenuLiSelector ~ ':not(:last-child)', 'margin-bottom', offcanvasSpaceBetween.value ~ offcanvasSpaceBetween.unit) }}
+{{ style.css(offCanvasMenuLinkSelector, 'color', offcanvasItemTextColor) }}
+{{ style.css(offCanvasMenuLinkSelector ~ ':hover', 'color', offcanvasItemTextHoverColor) }}
+{{ style.css(offCanvasMenuLinkSelector ~ '::after', 'color', offcanvasItemIndicatorColor) }}
+
+{{ style.load(id) }}

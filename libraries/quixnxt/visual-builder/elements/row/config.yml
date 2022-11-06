@@ -1,0 +1,119 @@
+slug: row
+name: Row
+type: row
+visibility:
+  lg: true
+  md: true
+  sm: true
+  xs: true
+form:
+  general:
+    - name : layout_fields_group
+      label: Layout
+      type: fields-group
+      status: open
+      schema:
+        - name: columns_gap
+          label: Columns Gap
+          type: select
+          value: default
+          options:
+            default : Default
+            no-gutters : No Gap
+        
+        - name : height
+          type: select
+          value: default
+          options:
+            default : Default
+            custom : Min Height
+        
+        - name : custom_height
+          label: Minimum Height
+          type : slider
+          min: 0
+          max: 1500
+          suffix : px
+          responsive: true
+          depends : 
+            height : 'custom'
+        
+        - name : v_align
+          label: Content Position
+          type : choose
+          responsive: false
+          options:
+            qx-row-align-start :
+              label: Top
+              icon : qxuicon-arrow-to-top
+            qx-row-align-center :
+              label : Middle
+              icon : qxuicon-minus
+            qx-row-align-end : 
+              label : Bottom
+              icon : qxuicon-arrow-to-bottom
+        
+        - name: html_tag
+          label: HTML Tag
+          type: select
+          value: div
+          options:
+            section : Section
+            header : Header
+            footer : Footer
+            aside : Aside
+            article : Article
+            nav : Nav 
+            div : Div
+          
+        - name: mobile_reverse
+          label: Column Reverse for Mobile
+          help: Will work from 768px to lower screen
+          type: switch
+          value: false
+
+  styles :
+    - name : spacing_fields_group
+      label: Spacing
+      type: fields-group
+      status: open
+      schema:
+        - name: margin
+          type: dimensions
+          units: %, px, em, rem, vh
+
+        - name: padding
+          type: dimensions
+          units: %, px, em, rem, vh
+        
+        - name  : zindex
+          label : Z-Index
+          type  : slider
+          value : 0
+          min   : 0
+          max   : 999
+          units : false
+          responsive : false
+
+    - name : background_fields_group
+      label: Background
+      type: fields-group
+      schema:
+        - name: background
+          type: background
+
+    - name : background_overlay_fields_group
+      label: Background Overlay
+      type: fields-group
+      schema:
+        - name: background_overlay
+          type: background
+          opacity: true
+          parallax: false
+
+    - name : border_fields_group
+      label: Border & Box Shadow
+      type: fields-group
+      schema:
+        - name: border
+          type: border

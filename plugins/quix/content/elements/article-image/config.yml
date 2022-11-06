@@ -1,0 +1,96 @@
+name: Article Image
+slug: article-image
+groups: layout
+type: article
+form:
+  general:
+    - name : image_fields_group
+      label: Image
+      type: fields-group
+      status: open
+      schema:
+        
+        - name: imagetype
+          label: Image Type
+          type: select
+          value: full
+          options:
+            full: Full Image
+            intro: Intro Image
+
+        - name: img_responsive
+          label: Responsive
+          type: switch
+          value: true        
+  styles:
+    - name    : image_fields_group
+      label   : Image
+      type    : fields-group
+      status  : open
+      schema  :
+        - name : alignment
+          type : choose
+          responsive : true
+          options:
+            left :
+              label: Left
+              icon : qxuicon-align-left
+            center :
+              label : Center
+              icon : qxuicon-align-center
+            right : 
+              label : Right
+              icon : qxuicon-align-right
+
+        - name : width
+          label : Width
+          type: slider
+          units: %, px
+          defaultUnit: px
+          max: 2000
+        
+        - name : height
+          label : Height
+          type: slider
+          units: %, px
+          defaultUnit: px
+          max: 2000
+        
+        - name : opacity
+          label : Opacity
+          type: slider
+          responsive : false
+          max : 1
+          step: 0.1
+          units: %
+          defaultUnit: %
+    
+    - name : border_fields_group
+      label : Border
+      type: fields-group
+      schema :
+        - name : img_border_width
+          label : Width
+          type : dimensions
+        
+        - name : img_border_type
+          label : Border Type
+          type: select
+          value : none
+          options: 
+            none : None
+            solid : Solid
+            double : Double
+            dotted : Dotted
+            dashed : Dashed
+        
+        - name : img_border_color
+          label : Border Color
+          type : color 
+        
+        - name : img_border_radius
+          label : Border Radius
+          type: dimensions
+
+      
+    

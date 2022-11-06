@@ -1,0 +1,143 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Common #}
+{% set enableHeight = styles.flipbox_common_style_settings.common_enable_height %}
+{% set commomHeight = styles.flipbox_common_style_settings.commom_flipbox_height %}
+{% set commonBorder = styles.flipbox_common_style_settings.flipbox_border %}
+
+{# Typography #}
+{% set frontTitleTypo = styles.flipbox_front_style_settings.flipbox_frontTitle_typography %}
+{% set frontContentTypo = styles.flipbox_front_style_settings.flipbox_frontContent_typography %}
+{% set backTitleTypo = styles.flipbox_back_style_settings.flipbox_backTitle_typography %}
+{% set backContentTypo = styles.flipbox_back_style_settings.flipbox_backContent_typography %}
+
+{# Color #}
+{% set frontTitleTypoColor = styles.flipbox_front_style_settings.flipbox_frontTitle_typographyColor %}
+{% set frontContentTypoColor = styles.flipbox_front_style_settings.flipbox_frontContent_typographyColor %}
+{% set backTitleTypoColor = styles.flipbox_back_style_settings.flipbox_backTitle_typographyColor %}
+{% set backContentTypoColor = styles.flipbox_back_style_settings.flipbox_backContent_typographyColor %}
+
+{# For icon #}
+{% set frontIconColor = styles.flipbox_front_style_settings.flipbox_front_icon_color %}
+{% set frontIconSize = styles.flipbox_front_style_settings.flipbox_front_icon_size %}
+
+{% set backIconColor = styles.flipbox_back_style_settings.flipbox_back_icon_color %}
+{% set backIconSize = styles.flipbox_back_style_settings.flipbox_back_icon_size %}
+
+{# For background image #}
+{% set frontBGImage = styles.flipbox_front_style_settings.flipbox_front_bg_image %}
+{% set backBGImage = styles.flipbox_back_style_settings.flipbox_back_bg_image %}
+
+{# Alignment #}
+{% set flipboxFrontAlignment = styles.flipbox_front_style_settings.flipbox_front_alignment %}
+{% set flipboxBackAlignment = styles.flipbox_back_style_settings.flipbox_back_alignment %}
+
+{# Spacing #}
+{% set frontMediaSpacing = styles.flipbox_front_style_settings.flipbox_frontimage_spacing %}
+{% set frontTitleSpacing = styles.flipbox_front_style_settings.flipbox_fronttitle_spacing %}
+{% set frontContentSpacing = styles.flipbox_front_style_settings.flipbox_frontcontent_spacing %}
+{% set backMediaSpacing = styles.flipbox_back_style_settings.flipbox_backimage_spacing %}
+{% set backTitleSpacing = styles.flipbox_back_style_settings.flipbox_backtitle_spacing %}
+{% set backContentSpacing = styles.flipbox_back_style_settings.flipbox_backcontent_spacing %}
+
+{# Button #}
+{% set backTitleButtonPadding = styles.flipbox_back_style_settings.flipbox_backtitle_button_padding %}
+{% set backTitleButtonBg = styles.flipbox_back_style_settings.flipbox_backTitle_button_background %}
+{% set backTitleButtonTypo = styles.flipbox_back_style_settings.flipbox_backTitle_button_typography %}
+{% set backTitleButtonColor = styles.flipbox_back_style_settings.flipbox_backtitle_button_color %}
+{% set backTitleButtonHoverColor = styles.flipbox_back_style_settings.flipbox_backtitle_button_color_hover %}
+{% set backTitleButtonBorder = styles.flipbox_back_style_settings.flipbox_backTitle_button_border %}
+
+{# Width/Height #}
+{% set frontMediaWidth = styles.flipbox_front_style_settings.flipbox_fontmedia_width %}
+{% set backMediaWidth = styles.flipbox_back_style_settings.flipbox_backmedia_width %}
+
+{# Padding #}
+{% set frontBgPadding = styles.flipbox_front_style_settings.flipbox_front_bgPadding %}
+{% set backBgPadding = styles.flipbox_back_style_settings.flipbox_back_bgPadding %}
+
+{# Selectors #}
+{% set frontImgSelector = id ~ ' .qx-flipbox_frontlayer .qx-element-flip-box___media ' %}
+{% set backImgSelector = id ~ ' .qx-flipbox_backlayer .qx-element-flip-box___media ' %}
+{% set frontTitle = id ~ ' .qx-flipbox_frontlayer .qx-element-flip-box__title * ' %}
+{% set frontContent = id ~ ' .qx-flipbox_frontlayer .qx-element-flip-box__body ' %}
+{% set backTitle = id ~ ' .qx-flipbox_backlayer .qx-element-flip-box__title * ' %}
+{% set backContent = id ~ ' .qx-flipbox_backlayer .qx-element-flip-box__body ' %}
+{% set wrapperSelector = id ~ ' .qx-element-flip-box__wrapper ' %}
+{% set parentLayer = id ~ ' .qx-flipbox' %}
+{% set layer = id ~ ' .qx-flipbox_layer' %}
+{% set frontLayer = id ~ ' .qx-flipbox_frontlayer' %}
+{% set backLayer = id ~ ' .qx-flipbox_backlayer' %}
+{% set buttonWrap = id ~ ' .qx-element-flip-box__button .qx-btn' %}
+
+{# Front Icon #}
+{{ style.css(frontImgSelector ~ ' path', 'fill', frontIconColor) }}
+{{ style.width(frontImgSelector ~ ' svg', frontIconSize) }}
+{{ style.height(frontImgSelector ~ ' svg', frontIconSize) }}
+{{ style.css(frontImgSelector ~ ' i', 'color', frontIconColor) }}
+{{ style.responsiveCss(frontImgSelector ~ ' i', frontIconSize, 'font-size', frontIconSize.unit) }}
+
+{# Back Icon #}
+{{ style.css(backImgSelector ~ ' path', 'fill', backIconColor) }}
+{{ style.width(backImgSelector ~ ' svg', backIconSize) }}
+{{ style.height(backImgSelector ~ ' svg', backIconSize) }}
+{{ style.css(backImgSelector ~ ' i', 'color', backIconColor) }}
+{{ style.responsiveCss(backImgSelector ~ ' i', backIconSize, 'font-size', backIconSize.unit) }}
+
+{# Typography #}
+{{ style.typography(frontTitle, frontTitleTypo) }}
+{{ style.typography(frontContent, frontContentTypo) }}
+{{ style.typography(backTitle, backTitleTypo) }}
+{{ style.typography(backContent, backContentTypo) }}
+
+{# Color #}
+{{ style.css(frontTitle, 'color', frontTitleTypoColor) }}
+{{ style.css(frontContent, 'color', frontContentTypoColor) }}
+{{ style.css(backTitle, 'color', backTitleTypoColor) }}
+{{ style.css(backContent, 'color', backContentTypoColor) }}
+
+{# Background #}
+{{ style.background(frontLayer, frontBGImage) }}
+{{ style.background(backLayer, backBGImage) }}
+
+{# Padding #}
+{{ style.padding(frontLayer, frontBgPadding) }}
+{{ style.padding(backLayer, backBgPadding) }}
+
+{# Alignment #}
+{{ style.css(frontLayer, 'text-align', flipboxFrontAlignment) }}
+{{ style.css(backLayer, 'text-align', flipboxBackAlignment) }}
+
+{# Height #}
+{% if enableHeight %}
+  {{ style.height(parentLayer, commomHeight) }}
+{% endif %}
+
+{# Image Width and Height #}
+{{ style.responsiveCss(frontImgSelector ~ ' img', frontMediaWidth, 'width', frontMediaWidth.unit) }}
+{{ style.responsiveCss(backImgSelector ~ ' img', backMediaWidth, 'width', backMediaWidth.unit) }}
+
+{# Border #}
+{#{{ style.border(layer, commonBorder) }}#}
+{{ style.border(parentLayer, commonBorder) }}
+
+{# Button #}
+{{ style.padding(buttonWrap, backTitleButtonPadding) }}
+{{ style.background(buttonWrap, backTitleButtonBg) }}
+{{ style.typography(buttonWrap, backTitleButtonTypo) }}
+{{ style.css(buttonWrap, 'color', backTitleButtonColor) }}
+{{ style.css(buttonWrap ~ ':hover', 'color', backTitleButtonHoverColor) }}
+{{ style.border(buttonWrap, backTitleButtonBorder) }}
+
+{# Spacing #}
+{{ style.responsiveCss(frontImgSelector ~ ' img,' ~ frontImgSelector ~ ' .qx-flipbox-icon,' ~ frontImgSelector ~ ' svg', frontMediaSpacing, 'margin-bottom', 'px') }}
+{{ style.css(backImgSelector ~ 'img,' ~ backImgSelector ~ ' .qx-flipbox-icon,' ~ backImgSelector ~ ' svg', 'margin-bottom', backMediaSpacing ~ 'px') }}
+
+{{ style.css(frontTitle, 'margin-bottom', frontTitleSpacing ~ 'px') }}
+{{ style.css(frontContent, 'margin-bottom', frontContentSpacing ~ 'px') }}
+{{ style.css(backTitle, 'margin-bottom', backTitleSpacing ~ 'px') }}
+{{ style.css(backContent, 'margin-bottom', backContentSpacing ~ 'px') }}
+
+{{ style.load(id) }}

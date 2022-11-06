@@ -1,0 +1,323 @@
+name: Advanced Heading
+slug: advanced-heading
+groups: pro
+helpId: 5dc83eed04286364bc91915c
+form:
+  general:
+    - name: heading_fields_group
+      label: Advanced Heading
+      type: fields-group
+      status: open
+      schema:
+        - name: before_text
+          label: Before Text
+          type: text
+          value: Who
+          help: You can add HTML also.
+
+        - name: center_text
+          label: Center Text
+          type: text
+          value: We
+          help: You can add HTML also.
+
+        - name: after_text
+          label: After Text
+          type: text
+          value: Are
+          help: You can add HTML also.
+
+        - name: enable_bg_text
+          label: Display Background Text
+          type: switch
+          value: true
+          help: You can add HTML also.
+
+        - name: bg_text
+          label: Background Text
+          type: text
+          help: You can add HTML also.
+          value: About Us
+          depends:
+            enable_bg_text: true
+
+        - name: bg_text_alignment
+          label: Alignment
+          responsive: false
+          type: choose
+          value: center
+          depends:
+            enable_bg_text: true
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            right: 
+              label: Right
+              icon: qxuicon-align-right
+      
+        - name: html_tag
+          label: HTML Tag
+          type: select
+          value: h2
+          options:
+            h1: H1
+            h2: H2
+            h3: H3
+            h4: H4
+            h5: H5
+            h6: H6
+            div: div
+            span: span
+            p: p
+        
+  styles:
+    - name: opt_fields_group
+      label: Common
+      status: open
+      type: fields-group
+      schema:
+        - name: content_alignment
+          label: Text Alignment
+          type: choose
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            right: 
+              label: Right
+              icon: qxuicon-align-right
+          value:
+            desktop: center
+            tablet: center
+            phone: center
+
+        - name: common_text_margin
+          label : Margin
+          type: dimensions
+          units: %, px, em, rem, vh
+
+        - name: common_text_padding
+          label : Padding
+          type: dimensions
+          units: %, px, em, rem, vh
+          value:
+            desktop:
+              top: 70
+              bottom: 0
+              left: 0
+              right: 0
+            tablet:
+              top: 0
+              bottom: 0
+              left: 0
+              right: 0
+            phone:
+              top: 0
+              bottom: 0
+              left: 0
+              right: 0
+
+        - name: common_text_color
+          label: Color
+          type: color
+          
+        - name  : enable_txt_bg
+          label : Text Gradient
+          type  : switch
+          value : false
+          help  : When text background is enabled, text color option will not work. Set your color from background color settings. Also Blend mode will not work for text background.
+
+        - name  : text_bg
+          label : Text Gradient
+          type  : background
+          parallax: false
+          popover: true
+          depends:
+            enable_txt_bg : true
+        
+        - name: common_text_font
+          type: typography
+          label: Typography
+          popover: true
+
+        - name: common_text_bg
+          type: background
+          label: Background
+          popover: true
+
+        - name: common_text_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: before_text_fields_group
+      label: Before Text
+      type: fields-group
+      schema:
+        - name: before_text_margin
+          label : Margin
+          type: dimensions
+          units: %, px, em, rem, vh         
+
+        - name: before_text_padding
+          label : Padding
+          type: dimensions
+          units: %, px, em, rem, vh         
+
+        - name: before_text_color
+          label: Color
+          type: color
+
+        - name  : enable_before_txt_bg
+          label : Text Gradient
+          type  : switch
+          value : false
+          help  : When text background is enabled, text color option will not work. Set your color from background color settings. Also Blend mode will not work for text background.
+
+        - name  : before_text_bg
+          label : Text Gradient
+          type  : background
+          parallax: false
+          popover: true
+          depends:
+            enable_before_txt_bg : true
+
+        - name: before_text_font
+          type: typography
+          label: Typography
+          popover: true       
+
+        - name: before_text_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: center_text_fields_group
+      label: Center Text
+      type: fields-group
+      schema:
+        - name: center_text_margin
+          label : Margin
+          type: dimensions
+          units: %, px, em, rem, vh          
+
+        - name: center_text_padding
+          label : Padding
+          type: dimensions
+          units: %, px, em, rem, vh         
+
+        - name: center_text_color
+          label: Color
+          type: color
+
+        - name  : enable_center_txt_bg
+          label : Text Gradient
+          type  : switch
+          value : false
+          help  : When text background is enabled, text color option will not work. Set your color from background color settings. Also Blend mode will not work for text background.
+
+        - name  : center_text_bg
+          label : Text Gradient
+          type  : background
+          parallax: false
+          popover: true
+          depends:
+            enable_center_txt_bg : true
+        
+        - name: center_text_font
+          type: typography
+          label: Typography
+          popover: true      
+
+        - name: center_text_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: after_text_fields_group
+      label: After Text
+      type: fields-group
+      schema:
+        - name: after_text_margin
+          label : Margin
+          type: dimensions
+          units: %, px, em, rem, vh          
+
+        - name: after_text_padding
+          label : Padding
+          type: dimensions
+          units: %, px, em, rem, vh         
+
+        - name: after_text_color
+          label: Color
+          type: color
+
+        - name  : enable_after_txt_bg
+          label : Text Gradient
+          type  : switch
+          value : false
+          help  : When text background is enabled, text color option will not work. Set your color from background color settings. Also Blend mode will not work for text background.
+
+        - name  : after_text_bg
+          label : Text Gradient
+          type  : background
+          parallax: false
+          popover: true
+          depends:
+            enable_after_txt_bg : true
+          
+        - name: after_text_font
+          type: typography
+          label: Typography
+          popover: true         
+
+        - name: after_text_border
+          label: Border
+          type: border
+          popover: true
+
+    - name: bg_text_fields_group
+      label: Background Text
+      type: fields-group
+      depends:
+        enable_bg_text: true      
+      schema:
+        - name: bg_text_margin
+          label: Margin
+          type: dimensions
+          units: %, px, em, rem, vh         
+
+        - name: bg_text_padding
+          label: Padding
+          type: dimensions
+          units: %, px, em, rem, vh        
+          
+        - name: bg_text_color
+          label: Color
+          type: color
+
+        - name  : enable_bg_txt_bg
+          label : Text Gradient
+          type  : switch
+          value : false
+          help  : When text background is enabled, text color option will not work. Set your color from background color settings. Also Blend mode will not work for text background.
+
+        - name  : bg_text_bg
+          label : Text Gradient
+          type  : background
+          parallax: false
+          popover: true
+          depends:
+            enable_bg_txt_bg : true
+        
+        - name: bg_text_font
+          type: typography
+          label: Typography
+          popover: true

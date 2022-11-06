@@ -1,0 +1,158 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set classes = classNames('qx-element qx-element-joomla-article-v2', visibilityClass(visibility), class ) %}
+{% set animation = "" %}
+
+{% set articleID = general.article_core.article_id %}
+{% set showDateFormat = general.article_options.date_format %}
+{% set contentType = general.article_core.content_type %}
+{% set articleLayout = general.article_behaviour.article_layout %}
+{% set showTitle = general.article_core.show_title %}
+{% set linkTitles = general.article_options.link_titles %}
+{% set showDate = general.article_options.show_date %}
+{% set showMetaIcon = general.article_options.show_meta_icon %}
+{% set showAuthor = general.article_options.show_author %}
+{% set showCategory = general.article_options.show_category %}
+{% set showImage = general.article_core.show_image %}
+{% set showContent = general.article_core.show_content %}
+
+{% set data = {
+    'id' : articleID,
+    'show_date_format' : showDateFormat
+} %}
+
+{# Icon #}
+{% set buttonText = general.article_options.readmore_text %}
+{% set enableButtonIcon = general.article_options.enable_Bicon %}
+{% set sIcon = general.article_options.show_icon %}
+{% set icon = '' %}
+{% set iconAlignment = general.article_options.icon_alignment | default({'value' : 'left'}) %}
+{% if sIcon.source %}
+    {% if sIcon.type == "svg" %}
+        {% set icon = icon(sIcon.source)|raw %}
+    {% endif %}
+{% elseif sIcon.type == "image" %}
+    {% set icon = image(sIcon.source, alt_text, '', '', src) %}
+{% endif %}
+{% set showReadmore = general.article_options.show_readmore %}
+{% set readmoreStyle = general.article_options.readmore_style %}
+{% set readmoreSize = general.article_options.readmore_size %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% set articleImage = "" %}
+{% set articleTitle = "" %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+        {% if articleID %}
+            {% set item = ElementApiCall('joomla-article', data) %}
+        {% else %}
+            {% set item = "" %}
+        {% endif %}
+        {% if item %}
+            <article itemscope="" itemtype="https://schema.org/Article">
+                {% set images = item.images %}
+                {% set link = {'url': item.link, target: false, nofollow: false} %}
+
+                {# {% set layout = articleLayout %} #}
+                {% for index, name in articleLayout %}
+                    {% if name == 'art_title' %}
+                        {% if showTitle %}
+                        <h2 itemprop="headline" class="qx-title">
+                            {% if linkTitles %}
+                                {{ item.title | link(link, '', 'itemprop="url"') }}
+                            {% else %}
+                                {{ item.title }}
+                            {% endif %}
+                        </h2>
+                        {% endif %}
+                    {% elseif name == 'art_meta' %}
+                        <div class="qx-post-meta">
+                            {% if showDate %}
+                            <span class="qx-element-jarticle-date" itemprop="datePublished">
+                                {% if showMetaIcon %}
+                                    <i class="qxif-calendar-alt"></i>
+                                {% endif %}
+
+                                {{ item.displayDate }}
+                            </span>
+                            {% endif %}
+
+                            {% if showAuthor %}
+                            <span class="qx-element-jarticle-writtenby"  itemprop="author" temscope itemtype="https://schema.org/Person">
+                                {% if showMetaIcon %}
+                                    <i class="qxif-user"></i>
+                                {% endif %}
+
+                                {{ item.author }}
+                            </span>
+                            {% endif %}
+
+                            {% if showCategory %}
+                            <span class="qx-element-jarticle-category" itemprop="genre">
+                                {% if showMetaIcon %}
+                                    <i class="qxif-folder-open"></i>
+                                {% endif %}
+
+                                {{ item.category_title }}
+                            </span>
+                            {% endif %}
+                        </div>
+                    {% elseif name == 'art_image' %}
+                        {% if showImage and images.image_intro %}
+                            <figure class="item-image" itemprop="image">
+                                    {{ image(images.image_intro, images.image_intro_alt, 'qx-media-object qx-img-responsive', '', images)  }}
+                            </figure>
+                        {% endif %}
+                    {% elseif name == 'art_content' %}
+                        {% if showContent %}
+                        <div class="article-body" itemprop="articleBody">
+                            {% if contentType == "introtext" %}
+                                {{ item.displayIntrotext|raw }}
+                            {% elseif contentType == "fulltext" %}
+                                {{ item.fulltext|raw }}
+                            {% else %}
+                                {{ item.text|raw }}
+                            {% endif %}
+                        </p>
+                        {% endif %}
+                    {% elseif name == 'art_button' %}
+                        {% if showReadmore %}
+                            {% set btnClass = 'qx-btn qx-flex qx-flex-middle qx-flex-inline ' ~ readmoreStyle ~ ' ' ~ readmoreSize ~ ' iconAlign' ~ iconAlignment %}
+
+                            {% if enableButtonIcon == true %}
+                                {% if iconAlignment == 'left' %}
+                                    {{ ( '' ~ icon ~ ' ' ~ '<span>' ~ buttonText ~ '</span>') | link(link, btnClass, 'itemprop="url"') }}
+                                {% else %}
+                                    {{ ('' ~ '<span>' ~ buttonText ~ '</span>' ~ ' ' ~ icon ~ '') | link(link, btnClass, 'itemprop="url"') }}
+                                {% endif %}
+                            {% else %}
+                                {{ buttonText | link(link, btnClass, 'itemprop="url"') }}
+                            {% endif %}
+
+                            {% if sIcon.type == "svg" %}
+                                {{ addIconStyle('#' ~ id ~ ' .qx-btn', sIcon) }}
+                            {% endif %}
+
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+            </article>
+        {% else %}
+            <p class="qx-alert qx-alert-warning qx-m-0">Article not found!</p>
+        {% endif %}
+    {% endblock %}
+{% endembed %}

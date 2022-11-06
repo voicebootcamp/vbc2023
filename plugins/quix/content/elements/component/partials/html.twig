@@ -1,0 +1,32 @@
+{% set id = field('id') %}
+{% set class = field('class') %}
+
+{% set tagname = field('html_tag') %}
+
+{% set classes = classNames('qx-mainbody', visibilityClass(node.visibility), class) %}
+{% set animation = field("animation") %}
+{% set animationRepeat = field("animation_repeat") %}
+{% set animationDelay = field('animation_delay').value %}
+{% set background = field('background') %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background,
+    "tagname" : tagname
+} %}
+    {% block element %}
+        {% if renderer %}
+            <!-- Begin Content -->
+            <jdoc:include type="message" />
+            <jdoc:include type="component" />
+            <div class="qx-clearfix"></div>
+        {% else %}
+            <div class="qx-alert">COMPONENT AREA</div>
+        {% endif %}
+        
+    {% endblock %}
+{% endembed %}

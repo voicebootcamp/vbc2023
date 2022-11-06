@@ -1,0 +1,41 @@
+#calendarView_div select, #bookingForm input[type="text"], #bookingForm select, .bookingformdiv select, #calendardivleft select{
+	display:inline-block !important;
+}
+
+.vbstepsbarcont{
+	padding-left:0px !important;
+	padding-right:0px !important;
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
+
+.bookingformdiv .col-md-12{
+	padding-left:0px !important;
+}
+
+.information_box{
+}
+
+.loginform{
+	margin-left:10px;
+}
+
+#date1, #date2{
+	display:inline-block;
+}
+
+
+
+@media all and (min-width:569px){
+  
+}
+
+
+@media all and (max-width: 500px) {
+	
+
+	.btn{
+		display:inherit !important;
+	}
+
+}

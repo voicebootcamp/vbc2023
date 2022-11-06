@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset
+            name="quix"
+            label="JGLOBAL_QUIX"
+            description="COM_QUIX_CONFIG_QUIX_SETTINGS_DESC">
+
+        <field type="spacer" label="&lt;b&gt;Performance&lt;/b&gt;"/>
+
+        <field
+                name="disabled_css" type="radio"
+                label="COM_QUIX_CONFIG_DISABLED_CSS_LABEL"
+                description="COM_QUIX_CONFIG_DISABLED_CSS_DESC"
+                class="btn-group"
+                default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field type="spacer" label="&lt;b&gt;Advanced parameters&lt;/b&gt;"/>
+
+        <field
+                name="export_with_image" type="radio"
+                label="COM_QUIX_CONFIG_EXPORT_WITH_IMAGE_LABEL"
+                description="COM_QUIX_CONFIG_EXPORT_WITH_IMAGE_DESC"
+                class="btn-group"
+                default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                name="generator_meta" type="radio"
+                label="COM_QUIX_CONFIG_GENERATOR_META_LABEL"
+                description="COM_QUIX_CONFIG_GENERATOR_META_DESC"
+                class="btn-group"
+                default="1"
+        >
+            <option value="1">JSHOW</option>
+            <option value="0">JHIDE</option>
+        </field>
+
+        <field name="load_fontawosome" type="hidden"/>
+        <field name="guide-quix" type="hidden"/>
+        <field name="guide-quix-builder" type="hidden"/>
+
+        <field type="spacer" label="&lt;b&gt;Development&lt;/b&gt;"/>
+
+        <field
+                name="dev_mode" type="radio"
+                label="COM_QUIX_CONFIG_DEV_MOOD_LABEL"
+                description="COM_QUIX_CONFIG_DEV_MOOD_DESC"
+                class="btn-group"
+                default="0"
+        >
+            <option value="1">JON</option>
+            <option value="0">JOFF</option>
+        </field>
+
+        <field
+                type="spacer"
+                label="&lt;div class='alert'&gt;Enabling development mode on will slow down your performance. It will load all the assets and codes without cache. Make sure you disable it before you move to production.&lt;/div&gt;"
+                showon="dev_mode:1"/>
+
+        <field
+                name="safemode" type="radio"
+                label="COM_QUIX_CONFIG_SAFEMODE_LABEL"
+                description="COM_QUIX_CONFIG_SAFEMODE_DESC"
+                class="btn-group"
+                default="1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                name="fix_iframeloading" type="hidden"
+                label="COM_QUIX_CONFIG_FIX_IFRAMELOADING_LABEL"
+                description="COM_QUIX_CONFIG_FIX_IFRAMELOADING_DESC"
+                class="btn-group"
+                default="1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                name="legacy" type="radio"
+                label="COM_QUIX_CONFIG_LEGACY_LABEL"
+                description="COM_QUIX_CONFIG_LEGACY_DESC"
+                class="btn-group"
+                default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                name="async_builderjs" type="hidden"
+                label="COM_QUIX_CONFIG_ASYNC_BUILDERJS_LABEL"
+                description="COM_QUIX_CONFIG_ASYNC_BUILDERJS_DESC"
+                class="btn-group"
+                default="1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="api_https" type="hidden" value="1"/>
+
+
+        <!-- hidden items -->
+        <field name="enable_com_content" type="hidden"/>
+        <field name="enable_mod_custom" type="hidden"/>
+        <field name="enable_com_k2" type="hidden"/>
+        <field name="enable_com_easyblog" type="hidden"/>
+        <field name="enable_com_digicom" type="hidden"/>
+        <field name="enable_com_virtuemart" type="hidden"/>
+        <field name="enable_com_judirectory" type="hidden"/>
+        <field name="enable_com_zoo" type="hidden"/>
+        <field name="enable_com_hikashop" type="hidden"/>
+        <field name="enable_com_j2store" type="hidden"/>
+        <field name="enable_custom_context" type="hidden"/>
+        <field name="custom_context" type="hidden"/>
+
+
+    </fieldset>
+
+<!--    <fieldset-->
+<!--            name="amp"-->
+<!--            label="AMP"-->
+<!--            description="">-->
+
+        <field
+                name="amp_default" type="hidden" xtype="radio"
+                label="Enable AMP"
+                description="You can enable amp for all pages or you can specify which page to enable manually from page settings."
+                class="btn-group"
+                default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+
+        <field
+                name="header_bg" type="hidden" xtype="color"
+                label="Header Background"
+                description=""
+                default="#fff"
+                showon="amp_default:1"
+        />
+
+        <field
+                name="header_color" type="hidden" xtype="color"
+                label="Header Color"
+                description=""
+                default="#222"
+                showon="amp_default:1"
+        />
+
+        <field
+                name="header_logo" type="hidden" xtype="media"
+                label="AMP Logo"
+                description=""
+                showon="amp_default:1"
+        />
+
+        <field
+                name="logo_width" type="hidden" xtype="text"
+                label="Logo Width in Pixel"
+                description=""
+                default="100px"
+                showon="amp_default:1"
+        />
+
+        <field
+                name="logo_height" type="hidden" xtype="text"
+                label="Logo height in Pixel"
+                default="63px"
+                description=""
+                showon="amp_default:1"
+        />
+
+        <field
+                name="sidebar_menu" type="hidden" xtype="menu"
+                label="Sidebar Menu"
+                description=""
+                showon="amp_default:1"
+        />
+
+<!--    </fieldset>-->
+
+    <fieldset
+            showon="legacy:1"
+            name="image_responsive"
+            label="Images"
+            description="Set proper image sizes for specific devices. &lt;strong&gt;Quix Image optimize&lt;/strong&gt; will use this settings. It will create images for each device using modern image &lt;strong&gt;srcset&lt;/strong&gt;"
+    >
+
+        <fields name="responsive_image">
+            <field
+                    name="quality" type="number"
+                    label="Image Quality"
+                    description=""
+                    default="80"
+                    min="0"
+                    max="100"
+            />
+
+            <field
+                    name="large_desktop" type="number"
+                    label="Image size (Large Desktop)"
+                    description=""
+                    default="1900"
+            />
+            <field
+                    name="desktop" type="number"
+                    label="Image size (Desktop)"
+                    description=""
+                    default="1400"
+            />
+            <field
+                    name="tablet" type="number"
+                    label="Image size (Tablet)"
+                    description=""
+                    default="1024"
+            />
+            <field
+                    name="mobile" type="number"
+                    label="Image size (Mobile)"
+                    description=""
+                    default="786"
+            />
+            <field
+                    name="mini" type="number"
+                    label="Image size (Mini Screen)"
+                    description=""
+                    default="400"
+            />
+
+        </fields>
+
+    </fieldset>
+
+    <fieldset
+            name="permissions"
+            description="JCONFIG_PERMISSIONS_DESC"
+            label="JCONFIG_PERMISSIONS_LABEL">
+
+        <field
+                name="rules" type="rules" component="com_quix"
+                class="inputbox" filter="rules" validate="rules"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                section="component"
+        />
+    </fieldset>
+</config>

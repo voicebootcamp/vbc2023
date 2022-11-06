@@ -1,0 +1,31 @@
+{% include 'global.twig' %}
+
+{% set nanimateAlignment = styles.alert_fg_align_style.nanimate_alignment %}
+{% set animateShapeColor = styles.animate_shape_setting.animate_shapeColor %}
+{% set animateShapeWeight = styles.animate_shape_setting.animate_shapeWeight %}
+{% set headlineColor = styles.animated_headline_text.headline_color %}
+{% set headlineFont = styles.animated_headline_text.headline_font %}
+{% set highlightColor = styles.animated_headline_highlight.highlight_color %}
+{% set highlightFont = styles.animated_headline_highlight.highlight_font %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+{% set headlineTextSelector = id ~ ' .qx-element__before-text,' ~ id ~ ' .qx-element__after-text' %}
+{% set highlightSelector = id ~ ' .qx-element-headline-dynamic-wrapper span, ' ~ id ~ ' .qx-element-headline-dynamic-wrapper b' %}
+{% set svgSelector = id ~ ' .qx-element-headline--style-highlight' %}
+
+{# Alignment #}
+{{ style.alignment(id, nanimateAlignment) }}
+
+{# Shape #}
+{{ style.css(svgSelector ~ ' svg path', 'stroke', animateShapeColor) }}
+{{ style.css(svgSelector ~ ' svg path', 'stroke-width', animateShapeWeight ~ 'px') }}
+
+{# Text #}
+{{ style.css(headlineTextSelector, 'color', headlineColor) }}
+{{ style.typography(headlineTextSelector, headlineFont) }}
+
+{# Highlight #}
+{{ style.css(highlightSelector, 'color', highlightColor) }}
+{{ style.typography(highlightSelector, highlightFont) }}
+
+{{ style.load(id) }}

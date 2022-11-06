@@ -1,0 +1,23 @@
+{% set id = advanced.identifier.id %}
+{% set pauseOnHover = general['video_carousel-fg_behaviour'].pause_on_hover|default('false') %}
+{% set autoplay = general['video_carousel-fg_behaviour'].auto_play|default('false') %}
+{% set autoplaySpeed = general['video_carousel-fg_behaviour'].autoplay_speed|default('300') %}
+{% set infinite_loop = general['video_carousel-fg_behaviour'].infinite_loop %}
+
+(function(){
+  function initSlider() {
+    qxUIkit.slider("#video-carousel-{{ id }}", {
+      autoplay: {{ autoplay }},
+      pauseOnHover: {{ pauseOnHover }},
+      autoplayInterval: {{ autoplaySpeed }},
+      finite: {{ infiniteLoop|default('false') ? 'false' : 'true' }}
+    });
+  }
+  if(window.qxUIkit && typeof window.qxUIkit.slider == 'function') {
+      initSlider();
+  } else {
+      window.qxUIkit = window.qxUIkit || {};
+      window.qxUIkit.sliderQueue = window.qxUIkit.sliderQueue ||[];
+      window.qxUIkit.sliderQueue.push(initSlider);
+  }
+})()

@@ -1,0 +1,660 @@
+name: Form
+slug: form
+groups: pro
+helpId: 5d1feade2c7d3a5cd38ec1b6
+form:
+  general:
+    - name: form_fields
+      type: group-repeater
+      schema:
+
+        - name: title
+          label: Field ID
+          value: name
+          help: 'Use a unique ID. ID cant be empty. Ex: name'
+
+        - name: item_label
+          label: Label
+          value: Another Field
+
+        - name: type
+          type: select
+          value: text
+          options:
+            text: Text
+            date: Date
+            time: time
+            datetime-local: DateTime
+            email: Email
+            textarea: Textarea
+            url: Url
+            tel: Tel
+            radio: Radio
+            select: Select
+            checkbox: Checkbox
+            acceptance: Acceptance
+            #number: Number
+            #date: Date
+            #time: Time
+            #file: Upload
+            #password: Password
+            html: Html
+            hidden: Hidden
+            #recaptcha: Recaptcha
+            #honeypot: Honeypot
+            # repeatable: Repeatable
+
+        - name: placeholder
+          type: text
+          depends:
+            type: [ 'text', 'textarea','email', 'url', 'tel', 'number', 'date', 'time', 'password' ]
+
+        - name: required
+          type: switch
+          value: false
+          depends:
+            type: [ 'text', 'email', 'textarea', 'url', 'tel', 'radio', 'select', 'checkbox', 'acceptance', 'number', 'date', 'time', 'file', 'password' ]
+
+        - name: column_width
+          label: Column Width
+          type: slider
+          step: 5
+          min: 20
+          max: 100
+          units: %
+          defaultUnit: %
+          responsive: true
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+          depends:
+            type: [ 'text', 'email', 'textarea', 'url', 'tel', 'radio', 'select', 'checkbox', 'acceptance', 'number', 'date', 'time', 'file', 'password', 'html' ]
+
+        - name: row
+          label: Rows
+          type: text
+          value: 4
+          depends:
+            type: textarea
+
+        - name: height
+          label: Height
+          type: slider
+          value: 150
+          responsive: false
+          max: 500
+          depends:
+            type: textarea
+
+        - name: options
+          label: Options
+          type: textarea
+          help: Enter each option in a separate line
+          depends:
+            type: [ 'radio', 'select', 'checkbox' ]
+
+        - name: inline
+          label: Inline
+          type: switch
+          depends:
+            type: [ 'radio', 'checkbox' ]
+
+        - name: multiple
+          label: Multiple Selection
+          type: switch
+          depends:
+            type: [ 'select', 'file' ]
+
+        - name: acceptance
+          label: Acceptance Text
+          type: editor
+          depends:
+            type: acceptance
+
+        - name: acceptance_checked
+          label: Checked by Default
+          type: switch
+          depends:
+            type: acceptance
+
+        - name: number_min
+          label: Min. Number
+          type: text
+          depends:
+            type: number
+
+        - name: number_max
+          label: Max. Number
+          type: text
+          depends:
+            type: number
+
+        - name: date_min
+          label: Min. Date
+          type: date
+          depends:
+            type: date_x
+
+        - name: date_max
+          label: Max. Date
+          type: date
+          depends:
+            type: date_x
+
+        - name: date_html5
+          label: Native HTML5
+          type: switch
+          depends:
+            type: [ 'date', 'time' ]
+
+        - name: upload_maxsize
+          label: Max. File Size
+          type: text
+          depends:
+            type: [ 'file' ]
+
+        - name: upload_allowedtypes
+          label: Allowed File Types
+          help: Enter the allowed file types, separated by a comma (jpg, gif, pdf, etc).
+          type: text
+          depends:
+            type: [ 'file' ]
+
+        - name: upload_max_file
+          label: Max. Files
+          type: text
+          depends:
+            type: [ 'file' ]
+
+        - name: html
+          label: HTML
+          type: textarea
+          depends:
+            type: [ 'html' ]
+
+        - name: hidden_value
+          label: Value
+          type: text
+          depends:
+            type: [ 'hidden' ]
+
+        - name: shortcode
+          label: Shortcode
+          type: text
+
+        - name: desc
+          label: Help Text
+          type: textarea
+      value:
+        - title: name
+          item_label: Name
+          type: text
+          placeholder: Your Name
+          required: true
+
+        - title: email
+          item_label: Email
+          type: email
+          placeholder: Your Email
+          required: true
+
+        - title: message
+          item_label: Message
+          type: textarea
+          height: 150
+
+
+    - name: form_basic
+      label: Options
+      type: fields-group
+      schema:
+
+        - name: formname
+          label: Form Name
+          type: text
+          value: New form
+
+        # - name: size
+        #   label: Input size
+        #   type: select
+        #   value: small
+        #   options:
+        #     xs: Extra Small
+        #     sm: Small
+        #     md: Medium
+        #     lg: Large
+        #     xl: Extra Large
+
+        - name: label
+          label: Show Form Label
+          type: switch
+          value: true
+
+        - name: required-mark
+          label: Show Required Mark sign
+          type: switch
+          value: true
+
+        - name: required-recaptcha
+          label: Show Captcha
+          type: switch
+          value: false
+
+        - name: recaptcha_type
+          label: reCaptcha Type
+          type: select
+          value: math
+          options:
+            recaptcha_invisible: Joomla Plugin - Invisible reCAPTCHA
+            math: Simple Math reCaptcha
+          depends:
+            required-recaptcha: true
+          help: for Invisible reCaptcha please configure the plugin.
+
+        - name: rechaptcha_title
+          label: reCaptcha Title
+          type: text
+          value: Captcha
+          depends:
+            required-recaptcha: true
+
+        - name: rechaptcha_placeholder
+          label: reCaptcha Placeholder
+          type: text
+          value: Write the result
+          depends:
+            required-recaptcha: true
+
+        - name: custom_message
+          label: Custom Messages
+          type: switch
+
+        - name: message_success
+          label: Success Message
+          type: text
+          value: The form was sent successfully.
+          depends:
+            custom_message: true
+        - name: message_error
+          label: Error Message
+          type: text
+          value: An errors occurred.
+          depends:
+            custom_message: true
+        - name: captcha_error
+          label: Captcha error message
+          type: text
+          value: Invalid captcha code. Please try again or refresh the page.
+          depends:
+            custom_message: true
+
+
+    - name: form_action_after_submit
+      label: Actions After Submit
+      type: fields-group
+      help: Add actions that will be performed after a visitor submits the form (e.g. send an email notification). Choosing an action will add its setting below.
+      schema:
+
+        - name: actions
+          label: Add Action
+          help: After form submit actions
+          type: select
+          value: email
+          multiple: true
+          options:
+            email: Email
+            email2: Email2
+
+    - name: form_email
+      label: Email
+      type: fields-group
+      help: After submit action email
+      depends:
+        actions: email
+      schema:
+
+        - name: email_subject
+          label: Email Subject
+          type: text
+          value: New message from "Quix"
+
+
+        - name: email_content
+          label: Email Content
+          type: textarea
+          value: '<p>Here is the details:</p> <div>[all-fields]</div>'
+          help: By default, all form fields are sent via shortcode [all-fields]. Want to customize sent fields? Copy the shortcode that appears inside the field and paste it above.
+
+        - name: email_help
+          label:
+          type: divider
+          help: For beautiful output, use any HTML email template here. This support raw html codes. Use the shortcode properly.
+
+        - name: email_to
+          label: To
+          type: text
+          help: Email To
+
+        - name: reply_to
+          label: Reply To
+          type: select
+          value: none
+          help: Email from. If from users input, then field name email will be used
+          options:
+            none: None
+            system: System email
+            emailfield: Input Email
+
+        - name: email_cc
+          label: Cc
+          type: text
+          help: Separate emails with comma
+
+        - name: email_bcc
+          label: BCc
+          type: text
+          help: Separate emails with comma
+
+        - name: email_meta
+          label: Meta Data
+          type: select
+          multiple: true
+          value: [ 'date','time','page_url', 'credit' ]
+          options:
+            date: Date
+            time: Time
+            page_url: Page URL
+            user_agent: User Agent
+            remote_ip: Remote IP
+            credit: Credit
+
+        - name: email_sendas
+          label: Send As
+          type: select
+          value: html
+          options:
+            plain: Plain
+            html: Html
+
+    - name: form_email2
+      label: Email2
+      type: fields-group
+      depends:
+        actions: email2
+      schema:
+
+        - name: email2_subject
+          label: Email Subject
+          type: text
+          value: New message from "Quix"
+
+        - name: email2_content
+          label: Email Content
+          type: textarea
+          value: 'Here is the details: [all-fields]'
+          help: By default, all form fields are sent via shortcode [all-fields]. Want to customize sent fields? Copy the shortcode that appears inside the field and paste it above.
+
+        - name: email2_to
+          label: To
+          type: text
+          help: Email To
+
+        - name: reply2_to
+          label: Reply To
+          type: select
+          value: none
+          options:
+            none: None
+            system: System email
+            emailfield: First email field
+
+        - name: email2_cc
+          label: Cc
+          type: text
+          help: Separate emails with comma
+
+        - name: email2_bcc
+          label: BCc
+          type: text
+          help: Separate emails with comma
+
+        - name: email2_meta
+          label: Meta Data
+          type: select
+          multiple: true
+          value: [ 'date','time','page_url', 'credit' ]
+          options:
+            date: Date
+            time: Time
+            page_url: Page URL
+            user_agent: User Agent
+            remote_ip: Remote IP
+            credit: Credit
+
+        - name: email2_sendas
+          label: Send As
+          type: select
+          value: html
+          options:
+            plain: Plain
+            html: Html
+
+    - name: form_submit
+      label: Submit Button
+      type: fields-group
+      schema:
+        - name: submit_text
+          label: Text
+          type: text
+          value: Send
+
+        - name: submit_size
+          label: Size
+          type: select
+          value: md
+          options:
+            sm: Small
+            md: Medium
+            lg: Large
+
+        - name: submit_block
+          label: Full Width
+          type: switch
+          value: true
+
+        - name: submit_alignment
+          label: Alignment
+          type: choose
+          responsive: true
+          options:
+            left:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            right:
+              label: Right
+              icon: qxuicon-align-right
+          depends:
+            submit_block: false
+          value:
+            desktop: left
+            tablet: left
+            phone: left
+
+        - name: submit_block_alignment
+          label: Button Text Alignment
+          type: choose
+          responsive: false
+          value: center
+          options:
+            flex-start:
+              label: Left
+              icon: qxuicon-align-left
+            center:
+              label: Center
+              icon: qxuicon-align-center
+            flex-end:
+              label: Right
+              icon: qxuicon-align-right
+          depends:
+            submit_block: true
+
+        - name: icon
+          type: media
+          filters: icon
+          showstyle: true
+          help: Icon will visible left to the title
+
+  styles:
+    - name: form_body
+      label: Form
+      type: fields-group
+      schema:
+        - name: column_gap
+          label: Columns Gap
+          type: slider
+          defaultUnit: px
+          responsive: false
+          max: 100
+          value: 10
+
+        - name: rows_gap
+          label: Rows Gap
+          type: slider
+          units: px
+          defaultUnit: px
+          responsive: true
+          max: 100
+          value:
+            desktop: 10
+            tablet: 10
+            phone: 10
+
+    - name: form_field_level
+      label: Label
+      type: fields-group
+      schema:
+        - name: label_spacing
+          label: Spacing
+          type: slider
+          units: px
+          defaultUnit: px
+          responsive: true
+          max: 100
+          value:
+            desktop: 10
+            tablet: 10
+            phone: 10
+
+        - name: label_color
+          label: Text Color
+          type: color
+
+        - name: label_typography
+          label: Typography
+          type: typography
+
+    - name: form_field
+      label: Field
+      type: fields-group
+      schema:
+        - name: field_color
+          label: Text Color
+          type: color
+
+        - name: field_typography
+          label: Typography
+          type: typography
+
+        - name: field_bgcolor
+          label: Background Color
+          type: color
+
+        - name: field_bordercolor
+          label: Border Color
+          type: color
+
+        - name: field_borderwidth
+          label: Border Width
+          type: slider
+          units: px
+          defaultUnit: px
+          responsive: true
+          max: 20
+          value:
+            desktop: 1
+            tablet: 1
+            phone: 1
+
+        - name: field_padding
+          label: Padding
+          type: dimensions
+          units: px
+          defaultUnit: px
+
+        - name: fheight
+          label: Height
+          type: slider
+          value: 38
+          max: 500
+
+    - name: form_button
+      label: Button
+      type: fields-group
+      schema:
+        - name: submit_column
+          label: Column Size
+          type: slider
+          step: 10
+          min: 20
+          max: 100
+          units: %
+          defaultUnit: %
+          value:
+            desktop: 100
+            tablet: 100
+            phone: 100
+          responsive: true
+        - name: button_color
+          label: Button Color
+          type: color
+
+        - name: button_hover_color
+          label: Button Hover Color
+          type: color
+
+        - name: button_typography
+          label: Typography
+          type: typography
+
+        - name: button_bg
+          label: Button Styles
+          type: background
+
+        - name: button_border
+          label: Border
+          type: border
+
+        - name: button_padding
+          label: Padding
+          type: dimensions
+          defaultUnit: px
+          value:
+            desktop:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+            tablet:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15
+            phone:
+              top: 15
+              bottom: 15
+              left: 15
+              right: 15

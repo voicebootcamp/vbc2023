@@ -1,0 +1,51 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set classes = classNames('qx-element qx-element-lottie-animation', visibilityClass(visibility), class) %}
+
+{% set lottieFileSource = general.lottie_animation_file_source.lottie_file_source %}
+{% set lottieUrl = general.lottie_animation_file_source.lottie_url %}
+{% set lottieUpload = general.lottie_animation_file_source.lottie_upload %}
+
+{% set lottieEnableCaption = general.lottie_animation_file_source.lottie_enableCaption %}
+{% set lottieCaption = general.lottie_animation_file_source.lottie_caption %}
+
+{% set lottiePlayControl = general.lottie_animation_options.lottie_play_control %}
+{% set lottiePlayType = general.lottie_animation_options.lottie_play_type %}
+{% set lottieSpeed = general.lottie_animation_options.lottie_speed %}
+{% set lottieLoop = general.lottie_animation_options.lottie_loop %}
+{% set lottiePlayMode = general.lottie_animation_options.lottie_play_mode %}
+{% set lottieRendererType = general.lottie_animation_options.lottie_renderer_type %}
+
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+
+        <figure>
+            {% set lottieAttr = "src='" ~ lottieUrl | raw ~ "' " %}
+            {% set lottieAttr = lottieAttr ~ "speed='" ~ lottieSpeed | default('1') ~ "' " %}
+            {% set lottieAttr = lottieAttr ~ "mode='" ~ lottiePlayMode ~ "' " %}
+            {% set lottieAttr = lottieAttr ~ "renderer='" ~ lottieRendererType ~ "' " %}
+            {% set lottieAttr = lottieAttr ~ lottieLoop ~ ' '%}
+            {% set lottieAttr = lottieAttr ~ lottiePlayControl ~ ' ' %}
+            {% set lottieAttr = lottieAttr ~ lottiePlayType ~  ' ' %}
+            {% set lottieAttr = lottieAttr ~ "style='--lottie-player-toolbar-height:auto;' " %}
+
+            <lottie-player class="lottie-player" {{ lottieAttr }}></lottie-player>
+
+            {% if lottieEnableCaption and lottieCaption != '' %}
+                <figcaption>{{ lottieCaption }}</figcaption>
+            {% endif %}
+        </figure>
+    {% endblock %}
+{% endembed %}

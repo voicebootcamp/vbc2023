@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="editionfieldset" label="" addfieldpath="/plugins/maximenuck/k2/elements">
+			<field
+				name="k2spacer"
+				type="maximenuckspacer"
+				label="MAXIMENUCK_K2_LABEL"
+				style="title"
+				showon="source:k2"
+				/>
+			<field
+				name="usek2images"
+				type="maximenuckradio"
+				default="0"
+				label="MOD_MAXIMENUCK_USEK2IMAGES_LABEL"
+				description="MOD_MAXIMENUCK_USEK2IMAGES_DESC"
+				icon="images.png"
+				showon="source:k2"
+				class="btn-group">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="usek2suffix"
+				type="maximenuckradio"
+				default="0"
+				label="MOD_MAXIMENUCK_USEK2SUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_USEK2SUFFIX_DESC"
+				showon="source:k2"
+				class="btn-group">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="k2imagesuffix"
+				type="maximenucktext"
+				default="_mini"
+				label="MOD_MAXIMENUCK_K2IMAGESUFFIX_LABEL"
+				description="MOD_MAXIMENUCK_K2IMAGESUFFIX_DESC"
+				showon="source:k2"
+				icon="image.png" />
+			<field
+				name="k2categoryroot"
+				type="ckk2category"
+				label="MOD_MAXIMENUCK_K2CATEGORYROOT_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_K2CATEGORYROOT_DESC"
+				showon="source:k2"
+			/>
+
+			<field
+				name="k2categorydepth"
+				type="maximenucklist"
+				label="MOD_MAXIMENUCK_K2CATEGORYDEPTH_LABEL"
+				default="0"
+				description="MOD_MAXIMENUCK_K2CATEGORYDEPTH_DESC"
+				showon="source:k2"
+			>
+				<option value="0">JALL</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</field>
+
+			<field
+				name="k2showall"
+				type="maximenuckradio"
+				label="MOD_MAXIMENUCK_K2SHOWALL_LABEL"
+				default="1"
+				description="MOD_MAXIMENUCK_K2SHOWALL_DESC"
+				class="btn-group"
+				showon="source:k2"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

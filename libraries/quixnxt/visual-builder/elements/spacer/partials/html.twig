@@ -1,0 +1,35 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+
+{% set classes = classNames('qx-element qx-element-spacer-v2', visibilityClass(visibility), class) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+    <style>
+        {{ '#' ~ id }} {
+            height: {{ general.spacer_fields_group.space.desktop ~ 'px' }};
+        }    
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            {{ '#' ~ id }} {
+                height: {{ general.spacer_fields_group.space.tablet ~ 'px' }};
+            }
+        }         
+        @media only screen and (max-width: 767px) {
+            {{ '#' ~ id }} {
+                height: {{ general.spacer_fields_group.space.phone ~ 'px' }};
+            }
+        }       
+    </style>
+    {% endblock %}
+{% endembed %}

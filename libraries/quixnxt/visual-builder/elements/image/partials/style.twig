@@ -1,0 +1,63 @@
+{% include 'global.twig' %}
+
+{% set id = '#' ~ advanced.identifier.id %}
+
+{# Image #}
+{% set width = styles.image_fields_group.width %}
+{% set opacity = styles.image_fields_group.opacity %}
+{% set alignment = styles.image_fields_group.alignment %}
+{% set captionBgColor = styles.caption_field_group.caption_field_group_background_color %}
+
+{# Border #}
+{% set imgBorder = styles.border_fields_group.img_border %}
+
+{# Icon #}
+{% set iconHoverColor = styles.icon_fields_group.icon_hover_color %}
+{% set iconBackground = styles.icon_fields_group.icon_background %}
+{% set iconPadding = styles.icon_fields_group.icon_padding %}
+
+{# Caption #}
+{% set captionMargin = styles.caption_field_group.caption_field_group_margin %}
+{% set captionPadding = styles.caption_field_group.caption_field_group_padding %}
+{% set captionAlign = styles.caption_field_group.caption_field_group_alignment %}
+{% set captionTypo = styles.caption_field_group.caption_field_group_font %}
+{% set captionTextColor = styles.caption_field_group.caption_field_group_text_color %}
+{% set captionBg = styles.caption_field_group.caption_background_color %}
+{% set captionBd = styles.caption_field_group.caption_border %}
+
+{# Selectors #}
+{% set img = id ~ ' img,' ~ id ~ ' svg' %}
+{% set iconSelector = id ~ ' svg,' ~ id ~ ' i' %}
+{% set medSelector = id ~ ' img.lazyloaded,' ~ id ~ ' svg,' ~ id ~ ' i' %}
+{% set imgBdSelector = id ~ ' img' %}
+{% set svgBdSelector = id ~ ' svg' %}
+{% set iconBdSelector = id ~ ' i' %}
+{% set caption =  id ~ ' .qx-figure-caption' %}
+
+{# Image #}
+{{ style.width(img, width) }}
+{{ style.css(img, 'opacity', opacity) }}
+{{ style.alignment(id, alignment) }}
+{{ style.css(medSelector, 'display', 'inline-block') }}
+{{ style.css(caption, 'background-color', captionBgColor) }}
+
+{# Border #}
+{{ style.border(imgBdSelector, imgBorder) }}
+{{ style.border(svgBdSelector, imgBorder) }}
+{{ style.border(iconBdSelector, imgBorder) }}
+
+{# Icon #}
+{{ style.css(iconSelector ~ ':hover', 'color', iconHoverColor) }}
+{{ style.background(iconSelector, iconBackground) }}
+{{ style.padding(iconSelector, iconPadding) }}
+
+{# Caption #}
+{{ style.margin(caption, captionMargin) }}
+{{ style.padding(caption, captionPadding) }}
+{{ style.alignment(caption, captionAlign) }}
+{{ style.typography(caption, captionTypo) }}
+{{ style.css(caption, 'color', captionTextColor) }}
+{{ style.css(caption, 'background-color', captionBg) }}
+{{ style.border(caption, captionBd) }}
+
+{{ style.load(id) }}

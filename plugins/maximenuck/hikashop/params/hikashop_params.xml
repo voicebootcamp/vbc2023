@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="editionfieldset" label="" addfieldpath="/plugins/maximenuck/hikashop/elements">
+			<field
+				name="hikashopspacer"
+				type="maximenuckspacer"
+				label="MAXIMENUCK_HIKASHOP_LABEL"
+				style="title"
+				showon="source:hikashop"
+				/>
+			<field
+				name="hikashopcheck"
+				type="ckhikashopcheck"
+				label="MAXIMENUCK_HIKASHOP_LABEL"
+				style="title"
+				showon="source:hikashop"
+				/>
+			<field
+				name="hikashopdocumentation"
+				type="ckdocumentation"
+				url="https://www.joomlack.fr/en/documentation/maximenu-ck"
+				showon="source:hikashop"
+				/>
+			<field
+				name="hikashopitemid"
+				type="sql"
+				default="0"
+				label="PLG_MAXIMENUCK_HIKASHOP_ITEMID_LABEL"
+				description="PLG_MAXIMENUCK_HIKASHOP_ITEMID_DESC"
+				query="SELECT id AS value, title AS hikashopitemid FROM #__menu WHERE link='index.php?option=com_hikashop&amp;view=category&amp;layout=listing' AND published=1 ORDER BY title ASC"
+				icon="application_form_magnify.png"
+				showon="source:hikashop"
+				/>
+			<field
+				name="usehikashopimages"
+				type="maximenuckradio"
+				class="btn-group"
+				default="0"
+				label="PLG_MAXIMENUCK_HIKASHOP_USE_IMAGES_LABEL"
+				description="PLG_MAXIMENUCK_HIKASHOP_USE_IMAGES_DESC"
+				showon="source:hikashop"
+				icon="images.png">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="usehikashopsuffix"
+				type="maximenuckradio"
+				class="btn-group"
+				default="0"
+				label="PLG_MAXIMENUCK_HIKASHOP_USE_SUFFIX_LABEL"
+				description="PLG_MAXIMENUCK_HIKASHOP_USE_SUFFIX_DESC"
+				showon="source:hikashop"
+				>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="hikashopimagesuffix"
+				type="maximenucktext"
+				default="_mini"
+				label="PLG_MAXIMENUCK_HIKASHOP_IMAGESUFFIX_LABEL"
+				description="PLG_MAXIMENUCK_HIKASHOP_IMAGESUFFIX_DESC"
+				showon="source:hikashop"
+				icon="image.png" />
+			<field
+				name="hikashopcategoryroot"
+				type="ckhikashopcategory2"
+				label="PLG_MAXIMENUCK_HIKASHOP_CATEGORYROOT_LABEL"
+				default="0"
+				description="PLG_MAXIMENUCK_HIKASHOP_CATEGORYROOT_DESC"
+				showon="source:hikashop"
+			/>
+
+			<field
+				name="hikashopcategorydepth"
+				type="maximenucklist"
+				label="PLG_MAXIMENUCK_HIKASHOP_CATEGORYDEPTH_LABEL"
+				default="0"
+				description="PLG_MAXIMENUCK_HIKASHOP_CATEGORYDEPTH_DESC"
+				showon="source:hikashop"
+			>
+				<option value="0">JALL</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</field>
+
+			<field
+				name="hikashopshowall"
+				type="maximenuckradio"
+				class="btn-group"
+				label="PLG_MAXIMENUCK_HIKASHOP_SHOWALL_LABEL"
+				default="1"
+				description="PLG_MAXIMENUCK_HIKASHOP_SHOWALL_DESC"
+				showon="source:hikashop"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="hikashopshowemptycats"
+				type="maximenuckradio"
+				class="btn-group"
+				label="PLG_MAXIMENUCK_HIKASHOP_SHOW_EMPTY_CATS_LABEL"
+				default="1"
+				description="PLG_MAXIMENUCK_HIKASHOP_SHOW_EMPTY_CATS_DESC"
+				showon="source:hikashop"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="hikashoporderby"
+				type="maximenucklist"
+				label="PLG_MAXIMENUCK_HIKASHOP_ORDERBY_LABEL"
+				default="0"
+				description="PLG_MAXIMENUCK_HIKASHOP_ORDERBY_DESC"
+				showon="source:hikashop"
+			>
+				<option value="ordering">PLG_MAXIMENUCK_HIKASHOP_ORDER</option>
+				<option value="name">PLG_MAXIMENUCK_HIKASHOP_NAME</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>
